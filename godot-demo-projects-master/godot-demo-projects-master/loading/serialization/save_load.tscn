@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=3 uid="uid://w7nl5fe4vheb"]
+
+[ext_resource type="PackedScene" path="res://enemy.tscn" id="1"]
+[ext_resource type="Script" path="res://gui.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dpm1oolm8wr02" path="res://sea_turtle.png" id="2_g2wd8"]
+[ext_resource type="Script" path="res://save_load_json.gd" id="3"]
+[ext_resource type="Script" path="res://save_load_config_file.gd" id="4"]
+[ext_resource type="Script" path="res://player.gd" id="6"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkphp"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smouc"]
+bg_color = Color(0.458824, 0.631373, 0.262745, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Node" type="Node"]
+
+[node name="Game" type="Node2D" parent="."]
+position = Vector2(296, 8)
+
+[node name="Player" type="CharacterBody2D" parent="Game"]
+position = Vector2(48, 40)
+motion_mode = 1
+script = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Player"]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Game/Player"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_g2wd8")
+
+[node name="ProgressBar" type="ProgressBar" parent="Game/Player"]
+offset_left = -32.0
+offset_top = -50.0
+offset_right = 32.0
+offset_bottom = -33.0
+theme_override_colors/font_outline_color = Color(0.152941, 0.152941, 0.152941, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 13
+theme_override_styles/background = SubResource("StyleBoxFlat_lkphp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_smouc")
+value = 100.0
+
+[node name="Enemy" parent="Game" instance=ExtResource("1")]
+
+[node name="Enemy2" parent="Game" instance=ExtResource("1")]
+position = Vector2(376, 304)
+
+[node name="Enemy3" parent="Game" instance=ExtResource("1")]
+position = Vector2(232, 464)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -11.9999
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 269.0
+offset_bottom = 330.0
+script = ExtResource("2")
+
+[node name="SaveLoad" type="GridContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="SaveConfigFile" type="Button" parent="Control/VBoxContainer/SaveLoad"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save ConfigFile"
+script = ExtResource("4")
+game_node = NodePath("../../../../Game")
+player_node = NodePath("../../../../Game/Player")
+
+[node name="LoadConfigFile" type="Button" parent="Control/VBoxContainer/SaveLoad"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load ConfigFile"
+script = ExtResource("4")
+game_node = NodePath("../../../../Game")
+player_node = NodePath("../../../../Game/Player")
+
+[node name="SaveJSON" type="Button" parent="Control/VBoxContainer/SaveLoad"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save JSON"
+script = ExtResource("3")
+game_node = NodePath("../../../../Game")
+player_node = NodePath("../../../../Game/Player")
+
+[node name="LoadJSON" type="Button" parent="Control/VBoxContainer/SaveLoad"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load JSON"
+script = ExtResource("3")
+game_node = NodePath("../../../../Game")
+player_node = NodePath("../../../../Game/Player")
+
+[node name="OpenUserDataFolder" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Click this button to check the saved files using the operating system's file manager."
+text = "Open User Data Folder"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Use WASD, arrow keys or controller to move the player.
+
+Use the save and load buttons to save/load the game with the respective format (each format is its own savegame)."
+
+[connection signal="pressed" from="Control/VBoxContainer/SaveLoad/SaveConfigFile" to="Control/VBoxContainer/SaveLoad/SaveConfigFile" method="save_game"]
+[connection signal="pressed" from="Control/VBoxContainer/SaveLoad/LoadConfigFile" to="Control/VBoxContainer/SaveLoad/LoadConfigFile" method="load_game"]
+[connection signal="pressed" from="Control/VBoxContainer/SaveLoad/SaveJSON" to="Control/VBoxContainer/SaveLoad/SaveJSON" method="save_game"]
+[connection signal="pressed" from="Control/VBoxContainer/SaveLoad/LoadJSON" to="Control/VBoxContainer/SaveLoad/LoadJSON" method="load_game"]
+[connection signal="pressed" from="Control/VBoxContainer/OpenUserDataFolder" to="Control/VBoxContainer" method="_on_open_user_data_folder_pressed"]

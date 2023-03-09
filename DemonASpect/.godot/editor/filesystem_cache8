@@ -1,0 +1,15 @@
+2a60927148abd1d33b818b535e306557
+::res://::1678403723
+default_env.tres::Environment::3597556386965951437::1678398345::0::1::::<><>::
+icon.png::CompressedTexture2D::6524617036004661128::1676938649::1678395826::1::::<><>::
+::res://Scenes/::1676951691
+::res://Scenes/Levels/::1678398344
+DungeonOne.tscn::PackedScene::3754908325437924663::1678398344::0::1::::<><>::uid://cwuysqacimqb2<>uid://bbe055orfkex8
+::res://Scenes/Player/::1678398345
+Player.gd::GDScript::-1::1678398247::0::1::::<>CharacterBody2D<>::
+Player.tscn::PackedScene::2466440135090929535::1678398345::0::1::::<><>::res://Scenes/Player/Player.gd<>uid://csggvrmqwogya
+::res://Sprites/::1678397079
+momodora attack effect air-Sheet.png::CompressedTexture2D::3906287249531486741::1676951655::1678395826::1::::<><>::
+momodora attack effects-Sheet.png::CompressedTexture2D::5105156344300943032::1676951655::1678395826::1::::<><>::
+momodora sprites-Sheet.png::CompressedTexture2D::6049029535215274904::1677118704::1678397079::1::::<><>::
+stone wall.png::CompressedTexture2D::6359773675096447389::1676943432::1678395826::1::::<><>::

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/UI/ThemeOne.tres" type="Theme" id=1]
+
+[node name="GenericHealthBar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_right = 301.0
+margin_bottom = 25.0
+rect_scale = Vector2( 0.0664808, 0.0708307 )
+theme = ExtResource( 1 )
+value = 100.0
+percent_visible = false

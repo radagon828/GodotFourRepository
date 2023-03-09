@@ -1,0 +1,150 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds1y65r8ld026"]
+
+[ext_resource type="Script" path="res://os_test.gd" id="1"]
+[ext_resource type="Script" path="res://actions.gd" id="4"]
+
+[node name="OSTest" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Features" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="Actions" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4")
+
+[node name="Label" type="Label" parent="HBoxContainer/Actions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Actions"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="OpenShellWeb" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Open Shell (web)"
+
+[node name="OpenShellFolder" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Open Shell (folder)"
+
+[node name="ChangeWindowTitle" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Change Window Title"
+
+[node name="ChangeWindowIcon" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Change Window Icon"
+
+[node name="MoveWindowToForeground" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Move Window to Foreground"
+
+[node name="RequestAttention" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Request Attention"
+
+[node name="VibrateDeviceShort" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Vibrate Device (200 ms)"
+
+[node name="VibrateDeviceLong" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Vibrate Device (1000 ms)"
+
+[node name="AddGlobalMenuItems" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Add Global Menu Items"
+
+[node name="RemoveGlobalMenuItem" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Remove Global Menu Item"
+
+[node name="GetClipboard" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Get Clipboard Contents"
+
+[node name="SetClipboard" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Set Clipboard Contents"
+
+[node name="DisplayAlert" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Display Alert"
+
+[node name="KillCurrentProcess" type="Button" parent="HBoxContainer/Actions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Kill Current Process"
+
+[node name="CSharpTest" type="Node" parent="."]
+
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/OpenShellWeb" to="HBoxContainer/Actions" method="_on_OpenShellWeb_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/OpenShellFolder" to="HBoxContainer/Actions" method="_on_OpenShellFolder_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/ChangeWindowTitle" to="HBoxContainer/Actions" method="_on_ChangeWindowTitle_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/ChangeWindowIcon" to="HBoxContainer/Actions" method="_on_ChangeWindowIcon_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/MoveWindowToForeground" to="HBoxContainer/Actions" method="_on_MoveWindowToForeground_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/RequestAttention" to="HBoxContainer/Actions" method="_on_RequestAttention_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/VibrateDeviceShort" to="HBoxContainer/Actions" method="_on_VibrateDeviceShort_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/VibrateDeviceLong" to="HBoxContainer/Actions" method="_on_VibrateDeviceLong_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/AddGlobalMenuItems" to="HBoxContainer/Actions" method="_on_AddGlobalMenuItems_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/RemoveGlobalMenuItem" to="HBoxContainer/Actions" method="_on_RemoveGlobalMenuItem_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/GetClipboard" to="HBoxContainer/Actions" method="_on_GetClipboard_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/SetClipboard" to="HBoxContainer/Actions" method="_on_SetClipboard_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/DisplayAlert" to="HBoxContainer/Actions" method="_on_DisplayAlert_pressed"]
+[connection signal="pressed" from="HBoxContainer/Actions/GridContainer/KillCurrentProcess" to="HBoxContainer/Actions" method="_on_KillCurrentProcess_pressed"]

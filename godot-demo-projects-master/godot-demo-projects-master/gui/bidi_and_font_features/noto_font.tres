@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dewurnqemtrs"]
+
+[ext_resource type="FontFile" uid="uid://cwer1pi5ka4io" path="res://fonts/NotoSansHebrew_Regular.ttf" id="1_yyyil"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("1_yyyil")])
