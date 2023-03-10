@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=32 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
@@ -178,6 +178,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [44, 45, 46, 47, 48, 49, 50, 51]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_roll_finished"
+}]
+}
 
 [sub_resource type="Animation" id="3"]
 resource_name = "Run"
@@ -266,6 +280,9 @@ animation = &"RunStartup"
 [sub_resource type="AnimationNodeAnimation" id="27"]
 animation = &"RunSlowdown"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wnak0"]
+animation = &"Roll"
+
 [sub_resource type="AnimationNodeAnimation" id="18"]
 animation = &"Idle"
 
@@ -294,33 +311,38 @@ input_0/reset = true
 input_1/name = "run"
 input_1/auto_advance = false
 input_1/reset = true
+input_2/name = "roll"
+input_2/auto_advance = false
+input_2/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(-308.129, -266.159)
+graph_offset = Vector2(-207.949, 5.70468)
 nodes/Add2/node = SubResource("29")
-nodes/Add2/position = Vector2(60, 40)
+nodes/Add2/position = Vector2(260, -140)
 nodes/Animation/node = SubResource("18")
-nodes/Animation/position = Vector2(-260, -300)
+nodes/Animation/position = Vector2(60, -400)
 "nodes/Animation 2/node" = SubResource("17")
-"nodes/Animation 2/position" = Vector2(-320, 40)
+"nodes/Animation 2/position" = Vector2(40, -160)
 "nodes/Animation 3/node" = SubResource("21")
 "nodes/Animation 3/position" = Vector2(300, 220)
 "nodes/Animation 4/node" = SubResource("23")
 "nodes/Animation 4/position" = Vector2(300, 360)
 "nodes/Animation 5/node" = SubResource("25")
-"nodes/Animation 5/position" = Vector2(-220, 200)
+"nodes/Animation 5/position" = Vector2(40, -40)
 "nodes/Animation 6/node" = SubResource("27")
-"nodes/Animation 6/position" = Vector2(-360, -160)
+"nodes/Animation 6/position" = Vector2(40, -280)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_wnak0")
+"nodes/Animation 7/position" = Vector2(-160, 160)
 nodes/OneShot/node = SubResource("30")
-nodes/OneShot/position = Vector2(60, -260)
+nodes/OneShot/position = Vector2(260, -380)
 nodes/in_air/node = SubResource("24")
 nodes/in_air/position = Vector2(660, 200)
 nodes/in_air_state/node = SubResource("22")
 nodes/in_air_state/position = Vector2(1020, 80)
 nodes/movement/node = SubResource("19")
-nodes/movement/position = Vector2(360, -180)
-nodes/output/position = Vector2(1340, 100)
-node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2"]
+nodes/movement/position = Vector2(640, -80)
+nodes/output/position = Vector2(1500, 100)
+node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1")
@@ -354,9 +376,9 @@ parameters/in_air/current_index = 1
 parameters/in_air_state/current_state = "false"
 parameters/in_air_state/transition_request = ""
 parameters/in_air_state/current_index = 0
-parameters/movement/current_state = "run"
+parameters/movement/current_state = "idle"
 parameters/movement/transition_request = ""
-parameters/movement/current_index = 1
+parameters/movement/current_index = 0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2

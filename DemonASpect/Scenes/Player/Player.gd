@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var JUMP_POWER = 300
 @export var ACCELERATION = 2000
 @export var MAX_SPEED = 140
-@export var ROLL_SPEED = 125
+@export var ROLL_SPEED = 180
 @export var FRICTION = 700
 
 enum {
@@ -14,6 +14,7 @@ enum {
 }
 
 var state = MOVE
+var roll_vector = Vector2.RIGHT
 var jumpTerminationMultiplier = 3
 var hasDoubleJump = false
 # velcoity is a predefined variable in godot 4
@@ -31,10 +32,9 @@ func _physics_process(delta: float):
 		MOVE:
 			move_state(delta)
 		ROLL:
-			pass
+			roll_state(delta)
 	update_sprite()
 	debug()
-#	print(get_input_vector())
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -46,6 +46,7 @@ func move_state(delta):
 	var inputVector = get_input_vector()
 
 	running(inputVector, delta)
+	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 	#JUMPING
 	if (inputVector.y < 0 && (is_on_floor() || hasDoubleJump)):
 		velocity.y = inputVector.y * JUMP_POWER
@@ -65,11 +66,15 @@ func move_state(delta):
 		hasDoubleJump = true
 		
 	$AnimationTree.set("parameters/in_air_state/transition_request", !is_on_floor())
-	set_up_direction(Vector2.UP)
-	move_and_slide()
+	
+	if (Input.is_action_just_pressed("roll") && is_on_floor()):
+		state = ROLL
+	
+	move()
 
 func running(inputVector, delta):
 	if (inputVector.x != 0):
+		roll_vector.x = inputVector.x
 		$AnimationTree.set("parameters/movement/transition_request", "run")
 		if abs(velocity.x) == MAX_SPEED:
 			$AnimationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
@@ -78,7 +83,24 @@ func running(inputVector, delta):
 		$AnimationTree.set("parameters/movement/transition_request", "idle")
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 		
-	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
+
+#find out how to slow down roll
+func roll_state(delta):
+	$AnimationTree.set("parameters/movement/transition_request", "roll")
+	velocity.x = roll_vector.x * ROLL_SPEED
+	velocity.x = lerp(0, velocity, pow(2, -8 * delta))
+	velocity.y += GRAVITY * delta
+	move()
+
+func on_roll_finished():
+	print("hello i worked")
+	velocity.x = 0
+	state = MOVE
+	$AnimationTree.set("parameters/movement/transistion_request", "idle")
+
+func move():
+	set_up_direction(Vector2.UP)
+	move_and_slide()
 
 func update_sprite():
 	var moveVec = get_input_vector()
@@ -91,3 +113,5 @@ func debug():
 #	print(velocity)
 #	print(is_on_floor())
 #	print(animationPlayer.current_animation_position)
+
+
