@@ -296,7 +296,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(-358.893, -204.892)
+graph_offset = Vector2(-308.129, -266.159)
 nodes/Add2/node = SubResource("29")
 nodes/Add2/position = Vector2(60, 40)
 nodes/Animation/node = SubResource("18")
@@ -347,7 +347,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Add2/add_amount = 1.0
 parameters/OneShot/active = false
-parameters/OneShot/request = 1
+parameters/OneShot/request = 0
 parameters/in_air/current_state = "jumping"
 parameters/in_air/transition_request = ""
 parameters/in_air/current_index = 1
@@ -357,3 +357,6 @@ parameters/in_air_state/current_index = 0
 parameters/movement/current_state = "run"
 parameters/movement/transition_request = ""
 parameters/movement/current_index = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
