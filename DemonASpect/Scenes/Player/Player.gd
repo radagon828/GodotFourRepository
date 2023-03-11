@@ -88,7 +88,8 @@ func running(inputVector, delta):
 func roll_state(delta):
 	$AnimationTree.set("parameters/movement/transition_request", "roll")
 	velocity.x = roll_vector.x * ROLL_SPEED
-	velocity.x = lerp(0, velocity, pow(2, -8 * delta))
+	velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
+#	velocity.x = lerp(0, velocity, pow(2, -8 * delta))
 	velocity.y += GRAVITY * delta
 	move()
 
