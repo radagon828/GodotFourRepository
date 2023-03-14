@@ -73,3 +73,5 @@ remote_path = NodePath("../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
 position = Vector2(72, 72)
+offset = Vector2(0, -25)
+zoom = Vector2(0.8, 0.8)

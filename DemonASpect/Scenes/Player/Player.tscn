@@ -380,5 +380,6 @@ parameters/movement/current_state = "idle"
 parameters/movement/transition_request = ""
 parameters/movement/current_index = 0
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
