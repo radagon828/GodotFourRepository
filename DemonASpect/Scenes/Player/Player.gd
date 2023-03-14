@@ -88,17 +88,17 @@ func running(inputVector, delta):
 #find out how to slow down roll
 func roll_state(delta):
 	$AnimationTree.set("parameters/movement/transition_request", "roll")
-	if ($DashTimer.wait_time == 0.1):
+	if ($DashTimer.time_left > 0.1):
 		velocity.x = roll_vector.x * ROLL_SPEED
 #	velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
-	velocity.x = lerpf(0, velocity.x, pow(2, -8 * delta))
+	velocity.x = lerp(0.0, velocity.x, pow(2, -6 * delta))
 	
 	velocity.y += GRAVITY * delta
 	move()
 	
 func on_roll_finished():
 	print("hello i worked")
-	velocity.x = 0
+#	velocity.x = 0
 	state = MOVE
 	$AnimationTree.set("parameters/movement/transistion_request", "idle")
 
@@ -114,7 +114,7 @@ func update_sprite():
 func debug():
 	pass
 #	print(!$RayCast2D.is_colliding())
-	print(velocity, $DashTimer.wait_time)
+	print(velocity, $DashTimer.time_left)
 #	print(is_on_floor())
 #	print(animationPlayer.current_animation_position)
 
