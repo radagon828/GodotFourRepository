@@ -35,8 +35,8 @@ func _physics_process(delta: float):
 			move_state(delta)
 		ROLL:
 			roll_state(delta)
-#		ATTACK:
-#			attack_state(delta)
+		ATTACK:
+			attack_state(delta)
 	debug()
 
 func get_input_vector():
@@ -122,14 +122,14 @@ func on_roll_finished():
 	state = MOVE
 	$AnimationTree.set("parameters/movement/transistion_request", "idle")
 #
-#func attack_state(delta):
-#	$AnimationTree.set("parameters/movement/transistion_request", "attack")
-#	print("hello i worked")
-##	velocity.x = roll_vector.x * ROLL_SPEED
-#
-#	velocity.y += GRAVITY * delta
-#	move()
-#
+func attack_state(delta):
+	$AnimationTree.set("parameters/movement/transistion_request", "attack")
+	print("hello i worked")
+#	velocity.x = roll_vector.x * ROLL_SPEED
+
+	velocity.y += GRAVITY * delta
+	move()
+
 #func on_attack_finished():
 #	state = MOVE
 #	$AnimationTree.set("parameters/movement/transistion_request", "idle")
