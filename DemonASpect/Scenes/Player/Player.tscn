@@ -297,13 +297,13 @@ animation = &"RunSlowdown"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wnak0"]
 animation = &"Roll"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dy7i1"]
-animation = &"AttackOne"
-
 [sub_resource type="AnimationNodeAnimation" id="18"]
 animation = &"Idle"
 
 [sub_resource type="AnimationNodeOneShot" id="30"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dy7i1"]
+animation = &"AttackOne"
 
 [sub_resource type="AnimationNodeTransition" id="24"]
 input_0/name = "falling"
@@ -336,7 +336,7 @@ input_3/auto_advance = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(-132.756, -63.6457)
+graph_offset = Vector2(-128.982, -77.961)
 nodes/Add2/node = SubResource("29")
 nodes/Add2/position = Vector2(260, -140)
 nodes/Animation/node = SubResource("18")
@@ -353,10 +353,10 @@ nodes/Animation/position = Vector2(60, -400)
 "nodes/Animation 6/position" = Vector2(40, -280)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_wnak0")
 "nodes/Animation 7/position" = Vector2(-140, 20)
-"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_dy7i1")
-"nodes/Animation 8/position" = Vector2(420, 60)
 nodes/OneShot/node = SubResource("30")
 nodes/OneShot/position = Vector2(260, -380)
+nodes/attack/node = SubResource("AnimationNodeAnimation_dy7i1")
+nodes/attack/position = Vector2(280, 80)
 nodes/in_air/node = SubResource("24")
 nodes/in_air/position = Vector2(700, 260)
 nodes/in_air_state/node = SubResource("22")
@@ -364,7 +364,7 @@ nodes/in_air_state/position = Vector2(1020, 80)
 nodes/movement/node = SubResource("19")
 nodes/movement/position = Vector2(620, -120)
 nodes/output/position = Vector2(1500, 100)
-node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"Animation 8"]
+node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"attack"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1")
@@ -402,10 +402,14 @@ parameters/movement/current_state = "attack"
 parameters/movement/transition_request = ""
 parameters/movement/current_index = 3
 
-[node name="DashTimer" type="Timer" parent="."]
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="DashTimer" type="Timer" parent="Timers"]
 wait_time = 0.7
 one_shot = true
 
-[node name="RunTimer" type="Timer" parent="."]
+[node name="RunTimer" type="Timer" parent="Timers"]
 wait_time = 0.6
 one_shot = true
+
+[node name="TestTimer" type="Timer" parent="Timers"]

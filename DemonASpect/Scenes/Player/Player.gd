@@ -21,10 +21,14 @@ var jumpTerminationMultiplier = 3
 var hasDoubleJump = false
 # velcoity is a predefined variable in godot 4
 @onready var animationPlayer = $AnimationPlayer
+@onready var animationTree = $AnimationTree
 @onready var playerSprite = $PlayerSprite
+@onready var dashTimer = $Timers/DashTimer
+@onready var runTimer = $Timers/RunTimer
+@onready var testTimer = $Timers/TestTimer
 
 func _ready() -> void:
-	$AnimationTree.active = true
+	animationTree.active = true
 	velocity = velocity
 	set_velocity(velocity)
 #	Engine.time_scale = 0.2
@@ -74,23 +78,24 @@ func move_state(delta):
 	
 	#ROLL STATE SWITCH
 	if (Input.is_action_just_pressed("roll") && is_on_floor()):
-		$DashTimer.start()
+		dashTimer.start()
 		state = ROLL
 	
 	#processing for run stop animation
 	if (Input.is_action_just_pressed("move_left") || Input.is_action_just_pressed("move_right")):
-		$RunTimer.start()
+		runTimer.start()
 	
-	if ($RunTimer.time_left > 0.1 && $RunTimer.time_left < 0.2):
+	if (runTimer.time_left > 0.1 && runTimer.time_left < 0.2):
 		$AnimationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	elif (Input.is_action_just_released("move_left") || Input.is_action_just_released("move_right")):
-		$RunTimer.stop()
-		if ($RunTimer.time_left > 0.2):
+		runTimer.stop()
+		if (runTimer.time_left > 0.2):
 			$AnimationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	
 	#ATTACK STATE SWITCH
 	if (Input.is_action_just_pressed("attack") && is_on_floor()):
 		state = ATTACK
+		testTimer.start()
 		
 	
 	update_sprite()
@@ -107,26 +112,28 @@ func running(inputVector, delta):
 	
 	
 
-#NEXT--maybe cancel roll animation with runn or attack input
+#NEXT--maybe cancel roll animation with runn or attack input 3/17/2023
 func roll_state(delta):
 	$AnimationTree.set("parameters/movement/transition_request", "roll")
-	if ($DashTimer.time_left > 0.1):
+	if (dashTimer.time_left > 0.1):
 		velocity.x = roll_vector.x * ROLL_SPEED
 #	velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 	
 	velocity.y += GRAVITY * delta
+	
 	move()
 	
 func on_roll_finished():
 	state = MOVE
-	$AnimationTree.set("parameters/movement/transistion_request", "idle")
+#	$AnimationTree.set("parameters/movement/transistion_request", "idle")
 #
 func attack_state(delta):
-	$AnimationTree.set("parameters/movement/transistion_request", "attack")
+	$AnimationTree.set("parameters/movement/transition_request", "attack")
 	print("hello i worked")
 #	velocity.x = roll_vector.x * ROLL_SPEED
-
+	if (testTimer.time_left < 0.1):
+		state = MOVE
 	velocity.y += GRAVITY * delta
 	move()
 
@@ -145,9 +152,9 @@ func update_sprite():
 
 func debug():
 	pass
+	print($AnimationTree.get("parameters/movement/current_state"))
 #	print(!$RayCast2D.is_colliding())
 #	print(velocity, $DashTimer.time_left, "         ", $RunTimer.time_left)
 #	print(is_on_floor())
-	
 
 	
