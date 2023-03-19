@@ -20,9 +20,10 @@ var jumpTerminationMultiplier = 3
 #BOOLS
 var hasDoubleJump = false
 # velcoity is a predefined variable in godot 4
-@onready var animationPlayer = $AnimationPlayer
+@onready var animationPlayer = $PlayerAnimations
 @onready var animationTree = $AnimationTree
 @onready var playerSprite = $PlayerSprite
+@onready var leafSprite = $LeafSprite
 @onready var dashTimer = $Timers/DashTimer
 @onready var runTimer = $Timers/RunTimer
 @onready var testTimer = $Timers/TestTimer
@@ -95,7 +96,6 @@ func move_state(delta):
 	#ATTACK STATE SWITCH
 	if (Input.is_action_just_pressed("attack") && is_on_floor()):
 		state = ATTACK
-		testTimer.start()
 		
 	
 	update_sprite()
@@ -126,20 +126,15 @@ func roll_state(delta):
 	
 func on_roll_finished():
 	state = MOVE
-#	$AnimationTree.set("parameters/movement/transistion_request", "idle")
 #
 func attack_state(delta):
 	$AnimationTree.set("parameters/movement/transition_request", "attack")
-	print("hello i worked")
-#	velocity.x = roll_vector.x * ROLL_SPEED
-	if (testTimer.time_left < 0.1):
-		state = MOVE
 	velocity.y += GRAVITY * delta
 	move()
 
-#func on_attack_finished():
-#	state = MOVE
-#	$AnimationTree.set("parameters/movement/transistion_request", "idle")
+func on_attack_finished():
+	$AnimationTree.set("parameters/movement/transition_request", "idle")
+	state = MOVE
 	
 func move():
 	set_up_direction(Vector2.UP)
@@ -149,10 +144,17 @@ func update_sprite():
 	var moveVec = get_input_vector()
 	if (moveVec.x != 0):
 		playerSprite.flip_h = true if moveVec.x < 0 else false
+		if moveVec.x < 0:
+			leafSprite.flip_h = true 
+			leafSprite.position.x = -24
+		else: 
+			leafSprite.flip_h = false
+			leafSprite.position.x = 24
+		
 
 func debug():
 	pass
-	print($AnimationTree.get("parameters/movement/current_state"))
+#	print($AnimationTree.get("parameters/movement/current_state"))
 #	print(!$RayCast2D.is_colliding())
 #	print(velocity, $DashTimer.time_left, "         ", $RunTimer.time_left)
 #	print(is_on_floor())

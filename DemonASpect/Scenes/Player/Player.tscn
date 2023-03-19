@@ -1,7 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=37 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cey8gdcb1pvx5" path="res://Sprites/momodora attack effects-Sheet.png" id="2_rsmuq"]
+
+[sub_resource type="CapsuleShape2D" id="4"]
+radius = 8.0
 
 [sub_resource type="Animation" id="8"]
 resource_name = "AirAttack"
@@ -47,6 +51,16 @@ tracks/1/keys = {
 "args": [],
 "method": &"on_attack_finished"
 }]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeafAnimations")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("LeafAttackOne"),
+"times": PackedFloat32Array(0.3)
 }
 
 [sub_resource type="Animation" id="10"]
@@ -274,8 +288,42 @@ _data = {
 "RunStartup": SubResource("7")
 }
 
-[sub_resource type="CapsuleShape2D" id="4"]
-radius = 8.0
+[sub_resource type="Animation" id="Animation_yfmvl"]
+resource_name = "LeafAttackOne"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeafSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_k2rwi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeafSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tr0ie"]
+_data = {
+"LeafAttackOne": SubResource("Animation_yfmvl"),
+"RESET": SubResource("Animation_k2rwi")
+}
 
 [sub_resource type="AnimationNodeAdd2" id="29"]
 
@@ -336,7 +384,6 @@ input_3/auto_advance = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(-128.982, -77.961)
 nodes/Add2/node = SubResource("29")
 nodes/Add2/position = Vector2(260, -140)
 nodes/Animation/node = SubResource("18")
@@ -369,25 +416,23 @@ node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_irdpq")
-}
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -18)
 shape = SubResource("4")
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -24)
-texture = ExtResource("2")
-hframes = 11
-vframes = 11
-frame = 110
+[node name="PlayerAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_irdpq")
+}
+
+[node name="LeafAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tr0ie")
+}
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("20")
-anim_player = NodePath("../AnimationPlayer")
+anim_player = NodePath("../PlayerAnimations")
 active = true
 parameters/Add2/add_amount = 1.0
 parameters/OneShot/active = false
@@ -401,6 +446,20 @@ parameters/in_air_state/current_index = 0
 parameters/movement/current_state = "attack"
 parameters/movement/transition_request = ""
 parameters/movement/current_index = 3
+
+[node name="LeafSprite" type="Sprite2D" parent="."]
+position = Vector2(24, -24)
+texture = ExtResource("2_rsmuq")
+hframes = 9
+vframes = 3
+frame = 17
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("2")
+hframes = 11
+vframes = 11
+frame = 110
 
 [node name="Timers" type="Node2D" parent="."]
 
