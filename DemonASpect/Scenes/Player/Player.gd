@@ -19,6 +19,8 @@ var jumpTerminationMultiplier = 3
 
 #BOOLS
 var hasDoubleJump = false
+var isAttacking = false
+var cancelable = false
 # velcoity is a predefined variable in godot 4
 @onready var animationPlayer = $PlayerAnimations
 @onready var animationTree = $AnimationTree
@@ -94,8 +96,9 @@ func move_state(delta):
 			$AnimationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	
 	#ATTACK STATE SWITCH
-	if (Input.is_action_just_pressed("attack") && is_on_floor()):
+	if (Input.is_action_just_pressed("attack") && is_on_floor() && !isAttacking):
 		state = ATTACK
+		isAttacking = true
 		
 	
 	update_sprite()
@@ -130,10 +133,12 @@ func on_roll_finished():
 func attack_state(delta):
 	$AnimationTree.set("parameters/movement/transition_request", "attack")
 	velocity.y += GRAVITY * delta
+	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 	move()
 
 func on_attack_finished():
 	$AnimationTree.set("parameters/movement/transition_request", "idle")
+	isAttacking = false
 	state = MOVE
 	
 func move():
