@@ -447,19 +447,22 @@ parameters/movement/current_state = "attack"
 parameters/movement/transition_request = ""
 parameters/movement/current_index = 3
 
-[node name="LeafSprite" type="Sprite2D" parent="."]
-position = Vector2(24, -24)
-texture = ExtResource("2_rsmuq")
-hframes = 9
-vframes = 3
-frame = 17
-
 [node name="PlayerSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -24)
 texture = ExtResource("2")
 hframes = 11
 vframes = 11
 frame = 110
+
+[node name="LeafSprite" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(24, -24)
+texture = ExtResource("2_rsmuq")
+hframes = 9
+vframes = 3
+frame = 17
 
 [node name="Timers" type="Node2D" parent="."]
 
@@ -472,3 +475,5 @@ wait_time = 0.6
 one_shot = true
 
 [node name="TestTimer" type="Timer" parent="Timers"]
+
+[node name="Hitboxes" type="Node2D" parent="."]

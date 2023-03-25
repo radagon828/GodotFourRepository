@@ -52,6 +52,14 @@ attack={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="WORLD"
+2d_physics/layer_2="HITBOX"
+2d_physics/layer_3="HURTBOX"
+2d_physics/layer_4="ENEMYHITBOX"
+2d_physics/layer_5="ENEMYHURTBOX"
+
 [physics]
 
 common/enable_pause_aware_picking=true
