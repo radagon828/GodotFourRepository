@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=40 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
@@ -61,6 +61,18 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "clips": PackedStringArray("LeafAttackOne"),
 "times": PackedFloat32Array(0.3)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:cancelable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="10"]
@@ -345,6 +357,12 @@ animation = &"RunSlowdown"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wnak0"]
 animation = &"Roll"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ecyky"]
+animation = &"AttackTwo"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r0l5d"]
+animation = &"AttackThree"
+
 [sub_resource type="AnimationNodeAnimation" id="18"]
 animation = &"Idle"
 
@@ -352,6 +370,17 @@ animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dy7i1"]
 animation = &"AttackOne"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_4cbdm"]
+input_0/name = "attackOne"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "attackTwo"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "attackFinish"
+input_2/auto_advance = false
+input_2/reset = true
 
 [sub_resource type="AnimationNodeTransition" id="24"]
 input_0/name = "falling"
@@ -384,6 +413,7 @@ input_3/auto_advance = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
+graph_offset = Vector2(-308.797, 65.6172)
 nodes/Add2/node = SubResource("29")
 nodes/Add2/position = Vector2(260, -140)
 nodes/Animation/node = SubResource("18")
@@ -400,10 +430,16 @@ nodes/Animation/position = Vector2(60, -400)
 "nodes/Animation 6/position" = Vector2(40, -280)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_wnak0")
 "nodes/Animation 7/position" = Vector2(-140, 20)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_ecyky")
+"nodes/Animation 8/position" = Vector2(-220, 220)
+"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_r0l5d")
+"nodes/Animation 9/position" = Vector2(20, 300)
 nodes/OneShot/node = SubResource("30")
 nodes/OneShot/position = Vector2(260, -380)
-nodes/attack/node = SubResource("AnimationNodeAnimation_dy7i1")
-nodes/attack/position = Vector2(280, 80)
+nodes/attackOne/node = SubResource("AnimationNodeAnimation_dy7i1")
+nodes/attackOne/position = Vector2(-60, 140)
+nodes/attacking/node = SubResource("AnimationNodeTransition_4cbdm")
+nodes/attacking/position = Vector2(240, 100)
 nodes/in_air/node = SubResource("24")
 nodes/in_air/position = Vector2(700, 260)
 nodes/in_air_state/node = SubResource("22")
@@ -411,7 +447,7 @@ nodes/in_air_state/position = Vector2(1020, 80)
 nodes/movement/node = SubResource("19")
 nodes/movement/position = Vector2(620, -120)
 nodes/output/position = Vector2(1500, 100)
-node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"attack"]
+node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"attacking", &"attacking", 0, &"attackOne", &"attacking", 1, &"Animation 8", &"attacking", 2, &"Animation 9"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1")
@@ -437,6 +473,9 @@ active = true
 parameters/Add2/add_amount = 1.0
 parameters/OneShot/active = false
 parameters/OneShot/request = 0
+parameters/attacking/current_state = "attackOne"
+parameters/attacking/transition_request = ""
+parameters/attacking/current_index = 0
 parameters/in_air/current_state = "jumping"
 parameters/in_air/transition_request = ""
 parameters/in_air/current_index = 1

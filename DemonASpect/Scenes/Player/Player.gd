@@ -20,7 +20,7 @@ var jumpTerminationMultiplier = 3
 #BOOLS
 var hasDoubleJump = false
 var isAttacking = false
-var cancelable = false
+@export var cancelable = false
 # velcoity is a predefined variable in godot 4
 @onready var animationPlayer = $PlayerAnimations
 @onready var animationTree = $AnimationTree
@@ -97,6 +97,7 @@ func move_state(delta):
 	
 	#ATTACK STATE SWITCH
 	if (Input.is_action_just_pressed("attack") && is_on_floor() && !isAttacking):
+		$AnimationTree.set("parameters/movement/transition_request", "attack")
 		state = ATTACK
 		isAttacking = true
 		
@@ -113,10 +114,27 @@ func running(inputVector, delta):
 		$AnimationTree.set("parameters/movement/transition_request", "idle")
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	
+func attack_state(delta):
+#	$AnimationTree.set("parameters/movement/attack/transition_request", "attackOne")
 	
+	velocity.y += GRAVITY * delta
+	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
+
+	if(cancelable == true && Input.is_action_just_pressed("attack")):
+		print("combo")
+		$AnimationTree.set("parameters/movement/attack/transition_request", "attackTwo")
+	
+	move()
+
+func on_attack_finished():
+	$AnimationTree.set("parameters/movement/transition_request", "idle")
+	isAttacking = false
+	cancelable = false
+	state = MOVE
 
 #NEXT--maybe cancel roll animation with runn or attack input 3/17/2023
 func roll_state(delta):
+	$AnimationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	$AnimationTree.set("parameters/movement/transition_request", "roll")
 	if (dashTimer.time_left > 0.1):
 		velocity.x = roll_vector.x * ROLL_SPEED
@@ -129,17 +147,7 @@ func roll_state(delta):
 	
 func on_roll_finished():
 	state = MOVE
-#
-func attack_state(delta):
-	$AnimationTree.set("parameters/movement/transition_request", "attack")
-	velocity.y += GRAVITY * delta
-	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
-	move()
 
-func on_attack_finished():
-	$AnimationTree.set("parameters/movement/transition_request", "idle")
-	isAttacking = false
-	state = MOVE
 	
 func move():
 	set_up_direction(Vector2.UP)
