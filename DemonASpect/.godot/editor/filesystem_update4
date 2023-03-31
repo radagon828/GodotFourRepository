@@ -2,3 +2,4 @@ res://default_env.tres
 res://Scenes/Player/Player.tscn
 res://Scenes/Player/Player.gd
 res://Scenes/Levels/DungeonOne.tscn
+res://Scenes/Player/AttackState.gd

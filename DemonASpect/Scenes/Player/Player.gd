@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var GRAVITY = 900
 @export var JUMP_POWER = 300
@@ -20,7 +21,10 @@ var jumpTerminationMultiplier = 3
 #BOOLS
 var hasDoubleJump = false
 var isAttacking = false
+
+@export var attackQueued = false
 @export var cancelable = false
+@export var animationFinished = false
 # velcoity is a predefined variable in godot 4
 @onready var animationPlayer = $PlayerAnimations
 @onready var animationTree = $AnimationTree
@@ -40,6 +44,7 @@ func _physics_process(delta: float):
 	match state:
 		MOVE:
 			move_state(delta)
+			cancelable = false
 		ROLL:
 			roll_state(delta)
 		ATTACK:
@@ -98,6 +103,7 @@ func move_state(delta):
 	#ATTACK STATE SWITCH
 	if (Input.is_action_just_pressed("attack") && is_on_floor() && !isAttacking):
 		$AnimationTree.set("parameters/movement/transition_request", "attack")
+		$AnimationTree.set("parameters/combo/transition_request", "attackOne")
 		state = ATTACK
 		isAttacking = true
 		
@@ -115,15 +121,21 @@ func running(inputVector, delta):
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	
 func attack_state(delta):
-#	$AnimationTree.set("parameters/movement/attack/transition_request", "attackOne")
 	
 	velocity.y += GRAVITY * delta
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 
-	if(cancelable == true && Input.is_action_just_pressed("attack")):
+	if(cancelable && Input.is_action_just_pressed("attack")):
+		attackQueued = true
+		print("attack queued")
+		
+	if (attackQueued && animationFinished):
+		$AnimationTree.set("parameters/combo/transition_request", "attackTwo")
 		print("combo")
-		$AnimationTree.set("parameters/movement/attack/transition_request", "attackTwo")
 	
+	if (!attackQueued && animationFinished):
+		print("done")
+		on_attack_finished()
 	move()
 
 func on_attack_finished():
