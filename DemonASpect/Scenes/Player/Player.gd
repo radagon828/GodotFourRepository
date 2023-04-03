@@ -11,7 +11,9 @@ class_name Player
 enum {
 	MOVE,
 	ROLL,
-	ATTACK
+	ATTACKONE,
+	ATTACKTWO,
+	ATTACKTHREE
 }
 
 var state = MOVE
@@ -47,8 +49,13 @@ func _physics_process(delta: float):
 			cancelable = false
 		ROLL:
 			roll_state(delta)
-		ATTACK:
-			attack_state(delta)
+		ATTACKONE:
+			attack_one_state(delta)
+		ATTACKTWO:
+			attack_two_state(delta)
+		ATTACKTHREE:
+			attack_three_state(delta)
+			pass
 	debug()
 
 func get_input_vector():
@@ -104,7 +111,9 @@ func move_state(delta):
 	if (Input.is_action_just_pressed("attack") && is_on_floor() && !isAttacking):
 		$AnimationTree.set("parameters/movement/transition_request", "attack")
 		$AnimationTree.set("parameters/combo/transition_request", "attackOne")
-		state = ATTACK
+		state = ATTACKONE
+		attackQueued = false
+		animationFinished = false
 		isAttacking = true
 		
 	
@@ -120,7 +129,7 @@ func running(inputVector, delta):
 		$AnimationTree.set("parameters/movement/transition_request", "idle")
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	
-func attack_state(delta):
+func attack_one_state(delta):
 	
 	velocity.y += GRAVITY * delta
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
@@ -130,16 +139,51 @@ func attack_state(delta):
 		print("attack queued")
 		
 	if (attackQueued && animationFinished):
-		$AnimationTree.set("parameters/combo/transition_request", "attackTwo")
+		attackQueued = false
+		animationFinished = false
+		state = ATTACKTWO
 		print("combo")
 	
 	if (!attackQueued && animationFinished):
 		print("done")
 		on_attack_finished()
 	move()
+	
+func attack_two_state(delta):
+	$AnimationTree.set("parameters/combo/transition_request", "attackTwo")
+	velocity.y += GRAVITY * delta
+	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
+	print("success")
+	if(cancelable && Input.is_action_just_pressed("attack")):
+		attackQueued = true
+		print("attack queued")
+
+	if (attackQueued && animationFinished):
+		attackQueued = false
+		animationFinished = false
+		state = ATTACKTHREE
+		print("combo")
+
+	if (!attackQueued && animationFinished):
+		print("done")
+		on_attack_finished()
+	move()
+
+func attack_three_state(delta):
+	$AnimationTree.set("parameters/combo/transition_request", "attackFinish")
+	velocity.y += GRAVITY * delta
+	velocity.x += 7
+	velocity.x = lerp(0.0, velocity.x, pow(2, -16 * delta))
+	print("final")
+
+	if (animationFinished):
+		print("done")
+		on_attack_finished()
+	move()
 
 func on_attack_finished():
 	$AnimationTree.set("parameters/movement/transition_request", "idle")
+	velocity.x = 0
 	isAttacking = false
 	cancelable = false
 	state = MOVE
