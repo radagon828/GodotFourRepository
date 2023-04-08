@@ -35,6 +35,7 @@ var isAttacking = false
 @onready var dashTimer = $Timers/DashTimer
 @onready var runTimer = $Timers/RunTimer
 @onready var testTimer = $Timers/TestTimer
+@onready var hitBox = $Hitboxes/AttackOneHit
 
 func _ready() -> void:
 	animationTree.active = true
@@ -136,16 +137,16 @@ func attack_one_state(delta):
 
 	if(cancelable && Input.is_action_just_pressed("attack")):
 		attackQueued = true
-		print("attack queued")
+#		print("attack queued")
 		
 	if (attackQueued && animationFinished):
 		attackQueued = false
 		animationFinished = false
 		state = ATTACKTWO
-		print("combo")
+#		print("combo")
 	
 	if (!attackQueued && animationFinished):
-		print("done")
+#		print("done")
 		on_attack_finished()
 	move()
 	
@@ -153,31 +154,31 @@ func attack_two_state(delta):
 	$AnimationTree.set("parameters/combo/transition_request", "attackTwo")
 	velocity.y += GRAVITY * delta
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
-	print("success")
+#	print("success")
 	if(cancelable && Input.is_action_just_pressed("attack")):
 		attackQueued = true
-		print("attack queued")
+#		print("attack queued")
 
 	if (attackQueued && animationFinished):
 		attackQueued = false
 		animationFinished = false
 		state = ATTACKTHREE
-		print("combo")
+#		print("combo")
 
 	if (!attackQueued && animationFinished):
-		print("done")
+#		print("done")
 		on_attack_finished()
 	move()
 
 func attack_three_state(delta):
 	$AnimationTree.set("parameters/combo/transition_request", "attackFinish")
 	velocity.y += GRAVITY * delta
-	velocity.x += 7
+	velocity.x += 7 * roll_vector.x
 	velocity.x = lerp(0.0, velocity.x, pow(2, -16 * delta))
-	print("final")
+#	print("final")
 
 	if (animationFinished):
-		print("done")
+#		print("done")
 		on_attack_finished()
 	move()
 
@@ -216,10 +217,11 @@ func update_sprite():
 		if moveVec.x < 0:
 			leafSprite.flip_h = true 
 			leafSprite.position.x = -24
+			hitBox.position.x = -32
 		else: 
 			leafSprite.flip_h = false
 			leafSprite.position.x = 24
-		
+			hitBox.position.x = 32
 
 func debug():
 	pass
