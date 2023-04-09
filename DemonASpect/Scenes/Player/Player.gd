@@ -23,6 +23,7 @@ var jumpTerminationMultiplier = 3
 #BOOLS
 var hasDoubleJump = false
 var isAttacking = false
+var isRolling = false
 
 @export var attackQueued = false
 @export var cancelable = false
@@ -56,7 +57,6 @@ func _physics_process(delta: float):
 			attack_two_state(delta)
 		ATTACKTHREE:
 			attack_three_state(delta)
-			pass
 	debug()
 
 func get_input_vector():
@@ -95,6 +95,7 @@ func move_state(delta):
 	#ROLL STATE SWITCH
 	if (Input.is_action_just_pressed("roll") && is_on_floor()):
 		dashTimer.start()
+		isRolling = true
 		state = ROLL
 	
 	#processing for run stop animation
@@ -203,6 +204,7 @@ func roll_state(delta):
 	move()
 	
 func on_roll_finished():
+	isRolling = false
 	state = MOVE
 
 	

@@ -1,6 +1,5 @@
 res://default_env.tres
-res://Scenes/Levels/DungeonOne.tscn
 res://Scenes/Player/Player.tscn
 res://Scenes/Enemies/Enemy.tscn
+res://Scenes/Levels/DungeonOne.tscn
 res://Scenes/Player/Player.gd
-res://Scenes/Enemies/Enemy.gd
