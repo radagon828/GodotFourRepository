@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=45 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cey8gdcb1pvx5" path="res://Sprites/momodora attack effects-Sheet.png" id="2_rsmuq"]
+[ext_resource type="Script" path="res://Scenes/Player/AttackOneHit.gd" id="4_25j1u"]
 
 [sub_resource type="CapsuleShape2D" id="4"]
 radius = 8.0
@@ -654,6 +655,7 @@ one_shot = true
 position = Vector2(32, -20)
 collision_layer = 2
 collision_mask = 16
+script = ExtResource("4_25j1u")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/AttackOneHit"]

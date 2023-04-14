@@ -17,7 +17,7 @@ enum {
 }
 
 var state = MOVE
-var roll_vector = Vector2.RIGHT
+@export var roll_vector = Vector2.RIGHT
 var jumpTerminationMultiplier = 3
 
 #BOOLS
