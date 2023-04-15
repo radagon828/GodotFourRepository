@@ -17,7 +17,7 @@ enum {
 }
 
 var state = MOVE
-@export var roll_vector = Vector2.RIGHT
+var roll_vector = Vector2.RIGHT
 var jumpTerminationMultiplier = 3
 
 #BOOLS
@@ -57,6 +57,7 @@ func _physics_process(delta: float):
 			attack_two_state(delta)
 		ATTACKTHREE:
 			attack_three_state(delta)
+	velocity.y += GRAVITY * delta
 	debug()
 
 func get_input_vector():
@@ -81,8 +82,8 @@ func move_state(delta):
 	
 	if (velocity.y < 0 && !Input.is_action_pressed("jump")):
 		velocity.y += GRAVITY * jumpTerminationMultiplier * delta
-	else:
-		velocity.y += GRAVITY * delta
+	
+		
 	
 	if (is_on_floor()):
 		hasDoubleJump = true
@@ -132,8 +133,6 @@ func running(inputVector, delta):
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	
 func attack_one_state(delta):
-	
-	velocity.y += GRAVITY * delta
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 
 	if(cancelable && Input.is_action_just_pressed("attack")):
@@ -153,7 +152,6 @@ func attack_one_state(delta):
 	
 func attack_two_state(delta):
 	$AnimationTree.set("parameters/combo/transition_request", "attackTwo")
-	velocity.y += GRAVITY * delta
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 #	print("success")
 	if(cancelable && Input.is_action_just_pressed("attack")):
@@ -173,7 +171,6 @@ func attack_two_state(delta):
 
 func attack_three_state(delta):
 	$AnimationTree.set("parameters/combo/transition_request", "attackFinish")
-	velocity.y += GRAVITY * delta
 	velocity.x += 7 * roll_vector.x
 	velocity.x = lerp(0.0, velocity.x, pow(2, -16 * delta))
 #	print("final")
@@ -198,8 +195,6 @@ func roll_state(delta):
 		velocity.x = roll_vector.x * ROLL_SPEED
 #	velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
-	
-	velocity.y += GRAVITY * delta
 	
 	move()
 	
