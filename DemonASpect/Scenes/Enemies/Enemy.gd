@@ -11,14 +11,12 @@ enum {
 }
 var state = IDLE
 #combat
-var health = 1
-var maxHealth = 1
 var healthMeter = null
 var knockback = Vector2.RIGHT
 
+@onready var stats = $Stats
+@onready var playerDetectionZone = $PlayerDetectionZone
 func _ready():
-	health = float(30)
-	maxHealth = float(3)
 	velocity = velocity
 	set_velocity(velocity)
 	$EnemyHurtbox.area_entered.connect(on_hurtbox_entered)
@@ -28,8 +26,10 @@ func _physics_process(delta):
 	match state:
 		IDLE:
 			idle_state(delta)
+			seek_player()
 		CHASE:
-			pass
+			chase_state(delta)
+			
 		HURT:
 			hurt_state(delta)
 
@@ -39,16 +39,30 @@ func idle_state(delta):
 	velocity.x = knockback.x
 	move_and_slide()
 
+func accelerate_towards_point(point, delta):
+	var direction = global_position.direction_to(point)
+	velocity = velocity.move_toward(direction * maxSpeed, 300 * delta)
+
+func seek_player():
+	if playerDetectionZone.can_see_player():
+		print("still see you")
+		state = CHASE
+
+func chase_state(delta):
+	var player = playerDetectionZone.player
+	if player != null:
+		accelerate_towards_point(player.global_position, delta)
+	else:
+		state = IDLE
+
 func on_hurtbox_entered(area: Area2D):
 	knockback = area.knockback_vector * 60
 	velocity += knockback
 	print("I'm HIT")
-	health -= 1
-	if(health < 1):
-		call_deferred("death")
+	stats.health -= 1
 
 func hurt_state(delta):
 	pass
 
-func death():
+func _on_stats_no_health():
 	queue_free()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bts43hjoj71hj"]
+[gd_scene load_steps=11 format=3 uid="uid://bts43hjoj71hj"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Enemy.gd" id="1_25ktf"]
 [ext_resource type="Texture2D" uid="uid://du360hi8k8e03" path="res://Sprites/character_0024.png" id="2_sthru"]
 [ext_resource type="Texture2D" uid="uid://dlvprl0t4c8gj" path="res://Sprites/character_0025.png" id="3_iduow"]
 [ext_resource type="Texture2D" uid="uid://devkckj25s07d" path="res://Sprites/character_0026.png" id="4_jabok"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Stats.gd" id="5_7hrgx"]
+[ext_resource type="PackedScene" uid="uid://dwedsao06ptsy" path="res://Overlap/player_detection_zone.tscn" id="6_fdw7v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtlj5"]
 size = Vector2(6, 5)
@@ -25,8 +27,11 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1unn6"]
-radius = 9.05539
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ov12"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6cja8"]
+radius = 7.0
+height = 74.0
 
 [node name="EnemyGeneric" type="CharacterBody2D"]
 script = ExtResource("1_25ktf")
@@ -52,4 +57,20 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox"]
 position = Vector2(0, -12)
-shape = SubResource("CircleShape2D_1unn6")
+rotation = 1.5708
+shape = SubResource("CircleShape2D_5ov12")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("5_7hrgx")
+max_health = 3
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource("6_fdw7v")]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+position = Vector2(0, -12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6cja8")
+
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+
+[editable path="PlayerDetectionZone"]

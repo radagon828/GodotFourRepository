@@ -582,6 +582,7 @@ node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l047g"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1")
 cancelable = true
 
