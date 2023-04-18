@@ -40,13 +40,14 @@ func idle_state(delta):
 	move_and_slide()
 
 func accelerate_towards_point(point, delta):
-	var direction = global_position.direction_to(point)
-	velocity = velocity.move_toward(direction * maxSpeed, 300 * delta)
+	pass
+#	var direction = global_position.direction_to(point)
+#	velocity = velocity.move_toward(direction * maxSpeed, 300 * delta)
 
 func seek_player():
 	if playerDetectionZone.can_see_player():
 		print("still see you")
-		state = CHASE
+#		state = CHASE
 
 func chase_state(delta):
 	var player = playerDetectionZone.player

@@ -1,11 +1,7 @@
 res://default_env.tres
-res://Scenes/Enemies/Enemy.tscn
-res://Scenes/Enemies/Stats.gd
 res://Scenes/Player/Player.tscn
+res://Scenes/Enemies/Enemy.tscn
 res://Scenes/Levels/DungeonOne.tscn
-res://Scenes/Enemies/Enemy.gd
-res://Scenes/Enemies/CollisionShape2D.gd
-res://Overlap/player_detection_zone.gd
-res://Scenes/Enemies/PlayerDetectionZone.gd
 res://Overlap/player_detection_zone.tscn
+res://Scenes/Enemies/Enemy.gd
 res://Scenes/Player/AttackOneHit.gd

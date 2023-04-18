@@ -5,3 +5,4 @@ var knockback_vector = Vector2.ZERO
 
 func _physics_process(delta):
 	knockback_vector = player.roll_vector
+
