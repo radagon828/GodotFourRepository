@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var direction = Vector2.ZERO
-var maxSpeed = 25
+var direction = Vector2.RIGHT
+var maxSpeed = 250
 var gravity = 500
 
 enum {
@@ -22,9 +22,15 @@ func _ready():
 	$EnemyHurtbox.area_entered.connect(on_hurtbox_entered)
 	$AnimatedSprite2D.play("Idle")
 	
+	
+func move():
+	set_up_direction(Vector2.UP)
+	move_and_slide()
+	
 func _physics_process(delta):
 	match state:
 		IDLE:
+			velocity.x = maxSpeed * delta
 			idle_state(delta)
 			seek_player()
 		CHASE:
@@ -32,22 +38,24 @@ func _physics_process(delta):
 			
 		HURT:
 			hurt_state(delta)
-
+#	print(velocity)
+	move()
+	
 func idle_state(delta):
 	velocity.y += gravity * delta
 	knockback = knockback.move_toward(Vector2.ZERO, 200 * delta)
 	velocity.x = knockback.x
-	move_and_slide()
 
 func accelerate_towards_point(point, delta):
-	pass
-#	var direction = global_position.direction_to(point)
-#	velocity = velocity.move_toward(direction * maxSpeed, 300 * delta)
+	var direction = global_position.direction_to(point)
+	velocity = velocity.move_toward(direction * maxSpeed, 300 * delta)
 
 func seek_player():
+	pass
 	if playerDetectionZone.can_see_player():
-		print("still see you")
-#		state = CHASE
+#		print("still see you ")
+#		print(playerDetectionZone.player.position.x)
+		state = CHASE
 
 func chase_state(delta):
 	var player = playerDetectionZone.player

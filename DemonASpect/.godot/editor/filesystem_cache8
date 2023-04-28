@@ -1,27 +1,27 @@
 2a60927148abd1d33b818b535e306557
-::res://::1682390273
-default_env.tres::Environment::3597556386965951437::1681860236::0::1::::<><>::
-icon.png::CompressedTexture2D::6524617036004661128::1678509175::1678509175::1::::<><>::
-::res://Overlap/::1681860236
-player_detection_zone.tscn::PackedScene::8711888440206028240::1681860236::0::1::::<><>::res://Scenes/Enemies/PlayerDetectionZone.gd
-::res://Scenes/::1680925371
-::res://Scenes/Enemies/::1681860236
-Enemy.gd::GDScript::-1::1681860229::0::1::::<>CharacterBody2D<>::
-Enemy.tscn::PackedScene::3758978689624458607::1681860236::0::1::::<><>::res://Scenes/Enemies/Enemy.gd<>uid://du360hi8k8e03<>uid://dlvprl0t4c8gj<>uid://devkckj25s07d<>res://Scenes/Enemies/Stats.gd<>uid://dwedsao06ptsy
-PlayerDetectionZone.gd::GDScript::-1::1681859962::0::1::::<>Area2D<>::
-Stats.gd::GDScript::-1::1681859962::0::1::::<>Node<>::
-::res://Scenes/Levels/::1681860236
-DungeonOne.tscn::PackedScene::3754908325437924663::1681860236::0::1::::<><>::uid://cwuysqacimqb2<>uid://bbe055orfkex8<>uid://bts43hjoj71hj
-::res://Scenes/Player/::1681860236
-AttackOneHit.gd::GDScript::-1::1681860145::0::1::::<>Area2D<>::
-AttackState.gd::GDScript::-1::1680490291::0::1::::<>Player<>::
-Player.gd::GDScript::-1::1681561941::0::1::::Player<>CharacterBody2D<>::
-Player.tscn::PackedScene::2466440135090929535::1681860236::0::1::::<><>::res://Scenes/Player/Player.gd<>uid://csggvrmqwogya<>uid://cey8gdcb1pvx5<>res://Scenes/Player/AttackOneHit.gd
-::res://Sprites/::1680925371
-character_0024.png::CompressedTexture2D::8622768754112928582::1680925371::1680925371::1::::<><>::
-character_0025.png::CompressedTexture2D::7975632994599900633::1680925371::1680925371::1::::<><>::
-character_0026.png::CompressedTexture2D::7483980640386487607::1680925371::1680925371::1::::<><>::
-momodora attack effect air-Sheet.png::CompressedTexture2D::3906287249531486741::1678509175::1678509175::1::::<><>::
-momodora attack effects-Sheet.png::CompressedTexture2D::5105156344300943032::1678509175::1678509175::1::::<><>::
-momodora sprites-Sheet.png::CompressedTexture2D::6049029535215274904::1678509175::1678509175::1::::<><>::
-stone wall.png::CompressedTexture2D::6359773675096447389::1678509175::1678509175::1::::<><>::
+::res://::1682650562
+default_env.tres::Environment::3597556386965951437::1682642473::0::1::::<><>::
+icon.png::CompressedTexture2D::6524617036004661128::1679795806::1679795806::1::::<><>::
+::res://Overlap/::1682642473
+player_detection_zone.tscn::PackedScene::8711888440206028240::1682642473::0::1::::<><>::res://Scenes/Enemies/PlayerDetectionZone.gd
+::res://Scenes/::1680815905
+::res://Scenes/Enemies/::1682642473
+Enemy.gd::GDScript::-1::1682390639::0::1::::<>CharacterBody2D<>::
+Enemy.tscn::PackedScene::3758978689624458607::1682642473::0::1::::<><>::res://Scenes/Enemies/Enemy.gd<>uid://du360hi8k8e03<>uid://dlvprl0t4c8gj<>uid://devkckj25s07d<>res://Scenes/Enemies/Stats.gd<>uid://dwedsao06ptsy
+PlayerDetectionZone.gd::GDScript::-1::1681616263::0::1::::<>Area2D<>::
+Stats.gd::GDScript::-1::1681611318::0::1::::<>Node<>::
+::res://Scenes/Levels/::1682642473
+DungeonOne.tscn::PackedScene::3754908325437924663::1682642473::0::1::::<><>::uid://cwuysqacimqb2<>uid://bbe055orfkex8<>uid://bts43hjoj71hj
+::res://Scenes/Player/::1682642473
+AttackOneHit.gd::GDScript::-1::1682390639::0::1::::<>Area2D<>::
+AttackState.gd::GDScript::-1::1680229575::0::1::::<>Player<>::
+Player.gd::GDScript::-1::1681527918::0::1::::Player<>CharacterBody2D<>::
+Player.tscn::PackedScene::2466440135090929535::1682642473::0::1::::<><>::res://Scenes/Player/Player.gd<>uid://csggvrmqwogya<>uid://cey8gdcb1pvx5<>res://Scenes/Player/AttackOneHit.gd
+::res://Sprites/::1680815879
+character_0024.png::CompressedTexture2D::8622768754112928582::1680815879::1680815879::1::::<><>::
+character_0025.png::CompressedTexture2D::7975632994599900633::1680815879::1680815879::1::::<><>::
+character_0026.png::CompressedTexture2D::7483980640386487607::1680815879::1680815879::1::::<><>::
+momodora attack effect air-Sheet.png::CompressedTexture2D::3906287249531486741::1679795806::1679795806::1::::<><>::
+momodora attack effects-Sheet.png::CompressedTexture2D::5105156344300943032::1679795806::1679795806::1::::<><>::
+momodora sprites-Sheet.png::CompressedTexture2D::6049029535215274904::1679795806::1679795806::1::::<><>::
+stone wall.png::CompressedTexture2D::6359773675096447389::1679795806::1679795806::1::::<><>::

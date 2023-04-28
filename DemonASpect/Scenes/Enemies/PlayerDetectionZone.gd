@@ -12,7 +12,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func on_player_detection(body: Node2D):
 	player = body 
-	print("I can see you")
 
 func on_player_evasion(body: Node2D):
 	player = null
