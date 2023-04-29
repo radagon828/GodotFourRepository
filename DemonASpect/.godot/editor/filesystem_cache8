@@ -1,27 +1,32 @@
 2a60927148abd1d33b818b535e306557
-::res://::1682650562
-default_env.tres::Environment::3597556386965951437::1682642473::0::1::::<><>::
+::res://::1682739200
+default_env.tres::Environment::3597556386965951437::1682735831::0::1::::<><>::
+enemy_hurtbox.tscn::PackedScene::2392803204913423843::1682734746::0::1::::<><>::
 icon.png::CompressedTexture2D::6524617036004661128::1679795806::1679795806::1::::<><>::
-::res://Overlap/::1682642473
-player_detection_zone.tscn::PackedScene::8711888440206028240::1682642473::0::1::::<><>::res://Scenes/Enemies/PlayerDetectionZone.gd
+::res://Overlap/::1682735429
+player_detection_zone.tscn::PackedScene::8711888440206028240::1682735428::0::1::::<><>::res://Scenes/Enemies/PlayerDetectionZone.gd
+stats.tscn::PackedScene::2595417683863862118::1682735429::0::1::::<><>::res://Scenes/Enemies/Stats.gd
 ::res://Scenes/::1680815905
-::res://Scenes/Enemies/::1682642473
-Enemy.gd::GDScript::-1::1682390639::0::1::::<>CharacterBody2D<>::
-Enemy.tscn::PackedScene::3758978689624458607::1682642473::0::1::::<><>::res://Scenes/Enemies/Enemy.gd<>uid://du360hi8k8e03<>uid://dlvprl0t4c8gj<>uid://devkckj25s07d<>res://Scenes/Enemies/Stats.gd<>uid://dwedsao06ptsy
-PlayerDetectionZone.gd::GDScript::-1::1681616263::0::1::::<>Area2D<>::
+::res://Scenes/Enemies/::1682735429
+Enemy.gd::GDScript::-1::1682732450::0::1::::<>CharacterBody2D<>::
+EnemyGeneric.tscn::PackedScene::3758978689624458607::1682735429::0::1::::<><>::res://Scenes/Enemies/Enemy.gd<>uid://du360hi8k8e03<>uid://dlvprl0t4c8gj<>uid://devkckj25s07d<>uid://baddeb1ytda56<>uid://bc8ifdp44oq5k<>uid://dwedsao06ptsy
+PlayerDetectionZone.gd::GDScript::-1::1682732978::0::1::::<>Area2D<>::
+rat_man.gd::GDScript::-1::1682735406::0::1::::<>CharacterBody2D<>::
+rat_man.tscn::PackedScene::2960657915919218626::1682735429::0::1::::<><>::res://Scenes/Enemies/rat_man.gd<>uid://up4m31dq3msa<>uid://dwedsao06ptsy<>uid://baddeb1ytda56<>uid://bc8ifdp44oq5k
 Stats.gd::GDScript::-1::1681611318::0::1::::<>Node<>::
-::res://Scenes/Levels/::1682642473
-DungeonOne.tscn::PackedScene::3754908325437924663::1682642473::0::1::::<><>::uid://cwuysqacimqb2<>uid://bbe055orfkex8<>uid://bts43hjoj71hj
-::res://Scenes/Player/::1682642473
+::res://Scenes/Levels/::1682735831
+DungeonOne.tscn::PackedScene::1832398578076248424::1682735831::0::1::::<><>::uid://cwuysqacimqb2<>uid://bbe055orfkex8<>uid://bigfuro2dpaji
+::res://Scenes/Player/::1682735428
 AttackOneHit.gd::GDScript::-1::1682390639::0::1::::<>Area2D<>::
 AttackState.gd::GDScript::-1::1680229575::0::1::::<>Player<>::
-Player.gd::GDScript::-1::1681527918::0::1::::Player<>CharacterBody2D<>::
-Player.tscn::PackedScene::2466440135090929535::1682642473::0::1::::<><>::res://Scenes/Player/Player.gd<>uid://csggvrmqwogya<>uid://cey8gdcb1pvx5<>res://Scenes/Player/AttackOneHit.gd
-::res://Sprites/::1680815879
+Player.gd::GDScript::-1::1682651655::0::1::::Player<>CharacterBody2D<>::
+Player.tscn::PackedScene::2466440135090929535::1682735428::0::1::::<><>::res://Scenes/Player/Player.gd<>uid://csggvrmqwogya<>uid://cey8gdcb1pvx5<>res://Scenes/Player/AttackOneHit.gd
+::res://Sprites/::1682732717
 character_0024.png::CompressedTexture2D::8622768754112928582::1680815879::1680815879::1::::<><>::
 character_0025.png::CompressedTexture2D::7975632994599900633::1680815879::1680815879::1::::<><>::
 character_0026.png::CompressedTexture2D::7483980640386487607::1680815879::1680815879::1::::<><>::
 momodora attack effect air-Sheet.png::CompressedTexture2D::3906287249531486741::1679795806::1679795806::1::::<><>::
 momodora attack effects-Sheet.png::CompressedTexture2D::5105156344300943032::1679795806::1679795806::1::::<><>::
 momodora sprites-Sheet.png::CompressedTexture2D::6049029535215274904::1679795806::1679795806::1::::<><>::
+Ratfolk Warrior Sprite Sheet.png::CompressedTexture2D::1436526272366152020::1682732717::1682732717::1::::<><>::
 stone wall.png::CompressedTexture2D::6359773675096447389::1679795806::1679795806::1::::<><>::

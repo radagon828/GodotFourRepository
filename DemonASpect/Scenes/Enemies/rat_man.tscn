@@ -1,0 +1,181 @@
+[gd_scene load_steps=16 format=3 uid="uid://bigfuro2dpaji"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/rat_man.gd" id="1_4bqom"]
+[ext_resource type="Texture2D" uid="uid://up4m31dq3msa" path="res://Sprites/Ratfolk Warrior Sprite Sheet.png" id="2_o1tjv"]
+[ext_resource type="PackedScene" uid="uid://dwedsao06ptsy" path="res://Overlap/player_detection_zone.tscn" id="3_3inlg"]
+[ext_resource type="PackedScene" uid="uid://baddeb1ytda56" path="res://enemy_hurtbox.tscn" id="4_d8kxv"]
+[ext_resource type="PackedScene" uid="uid://bc8ifdp44oq5k" path="res://Overlap/stats.tscn" id="4_pw2ud"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhg74"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c10dw"]
+radius = 8.0
+height = 96.0
+
+[sub_resource type="Animation" id="Animation_1serv"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ch8en"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_37ii2"]
+resource_name = "chase"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_fduhc"]
+resource_name = "attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22]
+}
+
+[sub_resource type="Animation" id="Animation_0yj0w"]
+resource_name = "jumpattack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_h6isf"]
+resource_name = "hurt"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+
+[sub_resource type="Animation" id="Animation_p4b5h"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eqc65"]
+_data = {
+"RESET": SubResource("Animation_ch8en"),
+"attack": SubResource("Animation_fduhc"),
+"chase": SubResource("Animation_37ii2"),
+"death": SubResource("Animation_p4b5h"),
+"hurt": SubResource("Animation_h6isf"),
+"idle": SubResource("Animation_1serv"),
+"jumpattack": SubResource("Animation_0yj0w")
+}
+
+[node name="RatMan" type="CharacterBody2D"]
+script = ExtResource("1_4bqom")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_rhg74")
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource("3_3inlg")]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_c10dw")
+
+[node name="Stats" parent="." instance=ExtResource("4_pw2ud")]
+
+[node name="EnemyHurtbox" parent="." instance=ExtResource("4_d8kxv")]
+
+[node name="CollisionShape2D" parent="EnemyHurtbox" index="0"]
+position = Vector2(0, -8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eqc65")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_o1tjv")
+hframes = 8
+vframes = 6
+
+[node name="Hitboxes" type="Node2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="AttackOne" type="CollisionShape2D" parent="Hitboxes"]
+
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+
+[editable path="PlayerDetectionZone"]
+[editable path="EnemyHurtbox"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var direction = Vector2.RIGHT
-var maxSpeed = 250
+var maxSpeed = 55
 var gravity = 500
 
 enum {
@@ -38,7 +38,6 @@ func _physics_process(delta):
 			
 		HURT:
 			hurt_state(delta)
-#	print(velocity)
 	move()
 	
 func idle_state(delta):
@@ -48,14 +47,14 @@ func idle_state(delta):
 
 func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
-	velocity = velocity.move_toward(direction * maxSpeed, 300 * delta)
+	var distance = point.x - global_position.x
+	print(distance)
+	velocity.x = velocity.move_toward(direction * maxSpeed, 300 * delta).x
 
 func seek_player():
-	pass
 	if playerDetectionZone.can_see_player():
-#		print("still see you ")
-#		print(playerDetectionZone.player.position.x)
-		state = CHASE
+#		state = CHASE
+		pass
 
 func chase_state(delta):
 	var player = playerDetectionZone.player

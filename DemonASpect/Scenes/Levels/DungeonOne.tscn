@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://btq5158682tgx"]
+[gd_scene load_steps=6 format=3 uid="uid://1dvlpodwymuq"]
 
 [ext_resource type="Texture2D" uid="uid://cwuysqacimqb2" path="res://Sprites/stone wall.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://bbe055orfkex8" path="res://Scenes/Player/Player.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://bts43hjoj71hj" path="res://Scenes/Enemies/Enemy.tscn" id="3_y0g04"]
+[ext_resource type="PackedScene" uid="uid://bigfuro2dpaji" path="res://Scenes/Enemies/rat_man.tscn" id="3_h0jpf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mvcs"]
 texture = ExtResource("1")
@@ -77,5 +77,5 @@ position = Vector2(76, 108)
 offset = Vector2(0, -25)
 zoom = Vector2(0.8, 0.8)
 
-[node name="Enemy" parent="." instance=ExtResource("3_y0g04")]
-position = Vector2(148, 108)
+[node name="RatMan" parent="." instance=ExtResource("3_h0jpf")]
+position = Vector2(196, 108)
