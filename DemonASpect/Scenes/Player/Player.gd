@@ -224,7 +224,7 @@ func debug():
 	pass
 #	print($AnimationTree.get("parameters/movement/current_state"))
 #	print(!$RayCast2D.is_colliding())
-#	print(velocity, $DashTimer.time_left, "         ", $RunTimer.time_left)
+#	print(dashTimer.time_left, "         ", runTimer.time_left)
 #	print(is_on_floor())
 
 	

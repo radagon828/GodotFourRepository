@@ -18,14 +18,14 @@ var knockback = Vector2.RIGHT
 @onready var stats = $Stats
 @onready var animationPlayer = $AnimationPlayer
 @onready var ratSprite = $Sprite2D
-@onready var timer = $Timer
+@onready var hurtTimer = $Timer
 
 func _ready():
 	velocity = velocity
 	set_velocity(velocity)
 	$EnemyHurtbox.area_entered.connect(on_hurtbox_entered)
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	match state:
 		IDLE:
 			idle_state(delta)
@@ -39,7 +39,8 @@ func _physics_process(delta):
 	move()
 	update_sprite()
 	velocity.y += gravity * delta
-	print(timer.time_left)
+#	hurtTimer.start()
+	print(hurtTimer.time_left, hurtTimer.is_stopped(), hurtTimer.paused, hurtTimer.wait_time)
 
 func idle_state(delta):
 	animationPlayer.play("idle")
@@ -48,7 +49,6 @@ func idle_state(delta):
 func seek_player():
 	if playerDetectionZone.can_see_player():
 		state = CHASE
-		pass
 
 func chase_state(delta):
 	var player = playerDetectionZone.player
@@ -61,14 +61,15 @@ func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
 	var distance = point.x - global_position.x
 	animationPlayer.play("chase")
-	print(distance)
+#	print(distance)
 	velocity.x = velocity.move_toward(direction * maxSpeed, 300 * delta).x
 
 func hurt_state(delta):
-	timer.start()
+	hurtTimer.start()
 	animationPlayer.play("hurt")
 	velocity.x = lerp(0.0, velocity.x, pow(2, -16 * delta))
-	if timer.time_left < 0.1 : state = IDLE
+	if (hurtTimer.time_left < 0.1): 
+		state = IDLE
 
 func on_hurtbox_entered(area: Area2D):
 	velocity = Vector2.ZERO
@@ -81,10 +82,11 @@ func update_sprite():
 	if (velocity.x != 0):
 		ratSprite.flip_h = true if velocity.x < 0 else false
 
-
 func move():
 	set_up_direction(Vector2.UP)
 	move_and_slide()
 
 func _on_stats_no_health():
 	queue_free()
+
+

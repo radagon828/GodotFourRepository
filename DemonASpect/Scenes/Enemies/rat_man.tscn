@@ -139,7 +139,9 @@ _data = {
 
 [node name="RatMan" type="CharacterBody2D"]
 script = ExtResource("1_4bqom")
-metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -179,9 +181,6 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/AttackOne"]
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
 
