@@ -59,6 +59,7 @@ func _physics_process(delta: float):
 			attack_three_state(delta)
 	velocity.y += GRAVITY * delta
 	debug()
+	move()
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -121,7 +122,6 @@ func move_state(delta):
 		
 	
 	update_sprite()
-	move()
 
 func running(inputVector, delta):
 	if (inputVector.x != 0):
@@ -148,7 +148,6 @@ func attack_one_state(delta):
 	if (!attackQueued && animationFinished):
 #		print("done")
 		on_attack_finished()
-	move()
 	
 func attack_two_state(delta):
 	$AnimationTree.set("parameters/combo/transition_request", "attackTwo")
@@ -167,7 +166,6 @@ func attack_two_state(delta):
 	if (!attackQueued && animationFinished):
 #		print("done")
 		on_attack_finished()
-	move()
 
 func attack_three_state(delta):
 	$AnimationTree.set("parameters/combo/transition_request", "attackFinish")
@@ -178,7 +176,6 @@ func attack_three_state(delta):
 	if (animationFinished):
 #		print("done")
 		on_attack_finished()
-	move()
 
 func on_attack_finished():
 	$AnimationTree.set("parameters/movement/transition_request", "idle")
@@ -196,7 +193,6 @@ func roll_state(delta):
 #	velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 	
-	move()
 	
 func on_roll_finished():
 	isRolling = false
@@ -219,6 +215,8 @@ func update_sprite():
 			leafSprite.flip_h = false
 			leafSprite.position.x = 24
 			hitBox.position.x = 32
+
+
 
 func debug():
 	pass

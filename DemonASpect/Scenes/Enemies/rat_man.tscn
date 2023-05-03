@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bigfuro2dpaji"]
+[gd_scene load_steps=17 format=3 uid="uid://bigfuro2dpaji"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/rat_man.gd" id="1_4bqom"]
 [ext_resource type="Texture2D" uid="uid://up4m31dq3msa" path="res://Sprites/Ratfolk Warrior Sprite Sheet.png" id="2_o1tjv"]
@@ -137,10 +137,16 @@ _data = {
 "jumpattack": SubResource("Animation_0yj0w")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm0ji"]
+radius = 4.0
+height = 16.0
+
 [node name="RatMan" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_4bqom")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -150,6 +156,7 @@ shape = SubResource("CapsuleShape2D_rhg74")
 [node name="PlayerDetectionZone" parent="." instance=ExtResource("3_3inlg")]
 
 [node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+visible = false
 position = Vector2(0, -8)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_c10dw")
@@ -159,6 +166,7 @@ shape = SubResource("CapsuleShape2D_c10dw")
 [node name="EnemyHurtbox" parent="." instance=ExtResource("4_d8kxv")]
 
 [node name="CollisionShape2D" parent="EnemyHurtbox" index="0"]
+visible = false
 position = Vector2(0, -8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -173,7 +181,6 @@ hframes = 8
 vframes = 6
 
 [node name="Hitboxes" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -16)
 
 [node name="AttackOne" type="Area2D" parent="Hitboxes"]
@@ -181,8 +188,12 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/AttackOne"]
+position = Vector2(12, 8)
+shape = SubResource("CapsuleShape2D_rm0ji")
+disabled = true
 
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="PlayerDetectionZone"]
 [editable path="EnemyHurtbox"]

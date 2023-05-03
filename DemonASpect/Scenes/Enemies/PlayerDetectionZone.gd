@@ -7,12 +7,12 @@ func can_see_player():
 	return player != null
 
 func _ready():
-	body_entered.connect(on_player_detection)
-	body_exited.connect(on_player_evasion)
+	area_entered.connect(on_player_detection)
+	area_exited.connect(on_player_evasion)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func on_player_detection(body: Node2D):
+func on_player_detection(body: Area2D):
 	player = body 
 
-func on_player_evasion(body: Node2D):
+func on_player_evasion(body: Area2D):
 	player = null

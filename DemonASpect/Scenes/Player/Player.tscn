@@ -1,9 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=47 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cey8gdcb1pvx5" path="res://Sprites/momodora attack effects-Sheet.png" id="2_rsmuq"]
 [ext_resource type="Script" path="res://Scenes/Player/AttackOneHit.gd" id="4_25j1u"]
+[ext_resource type="PackedScene" uid="uid://bc8ifdp44oq5k" path="res://Overlap/stats.tscn" id="5_wnybv"]
 
 [sub_resource type="CapsuleShape2D" id="4"]
 radius = 8.0
@@ -541,7 +542,6 @@ input_3/auto_advance = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(173.306, -273.815)
 nodes/Add2/node = SubResource("29")
 nodes/Add2/position = Vector2(260, -160)
 nodes/Animation/node = SubResource("18")
@@ -581,12 +581,17 @@ node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l047g"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ownut"]
+radius = 7.0
+height = 38.0
+
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 4
+collision_layer = 0
 script = ExtResource("1")
 cancelable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -19)
 shape = SubResource("4")
 
@@ -664,3 +669,13 @@ position = Vector2(1.90735e-06, 0)
 scale = Vector2(1.48, 0.92)
 shape = SubResource("CapsuleShape2D_l047g")
 disabled = true
+
+[node name="Stats" parent="." instance=ExtResource("5_wnybv")]
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_ownut")

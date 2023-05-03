@@ -33,14 +33,12 @@ func _physics_process(delta: float):
 		CHASE:
 			chase_state(delta)
 		ATTACK:
-			pass
+			attack_state(delta)
 		HURT:
 			hurt_state(delta)
 	move()
 	update_sprite()
 	velocity.y += gravity * delta
-#	hurtTimer.start()
-	print(hurtTimer.time_left, hurtTimer.is_stopped(), hurtTimer.paused, hurtTimer.wait_time)
 
 func idle_state(delta):
 	animationPlayer.play("idle")
@@ -61,17 +59,27 @@ func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
 	var distance = point.x - global_position.x
 	animationPlayer.play("chase")
-#	print(distance)
+	print(distance)
 	velocity.x = velocity.move_toward(direction * maxSpeed, 300 * delta).x
+	
+	if (abs(distance) <= 20):
+		state = ATTACK
+
+func attack_state(delta):
+	velocity.x = 0
+	animationPlayer.play("jumpattack")
+		
+func _on_animation_player_animation_finished(jumpattack):
+	state = IDLE
 
 func hurt_state(delta):
-	hurtTimer.start()
 	animationPlayer.play("hurt")
 	velocity.x = lerp(0.0, velocity.x, pow(2, -16 * delta))
 	if (hurtTimer.time_left < 0.1): 
 		state = IDLE
 
 func on_hurtbox_entered(area: Area2D):
+	hurtTimer.start()
 	velocity = Vector2.ZERO
 	knockback = area.knockback_vector * 60
 	velocity += knockback
@@ -88,5 +96,8 @@ func move():
 
 func _on_stats_no_health():
 	queue_free()
+
+
+
 
 
