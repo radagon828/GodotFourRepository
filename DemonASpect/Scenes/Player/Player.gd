@@ -19,6 +19,7 @@ enum {
 var state = MOVE
 var roll_vector = Vector2.RIGHT
 var jumpTerminationMultiplier = 3
+var knockback = Vector2.RIGHT
 
 #BOOLS
 var hasDoubleJump = false
@@ -37,11 +38,13 @@ var isRolling = false
 @onready var runTimer = $Timers/RunTimer
 @onready var testTimer = $Timers/TestTimer
 @onready var hitBox = $Hitboxes/AttackOneHit
+@onready var stats = $Stats
 
 func _ready() -> void:
 	animationTree.active = true
 	velocity = velocity
 	set_velocity(velocity)
+	$HurtBox.area_entered.connect(on_hurtbox_entered)
 #	Engine.time_scale = 0.2
 	
 func _physics_process(delta: float):
@@ -203,6 +206,17 @@ func move():
 	set_up_direction(Vector2.UP)
 	move_and_slide()
 
+func on_hurtbox_entered(area: Area2D):
+	testTimer.start()
+	velocity = Vector2.ZERO
+	knockback = area.knockback_vector * 60
+	velocity += knockback
+	print("success")
+	stats.health -= 1
+
+func _on_stats_no_health():
+	queue_free()
+
 func update_sprite():
 	var moveVec = get_input_vector()
 	if (moveVec.x != 0):
@@ -216,8 +230,6 @@ func update_sprite():
 			leafSprite.position.x = 24
 			hitBox.position.x = 32
 
-
-
 func debug():
 	pass
 #	print($AnimationTree.get("parameters/movement/current_state"))
@@ -226,3 +238,6 @@ func debug():
 #	print(is_on_floor())
 
 	
+
+
+

@@ -13,12 +13,14 @@ enum {
 
 var state = IDLE
 var knockback = Vector2.RIGHT
+var attackVector = Vector2.RIGHT
 
 @onready var playerDetectionZone = $PlayerDetectionZone
 @onready var stats = $Stats
 @onready var animationPlayer = $AnimationPlayer
 @onready var ratSprite = $Sprite2D
 @onready var hurtTimer = $Timer
+@onready var hitBox = $Hitboxes/AttackOne/CollisionShape2D
 
 func _ready():
 	velocity = velocity
@@ -59,7 +61,7 @@ func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
 	var distance = point.x - global_position.x
 	animationPlayer.play("chase")
-	print(distance)
+#	print(distance)
 	velocity.x = velocity.move_toward(direction * maxSpeed, 300 * delta).x
 	
 	if (abs(distance) <= 20):
@@ -89,6 +91,9 @@ func on_hurtbox_entered(area: Area2D):
 func update_sprite():
 	if (velocity.x != 0):
 		ratSprite.flip_h = true if velocity.x < 0 else false
+		attackVector.x = sign(velocity.x)
+	hitBox.position.x = 12 * attackVector.x
+
 
 func move():
 	set_up_direction(Vector2.UP)

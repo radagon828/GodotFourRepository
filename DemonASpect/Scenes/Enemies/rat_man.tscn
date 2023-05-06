@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bigfuro2dpaji"]
+[gd_scene load_steps=18 format=3 uid="uid://bigfuro2dpaji"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/rat_man.gd" id="1_4bqom"]
 [ext_resource type="Texture2D" uid="uid://up4m31dq3msa" path="res://Sprites/Ratfolk Warrior Sprite Sheet.png" id="2_o1tjv"]
 [ext_resource type="PackedScene" uid="uid://dwedsao06ptsy" path="res://Overlap/player_detection_zone.tscn" id="3_3inlg"]
 [ext_resource type="PackedScene" uid="uid://baddeb1ytda56" path="res://enemy_hurtbox.tscn" id="4_d8kxv"]
 [ext_resource type="PackedScene" uid="uid://bc8ifdp44oq5k" path="res://Overlap/stats.tscn" id="4_pw2ud"]
+[ext_resource type="Script" path="res://Scenes/Enemies/AttackOne.gd" id="6_ktr6o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhg74"]
 radius = 4.0
@@ -125,6 +126,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitboxes/AttackOne/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqc65"]
 _data = {
@@ -186,6 +199,7 @@ position = Vector2(0, -16)
 [node name="AttackOne" type="Area2D" parent="Hitboxes"]
 collision_layer = 8
 collision_mask = 4
+script = ExtResource("6_ktr6o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/AttackOne"]
 position = Vector2(12, 8)
