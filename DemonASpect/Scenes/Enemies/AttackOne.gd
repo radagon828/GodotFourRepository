@@ -1,7 +1,8 @@
 extends Area2D
 
 var knockback_vector = Vector2.ZERO
-
+@onready var ratMan = $"../.."
 
 func _physics_process(delta):
-	pass
+	knockback_vector = ratMan.attackVector
+	print(knockback_vector)

@@ -209,9 +209,8 @@ func move():
 func on_hurtbox_entered(area: Area2D):
 	testTimer.start()
 	velocity = Vector2.ZERO
-	knockback = area.knockback_vector * 60
+	knockback = area.knockback_vector * 120
 	velocity += knockback
-	print("success")
 	stats.health -= 1
 
 func _on_stats_no_health():

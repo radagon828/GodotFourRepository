@@ -1,8 +1,7 @@
 res://default_env.tres
-res://Scenes/Player/Player.tscn
-res://Scenes/Player/Player.gd
 res://Scenes/Enemies/rat_man.tscn
 res://Scenes/Enemies/AttackOne.gd
-res://Scenes/Enemies/rat_man.gd
+res://Scenes/Player/Player.tscn
 res://Scenes/Levels/DungeonOne.tscn
 res://Overlap/player_detection_zone.tscn
+res://Scenes/Player/Player.gd
