@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=49 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
@@ -219,6 +219,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="12"]
 resource_name = "Hurt"
 length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -466,6 +467,9 @@ _data = {
 
 [sub_resource type="AnimationNodeAdd2" id="29"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_28qwh"]
+animation = &"Hurt"
+
 [sub_resource type="AnimationNodeAnimation" id="17"]
 animation = &"Run"
 
@@ -527,6 +531,14 @@ input_1/name = "true"
 input_1/auto_advance = false
 input_1/reset = true
 
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_l6i1a"]
+input_0/name = "true"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "false"
+input_1/auto_advance = false
+input_1/reset = true
+
 [sub_resource type="AnimationNodeTransition" id="19"]
 input_0/name = "idle"
 input_0/auto_advance = false
@@ -542,10 +554,13 @@ input_3/auto_advance = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
+graph_offset = Vector2(475.45, -161.099)
 nodes/Add2/node = SubResource("29")
 nodes/Add2/position = Vector2(260, -160)
 nodes/Animation/node = SubResource("18")
 nodes/Animation/position = Vector2(-20, -460)
+"nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_28qwh")
+"nodes/Animation 10/position" = Vector2(980, -140)
 "nodes/Animation 2/node" = SubResource("17")
 "nodes/Animation 2/position" = Vector2(40, -160)
 "nodes/Animation 3/node" = SubResource("21")
@@ -574,10 +589,12 @@ nodes/in_air/node = SubResource("24")
 nodes/in_air/position = Vector2(700, 260)
 nodes/in_air_state/node = SubResource("22")
 nodes/in_air_state/position = Vector2(1020, 80)
+nodes/is_hurt/node = SubResource("AnimationNodeTransition_l6i1a")
+nodes/is_hurt/position = Vector2(1220, -80)
 nodes/movement/node = SubResource("19")
 nodes/movement/position = Vector2(620, -120)
 nodes/output/position = Vector2(1500, 100)
-node_connections = [&"output", 0, &"in_air_state", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"TimeScale", 0, &"combo", &"combo", 0, &"attackOne", &"combo", 1, &"Animation 8", &"combo", 2, &"Animation 9", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"TimeScale"]
+node_connections = [&"output", 0, &"is_hurt", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"TimeScale", 0, &"combo", &"combo", 0, &"attackOne", &"combo", 1, &"Animation 8", &"combo", 2, &"Animation 9", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"TimeScale", &"is_hurt", 0, &"Animation 10", &"is_hurt", 1, &"in_air_state"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l047g"]
 
@@ -622,6 +639,9 @@ parameters/in_air/current_index = 1
 parameters/in_air_state/current_state = "false"
 parameters/in_air_state/transition_request = ""
 parameters/in_air_state/current_index = 0
+parameters/is_hurt/current_state = ""
+parameters/is_hurt/transition_request = ""
+parameters/is_hurt/current_index = -1
 parameters/movement/current_state = "idle"
 parameters/movement/transition_request = ""
 parameters/movement/current_index = 0
@@ -654,6 +674,7 @@ wait_time = 0.6
 one_shot = true
 
 [node name="TestTimer" type="Timer" parent="Timers"]
+wait_time = 0.3
 
 [node name="Hitboxes" type="Node2D" parent="."]
 
@@ -671,7 +692,7 @@ shape = SubResource("CapsuleShape2D_l047g")
 disabled = true
 
 [node name="Stats" parent="." instance=ExtResource("5_wnybv")]
-max_health = 2
+max_health = 5
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 4

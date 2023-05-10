@@ -41,6 +41,8 @@ func _physics_process(delta: float):
 	move()
 	update_sprite()
 	velocity.y += gravity * delta
+#	print(hurtTimer.time_left)
+#	print(state)
 
 func idle_state(delta):
 	animationPlayer.play("idle")
@@ -61,7 +63,6 @@ func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
 	var distance = point.x - global_position.x
 	animationPlayer.play("chase")
-#	print(distance)
 	velocity.x = velocity.move_toward(direction * maxSpeed, 300 * delta).x
 	
 	if (abs(distance) <= 20):
@@ -70,15 +71,21 @@ func accelerate_towards_point(point, delta):
 func attack_state(delta):
 	velocity.x = 0
 	animationPlayer.play("jumpattack")
-		
+
+
+#THIS FUNCTION ACTIVATES REGARDLESS OF THE ANIMATION IN THE PARAMETER
 func _on_animation_player_animation_finished(jumpattack):
 	state = IDLE
+
+
 
 func hurt_state(delta):
 	animationPlayer.play("hurt")
 	velocity.x = lerp(0.0, velocity.x, pow(2, -16 * delta))
+	print("what")
 	if (hurtTimer.time_left < 0.1): 
 		state = IDLE
+		print("timeout")
 
 func on_hurtbox_entered(area: Area2D):
 	hurtTimer.start()

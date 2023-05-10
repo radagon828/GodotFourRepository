@@ -159,7 +159,7 @@ collision_layer = 0
 script = ExtResource("1_4bqom")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 10.0
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -207,7 +207,6 @@ shape = SubResource("CapsuleShape2D_rm0ji")
 disabled = true
 
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="PlayerDetectionZone"]
 [editable path="EnemyHurtbox"]

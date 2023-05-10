@@ -13,7 +13,8 @@ enum {
 	ROLL,
 	ATTACKONE,
 	ATTACKTWO,
-	ATTACKTHREE
+	ATTACKTHREE,
+	HURT
 }
 
 var state = MOVE
@@ -52,6 +53,8 @@ func _physics_process(delta: float):
 		MOVE:
 			move_state(delta)
 			cancelable = false
+			isAttacking = false
+			isRolling = false
 		ROLL:
 			roll_state(delta)
 		ATTACKONE:
@@ -60,9 +63,12 @@ func _physics_process(delta: float):
 			attack_two_state(delta)
 		ATTACKTHREE:
 			attack_three_state(delta)
+		HURT:
+			hurt_state(delta)
 	velocity.y += GRAVITY * delta
 	debug()
 	move()
+	$AnimationTree.set("parameters/is_hurt/transition_request", state == HURT)
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
@@ -196,7 +202,6 @@ func roll_state(delta):
 #	velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 	
-	
 func on_roll_finished():
 	isRolling = false
 	state = MOVE
@@ -212,6 +217,12 @@ func on_hurtbox_entered(area: Area2D):
 	knockback = area.knockback_vector * 120
 	velocity += knockback
 	stats.health -= 1
+	state = HURT
+
+func hurt_state(delta):
+	if testTimer.time_left < 0.1:
+		state = MOVE
+	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 
 func _on_stats_no_health():
 	queue_free()
