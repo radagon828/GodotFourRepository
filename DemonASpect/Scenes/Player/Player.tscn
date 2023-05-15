@@ -594,7 +594,7 @@ nodes/is_hurt/position = Vector2(1220, -80)
 nodes/movement/node = SubResource("19")
 nodes/movement/position = Vector2(620, -120)
 nodes/output/position = Vector2(1500, 100)
-node_connections = [&"output", 0, &"is_hurt", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"TimeScale", 0, &"combo", &"combo", 0, &"attackOne", &"combo", 1, &"Animation 8", &"combo", 2, &"Animation 9", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"TimeScale", &"is_hurt", 0, &"Animation 10", &"is_hurt", 1, &"in_air_state"]
+node_connections = [&"output", 0, &"is_hurt", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"TimeScale", 0, &"combo", &"combo", 0, &"attackOne", &"combo", 1, &"Animation 8", &"combo", 2, &"Animation 9", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"is_hurt", 0, &"Animation 10", &"is_hurt", 1, &"in_air_state", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"TimeScale"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l047g"]
 

@@ -72,12 +72,8 @@ func attack_state(delta):
 	velocity.x = 0
 	animationPlayer.play("jumpattack")
 
-
-#THIS FUNCTION ACTIVATES REGARDLESS OF THE ANIMATION IN THE PARAMETER
-func _on_animation_player_animation_finished(jumpattack):
+func on_attack_finished():
 	state = IDLE
-
-
 
 func hurt_state(delta):
 	animationPlayer.play("hurt")
