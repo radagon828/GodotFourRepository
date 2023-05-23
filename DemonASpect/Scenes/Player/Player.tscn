@@ -1,9 +1,10 @@
-[gd_scene load_steps=49 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=52 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cey8gdcb1pvx5" path="res://Sprites/momodora attack effects-Sheet.png" id="2_rsmuq"]
 [ext_resource type="Script" path="res://Scenes/Player/AttackOneHit.gd" id="4_25j1u"]
+[ext_resource type="Texture2D" uid="uid://bvwh8lhc5sldt" path="res://Sprites/momodora attack effect air-Sheet.png" id="4_peeyh"]
 [ext_resource type="PackedScene" uid="uid://bc8ifdp44oq5k" path="res://Overlap/stats.tscn" id="5_wnybv"]
 
 [sub_resource type="CapsuleShape2D" id="4"]
@@ -24,6 +25,40 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animationFinished")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitboxes/AttackOneHit/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeafAnimations")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("LeafAirAttack"),
+"times": PackedFloat32Array(0.1)
 }
 
 [sub_resource type="Animation" id="9"]
@@ -394,6 +429,22 @@ _data = {
 "RunStartup": SubResource("7")
 }
 
+[sub_resource type="Animation" id="Animation_t3bnw"]
+resource_name = "LeafAirAttack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AirAttackSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 1]
+}
+
 [sub_resource type="Animation" id="Animation_2ncgy"]
 resource_name = "LeafAttackFinish"
 length = 0.5
@@ -456,9 +507,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [17]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AirAttackSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tr0ie"]
 _data = {
+"LeafAirAttack": SubResource("Animation_t3bnw"),
 "LeafAttackFinish": SubResource("Animation_2ncgy"),
 "LeafAttackOne": SubResource("Animation_yfmvl"),
 "LeafAttackTwo": SubResource("Animation_u35ns"),
@@ -469,6 +533,9 @@ _data = {
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_28qwh"]
 animation = &"Hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ttft6"]
+animation = &"AirAttack"
 
 [sub_resource type="AnimationNodeAnimation" id="17"]
 animation = &"Run"
@@ -522,6 +589,9 @@ input_0/reset = true
 input_1/name = "jumping"
 input_1/auto_advance = false
 input_1/reset = true
+input_2/name = "airAttack"
+input_2/auto_advance = false
+input_2/reset = true
 
 [sub_resource type="AnimationNodeTransition" id="22"]
 input_0/name = "false"
@@ -554,19 +624,21 @@ input_3/auto_advance = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(475.45, -161.099)
+graph_offset = Vector2(-243.056, -280.649)
 nodes/Add2/node = SubResource("29")
 nodes/Add2/position = Vector2(260, -160)
 nodes/Animation/node = SubResource("18")
 nodes/Animation/position = Vector2(-20, -460)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_28qwh")
 "nodes/Animation 10/position" = Vector2(980, -140)
+"nodes/Animation 11/node" = SubResource("AnimationNodeAnimation_ttft6")
+"nodes/Animation 11/position" = Vector2(520, 380)
 "nodes/Animation 2/node" = SubResource("17")
 "nodes/Animation 2/position" = Vector2(40, -160)
 "nodes/Animation 3/node" = SubResource("21")
-"nodes/Animation 3/position" = Vector2(420, 280)
+"nodes/Animation 3/position" = Vector2(520, 200)
 "nodes/Animation 4/node" = SubResource("23")
-"nodes/Animation 4/position" = Vector2(440, 440)
+"nodes/Animation 4/position" = Vector2(360, 280)
 "nodes/Animation 5/node" = SubResource("25")
 "nodes/Animation 5/position" = Vector2(40, -40)
 "nodes/Animation 6/node" = SubResource("27")
@@ -586,7 +658,7 @@ nodes/attackOne/position = Vector2(-60, 140)
 nodes/combo/node = SubResource("AnimationNodeTransition_4cbdm")
 nodes/combo/position = Vector2(240, 100)
 nodes/in_air/node = SubResource("24")
-nodes/in_air/position = Vector2(700, 260)
+nodes/in_air/position = Vector2(780, 260)
 nodes/in_air_state/node = SubResource("22")
 nodes/in_air_state/position = Vector2(1020, 80)
 nodes/is_hurt/node = SubResource("AnimationNodeTransition_l6i1a")
@@ -594,7 +666,7 @@ nodes/is_hurt/position = Vector2(1220, -80)
 nodes/movement/node = SubResource("19")
 nodes/movement/position = Vector2(620, -120)
 nodes/output/position = Vector2(1500, 100)
-node_connections = [&"output", 0, &"is_hurt", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"TimeScale", 0, &"combo", &"combo", 0, &"attackOne", &"combo", 1, &"Animation 8", &"combo", 2, &"Animation 9", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"is_hurt", 0, &"Animation 10", &"is_hurt", 1, &"in_air_state", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"TimeScale"]
+node_connections = [&"output", 0, &"is_hurt", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation 5", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 6", &"TimeScale", 0, &"combo", &"combo", 0, &"attackOne", &"combo", 1, &"Animation 8", &"combo", 2, &"Animation 9", &"in_air", 0, &"Animation 3", &"in_air", 1, &"Animation 4", &"in_air", 2, &"Animation 11", &"in_air_state", 0, &"movement", &"in_air_state", 1, &"in_air", &"is_hurt", 0, &"Animation 10", &"is_hurt", 1, &"in_air_state", &"movement", 0, &"OneShot", &"movement", 1, &"Add2", &"movement", 2, &"Animation 7", &"movement", 3, &"TimeScale"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l047g"]
 
@@ -605,7 +677,7 @@ height = 38.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1")
-cancelable = true
+animationFinished = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -662,6 +734,12 @@ texture = ExtResource("2_rsmuq")
 hframes = 9
 vframes = 3
 frame = 17
+
+[node name="AirAttackSprite" type="Sprite2D" parent="."]
+position = Vector2(29, -18)
+texture = ExtResource("4_peeyh")
+hframes = 6
+frame = 2
 
 [node name="Timers" type="Node2D" parent="."]
 

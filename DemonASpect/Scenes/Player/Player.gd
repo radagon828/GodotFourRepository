@@ -14,6 +14,7 @@ enum {
 	ATTACKONE,
 	ATTACKTWO,
 	ATTACKTHREE,
+	AIRATTACK,
 	HURT
 }
 
@@ -35,6 +36,7 @@ var isRolling = false
 @onready var animationTree = $AnimationTree
 @onready var playerSprite = $PlayerSprite
 @onready var leafSprite = $LeafSprite
+@onready var airLeafSprite = $AirAttackSprite
 @onready var dashTimer = $Timers/DashTimer
 @onready var runTimer = $Timers/RunTimer
 @onready var testTimer = $Timers/TestTimer
@@ -45,6 +47,7 @@ func _ready() -> void:
 	animationTree.active = true
 	velocity = velocity
 	set_velocity(velocity)
+	airLeafSprite.frame = 0
 	$HurtBox.area_entered.connect(on_hurtbox_entered)
 #	Engine.time_scale = 0.2
 	
@@ -55,6 +58,7 @@ func _physics_process(delta: float):
 			cancelable = false
 			isAttacking = false
 			isRolling = false
+			$Hitboxes/AttackOneHit/CollisionShape2D.disabled = true
 		ROLL:
 			roll_state(delta)
 		ATTACKONE:
@@ -63,6 +67,8 @@ func _physics_process(delta: float):
 			attack_two_state(delta)
 		ATTACKTHREE:
 			attack_three_state(delta)
+		AIRATTACK:
+			air_attack_state(delta)
 		HURT:
 			hurt_state(delta)
 	velocity.y += GRAVITY * delta
@@ -92,8 +98,6 @@ func move_state(delta):
 	
 	if (velocity.y < 0 && !Input.is_action_pressed("jump")):
 		velocity.y += GRAVITY * jumpTerminationMultiplier * delta
-	
-		
 	
 	if (is_on_floor()):
 		hasDoubleJump = true
@@ -128,6 +132,12 @@ func move_state(delta):
 		attackQueued = false
 		animationFinished = false
 		isAttacking = true
+	elif (Input.is_action_just_pressed("attack") && !is_on_floor() && !isAttacking):
+		$AnimationTree.set("parameters/in_air/transition_request", "airAttack")
+		state = AIRATTACK
+		attackQueued = false
+		animationFinished = false
+		isAttacking = true
 		
 	
 	update_sprite()
@@ -140,7 +150,15 @@ func running(inputVector, delta):
 	elif inputVector.x == 0:
 		$AnimationTree.set("parameters/movement/transition_request", "idle")
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
+
+func air_attack_state(delta):
+	var inputVector = get_input_vector()
+	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
+	running(inputVector, delta)
 	
+	if (animationFinished || is_on_floor()):
+		on_attack_finished()
+
 func attack_one_state(delta):
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 
@@ -233,11 +251,15 @@ func update_sprite():
 		playerSprite.flip_h = true if moveVec.x < 0 else false
 		if moveVec.x < 0:
 			leafSprite.flip_h = true 
+			airLeafSprite.flip_h = true
 			leafSprite.position.x = -24
+			airLeafSprite.position.x = -29
 			hitBox.position.x = -32
 		else: 
 			leafSprite.flip_h = false
+			airLeafSprite.flip_h = false
 			leafSprite.position.x = 24
+			airLeafSprite.position.x = 29
 			hitBox.position.x = 32
 
 func debug():
