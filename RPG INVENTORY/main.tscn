@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0561d16vchwe"]
+[gd_scene load_steps=10 format=3 uid="uid://d0561d16vchwe"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_apn17"]
 [ext_resource type="PackedScene" uid="uid://ccv8nbp4mdxck" path="res://player.tscn" id="1_f1487"]
+[ext_resource type="PackedScene" uid="uid://cxbpfhjck3eqr" path="res://inventory/inventory.tscn" id="2_udgs2"]
+[ext_resource type="Script" path="res://inventory/Inventory_Interface.gd" id="3_eq1ao"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ygfsq"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,6 +25,7 @@ size = Vector2(20, 20)
 data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_apn17")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_67tpk")
@@ -39,3 +43,22 @@ mesh = SubResource("PlaneMesh_g7bdy")
 shape = SubResource("ConcavePolygonShape3D_3w6qj")
 
 [node name="Player" parent="." instance=ExtResource("1_f1487")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_eq1ao")
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("2_udgs2")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0

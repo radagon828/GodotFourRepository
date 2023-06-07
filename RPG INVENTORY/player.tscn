@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccv8nbp4mdxck"]
+[gd_scene load_steps=5 format=3 uid="uid://ccv8nbp4mdxck"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1aukm"]
+[ext_resource type="Resource" uid="uid://2ujfqsogv88g" path="res://test_inve.tres" id="2_b4yi3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5p7hn"]
 
@@ -8,6 +9,7 @@
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_1aukm")
+inventory_data = ExtResource("2_b4yi3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
