@@ -4,9 +4,11 @@ const Slot = preload("res://inventory/slot.tscn")
 
 @onready var item_grid = $MarginContainer/ItemGrid
 
+#adds invetory data to UI
 func set_inventory_data(inventory_data: InventoryData) -> void:
 	populate_item_grid(inventory_data)
 
+#adds each item data to grid in inventory
 func populate_item_grid(inventory_data: InventoryData) -> void:
 	for child in item_grid.get_children():
 		child.queue_free()
