@@ -66,3 +66,5 @@ offset_bottom = 50.0
 
 [node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("5_a2k0y")]
 layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
