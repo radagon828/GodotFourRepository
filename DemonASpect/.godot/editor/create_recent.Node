@@ -1,3 +1,15 @@
+TextureRect
+CenterContainer
+GridContainer
+ColorRect
+CanvasLayer
+AnimationPlayer
+HSeparator
+Button
+Label
+VBoxContainer
+MarginContainer
+PanelContainer
 CharacterBody2D
 Node2D
 Node
@@ -5,5 +17,4 @@ Sprite2D
 CollisionShape2D
 Area2D
 Timer
-AnimationPlayer
 AnimatedSprite2D

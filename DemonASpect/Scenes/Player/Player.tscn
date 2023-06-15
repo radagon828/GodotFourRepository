@@ -1,11 +1,12 @@
-[gd_scene load_steps=52 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=53 format=3 uid="uid://bbe055orfkex8"]
 
+[ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_flvje"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cey8gdcb1pvx5" path="res://Sprites/momodora attack effects-Sheet.png" id="2_rsmuq"]
 [ext_resource type="Script" path="res://Scenes/Player/AttackOneHit.gd" id="4_25j1u"]
 [ext_resource type="Texture2D" uid="uid://bvwh8lhc5sldt" path="res://Sprites/momodora attack effect air-Sheet.png" id="4_peeyh"]
 [ext_resource type="PackedScene" uid="uid://bc8ifdp44oq5k" path="res://Overlap/stats.tscn" id="5_wnybv"]
-[ext_resource type="Script" path="res://Scenes/Player/StateBase.gd" id="7_w4inb"]
+[ext_resource type="PackedScene" uid="uid://b0klay3anoybn" path="res://Scenes/UIElements/pause_menu.tscn" id="7_35rov"]
 
 [sub_resource type="CapsuleShape2D" id="4"]
 radius = 8.0
@@ -676,8 +677,7 @@ height = 38.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
-script = ExtResource("7_w4inb")
-animationFinished = true
+script = ExtResource("1_flvje")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -779,5 +779,11 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_ownut")
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_35rov")]
+offset_left = -1000.0
+offset_top = -500.0
+offset_right = 1000.0
+offset_bottom = 500.0
 
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]

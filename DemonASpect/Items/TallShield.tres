@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://qqin1k3nmx8u"]
+
+[ext_resource type="Script" path="res://Items/item.gd" id="1_qtrhs"]
+[ext_resource type="Texture2D" uid="uid://q558hwug51oq" path="res://Items/TallShield.png" id="2_yxsr1"]
+
+[resource]
+script = ExtResource("1_qtrhs")
+name = "TallShield"
+texture = ExtResource("2_yxsr1")
+description = "Shield for defending"
+stackable = true
+usable = true

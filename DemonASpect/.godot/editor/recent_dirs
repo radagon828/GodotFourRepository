@@ -1,4 +1,7 @@
-res://Scenes/Player
 res://
+res://Items
+res://shaders
+res://Scenes/Levels
+res://Scenes/Player
 res://Scenes/Enemies
 res://Overlap

@@ -32,16 +32,16 @@ var isRolling = false
 @export var cancelable = false
 @export var animationFinished = false
 # velcoity is a predefined variable in godot 4
-@onready var animationPlayer = $PlayerAnimations
-@onready var animationTree = $AnimationTree
-@onready var playerSprite = $PlayerSprite
-@onready var leafSprite = $LeafSprite
-@onready var airLeafSprite = $AirAttackSprite
-@onready var dashTimer = $Timers/DashTimer
-@onready var runTimer = $Timers/RunTimer
-@onready var testTimer = $Timers/TestTimer
-@onready var hitBox = $Hitboxes/AttackOneHit
-@onready var stats = $Stats
+@onready var animationPlayer: AnimationPlayer = $PlayerAnimations
+@onready var animationTree: AnimationTree = $AnimationTree
+@onready var playerSprite: Sprite2D = $PlayerSprite
+@onready var leafSprite: Sprite2D = $LeafSprite
+@onready var airLeafSprite: Sprite2D = $AirAttackSprite
+@onready var dashTimer: Timer = $Timers/DashTimer
+@onready var runTimer: Timer = $Timers/RunTimer
+@onready var testTimer: Timer = $Timers/TestTimer
+@onready var hitBox: Area2D = $Hitboxes/AttackOneHit
+@onready var stats: Node = $Stats
 
 func _ready() -> void:
 	animationTree.active = true
@@ -211,7 +211,6 @@ func on_attack_finished():
 	cancelable = false
 	state = MOVE
 
-#NEXT--maybe cancel roll animation with runn or attack input 3/17/2023
 func roll_state(delta):
 	$AnimationTree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
 	$AnimationTree.set("parameters/movement/transition_request", "roll")
@@ -261,6 +260,10 @@ func update_sprite():
 			leafSprite.position.x = 24
 			airLeafSprite.position.x = 29
 			hitBox.position.x = 32
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		$PauseMenu.pause()
 
 func debug():
 	pass
