@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b328200emx68p"]
+[gd_scene load_steps=2 format=3 uid="uid://b328200emx68p"]
+
+[ext_resource type="PackedScene" uid="uid://ceaclk3so1vdr" path="res://inventory_display.tscn" id="1_4tt0q"]
 
 [node name="InventoryContainer" type="ColorRect"]
 anchors_preset = 15
@@ -14,3 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="InventoryDisplay" parent="CenterContainer" instance=ExtResource("1_4tt0q")]
+layout_mode = 2

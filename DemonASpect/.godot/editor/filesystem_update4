@@ -1,6 +1,6 @@
 res://default_env.tres
-res://inventory_container.tscn
-res://Shaders/blur.gdshader
-res://Inventory.gd
-res://Inventory.tres
 res://inventory_slot_display.tscn
+res://Inventory.gd
+res://Shaders/blur.gdshader
+res://inventory_display.tscn
+res://inventory_container.tscn
