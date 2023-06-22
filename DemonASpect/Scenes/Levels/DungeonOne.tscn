@@ -78,4 +78,5 @@ offset = Vector2(0, -25)
 zoom = Vector2(0.8, 0.8)
 
 [node name="RatMan" parent="." instance=ExtResource("3_h0jpf")]
+z_index = -1
 position = Vector2(196, 108)

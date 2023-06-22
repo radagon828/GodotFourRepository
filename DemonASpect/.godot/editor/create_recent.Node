@@ -1,11 +1,11 @@
-TextureRect
 CenterContainer
+Button
+TextureRect
 GridContainer
 ColorRect
 CanvasLayer
 AnimationPlayer
 HSeparator
-Button
 Label
 VBoxContainer
 MarginContainer

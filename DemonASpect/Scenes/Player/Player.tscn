@@ -781,6 +781,7 @@ position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_ownut")
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_35rov")]
+z_index = 1
 offset_left = -1000.0
 offset_top = -500.0
 offset_right = 1000.0

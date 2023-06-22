@@ -1,2 +1,4 @@
+FontVariation
+FontFile
 Inventory
 Item

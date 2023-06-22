@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://ceaclk3so1vdr"]
+[gd_scene load_steps=3 format=3 uid="uid://ceaclk3so1vdr"]
+
+[ext_resource type="PackedScene" uid="uid://bupc8wfajvfyf" path="res://inventory_slot_display.tscn" id="1_i4ge8"]
+[ext_resource type="Script" path="res://inventory_display.gd" id="1_ki1sp"]
 
 [node name="InventoryDisplay" type="GridContainer"]
 anchors_preset = 15
@@ -6,3 +9,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 3
+script = ExtResource("1_ki1sp")
+
+[node name="InventorySlotDisplay" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
+
+[node name="InventorySlotDisplay2" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
+
+[node name="InventorySlotDisplay3" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
+
+[node name="InventorySlotDisplay4" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
+
+[node name="InventorySlotDisplay5" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
+
+[node name="InventorySlotDisplay6" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
+
+[node name="InventorySlotDisplay7" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
+
+[node name="InventorySlotDisplay8" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
+
+[node name="InventorySlotDisplay9" parent="." instance=ExtResource("1_i4ge8")]
+layout_mode = 2
