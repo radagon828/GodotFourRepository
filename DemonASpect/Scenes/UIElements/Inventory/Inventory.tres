@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=6 format=3 uid="uid://cpxkq4dtrykdw"]
+
+[ext_resource type="Resource" uid="uid://umrncytoiljq" path="res://Items/Sword.tres" id="1_faf3o"]
+[ext_resource type="Resource" uid="uid://b7spsa8ohraq7" path="res://Items/Potion.tres" id="2_b4lxc"]
+[ext_resource type="Resource" uid="uid://dj36rncmgc5sm" path="res://Items/DiamondRing.tres" id="3_8psta"]
+[ext_resource type="Resource" uid="uid://qqin1k3nmx8u" path="res://Items/TallShield.tres" id="4_ekfia"]
+[ext_resource type="Script" path="res://Scenes/UIElements/Inventory/Inventory.gd" id="5_ddeon"]
+
+[resource]
+script = ExtResource("5_ddeon")
+items = Array[Resource]([ExtResource("1_faf3o"), ExtResource("2_b4lxc"), ExtResource("2_b4lxc"), ExtResource("3_8psta"), ExtResource("4_ekfia"), null, null, null, ExtResource("3_8psta")])

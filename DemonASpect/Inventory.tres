@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=7 format=3 uid="uid://cfuro5d4nq0lu"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=6 format=3 uid="uid://cfuro5d4nq0lu"]
 
 [ext_resource type="Resource" uid="uid://umrncytoiljq" path="res://Items/Sword.tres" id="1_28b6j"]
 [ext_resource type="Script" path="res://Inventory.gd" id="1_143ug"]
 [ext_resource type="Resource" uid="uid://b7spsa8ohraq7" path="res://Items/Potion.tres" id="2_x6bts"]
 [ext_resource type="Resource" uid="uid://dj36rncmgc5sm" path="res://Items/DiamondRing.tres" id="3_f80t0"]
 [ext_resource type="Resource" uid="uid://qqin1k3nmx8u" path="res://Items/TallShield.tres" id="4_dmy0k"]
-[ext_resource type="Texture2D" uid="uid://copyeowfqmmmq" path="res://Items/DiamondRing.png" id="5_kev85"]
 
 [resource]
 script = ExtResource("1_143ug")
-items = Array[Resource]([ExtResource("1_28b6j"), ExtResource("2_x6bts"), ExtResource("2_x6bts"), ExtResource("3_f80t0"), ExtResource("4_dmy0k"), null, null, null, ExtResource("5_kev85")])
+items = Array[Resource]([ExtResource("1_28b6j"), ExtResource("2_x6bts"), ExtResource("2_x6bts"), ExtResource("3_f80t0"), ExtResource("4_dmy0k"), null, null, null, ExtResource("3_f80t0")])
