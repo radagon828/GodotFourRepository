@@ -1,5 +1,6 @@
-CenterContainer
 Button
+VBoxContainer
+CenterContainer
 TextureRect
 GridContainer
 ColorRect
@@ -7,7 +8,6 @@ CanvasLayer
 AnimationPlayer
 HSeparator
 Label
-VBoxContainer
 MarginContainer
 PanelContainer
 CharacterBody2D
