@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://cflt8s0n32xhw"]
+
+[ext_resource type="Script" path="res://InventoryMenu.gd" id="1_xkka6"]
+[ext_resource type="Script" path="res://ItemDisplay.gd" id="1_yw0s5"]
+[ext_resource type="PackedScene" uid="uid://cuqmemlcpe03x" path="res://Scenes/UIElements/Inventory/selectable_item_slot.tscn" id="2_eefw4"]
+
+[node name="InventoryMenu" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.576471, 0.352941, 0.0705882, 1)
+script = ExtResource("1_xkka6")
+metadata/_edit_vertical_guides_ = []
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemDisplay" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("1_yw0s5")
+
+[node name="SelectableItemSlot" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot2" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot3" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot4" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot5" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot6" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot7" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot8" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot9" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot10" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot11" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot12" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot13" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot14" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2
+
+[node name="SelectableItemSlot15" parent="CenterContainer/ItemDisplay" instance=ExtResource("2_eefw4")]
+layout_mode = 2

@@ -1,5 +1,5 @@
-res://Menu.gd
 res://default_env.tres
+res://StartMenu.tscn
 res://Scenes/UIElements/Inventory/Inventory.gd
 res://Scenes/UIElements/Inventory/inventory_display.gd
 res://Scenes/UIElements/Inventory/Inventory.tres
@@ -7,11 +7,14 @@ res://Inventory.gd
 res://inventory_display.gd
 res://Inventory.tres
 res://Shaders/blur.gdshader
+res://Scenes/UIElements/Inventory/selectable_item_slot.tscn
+res://Scenes/UIElements/Inventory/selectable_item_slot.gd
+res://inventory_display.tscn
+res://NewInventory.tres
+res://InventoryMenu.tscn
+res://ItemDisplay.gd
 res://Scenes/Player/Player.tscn
-res://Scenes/Levels/DungeonOne.tscn
-res://Scenes/Enemies/rat_man.tscn
 res://Scenes/UIElements/pause_menu.tscn
 res://inventory_container.tscn
-res://inventory_display.tscn
 res://inventory_slot_display.tscn
-res://StartMenu.tscn
+res://InventoryMenu.gd

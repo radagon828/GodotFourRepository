@@ -1,4 +1,4 @@
+Inventory
 FontVariation
 FontFile
-Inventory
 Item

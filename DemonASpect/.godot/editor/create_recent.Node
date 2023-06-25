@@ -1,9 +1,9 @@
-Button
-VBoxContainer
-CenterContainer
 TextureRect
+Button
 GridContainer
+CenterContainer
 ColorRect
+VBoxContainer
 CanvasLayer
 AnimationPlayer
 HSeparator
