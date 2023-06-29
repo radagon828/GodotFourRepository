@@ -6,7 +6,7 @@ var inventory = preload("res://NewInventory.tres")
 @onready var selectedTexture = $TextureRect
 @export var is_selected = false
 
-signal button_selected
+signal selection_made
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -21,9 +21,10 @@ func display_item(item):
 		itemTextureRect.texture = null
 		
 
-func _on_pressed():
+
+func _on_button_down():
 	is_selected = false if is_selected else true 
-	emit_signal("button_selected")
 	var my_item_index = get_index()
+	emit_signal("selection_made", my_item_index)
 	var my_item = inventory.items[my_item_index]
 	inventory.drag_data = null
