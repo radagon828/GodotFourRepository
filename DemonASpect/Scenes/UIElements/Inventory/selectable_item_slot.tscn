@@ -1,27 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuqmemlcpe03x"]
+[gd_scene load_steps=5 format=3 uid="uid://cuqmemlcpe03x"]
 
 [ext_resource type="Script" path="res://Scenes/UIElements/Inventory/selectable_item_slot.gd" id="1_7q06u"]
 [ext_resource type="Texture2D" uid="uid://chfppsj6sxdpr" path="res://ItemSlot.png" id="1_lwt1o"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrp5n"]
-bg_color = Color(0.952941, 0.270588, 0.784314, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfssn"]
+texture = ExtResource("1_lwt1o")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_08yun"]
+specular_color = Color(1, 0.960784, 0.996078, 1)
 
 [node name="SelectableItemSlot" type="Button"]
 custom_minimum_size = Vector2(30, 30)
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vrp5n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kfssn")
 action_mode = 0
 script = ExtResource("1_7q06u")
 
-[node name="ItemTextureBackGround" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(18, 18)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_lwt1o")
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+texture = SubResource("CanvasTexture_08yun")
+expand_mode = 1
 
 [node name="ItemTexture" type="TextureRect" parent="."]
 layout_mode = 1

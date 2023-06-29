@@ -10,13 +10,14 @@ func _ready():
 func update_inventory_display():
 	for item_index in inventory.items.size():
 		update_inventory_slot_display(item_index)
+		
 
 #gets index of inventory item and runs display item func from slot script
 func update_inventory_slot_display(item_index):
 	#gets each inv slot in tree and inserts item data
 	var selectableItemSlot = get_child(item_index)
 	var item = inventory.items[item_index]
-	selectableItemSlot .display_item(item)
+	selectableItemSlot.display_item(item)
 
 #refills array with updated item positions
 func _on_items_changed(indexes):
