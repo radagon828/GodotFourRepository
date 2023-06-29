@@ -9,22 +9,18 @@ func _ready():
 	update_inventory_display()
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
-		selectableItemSlot.selection_made.connect(prepare_to_swap, item_index)
+		selectableItemSlot.selection_made.connect(prepare_to_swap)
 		
-func prepare_to_swap(item_index):
-	
-	if swapIndexes.has(item_index): 
-		swapIndexes.clear()
-	else: 
-		swapIndexes.append(item_index)
-	
+func prepare_to_swap():
+	swapIndexes.clear()
+	for item_index in inventory.items.size():
+		if get_child(item_index).is_selected:
+			swapIndexes.append(item_index)
 	if swapIndexes.size() > 1:
 		inventory.swap_items(swapIndexes[0], swapIndexes[1])
-#		inventory.set_item()
-#		for itemIndex in swapIndexes:
-#			get_child(itemIndex).is_selected = false
 		swapIndexes.clear()
 	print(swapIndexes)
+	
 
 #changes the ordering of items when the positions of the items are changes
 func update_inventory_display():

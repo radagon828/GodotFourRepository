@@ -21,7 +21,6 @@ func swap_items(item_index, target_item_index):
 	items[target_item_index] = item
 	items[item_index] = targetItem
 	emit_signal("items_changed", [item_index, target_item_index])
-	print(items)
 	
 func remove_item(item_index):
 	var previousItem = items[item_index]
