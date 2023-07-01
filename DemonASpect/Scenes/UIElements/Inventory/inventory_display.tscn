@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dh8tll378at0h"]
 
 [ext_resource type="Script" path="res://Scenes/UIElements/Inventory/inventory_display.gd" id="1_6lgrn"]
-[ext_resource type="PackedScene" uid="uid://bupc8wfajvfyf" path="res://Scenes/UIElements/Inventory/inventory_slot_display.tscn" id="2_8lubr"]
+[ext_resource type="PackedScene" uid="uid://do70dy754fbi1" path="res://Scenes/UIElements/Inventory/inventory_slot_display.tscn" id="2_8lubr"]
 
 [node name="InventoryDisplay" type="GridContainer"]
 anchors_preset = 15

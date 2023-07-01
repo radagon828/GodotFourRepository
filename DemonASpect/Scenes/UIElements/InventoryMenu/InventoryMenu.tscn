@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cflt8s0n32xhw"]
+[gd_scene load_steps=3 format=3 uid="uid://bmymo0lvxfqr4"]
 
-[ext_resource type="Script" path="res://InventoryMenu.gd" id="1_xkka6"]
-[ext_resource type="PackedScene" uid="uid://uaxktficxsyi" path="res://item_display.tscn" id="2_ulh7g"]
+[ext_resource type="Script" path="res://Scenes/UIElements/InventoryMenu/InventoryMenu.gd" id="1_iddd5"]
+[ext_resource type="PackedScene" uid="uid://bue5wtpdxqrjk" path="res://Scenes/UIElements/InventoryMenu/item_display.tscn" id="2_3ojxk"]
 
 [node name="InventoryMenu" type="ColorRect"]
 anchors_preset = 15
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.576471, 0.352941, 0.0705882, 1)
-script = ExtResource("1_xkka6")
+script = ExtResource("1_iddd5")
 metadata/_edit_vertical_guides_ = []
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -21,5 +21,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemDisplay" parent="CenterContainer" instance=ExtResource("2_ulh7g")]
+[node name="ItemDisplay" parent="CenterContainer" instance=ExtResource("2_3ojxk")]
 layout_mode = 2

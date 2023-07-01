@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuqmemlcpe03x"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://Scenes/UIElements/Inventory/selectable_item_slot.gd" id="1_7q06u"]
-[ext_resource type="Texture2D" uid="uid://chfppsj6sxdpr" path="res://ItemSlot.png" id="1_lwt1o"]
+[ext_resource type="Texture2D" uid="uid://chfppsj6sxdpr" path="res://Sprites/ItemSlot.png" id="1_vn6ve"]
+[ext_resource type="Script" path="res://Scenes/UIElements/InventoryMenu/selectable_item_slot.gd" id="2_cnkos"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfssn"]
-texture = ExtResource("1_lwt1o")
+texture = ExtResource("1_vn6ve")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_08yun"]
 specular_color = Color(1, 0.960784, 0.996078, 1)
@@ -13,7 +13,7 @@ specular_color = Color(1, 0.960784, 0.996078, 1)
 custom_minimum_size = Vector2(30, 30)
 theme_override_styles/normal = SubResource("StyleBoxTexture_kfssn")
 action_mode = 0
-script = ExtResource("1_7q06u")
+script = ExtResource("2_cnkos")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 0, 0, 0)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://uaxktficxsyi"]
+[gd_scene load_steps=3 format=3 uid="uid://bue5wtpdxqrjk"]
 
-[ext_resource type="Script" path="res://ItemDisplay.gd" id="1_tyiss"]
-[ext_resource type="PackedScene" uid="uid://cuqmemlcpe03x" path="res://Scenes/UIElements/Inventory/selectable_item_slot.tscn" id="2_nwt6j"]
+[ext_resource type="Script" path="res://Scenes/UIElements/InventoryMenu/ItemDisplay.gd" id="1_tyiss"]
+[ext_resource type="PackedScene" path="res://Scenes/UIElements/InventoryMenu/selectable_item_slot.tscn" id="2_nwt6j"]
 
 [node name="ItemDisplay" type="GridContainer"]
 columns = 5

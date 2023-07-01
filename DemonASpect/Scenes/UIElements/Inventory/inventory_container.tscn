@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkk1ehdkorsf2"]
 
-[ext_resource type="PackedScene" path="res://Scenes/UIElements/Inventory/inventory_display.tscn" id="1_6h6p8"]
+[ext_resource type="PackedScene" uid="uid://dh8tll378at0h" path="res://Scenes/UIElements/Inventory/inventory_display.tscn" id="1_6h6p8"]
 
 [node name="InventoryContainer" type="ColorRect"]
 anchors_preset = 15

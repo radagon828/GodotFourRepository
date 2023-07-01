@@ -1,5 +1,6 @@
-res://
 res://Scenes/UIElements/Inventory
+res://Scenes/UIElements/InventoryMenu
+res://
 res://Items
 res://shaders
 res://Scenes/Levels

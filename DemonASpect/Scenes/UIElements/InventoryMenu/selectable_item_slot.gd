@@ -1,6 +1,6 @@
 extends Button
 
-var inventory = preload("res://NewInventory.tres")
+var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
 
 @onready var itemTextureRect = $ItemTexture
 @onready var selectedTexture = $TextureRect
