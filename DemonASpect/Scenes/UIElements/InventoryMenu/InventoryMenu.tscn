@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmymo0lvxfqr4"]
+[gd_scene load_steps=5 format=3 uid="uid://bmymo0lvxfqr4"]
 
 [ext_resource type="Script" path="res://Scenes/UIElements/InventoryMenu/InventoryMenu.gd" id="1_iddd5"]
 [ext_resource type="PackedScene" uid="uid://bue5wtpdxqrjk" path="res://Scenes/UIElements/InventoryMenu/item_display.tscn" id="2_3ojxk"]
+
+[sub_resource type="Animation" id="Animation_udrws"]
+resource_name = "InventoryOpen"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6hyg"]
+_data = {
+"InventoryOpen": SubResource("Animation_udrws")
+}
 
 [node name="InventoryMenu" type="ColorRect"]
 anchors_preset = 15
@@ -23,3 +31,8 @@ grow_vertical = 2
 
 [node name="ItemDisplay" parent="CenterContainer" instance=ExtResource("2_3ojxk")]
 layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m6hyg")
+}

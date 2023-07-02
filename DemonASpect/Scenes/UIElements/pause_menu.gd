@@ -7,7 +7,8 @@ extends ColorRect
 func _ready() -> void:
 	play_button.pressed.connect(unPause)
 	quit_button.pressed.connect(get_tree().quit)
-
+	play_button.grab_focus()
+	
 func unPause():
 	animator.play("Unpause")
 	#get_tree(),paused pauses all nodes in the scene that has their process mode set to inherit

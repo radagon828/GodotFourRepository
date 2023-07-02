@@ -1,3 +1,4 @@
+AnimationPlayer
 TextureRect
 Button
 GridContainer
@@ -5,7 +6,6 @@ CenterContainer
 ColorRect
 VBoxContainer
 CanvasLayer
-AnimationPlayer
 HSeparator
 Label
 MarginContainer

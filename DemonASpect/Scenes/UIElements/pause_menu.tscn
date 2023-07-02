@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6mhmd"]
 shader = ExtResource("1_fxkyj")
-shader_parameter/blur = 0.0
+shader_parameter/blur = 2.5
 shader_parameter/brightness = 1.0
 
 [sub_resource type="Animation" id="Animation_6iro7"]
