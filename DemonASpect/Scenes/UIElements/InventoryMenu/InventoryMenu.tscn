@@ -1,17 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmymo0lvxfqr4"]
+[gd_scene load_steps=6 format=3 uid="uid://bmymo0lvxfqr4"]
 
 [ext_resource type="Script" path="res://Scenes/UIElements/InventoryMenu/InventoryMenu.gd" id="1_iddd5"]
 [ext_resource type="PackedScene" uid="uid://bue5wtpdxqrjk" path="res://Scenes/UIElements/InventoryMenu/item_display.tscn" id="2_3ojxk"]
 
 [sub_resource type="Animation" id="Animation_udrws"]
 resource_name = "InventoryOpen"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_typ8y"]
+resource_name = "InventoryClose"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6hyg"]
 _data = {
+"InventoryClose": SubResource("Animation_typ8y"),
 "InventoryOpen": SubResource("Animation_udrws")
 }
 
 [node name="InventoryMenu" type="ColorRect"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,6 +76,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "InventoryOpen"
 libraries = {
 "": SubResource("AnimationLibrary_m6hyg")
 }

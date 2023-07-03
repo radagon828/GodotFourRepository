@@ -49,6 +49,8 @@ func _ready() -> void:
 	set_velocity(velocity)
 	airLeafSprite.frame = 0
 	$HurtBox.area_entered.connect(on_hurtbox_entered)
+	$InventoryMenu.hide()
+	$PauseMenu.hide()
 #	Engine.time_scale = 0.2
 	
 func _physics_process(delta: float):
@@ -264,6 +266,8 @@ func update_sprite():
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		$PauseMenu.pause()
+#	if event.is_action_pressed("open_inventory"):
+#		$InventoryMenu.open_inventory()
 
 func debug():
 	pass

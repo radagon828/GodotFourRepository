@@ -1,9 +1,10 @@
 extends ColorRect
 
-@onready var firstItemSlot = $CenterContainer/ItemDisplay/SelectableItemSlot
+@onready var firstItemSlot: Button = $CenterContainer/ItemDisplay/SelectableItemSlot
+@onready var animatorItem: AnimationPlayer = $AnimationPlayer
 
 func _ready():
-	firstItemSlot.grab_focus()
+	pass
 	
 #func unPause():
 #	animator.play("Unpause")
@@ -12,8 +13,9 @@ func _ready():
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 #	print("UNPAuSING")
 #
-#func pause():
-#	animator.play("Pause")
-#	#get_tree(),paused pauses all nodes in the scene that has their process mode set to inherit
-#	get_tree().paused = true
+func open_inventory():
+#	firstItemSlot.grab_focus()
+	animatorItem.play("InventoryOpen")
+	#get_tree(),paused pauses all nodes in the scene that has their process mode set to inherit
+	get_tree().paused = true
 #	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
