@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=55 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_flvje"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/AttackOneHit.gd" id="4_25j1u"]
 [ext_resource type="Texture2D" uid="uid://bvwh8lhc5sldt" path="res://Sprites/momodora attack effect air-Sheet.png" id="4_peeyh"]
 [ext_resource type="PackedScene" uid="uid://bc8ifdp44oq5k" path="res://Overlap/stats.tscn" id="5_wnybv"]
+[ext_resource type="Script" path="res://Scenes/Player/PlayerUI.gd" id="7_8astd"]
 [ext_resource type="PackedScene" uid="uid://b0klay3anoybn" path="res://Scenes/UIElements/pause_menu.tscn" id="7_35rov"]
 [ext_resource type="PackedScene" uid="uid://bmymo0lvxfqr4" path="res://Scenes/UIElements/InventoryMenu/InventoryMenu.tscn" id="8_1yxiw"]
 
@@ -781,13 +782,26 @@ collision_mask = 8
 position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_ownut")
 
-[node name="PauseMenu" parent="." instance=ExtResource("7_35rov")]
+[node name="PlayerUI" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_8astd")
+
+[node name="PauseMenu" parent="PlayerUI" instance=ExtResource("7_35rov")]
 z_index = 1
+layout_mode = 1
 offset_left = -1000.0
 offset_top = -500.0
 offset_right = 1000.0
 offset_bottom = 500.0
 
-[node name="InventoryMenu" parent="." instance=ExtResource("8_1yxiw")]
+[node name="InventoryMenu" parent="PlayerUI" instance=ExtResource("8_1yxiw")]
+process_mode = 3
+layout_mode = 1
 
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
