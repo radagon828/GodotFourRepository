@@ -10,7 +10,8 @@ var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres
 @export var is_selected = false
 
 signal selection_made
-signal itemOptionsOpened
+signal item_options_opened
+signal back_out
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	button_down.connect(_on_button_down)
@@ -20,8 +21,10 @@ func _ready():
 func _physics_process(delta: float):
 	selectedTexture.modulate = Color(0, 0, 0, .5) if is_selected else Color(0, 0, 0, 0)
 	if self.has_focus() == true && Input.is_action_just_pressed("roll"): swap_select()
-	if Input.is_action_just_pressed("attack"):
-		pass
+	if Input.is_action_just_pressed("attack") && itemOptions.is_visible():
+		emit_signal("back_out")
+		itemOptions.hide()
+		self.grab_focus()
 		
 func display_item(item):
 	if item is Item:
@@ -40,6 +43,6 @@ func _on_button_down():
 	if self.has_focus():
 		itemOptions.show()
 		itemOptions.get_child(0).grab_focus()
-		emit_signal("itemOptionsOpened")
+		emit_signal("item_options_opened")
 		
 

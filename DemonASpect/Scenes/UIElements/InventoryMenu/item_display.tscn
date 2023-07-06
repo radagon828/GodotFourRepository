@@ -9,60 +9,45 @@ script = ExtResource("1_tyiss")
 
 [node name="SelectableItemSlot" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot2" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot3" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot4" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot5" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot6" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot7" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot8" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot9" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot10" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot11" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot12" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot13" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot14" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false
 
 [node name="SelectableItemSlot15" parent="." instance=ExtResource("2_nwt6j")]
 layout_mode = 2
-is_selected = false

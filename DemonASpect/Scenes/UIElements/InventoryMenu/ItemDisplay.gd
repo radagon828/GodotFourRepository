@@ -10,8 +10,9 @@ func _ready():
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
 		selectableItemSlot.selection_made.connect(prepare_to_swap)
-		selectableItemSlot.itemOptionsOpened.connect(on_item_options_opened)
-		
+		selectableItemSlot.item_options_opened.connect(on_item_options_opened)
+		selectableItemSlot.back_out.connect(back_out)
+
 #adds item slot to an index, if the index has two items the position of the two items will swap
 func prepare_to_swap():
 	swapIndexes.clear()
@@ -46,8 +47,11 @@ func _on_items_changed(indexes):
 		
 
 func on_item_options_opened():
-	pass
-	print("done")
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
 		selectableItemSlot.focus_mode = Control.FOCUS_NONE
+		
+func back_out():
+	for item_index in inventory.items.size():
+		var selectableItemSlot = get_child(item_index)
+		selectableItemSlot.focus_mode = Control.FOCUS_ALL
