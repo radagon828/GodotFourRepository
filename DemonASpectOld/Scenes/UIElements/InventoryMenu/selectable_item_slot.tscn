@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://q21wi5p2dkbf"]
+
+[ext_resource type="Texture2D" uid="uid://chfppsj6sxdpr" path="res://Sprites/ItemSlot.png" id="1_vn6ve"]
+[ext_resource type="Script" path="res://Scenes/UIElements/InventoryMenu/selectable_item_slot.gd" id="2_cnkos"]
+[ext_resource type="FontFile" uid="uid://celi3giynqb62" path="res://Scenes/UIElements/Inventory/SuperLegendBoy-4w8Y.ttf" id="3_1f8ed"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfssn"]
+texture = ExtResource("1_vn6ve")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mm5a0"]
+texture = ExtResource("1_vn6ve")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_08yun"]
+specular_color = Color(1, 0.960784, 0.996078, 1)
+
+[node name="SelectableItemSlot" type="Button"]
+custom_minimum_size = Vector2(30, 30)
+theme_override_styles/normal = SubResource("StyleBoxTexture_kfssn")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_mm5a0")
+action_mode = 0
+script = ExtResource("2_cnkos")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+texture = SubResource("CanvasTexture_08yun")
+expand_mode = 1
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemOptions" type="GridContainer" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = 18.0
+offset_right = 191.0
+offset_bottom = 140.0
+scale = Vector2(0.239999, 0.239999)
+
+[node name="Use" type="Button" parent="ItemOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1f8ed")
+theme_override_font_sizes/font_size = 27
+text = "Use"
+
+[node name="Drop" type="Button" parent="ItemOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1f8ed")
+theme_override_font_sizes/font_size = 27
+text = "Drop"
+
+[node name="Examine" type="Button" parent="ItemOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1f8ed")
+theme_override_font_sizes/font_size = 27
+text = "Examine"

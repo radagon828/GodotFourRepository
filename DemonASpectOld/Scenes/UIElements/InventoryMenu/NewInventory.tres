@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=4 format=3]
+
+[ext_resource type="Resource" uid="uid://dj36rncmgc5sm" path="res://Items/DiamondRing.tres" id="1_8r2v1"]
+[ext_resource type="Script" path="res://Scenes/UIElements/InventoryMenu/Inventory.gd" id="1_o2v0n"]
+[ext_resource type="Resource" uid="uid://qqin1k3nmx8u" path="res://Items/TallShield.tres" id="2_718la"]
+
+[resource]
+script = ExtResource("1_o2v0n")
+items = Array[Resource]([ExtResource("1_8r2v1"), null, null, null, null, null, null, null, null, null, null, null, null, null, ExtResource("2_718la")])

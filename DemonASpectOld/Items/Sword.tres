@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://umrncytoiljq"]
+
+[ext_resource type="Script" path="res://Items/item.gd" id="1_vm34q"]
+[ext_resource type="Texture2D" uid="uid://cusknqmapx13k" path="res://Items/Sword.png" id="2_bsh87"]
+
+[resource]
+script = ExtResource("1_vm34q")
+name = "Sword"
+texture = ExtResource("2_bsh87")
+description = "a fucking sword"
+stackable = false
+usable = true

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OldInventory" load_steps=5 format=3 uid="uid://c72kbraxytcf0"]
+
+[ext_resource type="Script" path="res://Scenes/UIElements/Inventory/OldInventory.gd" id="1_bjsay"]
+[ext_resource type="Resource" uid="uid://umrncytoiljq" path="res://Items/Sword.tres" id="1_faf3o"]
+[ext_resource type="Resource" uid="uid://b7spsa8ohraq7" path="res://Items/Potion.tres" id="2_b4lxc"]
+[ext_resource type="Resource" uid="uid://qqin1k3nmx8u" path="res://Items/TallShield.tres" id="4_ekfia"]
+
+[resource]
+script = ExtResource("1_bjsay")
+items = Array[Resource]([ExtResource("1_faf3o"), null, null, null, ExtResource("2_b4lxc"), null, ExtResource("4_ekfia"), ExtResource("4_ekfia"), null])

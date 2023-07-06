@@ -702,6 +702,7 @@ tree_root = SubResource("20")
 anim_player = NodePath("../PlayerAnimations")
 parameters/Add2/add_amount = 1.0
 parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
 parameters/TimeScale/scale = 1.5
 parameters/combo/current_state = "attackOne"

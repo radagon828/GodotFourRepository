@@ -10,8 +10,4 @@ res://Scenes/UIElements/InventoryMenu/InventoryMenu.tscn
 res://Scenes/Levels/DungeonOne.tscn
 res://Scenes/UIElements/InventoryMenu/item_display.tscn
 res://Scenes/UIElements/InventoryMenu/selectable_item_slot.tscn
-res://Scenes/UIElements/InventoryMenu/InventoryMenu.gd
-res://Scenes/Player/PlayerUI.gd
-res://Scenes/UIElements/InventoryMenu/ItemDisplay.gd
-res://Scenes/UIElements/InventoryMenu/selectable_item_slot.gd
-res://Scenes/UIElements/Dialogue/Dialog Box.gd
+res://Scenes/UIElements/Dialogue/dialog_instance.tscn

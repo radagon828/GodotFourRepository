@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dj36rncmgc5sm"]
+
+[ext_resource type="Script" path="res://Items/item.gd" id="1_46vyv"]
+[ext_resource type="Texture2D" uid="uid://copyeowfqmmmq" path="res://Items/DiamondRing.png" id="2_rqecj"]
+
+[resource]
+script = ExtResource("1_46vyv")
+name = "Diamond Ring"
+texture = ExtResource("2_rqecj")
+description = "Increases Defense by 10%"
+stackable = false
+usable = false

@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://bts43hjoj71hj"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Enemy.gd" id="1_25ktf"]
+[ext_resource type="Texture2D" uid="uid://du360hi8k8e03" path="res://Sprites/character_0024.png" id="2_sthru"]
+[ext_resource type="Texture2D" uid="uid://dlvprl0t4c8gj" path="res://Sprites/character_0025.png" id="3_iduow"]
+[ext_resource type="Texture2D" uid="uid://devkckj25s07d" path="res://Sprites/character_0026.png" id="4_jabok"]
+[ext_resource type="PackedScene" uid="uid://baddeb1ytda56" path="res://enemy_hurtbox.tscn" id="5_05ag3"]
+[ext_resource type="PackedScene" uid="uid://bc8ifdp44oq5k" path="res://Overlap/stats.tscn" id="5_et7bv"]
+[ext_resource type="PackedScene" uid="uid://dwedsao06ptsy" path="res://Overlap/player_detection_zone.tscn" id="6_fdw7v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtlj5"]
+size = Vector2(6, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hn6lb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jabok")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sthru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iduow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jabok")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6cja8"]
+radius = 7.0
+height = 120.0
+
+[node name="EnemyGeneric" type="CharacterBody2D"]
+script = ExtResource("1_25ktf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_vtlj5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_hn6lb")
+animation = &"Hurt"
+autoplay = "Idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -12)
+texture = ExtResource("3_iduow")
+
+[node name="EnemyHurtbox" parent="." instance=ExtResource("5_05ag3")]
+
+[node name="Stats" parent="." instance=ExtResource("5_et7bv")]
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource("6_fdw7v")]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+position = Vector2(0, -12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6cja8")
+one_way_collision_margin = 0.0
+
+[editable path="EnemyHurtbox"]
+[editable path="PlayerDetectionZone"]

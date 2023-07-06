@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://baddeb1ytda56"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ov12"]
+
+[node name="EnemyHurtbox" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_5ov12")
