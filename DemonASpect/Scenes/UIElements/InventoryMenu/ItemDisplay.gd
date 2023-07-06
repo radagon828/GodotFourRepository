@@ -22,8 +22,7 @@ func prepare_to_swap():
 	if swapIndexes.size() > 1:
 		inventory.swap_items(swapIndexes[0], swapIndexes[1])
 		swapIndexes.clear()
-	print(swapIndexes)
-	
+
 
 #changes the ordering of items when the positions of the items are changes
 func update_inventory_display():
@@ -55,3 +54,4 @@ func back_out():
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
 		selectableItemSlot.focus_mode = Control.FOCUS_ALL
+		selectableItemSlot.itemOptions.hide()

@@ -22,9 +22,7 @@ func _physics_process(delta: float):
 	selectedTexture.modulate = Color(0, 0, 0, .5) if is_selected else Color(0, 0, 0, 0)
 	if self.has_focus() == true && Input.is_action_just_pressed("roll"): swap_select()
 	if Input.is_action_just_pressed("attack") && itemOptions.is_visible():
-		emit_signal("back_out")
-		itemOptions.hide()
-		self.grab_focus()
+		on_back_out_pressed()
 		
 func display_item(item):
 	if item is Item:
@@ -37,7 +35,7 @@ func swap_select():
 	var my_item_index = get_index()
 	emit_signal("selection_made")
 	var my_item = inventory.items[my_item_index]
-	inventory.drag_data = null
+#	inventory.drag_data = null
 	
 func _on_button_down():
 	if self.has_focus():
@@ -45,4 +43,8 @@ func _on_button_down():
 		itemOptions.get_child(0).grab_focus()
 		emit_signal("item_options_opened")
 		
+func on_back_out_pressed():
+	emit_signal("back_out")
+	itemOptions.hide()
+	self.grab_focus()
 
