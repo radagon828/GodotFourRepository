@@ -1,9 +1,11 @@
+Button
+GridContainer
+Panel
+PanelContainer
 Control
 Node
 AnimationPlayer
 TextureRect
-Button
-GridContainer
 CenterContainer
 ColorRect
 VBoxContainer
@@ -11,7 +13,6 @@ CanvasLayer
 HSeparator
 Label
 MarginContainer
-PanelContainer
 CharacterBody2D
 Node2D
 Sprite2D

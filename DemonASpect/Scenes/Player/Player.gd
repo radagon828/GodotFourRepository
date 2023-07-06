@@ -31,7 +31,7 @@ var isRolling = false
 @export var attackQueued = false
 @export var cancelable = false
 @export var animationFinished = false
-# velcoity is a predefined variable in godot 4
+# velocity is a predefined variable in godot 4
 @onready var animationPlayer: AnimationPlayer = $PlayerAnimations
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var playerSprite: Sprite2D = $PlayerSprite
@@ -262,14 +262,6 @@ func update_sprite():
 			leafSprite.position.x = 24
 			airLeafSprite.position.x = 29
 			hitBox.position.x = 32
-
-#func _unhandled_input(event: InputEvent) -> void:
-#	if event.is_action_pressed("ui_cancel"):
-#		$PauseMenu.pause()
-#	if event.is_action_pressed("open_inventory"):
-#		$InventoryMenu.open_inventory()
-#		if $PauseMenu.paused == true:
-#			$PauseMenu.hide()
 
 func debug():
 	pass

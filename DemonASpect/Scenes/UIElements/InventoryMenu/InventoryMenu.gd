@@ -6,7 +6,7 @@ extends ColorRect
 var opened: bool = false
 	
 func close_inventory():
-	animatorItem.play("InventoryCLose")
+	animatorItem.play("InventoryClose")
 	get_tree().paused = false
 	self.hide()
 	opened = false
