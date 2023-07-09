@@ -1,8 +1,8 @@
 Timer
+RichTextLabel
+Polygon2D
 Sprite2D
 AnimationPlayer
-Polygon2D
-RichTextLabel
 ColorRect
 Button
 GridContainer

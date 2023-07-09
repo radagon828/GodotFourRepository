@@ -11,3 +11,8 @@ res://Scenes/Levels/DungeonOne.tscn
 res://Scenes/UIElements/InventoryMenu/item_display.tscn
 res://Scenes/UIElements/InventoryMenu/selectable_item_slot.tscn
 res://Scenes/UIElements/Dialogue/dialog_instance.tscn
+res://Scenes/UIElements/Dialogue/DialogueBox.tscn
+res://Scenes/UIElements/Inventory/PixelRPG.tres
+res://Scenes/UIElements/Dialogue/DialogBox.gd
+res://Scenes/Player/Player.gd
+res://Scenes/Enemies/rat_man.tscn
