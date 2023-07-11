@@ -7,6 +7,6 @@
 script = ExtResource("1_46vyv")
 name = "Diamond Ring"
 texture = ExtResource("2_rqecj")
-description = "Increases Defense by 10%"
+description = Array[String](["A small diamand ring worth 10 gold"])
 stackable = false
 usable = false

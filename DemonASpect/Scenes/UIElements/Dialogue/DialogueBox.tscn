@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/UIElements/Dialogue/DialogBox.gd" id="2_uoson"]
 
 [node name="DialogueBox" type="Polygon2D"]
+process_mode = 3
 position = Vector2(10, 110)
 scale = Vector2(0.36, 0.36)
 color = Color(0.156863, 0.156863, 0.156863, 1)

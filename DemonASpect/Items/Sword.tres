@@ -7,6 +7,6 @@
 script = ExtResource("1_vm34q")
 name = "Sword"
 texture = ExtResource("2_bsh87")
-description = "a fucking sword"
+description = Array[String](["A small sword"])
 stackable = false
 usable = true

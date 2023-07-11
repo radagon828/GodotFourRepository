@@ -1,6 +1,8 @@
 extends Button
 
 var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
+var dialogScene = preload("res://Scenes/UIElements/Dialogue/DialogueBox.tscn")
+var itemDescription = dialogScene.instantiate()
 
 @onready var itemTextureRect = $ItemTexture
 @onready var selectedTexture = $TextureRect
@@ -16,17 +18,19 @@ signal back_out
 func _ready():
 	button_down.connect(_on_button_down)
 	itemOptions.hide()
-	
+
 #changed background color of selected button
 func _physics_process(delta: float):
 	selectedTexture.modulate = Color(0, 0, 0, .5) if is_selected else Color(0, 0, 0, 0)
 	if self.has_focus() == true && Input.is_action_just_pressed("roll"): swap_select()
 	if Input.is_action_just_pressed("attack") && itemOptions.is_visible():
 		on_back_out_pressed()
-		
+
+#function displays the item texture in the inventory menu and also assigns the item description to a dialog box
 func display_item(item):
 	if item is Item:
 		itemTextureRect.texture = item.texture
+		itemDescription.get_child(0).dialog.append_array(item.description)
 	else:
 		itemTextureRect.texture = null
 
@@ -48,3 +52,10 @@ func on_back_out_pressed():
 	itemOptions.hide()
 	self.grab_focus()
 
+
+func _on_examine_pressed():
+	var asdscene = get_tree().get_current_scene()
+	print(asdscene)
+	asdscene.add_child(itemDescription)
+	
+	

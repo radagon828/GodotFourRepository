@@ -7,6 +7,6 @@
 script = ExtResource("1_qtrhs")
 name = "TallShield"
 texture = ExtResource("2_yxsr1")
-description = "Shield for defending"
+description = Array[String](["A small metal shield. Resistant to fire"])
 stackable = true
 usable = true

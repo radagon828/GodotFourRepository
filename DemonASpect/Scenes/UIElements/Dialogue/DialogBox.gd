@@ -1,6 +1,6 @@
 extends RichTextLabel
 
-var dialog: Array[String] = ["Hey! My name is Hangman Adam Page and I'm going to train you!", "Go to Bed"]
+@export var dialog: Array[String] = []
 var page = 0
 @onready var timer = $Timer
 
@@ -19,6 +19,5 @@ func _input(event):
 		else:
 			visible_characters = get_total_character_count()
 	
-
 func _on_timer_timeout():
 	visible_characters = visible_characters + 1

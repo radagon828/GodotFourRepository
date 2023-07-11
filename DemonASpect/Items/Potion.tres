@@ -7,6 +7,6 @@
 script = ExtResource("1_ghufw")
 name = "Potion"
 texture = ExtResource("2_rtf8l")
-description = "Restores 20% of your Max Health"
+description = Array[String](["Restores 20 HP"])
 stackable = true
 usable = true

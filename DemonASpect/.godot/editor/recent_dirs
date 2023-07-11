@@ -1,3 +1,4 @@
+res://Overlap
 res://Scenes/UIElements/Dialogue
 res://Shaders
 res://Scenes/UIElements/Inventory
@@ -8,4 +9,3 @@ res://shaders
 res://Scenes/Levels
 res://Scenes/Player
 res://Scenes/Enemies
-res://Overlap
