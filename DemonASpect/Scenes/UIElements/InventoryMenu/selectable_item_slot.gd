@@ -1,12 +1,10 @@
 extends Button
 
 var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
-var dialogScene = preload("res://Scenes/UIElements/Dialogue/DialogueBox.tscn")
-var itemDescription = dialogScene.instantiate()
+
 
 @onready var itemTextureRect = $ItemTexture
 @onready var selectedTexture = $TextureRect
-
 @onready var itemOptions = $ItemOptions
 
 @export var is_selected = false
@@ -30,7 +28,7 @@ func _physics_process(delta: float):
 func display_item(item):
 	if item is Item:
 		itemTextureRect.texture = item.texture
-		itemDescription.get_child(0).dialog.append_array(item.description)
+#		itemDescription.get_child(0).dialog.append_array(item.description)
 	else:
 		itemTextureRect.texture = null
 
@@ -41,21 +39,29 @@ func swap_select():
 	var my_item = inventory.items[my_item_index]
 #	inventory.drag_data = null
 	
+#shows item options for respective slot, also sends signal to item display
 func _on_button_down():
 	if self.has_focus():
 		itemOptions.show()
 		itemOptions.get_child(0).grab_focus()
 		emit_signal("item_options_opened")
-		
+
+#hides item options
 func on_back_out_pressed():
 	emit_signal("back_out")
 	itemOptions.hide()
 	self.grab_focus()
 
-
+#opens item desciption
 func _on_examine_pressed():
-	var asdscene = get_tree().get_current_scene()
-	print(asdscene)
-	asdscene.add_child(itemDescription)
-	
+	var scene = self.get_parent().get_parent()
+	print(scene)
+	var buttons = itemOptions.get_children()
+	for button in buttons:
+		button.focus_mode = Control.FOCUS_NONE
+
+func on_dialog_finished():
+	var buttons = itemOptions.get_children()
+	for button in buttons:
+		button.focus_mode = Control.FOCUS_ALL
 	

@@ -4,8 +4,9 @@ extends RichTextLabel
 var page = 0
 @onready var timer = $Timer
 
+
 func _ready():
-	parse_bbcode(dialog[page])
+#	parse_bbcode(dialog[page])
 	visible_characters = 0
 	set_process_input(true)
 	
@@ -16,8 +17,12 @@ func _input(event):
 				page += 1
 				parse_bbcode(dialog[page])
 				visible_characters = 0
+			else:
+				get_parent().hide()
 		else:
 			visible_characters = get_total_character_count()
 	
 func _on_timer_timeout():
 	visible_characters = visible_characters + 1
+	
+

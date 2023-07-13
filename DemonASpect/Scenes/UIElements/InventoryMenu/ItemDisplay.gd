@@ -44,12 +44,13 @@ func _on_items_changed(indexes):
 	for item_index in indexes:
 		update_inventory_slot_display(item_index)
 		
-
+#makes inventory slots unselectable when item option menu is opened
 func on_item_options_opened():
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
 		selectableItemSlot.focus_mode = Control.FOCUS_NONE
-		
+
+#makes inventory slots selectable when item option menu is closed
 func back_out():
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)

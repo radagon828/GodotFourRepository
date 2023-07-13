@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjw1swwy8xhbc"]
+
+[ext_resource type="FontFile" uid="uid://celi3giynqb62" path="res://Scenes/UIElements/Inventory/SuperLegendBoy-4w8Y.ttf" id="1_x2xwm"]
+[ext_resource type="Script" path="res://Scenes/UIElements/Dialogue/DialogBox.gd" id="2_wjppp"]
+
+[node name="DialogBox" type="Panel"]
+
+[node name="DialogBoxBackground" type="Polygon2D" parent="."]
+process_mode = 3
+position = Vector2(-10, -10)
+scale = Vector2(0.36, 0.36)
+color = Color(0.156863, 0.156863, 0.156863, 1)
+polygon = PackedVector2Array(27.7778, 166.667, 805.555, 166.667, 805.555, 27.7778, 27.7778, 27.7778, 27.7778, 111.111)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBoxBackground"]
+offset_left = 55.5555
+offset_top = 55.5555
+offset_right = 1519.56
+offset_bottom = 201.556
+scale = Vector2(0.333334, 0.333334)
+theme_override_fonts/normal_font = ExtResource("1_x2xwm")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Hello Welcome to my dialog box tutorial"
+text_direction = 1
+script = ExtResource("2_wjppp")
+
+[node name="Timer" type="Timer" parent="DialogBoxBackground"]
+wait_time = 0.003
+autostart = true
+
+[connection signal="timeout" from="DialogBoxBackground/Timer" to="DialogBoxBackground/RichTextLabel" method="_on_timer_timeout" flags=18]

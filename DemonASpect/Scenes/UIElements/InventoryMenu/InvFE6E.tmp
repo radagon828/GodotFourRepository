@@ -68,10 +68,12 @@ metadata/_edit_vertical_guides_ = []
 
 [node name="DialogBox" parent="." instance=ExtResource("2_aiqli")]
 layout_mode = 2
-offset_left = -136.0
-offset_top = 16.0
-offset_right = -106.0
-offset_bottom = 16.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 120.0
+offset_right = 0.0
+offset_bottom = 120.0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
