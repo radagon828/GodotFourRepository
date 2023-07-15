@@ -2,9 +2,9 @@ extends ColorRect
 
 @onready var firstItemSlot: Button = $CenterContainer/ItemDisplay/SelectableItemSlot
 @onready var animatorItem: AnimationPlayer = $AnimationPlayer
-
+@onready var itemDialogBox: Panel = $DialogBox
 var opened: bool = false
-	
+
 func close_inventory():
 	animatorItem.play("InventoryClose")
 	get_tree().paused = false

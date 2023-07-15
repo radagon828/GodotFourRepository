@@ -2,6 +2,7 @@ extends Button
 
 var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
 
+var itemDescription: Array[String] = []
 
 @onready var itemTextureRect = $ItemTexture
 @onready var selectedTexture = $TextureRect
@@ -12,6 +13,7 @@ var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres
 signal selection_made
 signal item_options_opened
 signal back_out
+signal see_item_description
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	button_down.connect(_on_button_down)
@@ -28,7 +30,7 @@ func _physics_process(delta: float):
 func display_item(item):
 	if item is Item:
 		itemTextureRect.texture = item.texture
-#		itemDescription.get_child(0).dialog.append_array(item.description)
+		itemDescription.append_array(item.description)
 	else:
 		itemTextureRect.texture = null
 
@@ -54,8 +56,7 @@ func on_back_out_pressed():
 
 #opens item desciption
 func _on_examine_pressed():
-	var scene = self.get_parent().get_parent()
-	print(scene)
+	emit_signal("see_item_description")
 	var buttons = itemOptions.get_children()
 	for button in buttons:
 		button.focus_mode = Control.FOCUS_NONE

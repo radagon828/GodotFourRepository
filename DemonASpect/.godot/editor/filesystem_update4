@@ -1,5 +1,5 @@
 res://default_env.tres
-res://Scenes/UIElements/pause_menu.tscn
+res://Scenes/UIElements/Dialogue/dialog_box.tscn
 res://Scenes/UIElements/Inventory/Inventory.gd
 res://Scenes/UIElements/Inventory/inventory_display.gd
 res://Items/Sword.tres
@@ -9,14 +9,15 @@ res://Scenes/UIElements/Inventory/Inventory.tres
 res://Scenes/UIElements/InventoryMenu/Inventory.gd
 res://Items/DiamondRing.tres
 res://Shaders/blur.gdshader
+res://Scenes/UIElements/pause_menu.tscn
 res://Scenes/Player/Player.tscn
 res://Scenes/UIElements/InventoryMenu/InventoryMenu.tscn
 res://Scenes/Levels/DungeonOne.tscn
 res://Scenes/UIElements/InventoryMenu/item_display.tscn
 res://Scenes/UIElements/InventoryMenu/selectable_item_slot.tscn
-res://Scenes/UIElements/Dialogue/DialogueBox.tscn
 res://Scenes/Enemies/rat_man.tscn
 res://Overlap/remote_transform_2d.tscn
 res://Scenes/UIElements/Dialogue/DialogBox.gd
+res://Scenes/UIElements/InventoryMenu/InventoryMenu.gd
 res://Scenes/UIElements/InventoryMenu/selectable_item_slot.gd
-res://Scenes/UIElements/Dialogue/dialog_box.tscn
+res://Scenes/UIElements/InventoryMenu/ItemDisplay.gd

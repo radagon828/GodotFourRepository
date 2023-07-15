@@ -3,15 +3,21 @@ extends GridContainer
 var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
 var swapIndexes: Array[int] 
 
+@onready var box_dialog = $"../../DialogBox/DialogBoxBackground/Dialog"
+@onready var dialog_box = $"../../DialogBox"
 
+#prepares all functions for the individual slots
 func _ready():
 	inventory.items_changed.connect(_on_items_changed)
 	update_inventory_display()
+	dialog_box.hide()
+	#preparing slot functions
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
 		selectableItemSlot.selection_made.connect(prepare_to_swap)
 		selectableItemSlot.item_options_opened.connect(on_item_options_opened)
 		selectableItemSlot.back_out.connect(back_out)
+		selectableItemSlot.see_item_description.connect(play_item_description)
 
 #adds item slot to an index, if the index has two items the position of the two items will swap
 func prepare_to_swap():
@@ -56,3 +62,8 @@ func back_out():
 		var selectableItemSlot = get_child(item_index)
 		selectableItemSlot.focus_mode = Control.FOCUS_ALL
 		selectableItemSlot.itemOptions.hide()
+		
+func play_item_description():
+	print("im working")
+	dialog_box.show()
+#	box_dialog.dialog.append_array(description)

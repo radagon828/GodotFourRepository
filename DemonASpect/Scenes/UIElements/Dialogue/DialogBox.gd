@@ -10,6 +10,7 @@ func _ready():
 	visible_characters = 0
 	set_process_input(true)
 	
+
 func _input(event):
 	if Input.is_action_just_released("ui_accept"):
 		if visible_characters > get_total_character_count():
@@ -18,7 +19,7 @@ func _input(event):
 				parse_bbcode(dialog[page])
 				visible_characters = 0
 			else:
-				get_parent().hide()
+				get_parent().get_parent().hide()
 		else:
 			visible_characters = get_total_character_count()
 	
