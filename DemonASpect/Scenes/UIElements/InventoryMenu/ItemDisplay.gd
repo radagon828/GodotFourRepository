@@ -63,7 +63,8 @@ func back_out():
 		selectableItemSlot.focus_mode = Control.FOCUS_ALL
 		selectableItemSlot.itemOptions.hide()
 		
-func play_item_description():
-	print("im working")
+func play_item_description(words):
+	print(words)
+	box_dialog.dialog.append_array(words)
 	dialog_box.show()
-#	box_dialog.dialog.append_array(description)
+	

@@ -21,12 +21,11 @@ scale = Vector2(0.333334, 0.333334)
 theme_override_fonts/normal_font = ExtResource("1_x2xwm")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "Hello Welcome to my dialog box tutorial"
 text_direction = 1
 script = ExtResource("2_wjppp")
 
-[node name="Timer" type="Timer" parent="DialogBoxBackground"]
+[node name="Timer" type="Timer" parent="DialogBoxBackground/Dialog"]
 wait_time = 0.003
 autostart = true
 
-[connection signal="timeout" from="DialogBoxBackground/Timer" to="DialogBoxBackground/Dialog" method="_on_timer_timeout" flags=18]
+[connection signal="timeout" from="DialogBoxBackground/Dialog/Timer" to="DialogBoxBackground/Dialog" method="_on_timer_timeout" flags=18]

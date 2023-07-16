@@ -13,7 +13,7 @@ var itemDescription: Array[String] = []
 signal selection_made
 signal item_options_opened
 signal back_out
-signal see_item_description
+signal see_item_description(itemDescription)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	button_down.connect(_on_button_down)
@@ -56,7 +56,7 @@ func on_back_out_pressed():
 
 #opens item desciption
 func _on_examine_pressed():
-	emit_signal("see_item_description")
+	emit_signal("see_item_description", itemDescription)
 	var buttons = itemOptions.get_children()
 	for button in buttons:
 		button.focus_mode = Control.FOCUS_NONE
