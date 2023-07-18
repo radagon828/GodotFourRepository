@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmymo0lvxfqr4"]
+[gd_scene load_steps=6 format=3 uid="uid://bmymo0lvxfqr4"]
 
 [ext_resource type="Script" path="res://Scenes/UIElements/InventoryMenu/InventoryMenu.gd" id="1_iddd5"]
 [ext_resource type="PackedScene" uid="uid://bue5wtpdxqrjk" path="res://Scenes/UIElements/InventoryMenu/item_display.tscn" id="2_3ojxk"]
-[ext_resource type="PackedScene" uid="uid://bjw1swwy8xhbc" path="res://Scenes/UIElements/Dialogue/dialog_box.tscn" id="2_aiqli"]
 
 [sub_resource type="Animation" id="Animation_typ8y"]
 resource_name = "InventoryClose"
@@ -65,13 +64,6 @@ size_flags_vertical = 0
 color = Color(0.576471, 0.352941, 0.0705882, 1)
 script = ExtResource("1_iddd5")
 metadata/_edit_vertical_guides_ = []
-
-[node name="DialogBox" parent="." instance=ExtResource("2_aiqli")]
-layout_mode = 2
-offset_left = -136.0
-offset_top = 16.0
-offset_right = -106.0
-offset_bottom = 16.0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

@@ -1,9 +1,9 @@
 extends RichTextLabel
 
-@export var dialog: Array[String] = []
+@export var dialog: Array[String] = ["placeholder"]
 var page = 0
 @onready var timer = $Timer
-
+signal on_dialog_end
 
 func _ready():
 	#this is essential for some reason
@@ -11,15 +11,19 @@ func _ready():
 	visible_characters = 0
 	set_process_input(true)
 	
+	
 func _input(event):
 	if Input.is_action_just_released("ui_accept"):
+		#if the visible characters are more then the ammount of characters in the array then check if
+		#there is another page of dialog to turn to
 		if visible_characters > get_total_character_count():
 			if page < dialog.size()-1:
 				page += 1
 				parse_bbcode(dialog[page])
 				visible_characters = 0
 			else:
-				get_parent().get_parent().hide()
+				get_parent().get_parent().queue_free()
+				emit_signal("on_dialog_end")
 		else:
 			visible_characters = get_total_character_count()
 

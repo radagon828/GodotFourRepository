@@ -4,6 +4,10 @@
 [ext_resource type="Script" path="res://Scenes/UIElements/Dialogue/DialogBox.gd" id="2_wjppp"]
 
 [node name="DialogBox" type="Panel"]
+offset_left = -140.0
+offset_top = 20.0
+offset_right = -140.0
+offset_bottom = 20.0
 
 [node name="DialogBoxBackground" type="Polygon2D" parent="."]
 process_mode = 3
@@ -21,6 +25,7 @@ scale = Vector2(0.333334, 0.333334)
 theme_override_fonts/normal_font = ExtResource("1_x2xwm")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
+text = "Place holder lorem ipsom"
 text_direction = 1
 script = ExtResource("2_wjppp")
 

@@ -3,11 +3,11 @@ extends Button
 var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
 
 var itemDescription: Array[String] = []
+var hasItem: bool = false
 
 @onready var itemTextureRect = $ItemTexture
 @onready var selectedTexture = $TextureRect
 @onready var itemOptions = $ItemOptions
-
 @export var is_selected = false
 
 signal selection_made
@@ -18,7 +18,7 @@ signal see_item_description(itemDescription)
 func _ready():
 	button_down.connect(_on_button_down)
 	itemOptions.hide()
-
+	
 #changed background color of selected button
 func _physics_process(delta: float):
 	selectedTexture.modulate = Color(0, 0, 0, .5) if is_selected else Color(0, 0, 0, 0)
@@ -29,9 +29,11 @@ func _physics_process(delta: float):
 #function displays the item texture in the inventory menu and also assigns the item description to a dialog box
 func display_item(item):
 	if item is Item:
+		hasItem = true
 		itemTextureRect.texture = item.texture
 		itemDescription.append_array(item.description)
 	else:
+		hasItem = false
 		itemTextureRect.texture = null
 
 func swap_select():
@@ -43,7 +45,7 @@ func swap_select():
 	
 #shows item options for respective slot, also sends signal to item display
 func _on_button_down():
-	if self.has_focus():
+	if self.has_focus() && hasItem:
 		itemOptions.show()
 		itemOptions.get_child(0).grab_focus()
 		emit_signal("item_options_opened")
@@ -62,7 +64,9 @@ func _on_examine_pressed():
 		button.focus_mode = Control.FOCUS_NONE
 
 func on_dialog_finished():
+	print("asdasdasd")
 	var buttons = itemOptions.get_children()
 	for button in buttons:
 		button.focus_mode = Control.FOCUS_ALL
+	buttons[0].grab_focus()
 	

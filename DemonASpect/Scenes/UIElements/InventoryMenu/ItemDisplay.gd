@@ -3,14 +3,13 @@ extends GridContainer
 var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
 var swapIndexes: Array[int] 
 
-@onready var box_dialog = $"../../DialogBox/DialogBoxBackground/Dialog"
-@onready var dialog_box = $"../../DialogBox"
+var dialogInstance = preload("res://Scenes/UIElements/Dialogue/dialog_box.tscn")
 
 #prepares all functions for the individual slots
 func _ready():
+	print(get_parent().get_parent())
 	inventory.items_changed.connect(_on_items_changed)
 	update_inventory_display()
-	dialog_box.hide()
 	#preparing slot functions
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
@@ -63,8 +62,15 @@ func back_out():
 		selectableItemSlot.focus_mode = Control.FOCUS_ALL
 		selectableItemSlot.itemOptions.hide()
 		
-func play_item_description(words):
-	print(words)
-	box_dialog.dialog.append_array(words)
-	dialog_box.show()
-	
+func play_item_description(description):
+	var examineBox = dialogInstance.instantiate()
+	var dialogText = examineBox.get_child(0).get_child(0)
+	dialogText.dialog = description
+	dialogText.on_dialog_end.connect(end_examine)
+	get_parent().get_parent().add_child(examineBox)
+
+func end_examine():
+	for item_index in inventory.items.size():
+		var selectableItemSlot = get_child(item_index)
+		if selectableItemSlot.itemOptions.is_visible_in_tree():
+			selectableItemSlot.on_dialog_finished()
