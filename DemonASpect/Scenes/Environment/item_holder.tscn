@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://df2hnrbeo43es"]
+
+[ext_resource type="Script" path="res://Scenes/Environment/item_holder.gd" id="1_mvg5n"]
+[ext_resource type="Texture2D" uid="uid://q558hwug51oq" path="res://Items/TallShield.png" id="2_k8yfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vylnv"]
+size = Vector2(14, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n470m"]
+radius = 12.0
+
+[node name="ItemHolder" type="RigidBody2D"]
+collision_layer = 0
+script = ExtResource("1_mvg5n")
+
+[node name="ItemTexture" type="Sprite2D" parent="."]
+texture = ExtResource("2_k8yfh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_vylnv")
+
+[node name="PickupBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_n470m")
+
+[connection signal="area_entered" from="PickupBox" to="." method="_on_pickup_box_area_entered"]

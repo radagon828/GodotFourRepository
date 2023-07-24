@@ -19,12 +19,14 @@ func _unhandled_input(event: InputEvent) -> void:
 				InvMenu.hide()
 				InvMenu.opened = false
 				ItemDisplay.back_out()
-				ItemDisplay.update_inventory_display()
+#				ItemDisplay.update_inventory_display()
+				ItemDisplay.end_examine()
 	if event.is_action_pressed("open_inventory"):
 		if InvMenu.opened == true:
 			InvMenu.close_inventory()
 			ItemDisplay.back_out()
-			ItemDisplay.update_inventory_display()
+#			ItemDisplay.update_inventory_display()
+			ItemDisplay.end_examine()
 		else:
 			InvMenu.open_inventory()
 			if PauseMenu.paused == true: 

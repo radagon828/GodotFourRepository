@@ -1,6 +1,6 @@
 extends Button
 
-var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
+#var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres")
 
 var itemDescription: Array[String] = []
 var hasItem: bool = false
@@ -38,10 +38,9 @@ func display_item(item):
 
 func swap_select():
 	is_selected = !is_selected
-	var my_item_index = get_index()
 	emit_signal("selection_made")
-	var my_item = inventory.items[my_item_index]
-#	inventory.drag_data = null
+#	var my_item_index = get_index()
+#	var my_item = inventory.items[my_item_index]
 	
 #shows item options for respective slot, also sends signal to item display
 func _on_button_down():
