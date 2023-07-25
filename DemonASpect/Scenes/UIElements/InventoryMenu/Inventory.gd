@@ -8,7 +8,7 @@ signal items_changed(indexes)
 @export var items: Array[Resource] = [
 	null, null, null, null, null, null, null, null, null
 ]
-
+	
 func set_item(item_index, item):
 	var previousItem = items[item_index]
 	items[item_index] = item

@@ -11,10 +11,9 @@ func _ready():
 		itemTexture.texture = item.texture
 
 func _on_pickup_box_area_entered(area):
-	inventory.set_item(10, item)
+	var item_index = inventory.items.find(null, 0)
+	inventory.set_item(item_index, item)
 	print("pickedup")
 	queue_free()
 	
-#func item_picked_up():
-#	call_deferred("_on_pickup_box_area_entered")
-	
+

@@ -61,7 +61,8 @@ func back_out():
 		var selectableItemSlot = get_child(item_index)
 		selectableItemSlot.focus_mode = Control.FOCUS_ALL
 		selectableItemSlot.itemOptions.hide()
-		
+
+#instantiates text box
 func play_item_description(description):
 	var examineBox = dialogInstance.instantiate()
 	var dialogText = examineBox.get_child(0).get_child(0)
