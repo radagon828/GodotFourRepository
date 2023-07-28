@@ -22,7 +22,6 @@ func _input(event):
 				parse_bbcode(dialog[page])
 				visible_characters = 0
 			else:
-				get_parent().get_parent().queue_free()
 				emit_signal("on_dialog_end")
 		else:
 			visible_characters = get_total_character_count()

@@ -4,7 +4,7 @@ var inventory = preload("res://Scenes/UIElements/InventoryMenu/NewInventory.tres
 var swapIndexes: Array[int] 
 
 var dialogInstance = preload("res://Scenes/UIElements/Dialogue/dialog_box.tscn")
-
+var examineBox: Panel = null
 #prepares all functions for the individual slots
 func _ready():
 	print(get_parent().get_parent())
@@ -64,13 +64,14 @@ func back_out():
 
 #instantiates text box
 func play_item_description(description):
-	var examineBox = dialogInstance.instantiate()
+	examineBox = dialogInstance.instantiate()
 	var dialogText = examineBox.get_child(0).get_child(0)
 	dialogText.dialog = description
 	dialogText.on_dialog_end.connect(end_examine)
 	get_parent().get_parent().add_child(examineBox)
 
 func end_examine():
+	examineBox.queue_free()
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
 		if selectableItemSlot.itemOptions.is_visible_in_tree():
