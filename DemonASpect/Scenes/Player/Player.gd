@@ -49,8 +49,6 @@ func _ready() -> void:
 	set_velocity(velocity)
 	airLeafSprite.frame = 0
 	$HurtBox.area_entered.connect(on_hurtbox_entered)
-#	$InventoryMenu.hide()
-#	$PauseMenu.hide()
 #	Engine.time_scale = 0.2
 	
 func _physics_process(delta: float):

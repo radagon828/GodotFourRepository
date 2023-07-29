@@ -71,7 +71,8 @@ func play_item_description(description):
 	get_parent().get_parent().add_child(examineBox)
 
 func end_examine():
-	examineBox.queue_free()
+	if examineBox != null:
+		examineBox.queue_free()
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
 		if selectableItemSlot.itemOptions.is_visible_in_tree():

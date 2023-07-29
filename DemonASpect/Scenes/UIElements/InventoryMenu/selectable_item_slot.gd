@@ -20,7 +20,7 @@ func _ready():
 	itemOptions.hide()
 	
 #changed background color of selected button
-func _physics_process(delta: float):
+func _process(delta: float):
 	selectedTexture.modulate = Color(0, 0, 0, .5) if is_selected else Color(0, 0, 0, 0)
 	if self.has_focus() == true && Input.is_action_just_pressed("roll"): swap_select()
 	if Input.is_action_just_pressed("attack") && itemOptions.is_visible():
