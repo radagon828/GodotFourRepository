@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://3iipag00v3kf"]
+
+[ext_resource type="Texture2D" uid="uid://cwuysqacimqb2" path="res://Sprites/stone wall.png" id="1_5aixy"]
+[ext_resource type="PackedScene" uid="uid://bbe055orfkex8" path="res://Scenes/Player/Player.tscn" id="2_d43h4"]
+[ext_resource type="PackedScene" uid="uid://da3hxambvi68r" path="res://Overlap/remote_transform_2d.tscn" id="3_dyay4"]
+[ext_resource type="PackedScene" uid="uid://bklhl2m47ofxx" path="res://Scenes/UIElements/player_ui.tscn" id="4_p5vxo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mvcs"]
+texture = ExtResource("1_5aixy")
+texture_region_size = Vector2i(36, 36)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-18, -18, 18, -18, 18, 18, -18, 18)
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(18, -18, -18, -18, -18, 18, 18, 18)
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/2/physics_layer_0/angular_velocity = 0.0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-18, 18, 18, 18, 18, -18, -18, -18)
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/3/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/3/physics_layer_0/angular_velocity = 0.0
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(18, 18, -18, 18, -18, -18, 18, -18)
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/4/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/4/physics_layer_0/angular_velocity = 0.0
+0:0/4/physics_layer_0/polygon_0/points = PackedVector2Array(-18, -18, 18, -18, 18, 18, -18, 18)
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/5/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/5/physics_layer_0/angular_velocity = 0.0
+0:0/5/physics_layer_0/polygon_0/points = PackedVector2Array(18, -18, -18, -18, -18, 18, 18, 18)
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/6/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/6/physics_layer_0/angular_velocity = 0.0
+0:0/6/physics_layer_0/polygon_0/points = PackedVector2Array(-18, 18, 18, 18, 18, -18, -18, -18)
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+0:0/7/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/7/physics_layer_0/angular_velocity = 0.0
+0:0/7/physics_layer_0/polygon_0/points = PackedVector2Array(18, 18, -18, 18, -18, -18, 18, -18)
+
+[sub_resource type="TileSet" id="TileSet_pqo7r"]
+tile_size = Vector2i(36, 36)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_8mvcs")
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_pqo7r")
+format = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 1
+offset = Vector2(0, -25)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_d43h4")]
+
+[node name="RemoteTransform2D" parent="Player" instance=ExtResource("3_dyay4")]
+
+[node name="PlayerUI" parent="Player" instance=ExtResource("4_p5vxo")]
+process_mode = 3

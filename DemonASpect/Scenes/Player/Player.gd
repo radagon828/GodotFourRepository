@@ -48,8 +48,7 @@ func _ready() -> void:
 	velocity = velocity
 	set_velocity(velocity)
 	airLeafSprite.frame = 0
-	$HurtBox.area_entered.connect(on_hurtbox_entered)
-#	Engine.time_scale = 0.2
+	$HurtBox.area_entered.connect(on_hurtbox_entered)#	Engine.time_scale = 0.2
 	
 func _physics_process(delta: float):
 	match state:

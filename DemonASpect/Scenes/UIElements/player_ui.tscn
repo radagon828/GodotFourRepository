@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bklhl2m47ofxx"]
+
+[ext_resource type="Script" path="res://Scenes/Player/PlayerUI.gd" id="1_cw43s"]
+[ext_resource type="PackedScene" uid="uid://b0klay3anoybn" path="res://Scenes/UIElements/pause_menu.tscn" id="2_vfi3s"]
+[ext_resource type="PackedScene" uid="uid://bmymo0lvxfqr4" path="res://Scenes/UIElements/InventoryMenu/InventoryMenu.tscn" id="3_iplka"]
+
+[node name="PlayerUI" type="Control"]
+process_thread_group = 1
+process_thread_group_order = 1
+process_thread_messages = 0
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cw43s")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_vfi3s")]
+z_index = 1
+layout_mode = 1
+offset_left = -1000.0
+offset_top = -500.0
+offset_right = 1000.0
+offset_bottom = 500.0
+
+[node name="InventoryMenu" parent="." instance=ExtResource("3_iplka")]
+process_mode = 3
+layout_mode = 1

@@ -14,13 +14,15 @@ collision_layer = 0
 script = ExtResource("1_mvg5n")
 
 [node name="ItemTexture" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
 texture = ExtResource("2_k8yfh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_vylnv")
 
 [node name="PickupBox" type="Area2D" parent="."]
+position = Vector2(0, -10)
 collision_layer = 0
 collision_mask = 5
 

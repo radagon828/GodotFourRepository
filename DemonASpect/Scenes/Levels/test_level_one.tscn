@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://00jk8baittw1"]
+
+[ext_resource type="PackedScene" uid="uid://3iipag00v3kf" path="res://Scenes/Levels/base_level.tscn" id="1_shhbu"]
+[ext_resource type="PackedScene" uid="uid://bigfuro2dpaji" path="res://Scenes/Enemies/rat_man.tscn" id="2_eit0b"]
+[ext_resource type="PackedScene" uid="uid://250qes4gr7yy" path="res://Scenes/Environment/door.tscn" id="3_0uux6"]
+
+[node name="TestLevelOne" instance=ExtResource("1_shhbu")]
+
+[node name="TileMap" parent="." index="0"]
+layer_0/tile_data = PackedInt32Array(65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65533, 0, 0, 65532, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 4, 0, 0, 65540, 0, 0, 131067, 0, 0, 65531, 0, 0, 65530, 0, 0, 131066, 0, 0, 65529, 0, 0, 131065, 0, 0, -7, 0, 0, -65543, 0, 0, -131079, 0, 0, -196615, 0, 0, -262151, 0, 0, 131064, 0, 0, 65528, 0, 0, -8, 0, 0, -65544, 0, 0, -131080, 0, 0, -196616, 0, 0, -262152, 0, 0, -327688, 0, 0, -393224, 0, 0, -393223, 0, 0, -327687, 0, 0, 5, 0, 0, 65541, 0, 0, 65542, 0, 0, 6, 0, 0, -65530, 0, 0, -131066, 0, 0, -196602, 0, 0, -262138, 0, 0, -327674, 0, 0, -393210, 0, 0, -458746, 0, 0, -458745, 0, 0, -393209, 0, 0, -327673, 0, 0, -262137, 0, 0, -196601, 0, 0, -131065, 0, 0, -65529, 0, 0, 7, 0, 0, 65543, 0, 0, -458760, 0, 0, -524296, 0, 0, -589832, 0, 0, -655368, 0, 0, -589831, 0, 0, -524295, 0, 0, -458759, 0, 0, -655367, 0, 0, -720890, 0, 0, -655354, 0, 0, -589818, 0, 0, -524282, 0, 0, -524281, 0, 0, -589817, 0, 0, -655353, 0, 0, -720889, 0, 0)
+
+[node name="RatMan" parent="Enemies" index="0" instance=ExtResource("2_eit0b")]
+position = Vector2(-170, 0)
+
+[node name="Door" parent="Environment" index="0" instance=ExtResource("3_0uux6")]
+position = Vector2(150, 0)
+
+[node name="PlayerUI" parent="Player" index="12"]
+visible = false

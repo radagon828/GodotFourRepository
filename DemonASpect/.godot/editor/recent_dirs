@@ -1,3 +1,5 @@
+res://Scenes/Levels
+res://Scenes/UIElements
 res://Scenes/Environment
 res://Items
 res://Scenes/UIElements/Dialogue
@@ -7,6 +9,5 @@ res://Scenes/UIElements/Inventory
 res://Scenes/UIElements/InventoryMenu
 res://
 res://shaders
-res://Scenes/Levels
 res://Scenes/Player
 res://Scenes/Enemies
