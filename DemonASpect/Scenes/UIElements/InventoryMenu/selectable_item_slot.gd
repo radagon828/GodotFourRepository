@@ -63,7 +63,6 @@ func _on_examine_pressed():
 		button.focus_mode = Control.FOCUS_NONE
 
 func on_dialog_finished():
-	print("asdasdasd")
 	var buttons = itemOptions.get_children()
 	for button in buttons:
 		button.focus_mode = Control.FOCUS_ALL

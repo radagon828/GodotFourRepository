@@ -1,3 +1,4 @@
+Node
 Node2D
 Sprite2D
 CollisionShape2D
@@ -15,7 +16,6 @@ ColorRect
 Button
 GridContainer
 PanelContainer
-Node
 TextureRect
 CenterContainer
 VBoxContainer
