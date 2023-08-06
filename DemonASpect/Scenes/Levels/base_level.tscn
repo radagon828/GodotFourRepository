@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://3iipag00v3kf"]
+[gd_scene load_steps=8 format=3 uid="uid://3iipag00v3kf"]
 
 [ext_resource type="Texture2D" uid="uid://cwuysqacimqb2" path="res://Sprites/stone wall.png" id="1_5aixy"]
+[ext_resource type="Script" path="res://Scenes/Levels/base_level.gd" id="1_5q432"]
 [ext_resource type="PackedScene" uid="uid://bbe055orfkex8" path="res://Scenes/Player/Player.tscn" id="2_d43h4"]
 [ext_resource type="PackedScene" uid="uid://da3hxambvi68r" path="res://Overlap/remote_transform_2d.tscn" id="3_dyay4"]
 [ext_resource type="PackedScene" uid="uid://bklhl2m47ofxx" path="res://Scenes/UIElements/player_ui.tscn" id="4_p5vxo"]
@@ -60,6 +61,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8mvcs")
 
 [node name="BaseLevel" type="Node"]
+script = ExtResource("1_5q432")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_pqo7r")
