@@ -16,7 +16,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if PauseMenu.paused == true:
 			PauseMenu.unPause()
-#			get_tree().paused = false
 		else:
 			if InvMenu.opened == true: 
 				InvMenu.close_inventory()
@@ -29,7 +28,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_inventory"):
 		if InvMenu.opened == true:
 			ItemDisplay.end_examine()
-			
 			ItemDisplay.back_out()
 			InvMenu.close_inventory()
 		else:

@@ -61,6 +61,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8mvcs")
 
 [node name="BaseLevel" type="Node"]
+process_mode = 3
 script = ExtResource("1_5q432")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -81,4 +82,3 @@ zoom = Vector2(0.8, 0.8)
 [node name="RemoteTransform2D" parent="Player" instance=ExtResource("3_dyay4")]
 
 [node name="PlayerUI" parent="Player" instance=ExtResource("4_p5vxo")]
-process_mode = 3

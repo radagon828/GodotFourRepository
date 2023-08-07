@@ -5,9 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bmymo0lvxfqr4" path="res://Scenes/UIElements/InventoryMenu/InventoryMenu.tscn" id="3_iplka"]
 
 [node name="PlayerUI" type="Control"]
-process_thread_group = 1
-process_thread_group_order = 1
-process_thread_messages = 0
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,5 +23,4 @@ offset_right = 1000.0
 offset_bottom = 500.0
 
 [node name="InventoryMenu" parent="." instance=ExtResource("3_iplka")]
-process_mode = 3
 layout_mode = 1

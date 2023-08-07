@@ -1,4 +1,6 @@
 res://default_env.tres
+res://Scenes/UIElements/pause_menu.tscn
+res://Scenes/Levels/level_manager.gd
 res://Scenes/UIElements/Inventory/Inventory.gd
 res://Scenes/UIElements/Inventory/inventory_display.gd
 res://Items/Sword.tres
@@ -6,13 +8,10 @@ res://Items/Potion.tres
 res://Items/TallShield.tres
 res://Scenes/UIElements/Inventory/Inventory.tres
 res://Scenes/UIElements/InventoryMenu/Inventory.gd
+res://Shaders/blur.gdshader
 res://Items/DiamondRing.tres
 res://Items/Key.tres
 res://Scenes/UIElements/InventoryMenu/NewInventory.tres
-res://Shaders/blur.gdshader
-res://Scenes/Levels/level_manager.tscn
-res://Scenes/Levels/level_manager.gd
-res://Scenes/UIElements/pause_menu.tscn
 res://Scenes/Player/Player.tscn
 res://Scenes/UIElements/InventoryMenu/InventoryMenu.tscn
 res://Scenes/UIElements/InventoryMenu/item_display.tscn
@@ -20,5 +19,13 @@ res://Scenes/UIElements/InventoryMenu/selectable_item_slot.tscn
 res://Scenes/Levels/test_level_one.tscn
 res://Scenes/Levels/base_level.tscn
 res://Scenes/UIElements/player_ui.tscn
+res://Scenes/Levels/level_manager.tscn
 res://Scenes/Levels/level_000.tscn
 res://Scenes/Levels/base_level.gd
+res://Scenes/Environment/Door.gd
+res://Scenes/Enemies/rat_man.tscn
+res://Scenes/Enemies/EnemyGeneric.tscn
+res://Scenes/Environment/door.tscn
+res://Scenes/Player/PlayerUI.gd
+res://Scenes/UIElements/Dialogue/dialog_box.tscn
+res://Scenes/Player/Player.gd

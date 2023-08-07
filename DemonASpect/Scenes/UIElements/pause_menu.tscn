@@ -135,7 +135,6 @@ _data = {
 }
 
 [node name="PauseMenu" type="ColorRect"]
-process_mode = 3
 material = SubResource("ShaderMaterial_6mhmd")
 custom_minimum_size = Vector2(2000, 1000)
 anchors_preset = 15

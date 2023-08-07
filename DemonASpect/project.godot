@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Levels/test_level_one.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
 
+[autoload]
+
+LevelManager="*res://Scenes/Levels/level_manager.tscn"
+
 [display]
 
 window/size/viewport_width=320
