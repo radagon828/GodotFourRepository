@@ -13,7 +13,7 @@ func _ready():
 	
 	
 func _input(event):
-	if Input.is_action_just_released("ui_accept"):
+	if Input.is_action_just_released("ui_accept") || Input.is_action_just_released("use"):
 		#if the visible characters are more then the ammount of characters in the array then check if
 		#there is another page of dialog to turn to
 		if visible_characters > get_total_character_count():

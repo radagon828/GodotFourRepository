@@ -7,7 +7,6 @@ var dialogInstance = preload("res://Scenes/UIElements/Dialogue/dialog_box.tscn")
 var examineBox: Panel = null
 #prepares all functions for the individual slots
 func _ready():
-	print(get_parent().get_parent())
 	inventory.items_changed.connect(_on_items_changed)
 	update_inventory_display()
 	#preparing slot functions
