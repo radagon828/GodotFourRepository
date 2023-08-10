@@ -14,5 +14,5 @@ func _ready():
 func on_player_detection(body: Area2D):
 	player = body 
 
-func on_player_evasion(body: Area2D):
+func on_player_evasion(_body: Area2D):
 	player = null

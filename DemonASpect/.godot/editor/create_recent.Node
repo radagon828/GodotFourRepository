@@ -1,7 +1,12 @@
+AirAttack
+AttackThreeState
+AttackTwoState
+AttackOneState
+HurtState
+RollState
 MoveState
 FiniteStateMachine
 RayCast2D
-Player
 Node
 Node2D
 Sprite2D
@@ -26,6 +31,3 @@ VBoxContainer
 CanvasLayer
 HSeparator
 Label
-MarginContainer
-CharacterBody2D
-AnimatedSprite2D

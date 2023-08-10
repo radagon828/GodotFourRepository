@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bbe055orfkex8"]
+[gd_scene load_steps=59 format=3 uid="uid://bbe055orfkex8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Player.gd" id="1_flvje"]
 [ext_resource type="Texture2D" uid="uid://csggvrmqwogya" path="res://Sprites/momodora sprites-Sheet.png" id="2"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Overlap/States/finite_state_machine.gd" id="7_1qt8e"]
 [ext_resource type="Script" path="res://Overlap/States/move_state.gd" id="8_ywls7"]
 [ext_resource type="Script" path="res://Overlap/States/roll_state.gd" id="9_5md2l"]
-[ext_resource type="Script" path="res://Overlap/States/air_attack.gd" id="9_wmaug"]
 [ext_resource type="Script" path="res://Overlap/States/hurt_state.gd" id="10_kd7bd"]
 [ext_resource type="Script" path="res://Overlap/States/attack_one_state.gd" id="11_fh3sk"]
 [ext_resource type="Script" path="res://Overlap/States/attack_two_state.gd" id="12_kv4v3"]
@@ -684,52 +683,17 @@ height = 38.0
 
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1
-editor_description = "	"
 collision_layer = 0
 script = ExtResource("1_flvje")
-
-[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
-script = ExtResource("7_1qt8e")
-state = NodePath("MoveState")
-
-[node name="MoveState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "dashTimer", "runTimer")]
-script = ExtResource("8_ywls7")
-actor = NodePath("../..")
-animator = NodePath("../../AnimationTree")
-dashTimer = NodePath("../../Timers/DashTimer")
-runTimer = NodePath("../../Timers/RunTimer")
-
-[node name="RollState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "dashTimer")]
-script = ExtResource("9_5md2l")
-actor = NodePath("../..")
-animator = NodePath("../../AnimationTree")
-dashTimer = NodePath("../../Timers/DashTimer")
-
-[node name="HurtState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("hurtTimer", "actor", "animator")]
-script = ExtResource("10_kd7bd")
-hurtTimer = NodePath("../../Timers/TestTimer")
-actor = NodePath("../..")
-animator = NodePath("../../AnimationTree")
-
-[node name="AttackOneState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
-script = ExtResource("11_fh3sk")
-actor = NodePath("../..")
-animator = NodePath("../../AnimationTree")
-
-[node name="AttackTwoState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
-script = ExtResource("12_kv4v3")
-actor = NodePath("../..")
-animator = NodePath("../../AnimationTree")
-
-[node name="AttackThreeState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
-script = ExtResource("13_4mad8")
-actor = NodePath("../..")
-animator = NodePath("../../AnimationTree")
-
-[node name="AirAttack" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
-script = ExtResource("9_wmaug")
-actor = NodePath("../..")
-animator = NodePath("../../AnimationTree")
+GRAVITY = null
+JUMP_POWER = null
+ACCELERATION = null
+MAX_SPEED = null
+ROLL_SPEED = null
+FRICTION = null
+attackQueued = null
+cancelable = null
+animationFinished = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
@@ -832,5 +796,43 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -19)
 shape = SubResource("CapsuleShape2D_ownut")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("7_1qt8e")
+state = NodePath("MoveState")
+
+[node name="MoveState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "dashTimer", "runTimer")]
+script = ExtResource("8_ywls7")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationTree")
+dashTimer = NodePath("../../Timers/DashTimer")
+runTimer = NodePath("../../Timers/RunTimer")
+
+[node name="RollState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "dashTimer")]
+script = ExtResource("9_5md2l")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationTree")
+dashTimer = NodePath("../../Timers/DashTimer")
+
+[node name="HurtState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("hurtTimer", "actor", "animator")]
+script = ExtResource("10_kd7bd")
+hurtTimer = NodePath("../../Timers/TestTimer")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationTree")
+
+[node name="AttackOneState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("11_fh3sk")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationTree")
+
+[node name="AttackTwoState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("12_kv4v3")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationTree")
+
+[node name="AttackThreeState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("13_4mad8")
+actor = NodePath("../..")
+animator = NodePath("../../AnimationTree")
 
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
