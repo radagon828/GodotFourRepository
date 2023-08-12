@@ -31,6 +31,7 @@ func display_item(item):
 	if item is Item:
 		hasItem = true
 		itemTextureRect.texture = item.texture
+		itemDescription.clear()
 		itemDescription.append_array(item.description)
 	else:
 		hasItem = false

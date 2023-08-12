@@ -48,7 +48,6 @@ func _ready() -> void:
 	move_state.rolling_start.connect(fsm.change_state.bind(roll_state))
 	move_state.attack_start.connect(fsm.change_state.bind(attack_one_state))
 	move_state.air_attack.connect(fsm.change_state.bind(air_attack))
-	roll_state.roll_finished.connect(fsm.change_state.bind(move_state))
 	hurt_state.recovery.connect(fsm.change_state.bind(move_state))
 	attack_one_state.second_attack.connect(fsm.change_state.bind(attack_two_state))
 	attack_two_state.third_attack.connect(fsm.change_state.bind(attack_three_state))
@@ -84,6 +83,11 @@ func on_attack_finished():
 	cancelable = false
 	fsm.change_state(move_state)
 
+func on_roll_finished():
+	$AnimationTree.set("parameters/movement/transition_request", "idle")
+	isRolling = false
+	fsm.change_state(move_state)
+
 func move():
 	set_up_direction(Vector2.UP)
 	move_and_slide()
@@ -101,6 +105,7 @@ func _on_stats_no_health():
 
 func update_sprite():
 	var moveVec = get_input_vector()
+	airLeafSprite.visible == false if is_on_floor() else true 
 	if (moveVec.x != 0):
 		playerSprite.flip_h = true if moveVec.x < 0 else false
 		if moveVec.x < 0:
@@ -118,6 +123,7 @@ func update_sprite():
 
 func debug():
 	pass
+#	print(animationFinished)
 #	print(dash_timer.time_left)
 #	print($AnimationTree.get("parameters/movement/current_state"))
 #	print(Input.is_action_just_pressed("attack"))

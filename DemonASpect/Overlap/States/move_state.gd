@@ -17,9 +17,9 @@ func _ready():
 	set_physics_process(false)
 	
 func _enter_state() -> void:
-	actor.isRolling = false
-	actor.cancelable = false
-	actor.isAttacking = false
+#	actor.isRolling = false
+#	actor.cancelable = false
+#	actor.isAttacking = false
 
 	set_physics_process(true)
 
@@ -28,7 +28,6 @@ func _exit_state() -> void:
 	
 func _physics_process(delta):
 	var inputVector = actor.get_input_vector()
-	
 	#RUNNING
 	running(inputVector, delta)
 	actor.velocity.x = clamp(actor.velocity.x, -actor.MAX_SPEED, actor.MAX_SPEED)
@@ -51,7 +50,7 @@ func _physics_process(delta):
 
 	animator.set("parameters/in_air_state/transition_request", !actor.is_on_floor())
 	#ROLL STATE SWITCH
-	if (Input.is_action_just_pressed("roll") && actor.is_on_floor()):
+	if (Input.is_action_just_pressed("roll") && actor.is_on_floor() && !actor.isRolling):
 		dashTimer.start()
 		actor.isRolling = true
 		rolling_start.emit()

@@ -16,6 +16,7 @@ func _ready():
 		selectableItemSlot.item_options_opened.connect(on_item_options_opened)
 		selectableItemSlot.back_out.connect(back_out)
 		selectableItemSlot.see_item_description.connect(play_item_description)
+		
 
 #adds item slot to an index, if the index has two items the position of the two items will swap
 func prepare_to_swap():
@@ -47,6 +48,7 @@ func update_inventory_slot_display(item_index):
 func _on_items_changed(indexes):
 	for item_index in indexes:
 		update_inventory_slot_display(item_index)
+#		print(inventory.items[item_index].description)
 		
 #makes inventory slots unselectable when item option menu is opened
 func on_item_options_opened():
@@ -56,6 +58,8 @@ func on_item_options_opened():
 
 #makes inventory slots selectable when item option menu is closed
 func back_out():
+	if examineBox != null:
+		examineBox.queue_free()
 	for item_index in inventory.items.size():
 		var selectableItemSlot = get_child(item_index)
 		selectableItemSlot.focus_mode = Control.FOCUS_ALL

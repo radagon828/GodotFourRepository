@@ -358,7 +358,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FiniteStateMachine/RollState")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -687,6 +687,8 @@ process_mode = 1
 editor_description = "	"
 collision_layer = 0
 script = ExtResource("1_flvje")
+cancelable = true
+animationFinished = true
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("7_1qt8e")
