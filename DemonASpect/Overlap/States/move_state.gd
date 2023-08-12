@@ -17,9 +17,6 @@ func _ready():
 	set_physics_process(false)
 	
 func _enter_state() -> void:
-#	actor.isRolling = false
-#	actor.cancelable = false
-#	actor.isAttacking = false
 
 	set_physics_process(true)
 
@@ -29,7 +26,7 @@ func _exit_state() -> void:
 func _physics_process(delta):
 	var inputVector = actor.get_input_vector()
 	#RUNNING
-	
+	actor.hitBoxCollision.disabled = true
 	running(inputVector, delta)
 	actor.velocity.x = clamp(actor.velocity.x, -actor.MAX_SPEED, actor.MAX_SPEED)
 
