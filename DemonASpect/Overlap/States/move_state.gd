@@ -29,6 +29,7 @@ func _exit_state() -> void:
 func _physics_process(delta):
 	var inputVector = actor.get_input_vector()
 	#RUNNING
+	
 	running(inputVector, delta)
 	actor.velocity.x = clamp(actor.velocity.x, -actor.MAX_SPEED, actor.MAX_SPEED)
 

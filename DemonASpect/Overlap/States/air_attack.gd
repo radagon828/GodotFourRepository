@@ -11,6 +11,7 @@ func _enter_state() -> void:
 	set_physics_process(true)
 
 func _exit_state() -> void:
+	actor.hitBoxCollision.disabled = true
 	set_physics_process(false)
 
 func _physics_process(delta):

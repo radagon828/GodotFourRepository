@@ -28,6 +28,7 @@ var knockback = Vector2.RIGHT
 
 @onready var testTimer: Timer = $Timers/TestTimer
 @onready var hitBox: Area2D = $Hitboxes/AttackOneHit
+@onready var hitBoxCollision: CollisionShape2D = $Hitboxes/AttackOneHit/CollisionShape2D
 @onready var stats: Node = $Stats
 
 @onready var fsm = $FiniteStateMachine as FiniteStateMachine
@@ -85,7 +86,7 @@ func on_attack_finished():
 
 func on_roll_finished():
 	$AnimationTree.set("parameters/movement/transition_request", "idle")
-	isRolling = false
+	
 	fsm.change_state(move_state)
 
 func move():

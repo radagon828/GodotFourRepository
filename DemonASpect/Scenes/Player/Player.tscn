@@ -687,7 +687,6 @@ process_mode = 1
 editor_description = "	"
 collision_layer = 0
 script = ExtResource("1_flvje")
-cancelable = true
 animationFinished = true
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
