@@ -9,7 +9,6 @@ extends CharacterBody2D
 
 #var state = MOVE
 var roll_vector = Vector2.RIGHT
-#var jumpTerminationMultiplier = 3
 var knockback = Vector2.RIGHT
 		
 #BOOLS
@@ -59,11 +58,9 @@ func _physics_process(delta: float):
 	debug()
 	move()
 	update_sprite()
-#	$AnimationTree.set("parameters/is_hurt/transition_request", state == HURT)
 
 func get_input_vector():
 	var input_vector = Vector2.ZERO
-#	roll_vector.x = input_vector.x
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector.y = -1 if Input.is_action_just_pressed("jump") else 0
 	return input_vector

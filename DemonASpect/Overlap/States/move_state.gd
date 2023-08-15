@@ -27,7 +27,7 @@ func _physics_process(delta):
 	var inputVector = actor.get_input_vector()
 	#RUNNING
 	actor.hitBoxCollision.disabled = true
-	running(inputVector, delta)
+	actor.running(inputVector, delta)
 	actor.velocity.x = clamp(actor.velocity.x, -actor.MAX_SPEED, actor.MAX_SPEED)
 
 	#JUMPING
@@ -78,13 +78,5 @@ func _physics_process(delta):
 		actor.attackQueued = false
 		actor.animationFinished = false
 		actor.isAttacking = true
-		
-func running(inputVector, delta):
-	if (inputVector.x != 0):
-		actor.roll_vector.x = inputVector.x
-		actor.velocity.x += inputVector.x * actor.ACCELERATION * delta
-		animator.set("parameters/movement/transition_request", "run")
-	elif inputVector.x == 0:
-		animator.set("parameters/movement/transition_request", "idle")
-		actor.velocity.x = move_toward(actor.velocity.x, 0, actor.FRICTION * delta)
+
 
