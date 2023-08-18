@@ -4,3 +4,4 @@ res://Scenes/UIElements/Inventory/inventory_display.gd
 res://Items/Sword.tres
 res://Items/Potion.tres
 res://Scenes/UIElements/Inventory/Inventory.tres
+res://Saves/SaveGame.gd

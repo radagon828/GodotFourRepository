@@ -1,11 +1,23 @@
-extends Node
+class_name SaveGame
+extends Resource
 
+const SAVE_GAME_PATH = ""
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var version = 1
 
+@export var character: Resource
+@export var inventory: Resource
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+@export var map_name = ""
+@export var global_position = Vector2.ZERO
+
+func write_savegame() -> void:
+	ResourceSaver.save(SAVE_GAME_PATH, self)
+	
+static func save_exists() -> bool:
+	return ResourceLoader.exists(SAVE_GAME_PATH)
+	
+static func load_savegame() -> Resource:
+	if not ResourceLoader.has_cached(SAVE_GAME_PATH):
+		return ResourceLoader.load(SAVE_GAME_PATH, "", true)
+	
