@@ -53,7 +53,6 @@ func unlocked_door_interaction():
 func on_door_event_end():
 	examineBox.queue_free()
 	emit_signal("event_end")
-	get_tree().paused = false
 
 #unlocks door and plays dialogue box indicating that it has been unlocked, 
 #also removes key from inventory
@@ -61,7 +60,6 @@ func door_unlock_event(item_index, item):
 	is_unlocked = true
 	inventory.remove_item(item_index)
 	instantiate_dialog(door_unlocking_dialog)
-	get_tree().paused = true
 
 #plays dialogue for the door being locked
 func door_locked_event():

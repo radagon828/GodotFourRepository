@@ -823,7 +823,7 @@ scale = Vector2(1.48, 0.92)
 shape = SubResource("CapsuleShape2D_l047g")
 disabled = true
 
-[node name="Stats" parent="." groups=["Persist"] instance=ExtResource("5_wnybv")]
+[node name="Stats" parent="." instance=ExtResource("5_wnybv")]
 max_health = 5
 
 [node name="HurtBox" type="Area2D" parent="."]

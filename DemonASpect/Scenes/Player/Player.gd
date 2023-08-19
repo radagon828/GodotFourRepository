@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var ROLL_SPEED = 180
 @export var FRICTION = 700
 
-#var state = MOVE
+
 var roll_vector = Vector2.RIGHT
 var knockback = Vector2.RIGHT
 		
@@ -25,7 +25,7 @@ var knockback = Vector2.RIGHT
 @onready var leafSprite: Sprite2D = $LeafSprite
 @onready var airLeafSprite: Sprite2D = $AirAttackSprite
 
-@onready var testTimer: Timer = $Timers/TestTimer
+@export var hurtTimer: Timer 
 @onready var hitBox: Area2D = $Hitboxes/AttackOneHit
 @onready var hitBoxCollision: CollisionShape2D = $Hitboxes/AttackOneHit/CollisionShape2D
 @onready var stats: Node = $Stats
@@ -83,15 +83,14 @@ func on_attack_finished():
 
 func on_roll_finished():
 	$AnimationTree.set("parameters/movement/transition_request", "idle")
-	
 	fsm.change_state(move_state)
 
 func move():
 	set_up_direction(Vector2.UP)
 	move_and_slide()
-#
+
 func on_hurtbox_entered(area: Area2D):
-	testTimer.start()
+	hurtTimer.start()
 	velocity = Vector2.ZERO
 	knockback = area.knockback_vector * 120
 	velocity += knockback

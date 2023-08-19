@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqvmq"]
 size = Vector2(18, 40)
 
-[node name="Door" type="Node2D"]
+[node name="Door" type="Node2D" groups=["Doors"]]
 process_mode = 1
 script = ExtResource("1_4osdb")
 

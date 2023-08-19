@@ -60,7 +60,7 @@ tile_size = Vector2i(36, 36)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8mvcs")
 
-[node name="BaseLevel" type="Node"]
+[node name="BaseLevel" type="Node" groups=["Levels"]]
 process_mode = 3
 script = ExtResource("1_5q432")
 
@@ -75,7 +75,7 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Environment" type="Node2D" parent="."]
+[node name="Environment" type="Node2D" parent="." groups=["Persist"]]
 
 [node name="Player" parent="." instance=ExtResource("2_d43h4")]
 
