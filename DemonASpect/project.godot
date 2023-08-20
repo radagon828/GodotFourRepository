@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 [autoload]
 
 LevelManager="*res://Scenes/Levels/level_manager.tscn"
+GameState="*res://GameState.gd"
 
 [display]
 

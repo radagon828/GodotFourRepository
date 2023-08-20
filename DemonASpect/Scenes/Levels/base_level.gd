@@ -3,8 +3,14 @@ extends Node
 @onready var environment = $Environment
 @onready var user_interface = $Player/PlayerUI
 @onready var levelManager = $"/root/LevelManager"
+@onready var doors: Array[Node] = get_tree().get_nodes_in_group("Doors")
+
+
 
 func _ready():
+#	print(doors[0].name)j
+	GameState.test_number = doors.size()
+	GameState.level_name = name
 	for scene in environment.get_children():
 		scene.dialog_event.connect(disable_ui)
 		scene.event_end.connect(enable_ui)
@@ -25,12 +31,7 @@ func enable_ui():
 func enter_area(area_index):
 	levelManager.change_level(area_index)
 	
-#@onready var doors: Array[Node] = get_tree().get_nodes_in_group("Doors")
-##var counter
-#func _process(delta):
-#
-#	for node_index in doors.size():
-#		var door = doors[node_index]
+
 
 
 

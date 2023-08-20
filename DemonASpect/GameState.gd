@@ -1,7 +1,6 @@
-class_name SaveGame
 extends Node
 
-const SAVE_GAME_PATH = ""
+const SAVE_GAME_PATH = "res://save_json.json"
 
 @export var version = 1
 
@@ -10,11 +9,16 @@ const SAVE_GAME_PATH = ""
 @export var map_name = ""
 @export var global_position = Vector2.ZERO
 
-var save_nodes = get_tree().get_nodes_in_group("Persist")
+var test_number = 3
+var level_name = ""
+@onready var save_nodes = get_tree().get_nodes_in_group("Persist")
 
+func _process(delta):
+	print(test_number, level_name)
+	
 func save():
 	var save_dict = {
-#		"stats" : get_parent()
+		
 	}
 	return save_dict
 	
@@ -33,7 +37,7 @@ func save_game():
 			continue
 
 		# Call the node's save function.
-			var node_data = node.call("save")
+		var node_data = node.call("save")
 
 		# JSON provides a static method to serialized JSON string.
 		var json_string = JSON.stringify(node_data)
@@ -42,14 +46,4 @@ func save_game():
 		save_game.store_line(json_string)
 		
 
-func write_savegame() -> void:
-	ResourceSaver.save(SAVE_GAME_PATH, self)
-	
-	var data
-static func save_exists() -> bool:
-	return ResourceLoader.exists(SAVE_GAME_PATH)
-	
-static func load_savegame() -> Resource:
-	if not ResourceLoader.has_cached(SAVE_GAME_PATH):
-		return ResourceLoader.load(SAVE_GAME_PATH, "", true)
-	
+
