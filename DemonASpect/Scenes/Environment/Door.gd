@@ -87,7 +87,8 @@ func instantiate_dialog(door_dialog):
 #these functions detect when a player is in intercation range
 func _on_area_2d_area_entered(area):
 	in_use_range = true
-
+	print("can open")
+	
 func _on_area_2d_area_exited(area):
 	in_use_range = false
 	
