@@ -14,6 +14,7 @@ size = Vector2(20, 50)
 [node name="Level_000" instance=ExtResource("1_y2g4q")]
 
 [node name="SavePoint" type="Area2D" parent="." index="0"]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="SavePoint" index="0"]
 position = Vector2(0, -24)
@@ -30,6 +31,7 @@ layer_0/tile_data = PackedInt32Array(65535, 0, 0, 0, 0, 0, 65534, 0, 0, 1, 0, 0,
 [node name="Door" parent="Environment" index="0" instance=ExtResource("2_c4xae")]
 position = Vector2(130, 0)
 area_index = 1
+is_unlocked = true
 
 [node name="Door2" parent="Environment" index="1" instance=ExtResource("2_c4xae")]
 position = Vector2(-60, 0)

@@ -682,12 +682,13 @@ node_connections = [&"output", 0, &"is_hurt", &"Add2", 0, &"Animation 2", &"Add2
 radius = 7.0
 height = 38.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hurtTimer")]
 process_mode = 1
 editor_description = "	"
 collision_layer = 0
 script = ExtResource("1_flvje")
 animationFinished = true
+hurtTimer = NodePath("Timers/HurtTimer")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("7_1qt8e")
@@ -823,7 +824,7 @@ scale = Vector2(1.48, 0.92)
 shape = SubResource("CapsuleShape2D_l047g")
 disabled = true
 
-[node name="Stats" parent="." groups=["Persist"] instance=ExtResource("5_wnybv")]
+[node name="Stats" parent="." instance=ExtResource("5_wnybv")]
 max_health = 5
 
 [node name="HurtBox" type="Area2D" parent="."]

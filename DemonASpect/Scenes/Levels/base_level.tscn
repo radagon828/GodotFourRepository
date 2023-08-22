@@ -75,7 +75,7 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Environment" type="Node2D" parent="." groups=["Persist"]]
+[node name="Environment" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_d43h4")]
 

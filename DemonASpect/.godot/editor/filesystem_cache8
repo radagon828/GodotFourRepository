@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1692587130
-default_env.tres::Environment::3597556386965951437::1692504344::0::1::::<><>::
+::res://::1692660519
+default_env.tres::Environment::3597556386965951437::1692589284::0::1::::<><>::
 enemy_hurtbox.tscn::PackedScene::2392803204913423843::1691636133::0::1::::<><>::
-GameState.gd::GDScript::-1::1692489941::0::1::::<>Node<>::
+GameState.gd::GDScript::-1::1692587462::0::1::::<>Node<>::
 icon.png::CompressedTexture2D::6524617036004661128::1689736241::1689736241::1::::<><>::
 Menu.gd::GDScript::-1::1689736241::0::1::::<>Control<>::
 ::res://Audio/::1691631643
@@ -11,7 +11,7 @@ Menu.gd::GDScript::-1::1689736241::0::1::::<>Control<>::
 ::res://Audio/Sound Effects/Enemies/::1691631684
 ::res://Audio/Sound Effects/Environment/::1691631679
 ::res://Audio/Sound Effects/Player/::1691631659
-::res://Items/::1692504344
+::res://Items/::1692587325
 DiamondRing.png::CompressedTexture2D::5787915965193210456::1689736241::1689736241::1::::<><>::
 DiamondRing.tres::Resource/Resource::7850677492653929688::1691368427::0::1::::<><>::res://Items/item.gd<>uid://copyeowfqmmmq
 EmptyInventorySlot.png::CompressedTexture2D::8956768860573631693::1689736241::1689736241::1::::<><>::
@@ -19,9 +19,9 @@ item.gd::GDScript::-1::1689736241::0::1::::Item<>Resource<>::
 Key.tres::Resource/Resource::5670292327732280683::1691368427::0::1::::<><>::res://Items/item.gd<>uid://bcppso8edjrb
 KeySprite.png::CompressedTexture2D::75256109498629983::1690591895::1690591895::1::::<><>::
 Potion.png::CompressedTexture2D::3012230614859539133::1689736241::1689736241::1::::<><>::
-Potion.tres::Resource/Item::4670565430489663160::1692504344::0::1::::<><>::res://Items/item.gd<>uid://bi6e863w31bsf::::res://Items/Potion.png
+Potion.tres::Resource/Item::4670565430489663160::1692587325::0::1::::<><>::res://Items/item.gd<>uid://bi6e863w31bsf::::res://Items/Potion.png
 Sword.png::CompressedTexture2D::6214408283900589394::1689736241::1689736241::1::::<><>::
-Sword.tres::Resource/Item::1429604953011474030::1692504344::0::1::::<><>::res://Items/item.gd<>uid://cusknqmapx13k::::res://Items/Sword.png
+Sword.tres::Resource/Item::1429604953011474030::1692587325::0::1::::<><>::res://Items/item.gd<>uid://cusknqmapx13k::::res://Items/Sword.png
 TallShield.png::CompressedTexture2D::1186833674379251236::1689736241::1689736241::1::::<><>::
 TallShield.tres::Resource/Resource::1156561875881581442::1691368427::0::1::::<><>::res://Items/item.gd<>uid://q558hwug51oq
 ::res://Overlap/::1691644144
@@ -53,12 +53,12 @@ Door.gd::GDScript::-1::1692415186::0::1::::<>Node2D<>::
 door.tscn::PackedScene::1958576847596538960::1692488984::0::1::::<><>::res://Scenes/Environment/Door.gd<>uid://d0baqicql35h4
 item_holder.gd::GDScript::-1::1690514332::0::1::::<>RigidBody2D<>::
 item_holder.tscn::PackedScene::7566393597542587538::1690681699::0::1::::<><>::res://Scenes/Environment/item_holder.gd<>uid://q558hwug51oq
-::res://Scenes/Levels/::1692504344
-base_level.gd::GDScript::-1::1692488935::0::1::::<>Node<>::
+::res://Scenes/Levels/::1692589284
+base_level.gd::GDScript::-1::1692587773::0::1::::<>Node<>::
 base_level.tscn::PackedScene::1982315177187068705::1692492079::0::1::::<><>::uid://cwuysqacimqb2
-level_000.tscn::PackedScene::4719547056084115515::1692488984::0::1::::<><>::uid://3iipag00v3kf
-level_manager.gd::GDScript::-1::1692492092::0::1::::<>Node<>::
-level_manager.tscn::PackedScene::4884275160936813448::1692504344::0::1::::<><>::res://Scenes/Levels/level_manager.gd<>uid://00jk8baittw1::::res://Scenes/Levels/test_level_one.tscn<>uid://b8igirs3o8acp::::res://Scenes/Levels/level_000.tscn
+level_000.tscn::PackedScene::4719547056084115515::1692589284::0::1::::<><>::uid://3iipag00v3kf::::res://Scenes/Levels/base_level.tscn<>uid://250qes4gr7yy::::res://Scenes/Environment/door.tscn
+level_manager.gd::GDScript::-1::1692588255::0::1::::<>Node<>::
+level_manager.tscn::PackedScene::4884275160936813448::1692587773::0::1::::<><>::res://Scenes/Levels/level_manager.gd<>uid://00jk8baittw1::::res://Scenes/Levels/test_level_one.tscn<>uid://b8igirs3o8acp::::res://Scenes/Levels/level_000.tscn
 test_level_one.tscn::PackedScene::1806896580503070506::1692488984::0::1::::<><>::uid://3iipag00v3kf
 ::res://Scenes/Player/::1692488984
 AttackOneHit.gd::GDScript::-1::1691655141::0::1::::<>Area2D<>::
@@ -73,11 +73,11 @@ player_ui.tscn::PackedScene::3111463376079455305::1692488984::0::1::::<><>::res:
 ::res://Scenes/UIElements/Dialogue/::1691636133
 DialogBox.gd::GDScript::-1::1691628293::0::1::::<>RichTextLabel<>::
 dialog_box.tscn::PackedScene::3065148563761785480::1691636133::0::1::::<><>::uid://celi3giynqb62
-::res://Scenes/UIElements/Inventory/::1692504344
-Inventory.tres::Resource/OldInventory::7075232412859210435::1692504344::0::1::::<><>::res://Scenes/UIElements/Inventory/OldInventory.gd<>uid://umrncytoiljq::::res://Items/Sword.tres<>uid://b7spsa8ohraq7::::res://Items/Potion.tres<>uid://qqin1k3nmx8u::::res://Items/TallShield.tres
+::res://Scenes/UIElements/Inventory/::1692587325
+Inventory.tres::Resource/OldInventory::7075232412859210435::1692587325::0::1::::<><>::res://Scenes/UIElements/Inventory/OldInventory.gd<>uid://umrncytoiljq::::res://Items/Sword.tres<>uid://b7spsa8ohraq7::::res://Items/Potion.tres<>uid://qqin1k3nmx8u::::res://Items/TallShield.tres
 inventory_container.gd::GDScript::-1::1689736241::0::1::::<>ColorRect<>::
 inventory_container.tscn::PackedScene::3110539055373186677::1689736241::0::1::::<><>::uid://dh8tll378at0h
-inventory_display.gd::GDScript::-1::1692504344::0::1::::<>GridContainer<>::
+inventory_display.gd::GDScript::-1::1692587325::0::1::::<>GridContainer<>::
 inventory_display.tscn::PackedScene::7719882311534449845::1689736241::0::1::::<><>::res://Scenes/UIElements/Inventory/inventory_display.gd<>uid://do70dy754fbi1
 inventory_slot_display.gd::GDScript::-1::1689736241::0::1::::<>CenterContainer<>::
 inventory_slot_display.tscn::PackedScene::8209490543738704870::1689736241::0::1::::<><>::res://Scenes/UIElements/Inventory/inventory_slot_display.gd<>uid://d0uyw604gkpab

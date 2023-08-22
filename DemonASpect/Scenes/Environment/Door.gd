@@ -8,10 +8,10 @@ var examineBox: Panel = null
 #custom data
 @export var door_unlocking_dialog: Array[String] = ["Door unlocked with key"]
 @export var door_locked_dialog: Array[String] = ["Door is locked"]
-@export var area_index: int = 0
+@export var area_index: int
 
 #Bool
-@export var is_unlocked: bool = false
+@export var is_unlocked: bool
 var in_use_range: bool = false 
 
 #Nodes
@@ -81,3 +81,14 @@ func _on_area_2d_area_entered(area):
 
 func _on_area_2d_area_exited(area):
 	in_use_range = false
+	
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"is_unlocked" : is_unlocked,
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"area_index" : area_index
+	}
+	return save_dict
