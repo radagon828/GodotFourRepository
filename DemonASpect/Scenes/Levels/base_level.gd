@@ -35,7 +35,7 @@ func enter_area(area_index):
 
 		
 func save_game():
-	var save_game = FileAccess.open("res://Saves/" + areaName + ".save", FileAccess.WRITE)
+	var save_game = FileAccess.open("res://Saves/" + areaName + ".json", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
@@ -58,7 +58,8 @@ func save_game():
 		save_game.store_line(json_string)
 
 func load_game():
-	if not FileAccess.file_exists("res://Saves/" + areaName + ".save"):
+	print("loading")
+	if not FileAccess.file_exists("res://Saves/" + areaName + ".json"):
 		return # Error! We don't have a save to load.
 
 	# We need to revert the game state so we're not cloning objects
@@ -71,7 +72,7 @@ func load_game():
 
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	var save_game = FileAccess.open("res://Saves/" + areaName + ".save", FileAccess.READ)
+	var save_game = FileAccess.open("res://Saves/" + areaName + ".json", FileAccess.READ)
 	while save_game.get_position() < save_game.get_length():
 		var json_string = save_game.get_line()
 

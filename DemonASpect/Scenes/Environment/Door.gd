@@ -11,7 +11,7 @@ var examineBox: Panel = null
 @export var area_index: int
 
 #Bool
-@export var is_unlocked: bool
+@export var is_unlocked: int
 var in_use_range: bool = false 
 
 #Nodes
@@ -25,10 +25,10 @@ signal event_end
 signal door_entered(area_index)
 
 func _process(delta):
-	doorSprite.frame = 0 if is_unlocked else 1
-	if Input.is_action_just_pressed("use") && in_use_range && !is_unlocked:
+	doorSprite.frame = 0 if is_unlocked == 1 else 1
+	if Input.is_action_just_pressed("use") && in_use_range && is_unlocked == 0:
 		locked_door_interaction()
-	elif Input.is_action_just_pressed("use") && in_use_range && is_unlocked:
+	elif Input.is_action_just_pressed("use") && in_use_range && is_unlocked == 1:
 		unlocked_door_interaction()
 	
 
@@ -57,7 +57,7 @@ func on_door_event_end():
 #unlocks door and plays dialogue box indicating that it has been unlocked, 
 #also removes key from inventory
 func door_unlock_event(item_index, item):
-	is_unlocked = true
+	is_unlocked = 1
 	inventory.remove_item(item_index)
 	instantiate_dialog(door_unlocking_dialog)
 

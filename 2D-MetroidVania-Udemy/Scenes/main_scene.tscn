@@ -3,3 +3,4 @@
 [node name="MainScene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
