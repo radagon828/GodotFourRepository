@@ -1,11 +1,10 @@
 res://default_env.tres
-res://Scenes/Levels/level_manager.tscn
-res://Scenes/UIElements/Inventory/inventory_display.gd
+res://Scenes/Levels/level_000.tscn
 res://Items/Sword.tres
 res://Items/Potion.tres
 res://Scenes/UIElements/Inventory/Inventory.tres
+res://Scenes/UIElements/Inventory/inventory_display.gd
 res://Scenes/Levels/base_level.gd
-res://Scenes/Levels/level_000.tscn
 res://Scenes/Player/Player.tscn
 res://Scenes/UIElements/player_ui.tscn
 res://Scenes/UIElements/InventoryMenu/InventoryMenu.tscn
@@ -13,6 +12,10 @@ res://Scenes/UIElements/InventoryMenu/item_display.tscn
 res://Scenes/Levels/base_level.tscn
 res://Scenes/Levels/test_level_one.tscn
 res://Scenes/Environment/door.tscn
+res://Scenes/Levels/level_manager.tscn
 res://Overlap/stats.tscn
 res://Scenes/Levels/level_manager.gd
 res://Scenes/Environment/Door.gd
+res://Saves/Level_000.json
+res://Saves/TestLevelOne.json
+res://Saves/.json

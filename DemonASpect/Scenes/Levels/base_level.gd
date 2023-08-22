@@ -2,12 +2,11 @@ extends Node
 
 @onready var environment = $Environment
 @onready var user_interface = $Player/PlayerUI
-@onready var doors: Array[Node] = get_tree().get_nodes_in_group("Doors")
+#@onready var doors: Array[Node] = get_tree().get_nodes_in_group("Doors")
 var areaName: String
 
 
 func _ready():
-#	print(doors[0].name)j
 	if environment != null:
 		for scene in environment.get_children():
 			scene.dialog_event.connect(disable_ui)
@@ -35,7 +34,7 @@ func enter_area(area_index):
 
 		
 func save_game():
-	var save_game = FileAccess.open("res://Saves/" + areaName + ".json", FileAccess.WRITE)
+	var save_game = FileAccess.open("res://Saves/" + get_tree().get_current_scene().get_name() + ".json", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
@@ -97,5 +96,6 @@ func load_game():
 		for i in node_data.keys():
 			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				continue
+			print(i, node_data[i])
 			new_object.set(i, node_data[i])
 

@@ -8,10 +8,19 @@ var examineBox: Panel = null
 #custom data
 @export var door_unlocking_dialog: Array[String] = ["Door unlocked with key"]
 @export var door_locked_dialog: Array[String] = ["Door is locked"]
-@export var area_index: int
 
-#Bool
-@export var is_unlocked: int
+@export var area_index: int :
+	get:
+		return area_index
+	set(value):
+		area_index = value
+
+@export var is_unlocked: int :
+	get:
+		return is_unlocked
+	set(value):
+		is_unlocked = value
+
 var in_use_range: bool = false 
 
 #Nodes
