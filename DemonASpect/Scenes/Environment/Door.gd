@@ -37,9 +37,10 @@ func _process(delta):
 	doorSprite.frame = 0 if is_unlocked == 1 else 1
 	if Input.is_action_just_pressed("use") && in_use_range && is_unlocked == 0:
 		locked_door_interaction()
+#		print("door_ is locked")
 	elif Input.is_action_just_pressed("use") && in_use_range && is_unlocked == 1:
 		unlocked_door_interaction()
-	
+		print("door_ is unlocked")
 
 #checks for a key in the players inventory and runs door unlock event if key is found
 func locked_door_interaction():
@@ -56,7 +57,10 @@ func locked_door_interaction():
 
 #sends signal to level manager with the index of the area the door leads into
 func unlocked_door_interaction():
-	emit_signal("door_entered", area_index)
+#	emit_signal("door_entered", area_index)
+#	for some reason not accessing the level manager directly causes this to not work, not sure if i should be concerned
+	LevelManager.change_level(area_index)
+	print("unlocked_interaction")
 
 #after signal that door dialogue has ended has been recieved the dialogue is deleted
 func on_door_event_end():

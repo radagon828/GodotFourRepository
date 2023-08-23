@@ -2,13 +2,13 @@ extends Node
 
 @onready var environment = $Environment
 @onready var user_interface = $Player/PlayerUI
-#@onready var doors: Array[Node] = get_tree().get_nodes_in_group("Doors")
+@onready var doors: Array[Node] = get_tree().get_nodes_in_group("Doors")
 var areaName: String
 
 
 func _ready():
 	if environment != null:
-		for scene in environment.get_children():
+		for scene in doors:
 			scene.dialog_event.connect(disable_ui)
 			scene.event_end.connect(enable_ui)
 			scene.door_entered.connect(enter_area)

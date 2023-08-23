@@ -14,3 +14,4 @@ res://Scenes/Environment/door.tscn
 res://Scenes/Levels/level_manager.tscn
 res://Overlap/stats.tscn
 res://Scenes/Environment/Door.gd
+res://Scenes/Levels/base_level.gd
