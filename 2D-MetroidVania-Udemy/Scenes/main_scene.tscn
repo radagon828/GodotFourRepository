@@ -1,6 +1,13 @@
-[gd_scene format=3 uid="uid://di53x4l8gy4dt"]
+[gd_scene load_steps=2 format=3 uid="uid://di53x4l8gy4dt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh036"]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_dh036")
