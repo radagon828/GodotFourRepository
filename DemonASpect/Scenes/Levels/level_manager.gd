@@ -10,6 +10,7 @@ func _ready():
 	
 func change_level(levelIndex):
 	BaseLevel.save_game()
+	
 	call_deferred("goto_level", levelIndex)
 
 func goto_level(levelIndex):

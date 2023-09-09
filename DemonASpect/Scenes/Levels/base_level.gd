@@ -32,7 +32,7 @@ func enter_area(area_index):
 	LevelManager.change_level(area_index)
 #	print("change level")
 
-		
+#saves persistant objects in json file 
 func save_game():
 	var save_game = FileAccess.open("res://Saves/" + get_tree().get_current_scene().get_name() + ".json", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
@@ -56,6 +56,7 @@ func save_game():
 		# Store the save dictionary as a new line in the save file.
 		save_game.store_line(json_string)
 
+#loads level json file and creates persistent objects from it
 func load_game():
 	print("loading")
 	if not FileAccess.file_exists("res://Saves/" + areaName + ".json"):
