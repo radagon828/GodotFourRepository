@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qnm3td0xbqcs"
+path="res://.godot/imported/Lone Knight - 5.mp3-4468271e7779589734c42bfb7845189a.mp3str"
+
+[deps]
+
+source_file="res://Audio/Lone Knight - 5.mp3"
+dest_files=["res://.godot/imported/Lone Knight - 5.mp3-4468271e7779589734c42bfb7845189a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

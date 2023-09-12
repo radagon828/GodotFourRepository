@@ -1,13 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://di53x4l8gy4dt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh036"]
+[ext_resource type="PackedScene" uid="uid://cdnk6h4ot3nrc" path="res://Scenes/Player/player.tscn" id="1_fx8q3"]
 
 [node name="MainScene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_dh036")
+[node name="Player" parent="." instance=ExtResource("1_fx8q3")]
+position = Vector2(246, 186)

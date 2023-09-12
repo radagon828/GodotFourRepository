@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxeaalcp5yypd"
+path="res://.godot/imported/Lone Knight - 6.mp3-24b61df1dad409982b2b6b48064f4147.mp3str"
+
+[deps]
+
+source_file="res://Audio/Lone Knight - 6.mp3"
+dest_files=["res://.godot/imported/Lone Knight - 6.mp3-24b61df1dad409982b2b6b48064f4147.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
