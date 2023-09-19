@@ -14,3 +14,6 @@ position = Vector2(-170, 0)
 
 [node name="Door" parent="Environment" index="0" instance=ExtResource("3_0uux6")]
 position = Vector2(150, 0)
+
+[node name="ColorRect" parent="Player" index="15"]
+visible = false

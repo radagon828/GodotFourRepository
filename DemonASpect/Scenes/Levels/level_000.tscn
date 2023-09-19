@@ -35,3 +35,6 @@ area_index = 1
 [node name="Door2" parent="Environment" index="1" instance=ExtResource("2_c4xae")]
 position = Vector2(-60, 0)
 area_index = 1
+
+[node name="ColorRect" parent="Player" index="15"]
+visible = false

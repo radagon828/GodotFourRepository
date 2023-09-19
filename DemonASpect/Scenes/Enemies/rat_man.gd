@@ -38,7 +38,8 @@ func _physics_process(delta: float):
 			attack_state(delta)
 		HURT:
 			hurt_state(delta)
-	move()
+	set_up_direction(Vector2.UP)
+	move_and_slide()
 	update_sprite()
 	velocity.y += gravity * delta
 #	print(hurtTimer.time_left)
@@ -96,11 +97,6 @@ func update_sprite():
 		ratSprite.flip_h = true if velocity.x < 0 else false
 		attackVector.x = sign(velocity.x)
 	hitBox.position.x = 12 * attackVector.x
-
-
-func move():
-	set_up_direction(Vector2.UP)
-	move_and_slide()
 
 func _on_stats_no_health():
 	queue_free()

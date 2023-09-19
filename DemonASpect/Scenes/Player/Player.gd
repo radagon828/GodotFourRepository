@@ -15,7 +15,6 @@ var knockback = Vector2.RIGHT
 @export var isAttacking: bool = false
 @export var isRolling: bool = false
 @export var cancelable: bool = false
-
 @export var attackQueued: bool = false
 @export var animationFinished: bool = false
 
