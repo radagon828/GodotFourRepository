@@ -6,38 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p61kf"]
 size = Vector2(8, 16)
 
-[sub_resource type="Animation" id="Animation_v8pue"]
-resource_name = "Run"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 5, 3]
-}
-
-[sub_resource type="Animation" id="Animation_vvwpe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="Animation" id="Animation_tenwa"]
 resource_name = "Idle"
 length = 0.1
@@ -72,6 +40,38 @@ tracks/0/keys = {
 "values": [6]
 }
 
+[sub_resource type="Animation" id="Animation_vvwpe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_v8pue"]
+resource_name = "Run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6yx8a"]
 _data = {
 "Idle": SubResource("Animation_tenwa"),
@@ -80,11 +80,12 @@ _data = {
 "Run": SubResource("Animation_v8pue")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animPlayer", "sprite2d")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animPlayer", "sprite2d", "coyote_timer")]
 floor_constant_speed = true
 script = ExtResource("1_amtrs")
 animPlayer = NodePath("AnimationPlayer")
 sprite2d = NodePath("Sprite2D")
+coyote_timer = NodePath("CoyoteTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
@@ -99,3 +100,7 @@ shape = SubResource("RectangleShape2D_p61kf")
 libraries = {
 "": SubResource("AnimationLibrary_6yx8a")
 }
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true

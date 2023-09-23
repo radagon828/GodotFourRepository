@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdnk6h4ot3nrc"]
+[gd_scene load_steps=13 format=3 uid="uid://cdnk6h4ot3nrc"]
 
 [ext_resource type="Texture2D" uid="uid://cbxdcm7ruvjb4" path="res://Scenes/Player2.png" id="1_36vls"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_sqp3l"]
@@ -103,6 +103,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [14, 15, 16, 17]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwordHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_kq11g"]
 resource_name = "Walk"
@@ -132,6 +144,9 @@ _data = {
 "Walk": SubResource("Animation_kq11g")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vxob"]
+size = Vector2(20, 36)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -14)
 script = ExtResource("1_sqp3l")
@@ -151,3 +166,11 @@ frame = 6
 libraries = {
 "": SubResource("AnimationLibrary_uebo6")
 }
+
+[node name="SwordHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2(25, -1)
+shape = SubResource("RectangleShape2D_8vxob")
+disabled = true
+debug_color = Color(0.831373, 0.247059, 0.760784, 0.419608)

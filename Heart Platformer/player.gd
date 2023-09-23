@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var animPlayer: AnimationPlayer
 @export var sprite2d : Sprite2D
+@export var coyote_timer: Timer
 
 const SPEED = 100.0
 const ACCELERATION = 800
@@ -12,25 +13,28 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 func _physics_process(delta):
+	print(coyote_timer.time_left)
 	apply_gravity(delta)
 	handle_jump()
-
 	var input_axis = Input.get_axis("ui_left", "ui_right")
 	handle_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
-	
 	update_animations(input_axis)
+	var was_on_floor = is_on_floor()
 	move_and_slide()
+	var just_left_ledge = was_on_floor and not is_on_floor() and velocity.y >= 0
+	if just_left_ledge:
+		coyote_timer.start()
 	
 func apply_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
 func handle_jump():
-	if is_on_floor():
+	if is_on_floor() or coyote_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("ui_up"):
 			velocity.y = JUMP_VELOCITY
-	else: 
+	if not is_on_floor():
 		if Input.is_action_just_released("ui_up") and velocity.y < JUMP_VELOCITY / 2:
 			velocity.y = JUMP_VELOCITY / 2
 
