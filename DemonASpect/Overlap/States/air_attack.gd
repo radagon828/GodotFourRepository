@@ -9,7 +9,8 @@ func _ready():
 
 func _enter_state() -> void:
 	set_physics_process(true)
-
+	animator.set("parameters/in_air/transition_request", "airAttack")
+	
 func _exit_state() -> void:
 	actor.hitBoxCollision.disabled = true
 	set_physics_process(false)

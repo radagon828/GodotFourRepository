@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnu5anid4sjca"]
+[gd_scene load_steps=10 format=3 uid="uid://bnu5anid4sjca"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_amtrs"]
+[ext_resource type="Resource" uid="uid://deetcpuvme70y" path="res://DefaultMovementData.tres" id="2_7vjdj"]
 [ext_resource type="Texture2D" uid="uid://bumm1xn38qs2i" path="res://player.png" id="2_vlje8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p61kf"]
@@ -82,10 +83,12 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animPlayer", "sprite2d", "coyote_timer")]
 floor_constant_speed = true
+floor_snap_length = 3.0
 script = ExtResource("1_amtrs")
 animPlayer = NodePath("AnimationPlayer")
 sprite2d = NodePath("Sprite2D")
 coyote_timer = NodePath("CoyoteTimer")
+movement_data = ExtResource("2_7vjdj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)

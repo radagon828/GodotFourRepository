@@ -4,10 +4,7 @@ extends CharacterBody2D
 @export var sprite2d : Sprite2D
 @export var coyote_timer: Timer
 
-const SPEED = 100.0
-const ACCELERATION = 800
-const FRICTION = 1000
-const JUMP_VELOCITY = -300.0
+@export var movement_data : PlayerMovementData
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -28,23 +25,23 @@ func _physics_process(delta):
 	
 func apply_gravity(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += gravity * movement_data.gravity_scale * delta
 		
 func handle_jump():
 	if is_on_floor() or coyote_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("ui_up"):
-			velocity.y = JUMP_VELOCITY
+			velocity.y = movement_data.jump_velocity
 	if not is_on_floor():
-		if Input.is_action_just_released("ui_up") and velocity.y < JUMP_VELOCITY / 2:
-			velocity.y = JUMP_VELOCITY / 2
+		if Input.is_action_just_released("ui_up") and velocity.y < movement_data.jump_velocity / 2:
+			velocity.y = movement_data.jump_velocity / 2
 
 func apply_friction(input_axis, delta):
 	if input_axis == 0:
-		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
+		velocity.x = move_toward(velocity.x, 0, movement_data.friction * delta)
 		
 func handle_acceleration(input_axis, delta):
 	if input_axis:
-		velocity.x = move_toward(velocity.x, SPEED * input_axis, ACCELERATION * delta)
+		velocity.x = move_toward(velocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
 
 func update_animations(input_axis):
 	if input_axis != 0:

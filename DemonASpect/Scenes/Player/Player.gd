@@ -46,13 +46,16 @@ func _ready() -> void:
 	airLeafSprite.frame = 0
 	move_state.rolling_start.connect(fsm.change_state.bind(roll_state))
 	move_state.attack_start.connect(fsm.change_state.bind(attack_one_state))
-	move_state.air_attack.connect(fsm.change_state.bind(air_attack))
+	#if this is in the script I can remove the state from the machine and have this connection exist, this way I can add new abilities as childs in the state machine
+	if air_attack is State:
+		move_state.air_attack.connect(fsm.change_state.bind(air_attack))
 	hurt_state.recovery.connect(fsm.change_state.bind(move_state))
 	attack_one_state.second_attack.connect(fsm.change_state.bind(attack_two_state))
 	attack_two_state.third_attack.connect(fsm.change_state.bind(attack_three_state))
 	$HurtBox.area_entered.connect(on_hurtbox_entered)#	Engine.time_scale = 0.2
 	
 func _physics_process(delta: float):
+#	print(animationFinished, " ", attackQueued, " ", animationFinished)
 	velocity.y += GRAVITY * delta
 	debug()
 	move()

@@ -24,8 +24,13 @@ func _exit_state() -> void:
 	set_physics_process(false)
 	
 func _physics_process(delta):
-	var inputVector = actor.get_input_vector()
+	#reset attack bools
+	actor.attackQueued = false
+	actor.animationFinished = true
+	actor.isAttacking = false
 	actor.hitBoxCollision.disabled = true
+	
+	var inputVector = actor.get_input_vector()
 	actor.running(inputVector, delta)
 	actor.velocity.x = clamp(actor.velocity.x, -actor.MAX_SPEED, actor.MAX_SPEED)
 	#JUMPING
@@ -78,7 +83,7 @@ func hand_attack_state_switch():
 		actor.animationFinished = false
 		actor.isAttacking = true
 	elif (Input.is_action_just_pressed("attack") && !actor.is_on_floor() && !actor.isAttacking):
-		animator.set("parameters/in_air/transition_request", "airAttack")
+#		animator.set("parameters/in_air/transition_request", "airAttack")
 		air_attack.emit()
 		actor.attackQueued = false
 		actor.animationFinished = false
