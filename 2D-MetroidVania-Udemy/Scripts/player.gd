@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+enum PlayerStates {MOVE, SWORD, HURT}
+var CurrentState = PlayerStates.MOVE
+
 var speed: float = 200.0
 var gravity = 20
 var pressed = 1
@@ -10,16 +13,18 @@ var pressed = 1
 @onready var anim = $AnimationPlayer
 
 func _physics_process(delta):
-	move(delta)
+	
+	match CurrentState:
+		PlayerStates.MOVE:
+			move(delta)
+		PlayerStates.SWORD:
+			sword()
 	handle_gravity()
 	up_direction = Vector2.UP
-	jump()
-	sword()
 	move_and_slide()
-
+	
 func move(delta):
 	var move_vector = get_movement_vector()
-	print(velocity.y)
 	if move_vector.x != 0:
 		if move_vector.x > 0:
 			velocity.x += speed * delta
@@ -38,8 +43,10 @@ func move(delta):
 	elif move_vector.x == 0:
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 		anim.play("Idle")
-	
-
+	jump()
+	if Input.is_action_just_pressed("attack"):
+		CurrentState = PlayerStates.SWORD
+		
 func handle_gravity():
 	if not is_on_floor():
 		velocity.y += gravity
@@ -73,5 +80,8 @@ func jump():
 			anim.play("Fall")
 			
 func sword():
-	if Input.is_action_just_pressed("attack"):
-		anim.play("Sword")
+	velocity.x = 0
+	anim.play("Sword")
+	
+func OnStateFinished():
+	CurrentState = PlayerStates.MOVE
