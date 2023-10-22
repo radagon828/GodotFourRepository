@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnu5anid4sjca"]
+[gd_scene load_steps=11 format=3 uid="uid://bnu5anid4sjca"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_amtrs"]
 [ext_resource type="Resource" uid="uid://deetcpuvme70y" path="res://DefaultMovementData.tres" id="2_7vjdj"]
 [ext_resource type="Texture2D" uid="uid://bumm1xn38qs2i" path="res://player.png" id="2_vlje8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p61kf"]
-size = Vector2(8, 16)
+size = Vector2(8, 15)
 
 [sub_resource type="Animation" id="Animation_tenwa"]
 resource_name = "Idle"
@@ -81,7 +81,11 @@ _data = {
 "Run": SubResource("Animation_v8pue")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udh72"]
+size = Vector2(6, 12)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animPlayer", "sprite2d", "coyote_timer")]
+collision_layer = 2
 floor_constant_speed = true
 floor_snap_length = 3.0
 script = ExtResource("1_amtrs")
@@ -97,7 +101,7 @@ hframes = 7
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_p61kf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -111,3 +115,14 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -8)
+position_smoothing_enabled = true
+
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_udh72")
+
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
