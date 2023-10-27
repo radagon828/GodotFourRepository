@@ -26,8 +26,7 @@ var in_use_range: bool = false
 #Nodes
 @onready var doorHitbox: Area2D = $Area2D
 @onready var doorSprite: Sprite2D = $Sprite2D
-@onready var player: CharacterBody2D = $"../../Player"
-
+@onready var canvas: CanvasLayer = $"../../CanvasLayer"
 #signal
 signal dialog_event
 signal event_end
@@ -86,7 +85,7 @@ func instantiate_dialog(door_dialog):
 	var dialogText = examineBox.get_child(0).get_child(0)
 	dialogText.dialog = door_dialog
 	dialogText.on_dialog_end.connect(on_door_event_end)
-	player.add_child(examineBox)
+	canvas.add_child(examineBox)
 
 #these functions detect when a player is in intercation range
 func _on_area_2d_area_entered(area):

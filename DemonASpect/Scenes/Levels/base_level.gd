@@ -11,7 +11,7 @@ func _ready():
 		for scene in doors:
 			scene.dialog_event.connect(disable_ui)
 			scene.event_end.connect(enable_ui)
-#			scene.door_entered.connect(enter_area)
+			scene.door_entered.connect(enter_area)
 			
 func change_scene_name():
 	if get_tree().get_current_scene().get_name() != null:

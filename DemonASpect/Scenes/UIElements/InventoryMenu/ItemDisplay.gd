@@ -43,7 +43,6 @@ func update_inventory_slot_display(item_index):
 	selectableItemSlot.display_item(item)
 	selectableItemSlot.is_selected = false
 	
-
 #refills array with updated item positions
 func _on_items_changed(indexes):
 	for item_index in indexes:
