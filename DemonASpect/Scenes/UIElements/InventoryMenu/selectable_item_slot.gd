@@ -40,8 +40,6 @@ func display_item(item):
 func swap_select():
 	is_selected = !is_selected
 	emit_signal("selection_made")
-#	var my_item_index = get_index()
-#	var my_item = inventory.items[my_item_index]
 	
 #shows item options for respective slot, also sends signal to item display
 func _on_button_down():

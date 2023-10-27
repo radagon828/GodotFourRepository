@@ -4,14 +4,10 @@
 [ext_resource type="Script" path="res://Scenes/UIElements/Dialogue/DialogBox.gd" id="2_wjppp"]
 
 [node name="DialogBox" type="Panel"]
-offset_left = -140.0
-offset_top = 20.0
-offset_right = -140.0
-offset_bottom = 20.0
 
 [node name="DialogBoxBackground" type="Polygon2D" parent="."]
 process_mode = 3
-position = Vector2(-10, -10)
+position = Vector2(9.99998, 120)
 scale = Vector2(0.36, 0.36)
 color = Color(0.156863, 0.156863, 0.156863, 1)
 polygon = PackedVector2Array(27.7778, 166.667, 805.555, 166.667, 805.555, 27.7778, 27.7778, 27.7778, 27.7778, 111.111)

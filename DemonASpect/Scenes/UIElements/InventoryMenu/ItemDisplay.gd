@@ -70,8 +70,8 @@ func play_item_description(description):
 	examineBox = dialogInstance.instantiate()
 	var dialogText = examineBox.get_child(0).get_child(0)
 	dialogText.dialog = description
-	dialogText.on_dialog_end.connect(end_examine)
 	get_parent().get_parent().add_child(examineBox)
+	dialogText.on_dialog_end.connect(end_examine)
 
 func end_examine():
 	if examineBox != null:

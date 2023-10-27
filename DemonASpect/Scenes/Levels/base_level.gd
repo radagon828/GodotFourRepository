@@ -1,7 +1,7 @@
 extends Node
 
 @onready var environment = $Environment
-@onready var user_interface = $Player/PlayerUI
+@onready var user_interface = $CanvasLayer/PlayerUI
 @onready var doors: Array[Node] = get_tree().get_nodes_in_group("Doors")
 var areaName: String
 

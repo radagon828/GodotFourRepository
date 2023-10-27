@@ -61,7 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-color = Color(0.576471, 0.352941, 0.0705882, 1)
+color = Color(0.576471, 0.352941, 0.0705882, 0.160784)
 script = ExtResource("1_iddd5")
 metadata/_edit_vertical_guides_ = []
 
@@ -70,8 +70,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 

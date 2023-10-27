@@ -14,4 +14,8 @@ res://Scenes/Environment/door.tscn
 res://Scenes/Levels/level_manager.tscn
 res://Overlap/stats.tscn
 res://Scenes/Enemies/rat_man.tscn
-res://Scenes/Player/Player.gd
+res://Scenes/Levels/base_level.gd
+res://Scenes/UIElements/Dialogue/dialog_box.tscn
+res://Scenes/UIElements/InventoryMenu/ItemDisplay.gd
+res://Scenes/UIElements/InventoryMenu/selectable_item_slot.gd
+res://Scenes/UIElements/InventoryMenu/selectable_item_slot.tscn
