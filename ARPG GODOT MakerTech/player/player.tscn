@@ -1,12 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyxcpq5ij4h2y"]
+[gd_scene load_steps=5 format=3 uid="uid://cyxcpq5ij4h2y"]
 
+[ext_resource type="Script" path="res://player/player.gd" id="1_no8w7"]
 [ext_resource type="Texture2D" uid="uid://cytpkriv3dgxr" path="res://art/PlayerSpriteSheet.png" id="1_vcocw"]
 
+[sub_resource type="Animation" id="Animation_xirkj"]
+resource_name = "Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0wse8"]
+_data = {
+"Idle": SubResource("Animation_xirkj")
+}
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_no8w7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
 texture = ExtResource("1_vcocw")
 hframes = 4
 vframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0wse8")
+}
