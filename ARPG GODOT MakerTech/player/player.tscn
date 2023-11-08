@@ -168,11 +168,13 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_no8w7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
 texture = ExtResource("1_vcocw")
+offset = Vector2(0, -8)
 hframes = 4
 vframes = 7
 frame = 4
