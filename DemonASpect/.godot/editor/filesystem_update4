@@ -10,7 +10,6 @@ res://Scenes/UIElements/InventoryMenu/InventoryMenu.tscn
 res://Scenes/UIElements/InventoryMenu/item_display.tscn
 res://Scenes/Levels/base_level.tscn
 res://Scenes/Levels/test_level_one.tscn
-res://Scenes/Environment/door.tscn
 res://Scenes/Levels/level_manager.tscn
 res://Overlap/stats.tscn
 res://Scenes/Enemies/rat_man.tscn
@@ -20,6 +19,3 @@ res://enemy_hurtbox.tscn
 res://Overlap/player_detection_zone.tscn
 res://Overlap/remote_transform_2d.tscn
 res://Scenes/UIElements/Inventory/inventory_container.tscn
-res://Scenes/Environment/Door.gd
-res://Scenes/Levels/base_level.gd
-res://Scenes/UIElements/InventoryMenu/ItemDisplay.gd
