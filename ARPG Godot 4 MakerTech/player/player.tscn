@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0cfh3hvca68h"]
+
+[ext_resource type="Texture2D" uid="uid://brrmshul8x0tv" path="res://art/SpriteSheet.png" id="1_c8wtp"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c8wtp")
+hframes = 4
+vframes = 7
