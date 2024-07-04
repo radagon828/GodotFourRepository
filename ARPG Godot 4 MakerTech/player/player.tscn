@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0cfh3hvca68h"]
+[gd_scene load_steps=10 format=3 uid="uid://c0cfh3hvca68h"]
 
 [ext_resource type="Texture2D" uid="uid://brrmshul8x0tv" path="res://art/SpriteSheet.png" id="1_c8wtp"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_mqsbg"]
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_jhfvr"]
@@ -94,17 +94,24 @@ _data = {
 "walkUp": SubResource("Animation_syk62")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e88qf"]
+size = Vector2(14, 4)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationPLayer")]
 script = ExtResource("1_mqsbg")
 animationPLayer = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_c8wtp")
+offset = Vector2(0, -8)
 hframes = 4
 vframes = 7
-frame = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rotex")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_e88qf")
