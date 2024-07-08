@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://doxtvautwbwhs"]
+[gd_scene load_steps=11 format=3 uid="uid://doxtvautwbwhs"]
 
 [ext_resource type="PackedScene" uid="uid://c0cfh3hvca68h" path="res://player/player.tscn" id="1_06hc7"]
+[ext_resource type="PackedScene" uid="uid://duh7imeoxhpjx" path="res://enemies/slime.tscn" id="1_8qh5s"]
 [ext_resource type="Texture2D" uid="uid://cvwu4eojlvwp2" path="res://art/TilesetFloor.png" id="2_tj5m5"]
 [ext_resource type="Script" path="res://Scenes/FollowCamera.gd" id="2_wdiws"]
 [ext_resource type="Texture2D" uid="uid://dvd6o0kla0qjq" path="res://art/TilesetNature.png" id="3_tegp5"]
@@ -2816,14 +2817,6 @@ sources/2 = SubResource("TileSetAtlasSource_vujgx")
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_06hc7")]
-z_index = 1
-position = Vector2(115, 62)
-
-[node name="FollowCamera" type="Camera2D" parent="Player" node_paths=PackedStringArray("tile_map")]
-script = ExtResource("2_wdiws")
-tile_map = NodePath("../../TileMap")
-
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 1)
@@ -2845,3 +2838,15 @@ layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 7
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(65540, 1, 0, 131084, 1, 0, 393218, 1, 0, 393227, 1, 0, 327686, 2, 0, 262154, 2, 0, 196611, 2, 0, 131081, 2, 0, 786435, 2, 0, 655363, 2, 0, 655365, 2, 0, 786437, 2, 0, 917507, 2, 0, 917509, 2, 0, 917511, 2, 0, 786439, 2, 0, 655367, 2, 0, 786441, 2, 0, 786444, 2, 0, 196627, 1, 0, 196632, 1, 0, 393235, 1, 0, 393240, 1, 0, 983052, 1, 0, 983056, 1, 0)
+
+[node name="Player" parent="TileMap" instance=ExtResource("1_06hc7")]
+z_index = 1
+position = Vector2(126, 57)
+
+[node name="FollowCamera" type="Camera2D" parent="TileMap/Player" node_paths=PackedStringArray("tile_map")]
+script = ExtResource("2_wdiws")
+tile_map = NodePath("../..")
+
+[node name="slime" parent="TileMap" instance=ExtResource("1_8qh5s")]
+z_index = 1
+position = Vector2(90, 49)
