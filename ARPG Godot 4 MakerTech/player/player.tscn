@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0cfh3hvca68h"]
+[gd_scene load_steps=11 format=3 uid="uid://c0cfh3hvca68h"]
 
 [ext_resource type="Texture2D" uid="uid://brrmshul8x0tv" path="res://art/SpriteSheet.png" id="1_c8wtp"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_mqsbg"]
@@ -97,6 +97,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e88qf"]
 size = Vector2(14, 4)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d5avn"]
+radius = 6.0
+height = 14.0
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationPLayer")]
 script = ExtResource("1_mqsbg")
 animationPLayer = NodePath("AnimationPlayer")
@@ -115,3 +119,12 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_e88qf")
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_d5avn")
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
