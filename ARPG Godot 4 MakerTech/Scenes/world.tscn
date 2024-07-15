@@ -2849,6 +2849,7 @@ position = Vector2(126, 57)
 maxHealth = 5
 
 [node name="FollowCamera" type="Camera2D" parent="TileMap/Player" node_paths=PackedStringArray("tile_map")]
+position_smoothing_enabled = true
 script = ExtResource("2_wdiws")
 tile_map = NodePath("../..")
 
