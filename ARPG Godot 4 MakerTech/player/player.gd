@@ -7,9 +7,9 @@ signal healthChanged
 @export var speed: int = 50
 @export var animationPLayer: AnimationPlayer
 @onready var effects = $Effects
+@onready var hurtBox = $hurtbox
 @onready var hurtTimer = $hurtTimer
 
-@onready var hurtColor = $Sprite2D/ColorRect
 @export var maxHealth = 3
 #making this onready solved the problem of the 
 #export variable not determaning max health
@@ -18,7 +18,6 @@ signal healthChanged
 @export var knockbackPower: int = 500
 
 var isHurt: bool = false
-var enemyCollisions = []
 
 func _ready():
 	effects.play("RESET")
@@ -53,9 +52,12 @@ func _physics_process(delta):
 	move_and_slide()
 	handleCollision()
 	updateAnimation()
+	#checks if player is overlapping with enemy hurtbox and runs hurt by enemy function if so
+	#if equals in this scenario
 	if !isHurt:
-		for enemyArea in enemyCollisions:
-			hurtByEnemy(enemyArea)
+		for area in hurtBox.get_overlapping_areas():
+			if area.name == "hitbox":
+				hurtByEnemy(area)
 	
 #decreases health when contact with a hitbox occurs by emiting a signal to the world node
 #makesplayer invincible for the duration of hurtTimer
@@ -74,11 +76,7 @@ func hurtByEnemy(area):
 	effects.play("RESET")
 	isHurt = false
 	
-#adds enemy hurbox to an array that will be used 
-#to check if they player is still in it after invincability ends
-func _on_hurtbox_area_entered(area):
-	if area.name == "hitbox":
-		enemyCollisions.append(area)
+func _on_hurtbox_area_entered(area): pass
 		
 func knockback(enemyVelocity):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
@@ -88,6 +86,4 @@ func knockback(enemyVelocity):
 	print_debug(" ")
 	move_and_slide()
 
-#stops enemy hurtbox from hurting player once they leave it
-func _on_hurtbox_area_exited(area):
-	enemyCollisions.erase(area)
+func _on_hurtbox_area_exited(area): pass
