@@ -76,7 +76,9 @@ func hurtByEnemy(area):
 	effects.play("RESET")
 	isHurt = false
 	
-func _on_hurtbox_area_entered(area): pass
+func _on_hurtbox_area_entered(area):
+	if area.has_method("collect"):
+		area.collect()
 		
 func knockback(enemyVelocity):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower

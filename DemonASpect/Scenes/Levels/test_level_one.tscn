@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://00jk8baittw1"]
+[gd_scene load_steps=6 format=3 uid="uid://00jk8baittw1"]
 
 [ext_resource type="PackedScene" uid="uid://3iipag00v3kf" path="res://Scenes/Levels/base_level.tscn" id="1_shhbu"]
 [ext_resource type="PackedScene" uid="uid://bigfuro2dpaji" path="res://Scenes/Enemies/rat_man.tscn" id="2_eit0b"]
 [ext_resource type="PackedScene" uid="uid://250qes4gr7yy" path="res://Scenes/Environment/door.tscn" id="3_0uux6"]
+[ext_resource type="PackedScene" uid="uid://df2hnrbeo43es" path="res://Scenes/Environment/item_holder.tscn" id="4_vnrmw"]
+[ext_resource type="Resource" uid="uid://umrncytoiljq" path="res://Items/Sword.tres" id="5_ws3fi"]
 
 [node name="TestLevelOne" instance=ExtResource("1_shhbu")]
 
@@ -14,3 +16,7 @@ position = Vector2(-170, 0)
 
 [node name="Door" parent="Environment" index="0" instance=ExtResource("3_0uux6")]
 position = Vector2(150, 0)
+
+[node name="ItemHolder" parent="." index="7" instance=ExtResource("4_vnrmw")]
+position = Vector2(50, 0)
+item = ExtResource("5_ws3fi")
