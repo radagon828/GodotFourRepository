@@ -77,10 +77,11 @@ func hurtByEnemy(area):
 	await hurtTimer.timeout
 	effects.play("RESET")
 	isHurt = false
-	
+
+#uses items collect function to add item to inventory
 func _on_hurtbox_area_entered(area):
 	if area.has_method("collect"):
-		area.collect()
+		area.collect(inventory)
 		
 func knockback(enemyVelocity):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
