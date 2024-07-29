@@ -12,16 +12,19 @@ var isOpen : bool = false
 func _ready():
 	inventory.updated.connect(update)
 	update()
-	
-func update():
-	for i in range(min(inventory.items.size(), slots.size())):
-		slots[i].update(inventory.items[i])
 
+#runs update function on each inventory slot that has an item in the corresponding array slot
+func update():
+	for i in range(min(inventory.slots.size(), slots.size())):
+		slots[i].update(inventory.slots[i])
+
+#send pause game signal to world;, and opens inventory
 func open():
 	visible = true
 	isOpen = true
 	opened.emit()
-	
+
+#send unpause game signal to world, and closes inventory
 func close():
 	visible = false
 	isOpen = false
