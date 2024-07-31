@@ -11,7 +11,7 @@ signal updated
 #sends update signal to inventory gui afterwards
 func insert(item: InventoryItem):
 	for slot in slots:
-		if slot.item == item:
+		if slot.item == item && slot.amount < item.maxAmountPrStack:
 			slot.amount += 1
 			updated.emit()
 			return

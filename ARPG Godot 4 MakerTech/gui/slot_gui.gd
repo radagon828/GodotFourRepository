@@ -15,5 +15,5 @@ func update(slot: InventorySlot):
 		backgroundSprite.frame = 1
 		itemSprite.visible = true
 		itemSprite.texture = slot.item.texture
-		amountLabel.visible = true
+		amountLabel.visible = true if slot.amount > 1 else false
 		amountLabel.text = str(slot.amount)

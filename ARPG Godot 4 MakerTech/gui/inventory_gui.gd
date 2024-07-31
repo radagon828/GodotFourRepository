@@ -13,7 +13,7 @@ func _ready():
 	inventory.updated.connect(update)
 	update()
 
-#runs update function on each inventory slot that has an item in the corresponding array slot
+#runs update function on each inventory slot, if the slot has an item the gui will reflect that
 func update():
 	for i in range(min(inventory.slots.size(), slots.size())):
 		slots[i].update(inventory.slots[i])

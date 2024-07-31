@@ -9,6 +9,7 @@ signal healthChanged
 @onready var effects = $Effects
 @onready var hurtBox = $hurtbox
 @onready var hurtTimer = $hurtTimer
+@onready var weapon = $weapon
 
 @export var maxHealth = 3
 #making this onready solved the problem of the 
@@ -19,7 +20,9 @@ signal healthChanged
 
 @export var inventory: Inventory
 
+var lastAnimDirection: String = "Down"
 var isHurt: bool = false
+var isAttacking: bool = false
 
 func _ready():
 	effects.play("RESET")
@@ -28,8 +31,21 @@ func handleInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = moveDirection * speed
 	
+	if Input.is_action_just_pressed("attack"):
+		attack()
+
+func attack():
+	animationPLayer.play("attack" + lastAnimDirection)
+	isAttacking = true
+	weapon.visible = true
+	await animationPLayer.animation_finished
+	isAttacking = false
+	weapon.visible = false
+	
 #changes animation based on player movement direction
 func updateAnimation():
+	if isAttacking : return
+	
 	if velocity.length() == 0:
 		if animationPLayer.is_playing():
 			animationPLayer.stop()
@@ -40,6 +56,7 @@ func updateAnimation():
 		elif velocity.y < 0: direction = "Up"
 	
 		animationPLayer.play("walk" + direction)
+		lastAnimDirection = direction
 
 #detects collision between interactable objects
 func handleCollision():
