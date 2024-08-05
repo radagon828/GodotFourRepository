@@ -48,3 +48,9 @@ func _physics_process(delta):
 	updateVelocity()
 	move_and_slide()
 	updateAnimation()
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area == $hitbox: return
+	print("enemy hit")
+	pass
