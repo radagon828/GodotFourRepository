@@ -2877,6 +2877,20 @@ endPoint = NodePath("Marker2D")
 [node name="Marker2D" type="Marker2D" parent="TileMap/slime"]
 position = Vector2(96, 24)
 
+[node name="slime2" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("1_8qh5s")]
+position = Vector2(256, 135)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/slime2"]
+position = Vector2(0, -96)
+
+[node name="slime3" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("1_8qh5s")]
+position = Vector2(408, 135)
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/slime3"]
+position = Vector2(-128, -8)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("10_n1j66")

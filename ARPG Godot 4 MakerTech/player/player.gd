@@ -37,10 +37,10 @@ func handleInput():
 func attack():
 	animationPLayer.play("attack" + lastAnimDirection)
 	isAttacking = true
-	weapon.visible = true
+	weapon.enable()
 	await animationPLayer.animation_finished
 	isAttacking = false
-	weapon.visible = false
+	weapon.disable()
 	
 #changes animation based on player movement direction
 func updateAnimation():
@@ -63,7 +63,7 @@ func handleCollision():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		print(collider.name)
+#		print(collider.name)
 
 #calls functions
 func _physics_process(delta):
