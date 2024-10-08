@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bma6r3eb6bby6"]
+
+[ext_resource type="Script" path="res://Areas/TestWorldOne.gd" id="1_53tsp"]
+
+[node name="TestWorldOne" type="Node2D"]
+script = ExtResource("1_53tsp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(38.1637, 167.268)
+scale = Vector2(3.64659, 2.44196)
+polygon = PackedVector2Array(-71, 66, -71, -72, -1, -72, -1, 1, 126.563, 1.11883, 126.563, -75.0494, 154.102, -75.0494, 154, 66)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+position = Vector2(131, 45)
+color = Color(0.521569, 0.521569, 0.521569, 1)

@@ -632,7 +632,7 @@ input_3/auto_advance = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="20"]
-graph_offset = Vector2(-136.981, 96.4834)
+graph_offset = Vector2(-305.183, 73.5935)
 nodes/Add2/node = SubResource("29")
 nodes/Add2/position = Vector2(260, -160)
 nodes/Animation/node = SubResource("18")
