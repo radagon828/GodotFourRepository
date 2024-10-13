@@ -5,3 +5,4 @@ extends Node2D
 
 func _ready() -> void:
 	surface_area.polygon = surface_collision.polygon 
+	surface_area.global_position = surface_collision.global_position
