@@ -9,6 +9,7 @@ var gravity = 500
 @export var theTorso: AnimationPlayer
 @export var theLegs: AnimationPlayer
 # Get the gravity from the project settings to be synced with RigidBody nodes.
+@onready var aniTree = $Animations/AnimationTree
 
 
 func _ready() -> void:
@@ -48,9 +49,13 @@ func animate():
 	elif is_on_floor():
 		theTorso.play("idleTorso")
 		theLegs.play("idleLegs")
-	elif not is_on_floor():
-		theTorso.play("jumpTorso")
-		theLegs.play("jumpLegs")
+		if velocity.y < 0:
+			theTorso.play("jumpUpTorso")
+			theLegs.play("jumpUpLegs")
+		elif velocity.y > 0:
+			theTorso.play("jumpDownTorso")
+			theLegs.play("jumpDownLegs")
+			
 		
 func flip():
 	if velocity.x != 0:
