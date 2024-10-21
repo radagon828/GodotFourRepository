@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cdvsfhh22jq0f"]
+[gd_scene load_steps=51 format=3 uid="uid://cdvsfhh22jq0f"]
 
 [ext_resource type="Texture2D" uid="uid://dlgn2chrvnm23" path="res://Art/disc man base.png" id="1_cgk75"]
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
@@ -192,6 +192,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_4tyhs"]
 resource_name = "runningLegs"
 length = 0.5
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -309,6 +310,21 @@ _data = {
 "throwDisc2Torso": SubResource("Animation_w7gk6")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oooms"]
+animation = &"slideTorso"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4xe4h"]
+animation = &"slideLegs"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ssqv"]
+animation = &"throwDisc2Torso"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kggcu"]
+animation = &"runningLegs"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pw5x"]
+animation = &"runningTorso"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_be6n7"]
 animation = &"hurtLegs"
 
@@ -327,6 +343,12 @@ animation = &"jumpUpLegs"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hvgg0"]
 animation = &"jumpDownLegs"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t42fm"]
+animation = &"jumpUpTorso"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_igafu"]
+animation = &"jumpDownTorso"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jrsf3"]
 animation = &"hurtTorso"
 
@@ -334,7 +356,36 @@ animation = &"hurtTorso"
 
 [sub_resource type="AnimationNodeSub2" id="AnimationNodeSub2_yv0kf"]
 
+[sub_resource type="AnimationNodeSub2" id="AnimationNodeSub2_xa1a2"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_omqvt"]
+input_0/name = "hurt"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "move"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "slide"
+input_2/auto_advance = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_op8xc"]
+input_0/name = "2"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "1"
+input_1/auto_advance = false
+input_1/reset = true
+
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_4xfn3"]
+input_0/name = "jumping"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "falling"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_5wun6"]
 input_0/name = "jumping"
 input_0/auto_advance = false
 input_0/reset = true
@@ -350,7 +401,31 @@ input_1/name = "false"
 input_1/auto_advance = false
 input_1/reset = true
 
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_kk3ns"]
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_e7e3j"]
+input_0/name = "true"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "false"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_rkf72"]
+input_0/name = "true"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "false"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_iho1s"]
+input_0/name = "true"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "false"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_eonr7"]
 input_0/name = "true"
 input_0/auto_advance = false
 input_0/reset = true
@@ -359,33 +434,61 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
-graph_offset = Vector2(-746.272, -395.214)
+graph_offset = Vector2(-562.776, -554.215)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
-nodes/Animation/position = Vector2(500, -700)
+nodes/Animation/position = Vector2(760, -700)
+"nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
+"nodes/Animation 10/position" = Vector2(505.737, -128.637)
+"nodes/Animation 11/node" = SubResource("AnimationNodeAnimation_4xe4h")
+"nodes/Animation 11/position" = Vector2(482.352, 72.0813)
+"nodes/Animation 12/node" = SubResource("AnimationNodeAnimation_6ssqv")
+"nodes/Animation 12/position" = Vector2(300, -840)
+"nodes/Animation 13/node" = SubResource("AnimationNodeAnimation_kggcu")
+"nodes/Animation 13/position" = Vector2(-104.322, 183.251)
+"nodes/Animation 14/node" = SubResource("AnimationNodeAnimation_8pw5x")
+"nodes/Animation 14/position" = Vector2(-160, -420)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_be6n7")
-"nodes/Animation 2/position" = Vector2(500, -600)
+"nodes/Animation 2/position" = Vector2(760, -600)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6d8dn")
-"nodes/Animation 3/position" = Vector2(-120, -120)
+"nodes/Animation 3/position" = Vector2(-40, 0)
 "nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_ht1b6")
-"nodes/Animation 4/position" = Vector2(40, -500)
+"nodes/Animation 4/position" = Vector2(-280, -540)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_ot0iw")
-"nodes/Animation 5/position" = Vector2(-300, -480)
+"nodes/Animation 5/position" = Vector2(320, -1000)
 "nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_8pdw2")
-"nodes/Animation 6/position" = Vector2(-300, -360)
+"nodes/Animation 6/position" = Vector2(-220, -240)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_hvgg0")
-"nodes/Animation 7/position" = Vector2(-339.404, -202.379)
+"nodes/Animation 7/position" = Vector2(-260, -80)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_t42fm")
+"nodes/Animation 8/position" = Vector2(-240, -820)
+"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_igafu")
+"nodes/Animation 9/position" = Vector2(-240, -680)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_gpdb5")
-nodes/Blend2/position = Vector2(460, -400)
+nodes/Blend2/position = Vector2(500, -380)
 nodes/Hurt/node = SubResource("AnimationNodeSub2_yv0kf")
-nodes/Hurt/position = Vector2(720, -680)
+nodes/Hurt/position = Vector2(940, -680)
+nodes/Sliding/node = SubResource("AnimationNodeSub2_xa1a2")
+nodes/Sliding/position = Vector2(720, -100)
+nodes/bodyState/node = SubResource("AnimationNodeTransition_omqvt")
+nodes/bodyState/position = Vector2(780, -360)
+nodes/discsHeld/node = SubResource("AnimationNodeTransition_op8xc")
+nodes/discsHeld/position = Vector2(560, -880)
 nodes/in_air/node = SubResource("AnimationNodeTransition_4xfn3")
-nodes/in_air/position = Vector2(80, -360)
+nodes/in_air/position = Vector2(160, -240)
+nodes/in_air2/node = SubResource("AnimationNodeTransition_5wun6")
+nodes/in_air2/position = Vector2(20, -780)
 nodes/in_air_state/node = SubResource("AnimationNodeTransition_l8w6b")
-nodes/in_air_state/position = Vector2(300, -300)
-nodes/isHurt/node = SubResource("AnimationNodeTransition_kk3ns")
-nodes/isHurt/position = Vector2(660, -320)
-nodes/output/position = Vector2(880, -180)
-node_connections = [&"output", 0, &"isHurt", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"isHurt", 0, &"Hurt", &"isHurt", 1, &"Blend2", &"Blend2", 1, &"in_air_state", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"Animation 3", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7"]
+nodes/in_air_state/position = Vector2(360, -160)
+nodes/in_air_state2/node = SubResource("AnimationNodeTransition_e7e3j")
+nodes/in_air_state2/position = Vector2(260, -600)
+nodes/isThrowing/node = SubResource("AnimationNodeTransition_rkf72")
+nodes/isThrowing/position = Vector2(520, -640)
+nodes/output/position = Vector2(980, -220)
+nodes/running/node = SubResource("AnimationNodeTransition_iho1s")
+nodes/running/position = Vector2(220, 0)
+nodes/running2/node = SubResource("AnimationNodeTransition_eonr7")
+nodes/running2/position = Vector2(60, -540)
+node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"isThrowing", 0, &"discsHeld", &"isThrowing", 1, &"in_air_state2", &"discsHeld", 0, &"Animation 5", &"discsHeld", 1, &"Animation 12", &"running", 0, &"Animation 13", &"running", 1, &"Animation 3", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4"]
 
 [node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("theTorso", "theLegs")]
 script = ExtResource("1_nuam1")
@@ -402,13 +505,13 @@ shape = SubResource("RectangleShape2D_ik08u")
 texture = ExtResource("1_cgk75")
 hframes = 10
 vframes = 11
-frame = 90
+frame = 62
 
 [node name="DiscManTorso" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("1_cgk75")
 hframes = 10
 vframes = 11
-frame = 100
+frame = 81
 
 [node name="DiscMan Shading" type="Sprite2D" parent="Sprites"]
 visible = false
@@ -446,15 +549,33 @@ root_node = NodePath("../DiscManLegs")
 [node name="AnimationTree" type="AnimationTree" parent="Animations"]
 tree_root = SubResource("AnimationNodeBlendTree_o61ky")
 anim_player = NodePath("../DiscManTorso")
-active = true
 parameters/Blend2/blend_amount = 0.5
 parameters/Hurt/sub_amount = 0.5
+parameters/Sliding/sub_amount = 0.5
+parameters/bodyState/current_state = "move"
+parameters/bodyState/transition_request = ""
+parameters/bodyState/current_index = 1
+parameters/discsHeld/current_state = "2"
+parameters/discsHeld/transition_request = ""
+parameters/discsHeld/current_index = 0
 parameters/in_air/current_state = ""
 parameters/in_air/transition_request = ""
 parameters/in_air/current_index = -1
+parameters/in_air2/current_state = ""
+parameters/in_air2/transition_request = ""
+parameters/in_air2/current_index = -1
 parameters/in_air_state/current_state = "false"
 parameters/in_air_state/transition_request = ""
 parameters/in_air_state/current_index = 1
-parameters/isHurt/current_state = "false"
-parameters/isHurt/transition_request = ""
-parameters/isHurt/current_index = 1
+parameters/in_air_state2/current_state = "false"
+parameters/in_air_state2/transition_request = ""
+parameters/in_air_state2/current_index = 1
+parameters/isThrowing/current_state = "false"
+parameters/isThrowing/transition_request = ""
+parameters/isThrowing/current_index = 1
+parameters/running/current_state = "true"
+parameters/running/transition_request = ""
+parameters/running/current_index = 0
+parameters/running2/current_state = "true"
+parameters/running2/transition_request = ""
+parameters/running2/current_index = 0
