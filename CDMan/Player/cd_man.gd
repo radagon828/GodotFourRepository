@@ -61,4 +61,5 @@ func flip():
 	if velocity.x != 0:
 		for i in sprites.size():
 			sprites[i].flip_h = !bool(sign(velocity.x) + 1)
+		
 
