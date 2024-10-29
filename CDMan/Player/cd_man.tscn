@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cdvsfhh22jq0f"]
+[gd_scene load_steps=52 format=3 uid="uid://cdvsfhh22jq0f"]
 
 [ext_resource type="Texture2D" uid="uid://dlgn2chrvnm23" path="res://Art/disc man base.png" id="1_cgk75"]
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
@@ -531,6 +531,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_py0i5"]
 resource_name = "slideLegs"
 length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -559,6 +560,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_2wm0y"]
 resource_name = "slideTorso"
 length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -782,8 +784,6 @@ animation = &"hurtTorso"
 
 [sub_resource type="AnimationNodeSub2" id="AnimationNodeSub2_xa1a2"]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_c8q3u"]
-
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_omqvt"]
 input_0/name = "hurt"
 input_0/auto_advance = false
@@ -860,7 +860,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
-graph_offset = Vector2(12.3415, -426.887)
+graph_offset = Vector2(-276.771, -309.373)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
@@ -895,8 +895,6 @@ nodes/Hurt/node = SubResource("AnimationNodeSub2_yv0kf")
 nodes/Hurt/position = Vector2(940, -680)
 nodes/Sliding/node = SubResource("AnimationNodeSub2_xa1a2")
 nodes/Sliding/position = Vector2(720, -100)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_c8q3u")
-nodes/TimeScale/position = Vector2(1053.82, -318.699)
 nodes/bodyState/node = SubResource("AnimationNodeTransition_omqvt")
 nodes/bodyState/position = Vector2(780, -360)
 nodes/discsHeld/node = SubResource("AnimationNodeTransition_op8xc")
@@ -916,12 +914,13 @@ nodes/running/node = SubResource("AnimationNodeTransition_iho1s")
 nodes/running/position = Vector2(220, 0)
 nodes/running2/node = SubResource("AnimationNodeTransition_eonr7")
 nodes/running2/position = Vector2(60, -540)
-node_connections = [&"output", 0, &"TimeScale", &"Blend2", 0, &"isThrowing", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"TimeScale", 0, &"bodyState", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"discsHeld", 0, &"Animation 5", &"discsHeld", 1, &"Animation 12", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"isThrowing", 0, &"discsHeld", &"isThrowing", 1, &"in_air_state2", &"running", 0, &"Animation 13", &"running", 1, &"Animation 3", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4"]
+node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"discsHeld", 0, &"Animation 5", &"discsHeld", 1, &"Animation 12", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"isThrowing", 0, &"discsHeld", &"isThrowing", 1, &"in_air_state2", &"running", 0, &"Animation 13", &"running", 1, &"Animation 3", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4"]
 
-[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("theTorso", "theLegs")]
+[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("theTorso", "theLegs", "animator")]
 script = ExtResource("1_nuam1")
 theTorso = NodePath("Animations/DiscManTorso")
 theLegs = NodePath("Animations/DiscManLegs")
+animator = NodePath("Animations/AnimationTree")
 
 [node name="Feet" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
@@ -944,7 +943,7 @@ vframes = 11
 texture = ExtResource("1_cgk75")
 hframes = 10
 vframes = 11
-frame = 100
+frame = 80
 
 [node name="DiscManTorso Shading" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_001wq")
@@ -967,14 +966,12 @@ frame = 10
 
 [node name="DiscManTorso" type="AnimationPlayer" parent="Animations"]
 root_node = NodePath("../..")
-autoplay = "idleTorso"
 libraries = {
 "": SubResource("AnimationLibrary_y8uc6")
 }
 
 [node name="DiscManLegs" type="AnimationPlayer" parent="Animations"]
 root_node = NodePath("../..")
-autoplay = "idleLegs"
 libraries = {
 "": SubResource("AnimationLibrary_y8uc6")
 }
@@ -982,10 +979,10 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="Animations"]
 tree_root = SubResource("AnimationNodeBlendTree_o61ky")
 anim_player = NodePath("../DiscManTorso")
+active = true
 parameters/Blend2/blend_amount = 0.5
 parameters/Hurt/sub_amount = 0.5
 parameters/Sliding/sub_amount = 0.5
-parameters/TimeScale/scale = 0.12
 parameters/bodyState/current_state = "move"
 parameters/bodyState/transition_request = ""
 parameters/bodyState/current_index = 1
