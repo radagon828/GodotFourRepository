@@ -30,10 +30,11 @@ func _physics_process(delta):
 			process_base(delta)
 		State.SLIDE:
 			process_slide(delta)
+		State.THROW:
+			process_throw(delta)
 	isStateNew = false
 	move_and_slide()
-
-	print(face_vector.x)
+#	print(velocity.x)
 	
 func change_state(newstate):
 	currentState = newstate
@@ -44,7 +45,7 @@ func process_base(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-	var direction = get_input_vector()
+	direction = get_input_vector()
 	if direction.x:
 		velocity.x = direction.x * SPEED
 		face_vector.x = direction.x
@@ -53,24 +54,13 @@ func process_base(delta):
 		
 	if (Input.is_action_just_pressed("slide")) && is_on_floor():
 		call_deferred("change_state", State.SLIDE)
+		
+	if Input.is_action_just_released("attack"):
+		call_deferred("change_state", State.THROW)
 	#ANIMATIONS
 	animator.set("parameters/bodyState/transition_request", "move")
-	animator.set("parameters/in_air_state/transition_request", bool(!is_on_floor()))
-	animator.set("parameters/in_air_state2/transition_request", bool(!is_on_floor()))
-	
-	if direction.x != 0:
-		animator.set("parameters/running/transition_request", "true")
-		animator.set("parameters/running2/transition_request", "true")
-	elif direction.x == 0:
-		animator.set("parameters/running/transition_request", "false")
-		animator.set("parameters/running2/transition_request", "false")
-	if velocity.y != 0:
-		if velocity.y > 0:
-			animator.set("parameters/in_air2/transition_request", "falling")
-			animator.set("parameters/in_air/transition_request", "falling")
-		if velocity.y < 0:
-			animator.set("parameters/in_air2/transition_request", "jumping")
-			animator.set("parameters/in_air/transition_request", "jumping")
+	animate_torso()
+	animate_legs()
 	handle_jump()
 	flip()
 	
@@ -83,10 +73,32 @@ func get_input_vector():
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-func animate():
-	pass
-
+		
+func animate_torso():
+	animator.set("parameters/in_air_state2/transition_request", bool(!is_on_floor()))
+	
+	if direction.x != 0:
+		animator.set("parameters/running2/transition_request", "true")
+	elif direction.x == 0:
+		animator.set("parameters/running2/transition_request", "false")
+	if velocity.y != 0:
+		if velocity.y > 0:
+			animator.set("parameters/in_air2/transition_request", "falling")
+		if velocity.y < 0:
+			animator.set("parameters/in_air2/transition_request", "jumping")
+		
+func animate_legs():
+	animator.set("parameters/in_air_state/transition_request", bool(!is_on_floor()))
+	
+	if direction.x != 0:
+		animator.set("parameters/running/transition_request", "true")
+	elif direction.x == 0:
+		animator.set("parameters/running/transition_request", "false")
+	if velocity.y != 0:
+		if velocity.y > 0:
+			animator.set("parameters/in_air/transition_request", "falling")
+		if velocity.y < 0:
+			animator.set("parameters/in_air/transition_request", "jumping")
 		
 func flip():
 	if velocity.x != 0:
@@ -101,4 +113,24 @@ func process_slide(delta):
 	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
 	if (abs(velocity.x) < minDashSpeed):
 		call_deferred("change_state", State.BASE)
+		
+func process_throw(delta):
+	if (isStateNew):
+		animator.set("parameters/isThrowing2/transition_request", "true")
+		animator.set("parameters/isThrowing/transition_request", "true")
+		
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	
+	direction = get_input_vector()
+	if direction.x:
+		velocity.x = direction.x * SPEED
+		face_vector.x = direction.x
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+	#animations
+	animate_legs()
+	handle_jump()
+	flip()
+	
 

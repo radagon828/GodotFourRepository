@@ -1,8 +1,9 @@
-[gd_scene load_steps=52 format=3 uid="uid://cdvsfhh22jq0f"]
+[gd_scene load_steps=55 format=3 uid="uid://cdvsfhh22jq0f"]
 
 [ext_resource type="Texture2D" uid="uid://dlgn2chrvnm23" path="res://Art/disc man base.png" id="1_cgk75"]
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Texture2D" uid="uid://c1ccptjiywqof" path="res://Art/disc man shading.png" id="2_001wq"]
+[ext_resource type="Script" path="res://Player/FiniteStateMachine.gd" id="2_alctq"]
 [ext_resource type="Texture2D" uid="uid://cu3mlx6u1s6d4" path="res://Art/disc man discs.png" id="3_2kkpn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik08u"]
@@ -751,6 +752,9 @@ animation = &"runningLegs"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pw5x"]
 animation = &"runningTorso"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_twvyx"]
+animation = &"idleThrowLegs"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_be6n7"]
 animation = &"hurtLegs"
 
@@ -835,6 +839,14 @@ input_1/name = "false"
 input_1/auto_advance = false
 input_1/reset = true
 
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_s5620"]
+input_0/name = "true"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "false"
+input_1/auto_advance = false
+input_1/reset = true
+
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_rkf72"]
 input_0/name = "true"
 input_0/auto_advance = false
@@ -860,7 +872,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
-graph_offset = Vector2(-276.771, -309.373)
+graph_offset = Vector2(-365.629, -152.855)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
@@ -870,13 +882,15 @@ nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 12/node" = SubResource("AnimationNodeAnimation_6ssqv")
 "nodes/Animation 12/position" = Vector2(300, -840)
 "nodes/Animation 13/node" = SubResource("AnimationNodeAnimation_kggcu")
-"nodes/Animation 13/position" = Vector2(-104.322, 183.251)
+"nodes/Animation 13/position" = Vector2(-60, -20)
 "nodes/Animation 14/node" = SubResource("AnimationNodeAnimation_8pw5x")
 "nodes/Animation 14/position" = Vector2(-160, -420)
+"nodes/Animation 15/node" = SubResource("AnimationNodeAnimation_twvyx")
+"nodes/Animation 15/position" = Vector2(-220, 60)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_be6n7")
 "nodes/Animation 2/position" = Vector2(760, -600)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6d8dn")
-"nodes/Animation 3/position" = Vector2(-40, 0)
+"nodes/Animation 3/position" = Vector2(-200, 220)
 "nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_ht1b6")
 "nodes/Animation 4/position" = Vector2(-280, -540)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_ot0iw")
@@ -907,20 +921,23 @@ nodes/in_air_state/node = SubResource("AnimationNodeTransition_l8w6b")
 nodes/in_air_state/position = Vector2(360, -160)
 nodes/in_air_state2/node = SubResource("AnimationNodeTransition_e7e3j")
 nodes/in_air_state2/position = Vector2(260, -600)
-nodes/isThrowing/node = SubResource("AnimationNodeTransition_rkf72")
-nodes/isThrowing/position = Vector2(520, -640)
+nodes/isThrowing/node = SubResource("AnimationNodeTransition_s5620")
+nodes/isThrowing/position = Vector2(100, 140)
+nodes/isThrowing2/node = SubResource("AnimationNodeTransition_rkf72")
+nodes/isThrowing2/position = Vector2(520, -640)
 nodes/output/position = Vector2(1280, -260)
 nodes/running/node = SubResource("AnimationNodeTransition_iho1s")
 nodes/running/position = Vector2(220, 0)
 nodes/running2/node = SubResource("AnimationNodeTransition_eonr7")
 nodes/running2/position = Vector2(60, -540)
-node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"discsHeld", 0, &"Animation 5", &"discsHeld", 1, &"Animation 12", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"isThrowing", 0, &"discsHeld", &"isThrowing", 1, &"in_air_state2", &"running", 0, &"Animation 13", &"running", 1, &"Animation 3", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4"]
+node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing2", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"discsHeld", 0, &"Animation 5", &"discsHeld", 1, &"Animation 12", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"running", 0, &"Animation 13", &"running", 1, &"isThrowing", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4", &"isThrowing2", 0, &"discsHeld", &"isThrowing2", 1, &"in_air_state2", &"isThrowing", 0, &"Animation 15", &"isThrowing", 1, &"Animation 3"]
 
-[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("theTorso", "theLegs", "animator")]
+[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 script = ExtResource("1_nuam1")
-theTorso = NodePath("Animations/DiscManTorso")
-theLegs = NodePath("Animations/DiscManLegs")
 animator = NodePath("Animations/AnimationTree")
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("2_alctq")
 
 [node name="Feet" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
@@ -932,7 +949,7 @@ shape = SubResource("RectangleShape2D_ik08u")
 texture = ExtResource("1_cgk75")
 hframes = 10
 vframes = 11
-frame = 60
+frame = 69
 
 [node name="DiscManLegs Shading" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_001wq")
@@ -943,7 +960,7 @@ vframes = 11
 texture = ExtResource("1_cgk75")
 hframes = 10
 vframes = 11
-frame = 80
+frame = 82
 
 [node name="DiscManTorso Shading" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_001wq")
@@ -964,13 +981,7 @@ frame = 10
 
 [node name="Animations" type="Node" parent="."]
 
-[node name="DiscManTorso" type="AnimationPlayer" parent="Animations"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_y8uc6")
-}
-
-[node name="DiscManLegs" type="AnimationPlayer" parent="Animations"]
+[node name="DiscMan" type="AnimationPlayer" parent="Animations"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_y8uc6")
@@ -978,7 +989,7 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="Animations"]
 tree_root = SubResource("AnimationNodeBlendTree_o61ky")
-anim_player = NodePath("../DiscManTorso")
+anim_player = NodePath("../DiscMan")
 active = true
 parameters/Blend2/blend_amount = 0.5
 parameters/Hurt/sub_amount = 0.5
@@ -1001,9 +1012,12 @@ parameters/in_air_state/current_index = 1
 parameters/in_air_state2/current_state = "false"
 parameters/in_air_state2/transition_request = ""
 parameters/in_air_state2/current_index = 1
-parameters/isThrowing/current_state = "false"
-parameters/isThrowing/transition_request = ""
-parameters/isThrowing/current_index = 1
+parameters/isThrowing/current_state = ""
+parameters/isThrowing/transition_request = "false"
+parameters/isThrowing/current_index = -1
+parameters/isThrowing2/current_state = "false"
+parameters/isThrowing2/transition_request = ""
+parameters/isThrowing2/current_index = 1
 parameters/running/current_state = "true"
 parameters/running/transition_request = ""
 parameters/running/current_index = 0
