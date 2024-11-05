@@ -960,7 +960,7 @@ shape = SubResource("RectangleShape2D_ik08u")
 texture = ExtResource("3_3cl0r")
 hframes = 10
 vframes = 11
-frame = 60
+frame = 65
 
 [node name="DiscManLegs Shading" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_001wq")
