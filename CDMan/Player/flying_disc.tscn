@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgd2bwvgcbmhc"]
+
+[ext_resource type="Script" path="res://Player/FlyingDisc.gd" id="1_a5fcq"]
+[ext_resource type="Texture2D" uid="uid://m41twuopn53o" path="res://Art/TheDiscItself.png" id="2_pvh4o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw5jh"]
+atlas = ExtResource("2_pvh4o")
+region = Rect2(0, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anuhu"]
+atlas = ExtResource("2_pvh4o")
+region = Rect2(19, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7qbx"]
+atlas = ExtResource("2_pvh4o")
+region = Rect2(38, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1ab1"]
+atlas = ExtResource("2_pvh4o")
+region = Rect2(57, 0, 19, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbidh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw5jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anuhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7qbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1ab1")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 12.0
+}]
+
+[node name="FlyingDisc" type="RigidBody2D"]
+script = ExtResource("1_a5fcq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 1, 5, 1, 5, -2, -6, -2, -6, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kbidh")
+animation = &"spin"
+frame_progress = 0.994886
