@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cdvsfhh22jq0f"]
+[gd_scene load_steps=60 format=3 uid="uid://cdvsfhh22jq0f"]
 
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Texture2D" uid="uid://c1ccptjiywqof" path="res://Art/disc man shading.png" id="2_001wq"]
@@ -38,7 +38,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -50,7 +50,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -132,7 +132,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -144,7 +144,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -242,7 +242,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -254,7 +254,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -292,22 +292,6 @@ tracks/1/keys = {
 "values": [41, 42]
 }
 
-[sub_resource type="Animation" id="Animation_pgpyb"]
-resource_name = "jumpDownLegs_2"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [42]
-}
-
 [sub_resource type="Animation" id="Animation_qtccg"]
 resource_name = "jumpDownTorso"
 length = 0.2
@@ -338,7 +322,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -350,7 +334,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -358,22 +342,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [41, 42]
-}
-
-[sub_resource type="Animation" id="Animation_llera"]
-resource_name = "jumpDownTorso_2"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [52]
 }
 
 [sub_resource type="Animation" id="Animation_0x328"]
@@ -435,7 +403,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -447,7 +415,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -519,7 +487,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -531,7 +499,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -601,7 +569,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -613,7 +581,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -623,9 +591,11 @@ tracks/3/keys = {
 "values": [20]
 }
 
-[sub_resource type="Animation" id="Animation_8qlll"]
-resource_name = "throwDisc1Torso"
-length = 0.5
+[sub_resource type="Animation" id="Animation_258d2"]
+resource_name = "throwDisc1Arm"
+length = 0.1
+loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -633,7 +603,60 @@ tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [74]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [74]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [74]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [64]
+}
+
+[sub_resource type="Animation" id="Animation_8qlll"]
+resource_name = "throwDisc1Torso"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [70, 71, 72, 73, 74]
@@ -645,7 +668,7 @@ tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [70, 71, 72, 73, 74]
@@ -653,11 +676,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [70, 71, 72, 73, 74]
@@ -665,11 +688,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.0001, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [60, 60, 61, 62, 63, 64]
@@ -677,7 +700,8 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_w7gk6"]
 resource_name = "throwDisc2Torso"
-length = 0.5
+length = 0.25
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -685,7 +709,7 @@ tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [75, 76, 77, 78, 79]
@@ -697,7 +721,7 @@ tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [75, 76, 77, 78, 79]
@@ -705,11 +729,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscMan DISCS:frame")
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [75, 76, 77, 78, 79]
@@ -717,11 +741,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscMan DISCS2:frame")
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [65, 66, 67, 68, 69]
@@ -736,15 +760,14 @@ _data = {
 "idleThrowLegs": SubResource("Animation_nkkcg"),
 "idleTorso": SubResource("Animation_f6rx2"),
 "jumpDownLegs": SubResource("Animation_b1brx"),
-"jumpDownLegs_2": SubResource("Animation_pgpyb"),
 "jumpDownTorso": SubResource("Animation_qtccg"),
-"jumpDownTorso_2": SubResource("Animation_llera"),
 "jumpUpLegs": SubResource("Animation_0x328"),
 "jumpUpTorso": SubResource("Animation_yk3m3"),
 "runningLegs": SubResource("Animation_4tyhs"),
 "runningTorso": SubResource("Animation_s178t"),
 "slideLegs": SubResource("Animation_py0i5"),
 "slideTorso": SubResource("Animation_2wm0y"),
+"throwDisc1Arm": SubResource("Animation_258d2"),
 "throwDisc1Torso": SubResource("Animation_8qlll"),
 "throwDisc2Torso": SubResource("Animation_w7gk6")
 }
@@ -766,6 +789,15 @@ animation = &"runningTorso"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_twvyx"]
 animation = &"idleThrowLegs"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yvf6c"]
+animation = &"throwDisc1Torso"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_66t1a"]
+animation = &"throwDisc2Torso"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8a2qa"]
+animation = &"throwDisc1Arm"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_be6n7"]
 animation = &"hurtLegs"
@@ -798,6 +830,8 @@ animation = &"hurtTorso"
 
 [sub_resource type="AnimationNodeSub2" id="AnimationNodeSub2_yv0kf"]
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_a6f5e"]
+
 [sub_resource type="AnimationNodeSub2" id="AnimationNodeSub2_xa1a2"]
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_omqvt"]
@@ -816,6 +850,22 @@ input_0/name = "2"
 input_0/auto_advance = false
 input_0/reset = true
 input_1/name = "1"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_faxmj"]
+input_0/name = "true"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "false"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_ixkrv"]
+input_0/name = "true"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "false"
 input_1/auto_advance = false
 input_1/reset = true
 
@@ -884,64 +934,77 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
+graph_offset = Vector2(-191.397, -1327.4)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
-"nodes/Animation 10/position" = Vector2(505.737, -128.637)
+"nodes/Animation 10/position" = Vector2(620, -140)
 "nodes/Animation 11/node" = SubResource("AnimationNodeAnimation_4xe4h")
-"nodes/Animation 11/position" = Vector2(482.352, 72.0813)
+"nodes/Animation 11/position" = Vector2(620, 0)
 "nodes/Animation 12/node" = SubResource("AnimationNodeAnimation_6ssqv")
-"nodes/Animation 12/position" = Vector2(300, -840)
+"nodes/Animation 12/position" = Vector2(120, -1040)
 "nodes/Animation 13/node" = SubResource("AnimationNodeAnimation_kggcu")
 "nodes/Animation 13/position" = Vector2(-60, -20)
 "nodes/Animation 14/node" = SubResource("AnimationNodeAnimation_8pw5x")
-"nodes/Animation 14/position" = Vector2(-160, -420)
+"nodes/Animation 14/position" = Vector2(-60, -520)
 "nodes/Animation 15/node" = SubResource("AnimationNodeAnimation_twvyx")
 "nodes/Animation 15/position" = Vector2(-220, 60)
+"nodes/Animation 16/node" = SubResource("AnimationNodeAnimation_yvf6c")
+"nodes/Animation 16/position" = Vector2(180, -800)
+"nodes/Animation 17/node" = SubResource("AnimationNodeAnimation_66t1a")
+"nodes/Animation 17/position" = Vector2(180, -920)
+"nodes/Animation 18/node" = SubResource("AnimationNodeAnimation_8a2qa")
+"nodes/Animation 18/position" = Vector2(-60, -1140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_be6n7")
 "nodes/Animation 2/position" = Vector2(760, -600)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6d8dn")
 "nodes/Animation 3/position" = Vector2(-200, 220)
 "nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_ht1b6")
-"nodes/Animation 4/position" = Vector2(-280, -540)
+"nodes/Animation 4/position" = Vector2(-40, -400)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_ot0iw")
-"nodes/Animation 5/position" = Vector2(320, -1000)
+"nodes/Animation 5/position" = Vector2(-20, -1260)
 "nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_8pdw2")
 "nodes/Animation 6/position" = Vector2(-220, -240)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_hvgg0")
 "nodes/Animation 7/position" = Vector2(-260, -80)
 "nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_t42fm")
-"nodes/Animation 8/position" = Vector2(-240, -820)
+"nodes/Animation 8/position" = Vector2(-60, -760)
 "nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_igafu")
-"nodes/Animation 9/position" = Vector2(-240, -680)
+"nodes/Animation 9/position" = Vector2(-80, -640)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_gpdb5")
 nodes/Blend2/position = Vector2(500, -380)
 nodes/Hurt/node = SubResource("AnimationNodeSub2_yv0kf")
 nodes/Hurt/position = Vector2(940, -680)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_a6f5e")
+nodes/OneShot/position = Vector2(240, -1260)
 nodes/Sliding/node = SubResource("AnimationNodeSub2_xa1a2")
-nodes/Sliding/position = Vector2(720, -100)
+nodes/Sliding/position = Vector2(780, -120)
 nodes/bodyState/node = SubResource("AnimationNodeTransition_omqvt")
 nodes/bodyState/position = Vector2(780, -360)
 nodes/discsHeld/node = SubResource("AnimationNodeTransition_op8xc")
-nodes/discsHeld/position = Vector2(560, -880)
+nodes/discsHeld/position = Vector2(620, -1000)
+nodes/facingRight/node = SubResource("AnimationNodeTransition_faxmj")
+nodes/facingRight/position = Vector2(420, -1120)
+nodes/facingRight2/node = SubResource("AnimationNodeTransition_ixkrv")
+nodes/facingRight2/position = Vector2(420, -900)
 nodes/in_air/node = SubResource("AnimationNodeTransition_4xfn3")
 nodes/in_air/position = Vector2(160, -240)
 nodes/in_air2/node = SubResource("AnimationNodeTransition_5wun6")
-nodes/in_air2/position = Vector2(20, -780)
+nodes/in_air2/position = Vector2(160, -680)
 nodes/in_air_state/node = SubResource("AnimationNodeTransition_l8w6b")
-nodes/in_air_state/position = Vector2(360, -160)
+nodes/in_air_state/position = Vector2(360, -220)
 nodes/in_air_state2/node = SubResource("AnimationNodeTransition_e7e3j")
-nodes/in_air_state2/position = Vector2(260, -600)
+nodes/in_air_state2/position = Vector2(300, -620)
 nodes/isThrowing/node = SubResource("AnimationNodeTransition_s5620")
 nodes/isThrowing/position = Vector2(100, 140)
 nodes/isThrowing2/node = SubResource("AnimationNodeTransition_rkf72")
-nodes/isThrowing2/position = Vector2(520, -640)
+nodes/isThrowing2/position = Vector2(500, -620)
 nodes/output/position = Vector2(1280, -260)
 nodes/running/node = SubResource("AnimationNodeTransition_iho1s")
 nodes/running/position = Vector2(220, 0)
 nodes/running2/node = SubResource("AnimationNodeTransition_eonr7")
-nodes/running2/position = Vector2(60, -540)
-node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing2", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"discsHeld", 0, &"Animation 5", &"discsHeld", 1, &"Animation 12", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"isThrowing", 0, &"Animation 15", &"isThrowing", 1, &"Animation 3", &"isThrowing2", 0, &"discsHeld", &"isThrowing2", 1, &"in_air_state2", &"running", 0, &"Animation 13", &"running", 1, &"isThrowing", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4"]
+nodes/running2/position = Vector2(160, -460)
+node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing2", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"OneShot", 0, &"Animation 18", &"OneShot", 1, &"Animation 5", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"discsHeld", 0, &"facingRight", &"discsHeld", 1, &"facingRight2", &"facingRight", 0, &"OneShot", &"facingRight", 1, &"Animation 12", &"facingRight2", 0, &"Animation 17", &"facingRight2", 1, &"Animation 16", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"isThrowing", 0, &"Animation 15", &"isThrowing", 1, &"Animation 3", &"isThrowing2", 0, &"discsHeld", &"isThrowing2", 1, &"in_air_state2", &"running", 0, &"Animation 13", &"running", 1, &"isThrowing", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4"]
 
 [node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 script = ExtResource("1_nuam1")
@@ -960,7 +1023,7 @@ shape = SubResource("RectangleShape2D_ik08u")
 texture = ExtResource("3_3cl0r")
 hframes = 10
 vframes = 11
-frame = 63
+frame = 62
 
 [node name="DiscManLegs Shading" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_001wq")
@@ -979,12 +1042,12 @@ hframes = 10
 vframes = 11
 frame = 64
 
-[node name="DiscMan DISCS2" type="Sprite2D" parent="Sprites"]
+[node name="DiscManDISCS2" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("3_2kkpn")
 hframes = 10
 vframes = 12
 
-[node name="DiscMan DISCS" type="Sprite2D" parent="Sprites"]
+[node name="DiscManDISCS" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("3_2kkpn")
 hframes = 10
 vframes = 12
@@ -1004,6 +1067,9 @@ anim_player = NodePath("../DiscMan")
 active = true
 parameters/Blend2/blend_amount = 0.5
 parameters/Hurt/sub_amount = 0.5
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
 parameters/Sliding/sub_amount = 0.5
 parameters/bodyState/current_state = "move"
 parameters/bodyState/transition_request = ""
@@ -1011,6 +1077,12 @@ parameters/bodyState/current_index = 1
 parameters/discsHeld/current_state = "2"
 parameters/discsHeld/transition_request = ""
 parameters/discsHeld/current_index = 0
+parameters/facingRight/current_state = ""
+parameters/facingRight/transition_request = "true"
+parameters/facingRight/current_index = -1
+parameters/facingRight2/current_state = ""
+parameters/facingRight2/transition_request = ""
+parameters/facingRight2/current_index = -1
 parameters/in_air/current_state = ""
 parameters/in_air/transition_request = ""
 parameters/in_air/current_index = -1
