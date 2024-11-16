@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cdvsfhh22jq0f"]
+[gd_scene load_steps=63 format=3 uid="uid://cdvsfhh22jq0f"]
 
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Texture2D" uid="uid://c1ccptjiywqof" path="res://Art/disc man shading.png" id="2_001wq"]
@@ -751,6 +751,60 @@ tracks/3/keys = {
 "values": [65, 66, 67, 68, 69]
 }
 
+[sub_resource type="Animation" id="Animation_uxtij"]
+resource_name = "throwDisc2Arm"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [79]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [79]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [79]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [69]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y8uc6"]
 _data = {
 "RESET": SubResource("Animation_pk5ye"),
@@ -769,6 +823,7 @@ _data = {
 "slideTorso": SubResource("Animation_2wm0y"),
 "throwDisc1Arm": SubResource("Animation_258d2"),
 "throwDisc1Torso": SubResource("Animation_8qlll"),
+"throwDisc2Arm": SubResource("Animation_uxtij"),
 "throwDisc2Torso": SubResource("Animation_w7gk6")
 }
 
@@ -798,6 +853,9 @@ animation = &"throwDisc2Torso"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8a2qa"]
 animation = &"throwDisc1Arm"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_33bbg"]
+animation = &"throwDisc2Arm"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_be6n7"]
 animation = &"hurtLegs"
@@ -831,6 +889,8 @@ animation = &"hurtTorso"
 [sub_resource type="AnimationNodeSub2" id="AnimationNodeSub2_yv0kf"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_a6f5e"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_y88lg"]
 
 [sub_resource type="AnimationNodeSub2" id="AnimationNodeSub2_xa1a2"]
 
@@ -934,7 +994,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
-graph_offset = Vector2(-191.397, -1327.4)
+graph_offset = Vector2(-315.608, -797.373)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
@@ -942,7 +1002,7 @@ nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 11/node" = SubResource("AnimationNodeAnimation_4xe4h")
 "nodes/Animation 11/position" = Vector2(620, 0)
 "nodes/Animation 12/node" = SubResource("AnimationNodeAnimation_6ssqv")
-"nodes/Animation 12/position" = Vector2(120, -1040)
+"nodes/Animation 12/position" = Vector2(-20, -980)
 "nodes/Animation 13/node" = SubResource("AnimationNodeAnimation_kggcu")
 "nodes/Animation 13/position" = Vector2(-60, -20)
 "nodes/Animation 14/node" = SubResource("AnimationNodeAnimation_8pw5x")
@@ -954,7 +1014,9 @@ nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 17/node" = SubResource("AnimationNodeAnimation_66t1a")
 "nodes/Animation 17/position" = Vector2(180, -920)
 "nodes/Animation 18/node" = SubResource("AnimationNodeAnimation_8a2qa")
-"nodes/Animation 18/position" = Vector2(-60, -1140)
+"nodes/Animation 18/position" = Vector2(-40, -1400)
+"nodes/Animation 19/node" = SubResource("AnimationNodeAnimation_33bbg")
+"nodes/Animation 19/position" = Vector2(20, -1120)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_be6n7")
 "nodes/Animation 2/position" = Vector2(760, -600)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6d8dn")
@@ -962,7 +1024,7 @@ nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_ht1b6")
 "nodes/Animation 4/position" = Vector2(-40, -400)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_ot0iw")
-"nodes/Animation 5/position" = Vector2(-20, -1260)
+"nodes/Animation 5/position" = Vector2(40, -1240)
 "nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_8pdw2")
 "nodes/Animation 6/position" = Vector2(-220, -240)
 "nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_hvgg0")
@@ -976,7 +1038,9 @@ nodes/Blend2/position = Vector2(500, -380)
 nodes/Hurt/node = SubResource("AnimationNodeSub2_yv0kf")
 nodes/Hurt/position = Vector2(940, -680)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_a6f5e")
-nodes/OneShot/position = Vector2(240, -1260)
+nodes/OneShot/position = Vector2(300, -1380)
+nodes/OneShot2/node = SubResource("AnimationNodeOneShot_y88lg")
+nodes/OneShot2/position = Vector2(279.542, -1137.11)
 nodes/Sliding/node = SubResource("AnimationNodeSub2_xa1a2")
 nodes/Sliding/position = Vector2(780, -120)
 nodes/bodyState/node = SubResource("AnimationNodeTransition_omqvt")
@@ -984,7 +1048,7 @@ nodes/bodyState/position = Vector2(780, -360)
 nodes/discsHeld/node = SubResource("AnimationNodeTransition_op8xc")
 nodes/discsHeld/position = Vector2(620, -1000)
 nodes/facingRight/node = SubResource("AnimationNodeTransition_faxmj")
-nodes/facingRight/position = Vector2(420, -1120)
+nodes/facingRight/position = Vector2(460, -1160)
 nodes/facingRight2/node = SubResource("AnimationNodeTransition_ixkrv")
 nodes/facingRight2/position = Vector2(420, -900)
 nodes/in_air/node = SubResource("AnimationNodeTransition_4xfn3")
@@ -1004,7 +1068,7 @@ nodes/running/node = SubResource("AnimationNodeTransition_iho1s")
 nodes/running/position = Vector2(220, 0)
 nodes/running2/node = SubResource("AnimationNodeTransition_eonr7")
 nodes/running2/position = Vector2(160, -460)
-node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing2", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"OneShot", 0, &"Animation 18", &"OneShot", 1, &"Animation 5", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"discsHeld", 0, &"facingRight", &"discsHeld", 1, &"facingRight2", &"facingRight", 0, &"OneShot", &"facingRight", 1, &"Animation 12", &"facingRight2", 0, &"Animation 17", &"facingRight2", 1, &"Animation 16", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"isThrowing", 0, &"Animation 15", &"isThrowing", 1, &"Animation 3", &"isThrowing2", 0, &"discsHeld", &"isThrowing2", 1, &"in_air_state2", &"running", 0, &"Animation 13", &"running", 1, &"isThrowing", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4"]
+node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing2", &"Blend2", 1, &"in_air_state", &"Hurt", 0, &"Animation", &"Hurt", 1, &"Animation 2", &"OneShot", 0, &"Animation 18", &"OneShot", 1, &"Animation 5", &"Sliding", 0, &"Animation 10", &"Sliding", 1, &"Animation 11", &"bodyState", 0, &"Hurt", &"bodyState", 1, &"Blend2", &"bodyState", 2, &"Sliding", &"discsHeld", 0, &"facingRight", &"discsHeld", 1, &"facingRight2", &"facingRight", 0, &"OneShot", &"facingRight", 1, &"OneShot2", &"facingRight2", 0, &"Animation 17", &"facingRight2", 1, &"Animation 16", &"in_air", 0, &"Animation 6", &"in_air", 1, &"Animation 7", &"in_air2", 0, &"Animation 8", &"in_air2", 1, &"Animation 9", &"in_air_state", 0, &"in_air", &"in_air_state", 1, &"running", &"in_air_state2", 0, &"in_air2", &"in_air_state2", 1, &"running2", &"isThrowing", 0, &"Animation 15", &"isThrowing", 1, &"Animation 3", &"isThrowing2", 0, &"discsHeld", &"isThrowing2", 1, &"in_air_state2", &"running", 0, &"Animation 13", &"running", 1, &"isThrowing", &"running2", 0, &"Animation 14", &"running2", 1, &"Animation 4", &"OneShot2", 0, &"Animation 19", &"OneShot2", 1, &"Animation 12"]
 
 [node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 script = ExtResource("1_nuam1")
@@ -1023,7 +1087,7 @@ shape = SubResource("RectangleShape2D_ik08u")
 texture = ExtResource("3_3cl0r")
 hframes = 10
 vframes = 11
-frame = 62
+frame = 64
 
 [node name="DiscManLegs Shading" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_001wq")
@@ -1070,6 +1134,9 @@ parameters/Hurt/sub_amount = 0.5
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
+parameters/OneShot2/active = false
+parameters/OneShot2/internal_active = false
+parameters/OneShot2/request = 0
 parameters/Sliding/sub_amount = 0.5
 parameters/bodyState/current_state = "move"
 parameters/bodyState/transition_request = ""

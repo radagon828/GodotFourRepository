@@ -90,6 +90,10 @@ func process_slide(delta):
 
 func process_throw(delta):
 	if (isStateNew):
+		if face_vector.x > 0:
+			animator.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		else:
+			animator.set("parameters/OneShot2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		animator.set("parameters/isThrowing2/transition_request", "true")
 		animator.set("parameters/isThrowing/transition_request", "true")
 		
