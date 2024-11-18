@@ -32,11 +32,12 @@ var isStateNew = true
 @onready var left_disc = $Sprites/DiscManDISCS2
 var rBool
 var lBool
+@onready var throwTimer = $ThrowTimer
  
 func _ready() -> void:
 	sprites.append_array($Sprites.get_children())
 	left_disc.visible = 1
-	right_disc.visible = 0
+	right_disc.visible = 1
 	rBool = right_disc.visible 
 	lBool = left_disc.visible
 	
@@ -49,8 +50,8 @@ func _physics_process(delta):
 		State.THROW:
 			process_throw(delta)
 	isStateNew = false
+	showDiscsHeld()
 	move_and_slide()
-#	print(velocity.x)
 	
 func change_state(newstate):
 	currentState = newstate
@@ -90,31 +91,37 @@ func process_slide(delta):
 
 func process_throw(delta):
 	if (isStateNew):
-		animator.set("parameters/discsHeld/transition_request", discs_held)
+		animator.set("parameters/discs_held/transition_request", discs_held)
+		animator.set("parameters/isThrowing2/transition_request", "true")
+		animator.set("parameters/isThrowing/transition_request", "true")
+		throwTimer.start()
 		if discs_held == 2:
 			if face_vector.x > 0:
 				animator.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			else:
 				animator.set("parameters/OneShot2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		elif discs_held == 1:
-			if face_vector.x < 0:
+			if face_vector.x > 0:
 				animator.set("parameters/OneShot3/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			else:
 				animator.set("parameters/OneShot4/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		animator.set("parameters/isThrowing2/transition_request", "true")
-		animator.set("parameters/isThrowing/transition_request", "true")
-	
+		discs_held -= 1
 	#GRAVITY
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-	#get directoin held and set face_vector
+	#get direction held and set face_vector
 	direction = get_input_vector()
 	if direction.x:
 		velocity.x = direction.x * SPEED
 		face_vector.x = direction.x
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if throwTimer.time_left < 0.1:
+		call_deferred("change_state", State.BASE)
+		animator.set("parameters/isThrowing2/transition_request", "false")
+		animator.set("parameters/isThrowing/transition_request", "false")
 	#animations
 	animate_legs()
 	handle_jump()
@@ -155,7 +162,18 @@ func animate_legs():
 			animator.set("parameters/in_air/transition_request", "falling")
 		if velocity.y < 0:
 			animator.set("parameters/in_air/transition_request", "jumping")
-		
+
+func showDiscsHeld():
+	if discs_held == 2:
+		rBool = true
+		lBool = true
+	elif discs_held == 1:
+		rBool = false
+		lBool = true
+	elif discs_held == 0:
+		rBool = false
+		lBool = false
+
 func flip():
 	var inputVec = get_input_vector()
 	if velocity.x != 0:
@@ -176,6 +194,4 @@ func flip():
 		right_disc.visible = rBool
 		left_disc.visible = lBool 
 
-
-	
 
