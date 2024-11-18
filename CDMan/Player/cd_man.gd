@@ -90,16 +90,25 @@ func process_slide(delta):
 
 func process_throw(delta):
 	if (isStateNew):
-		if face_vector.x > 0:
-			animator.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		else:
-			animator.set("parameters/OneShot2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		animator.set("parameters/discsHeld/transition_request", discs_held)
+		if discs_held == 2:
+			if face_vector.x > 0:
+				animator.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+			else:
+				animator.set("parameters/OneShot2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		elif discs_held == 1:
+			if face_vector.x < 0:
+				animator.set("parameters/OneShot3/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+			else:
+				animator.set("parameters/OneShot4/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		animator.set("parameters/isThrowing2/transition_request", "true")
 		animator.set("parameters/isThrowing/transition_request", "true")
-		
+	
+	#GRAVITY
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
+	#get directoin held and set face_vector
 	direction = get_input_vector()
 	if direction.x:
 		velocity.x = direction.x * SPEED
