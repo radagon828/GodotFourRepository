@@ -2,21 +2,18 @@ extends CharacterBody2D
 
 enum State {BASE, SLIDE, THROW, HURT}
 
+#MOVEMENT VALUES
 const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
 @export var slide_speed = 500
 var minDashSpeed = 100
 var gravity = 500
-
-
 var direction = Vector2(0, 0)
 #face vector saves direction while direction always changes based on input
 var face_vector = Vector2.RIGHT
 
 #ANIMATION NODES
 var sprites: Array[Node] 
-@export var theTorso: AnimationPlayer
-@export var theLegs: AnimationPlayer
 @export var animator: AnimationTree
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 @onready var aniTree = $Animations/AnimationTree
@@ -28,11 +25,14 @@ var isStateNew = true
 
 #DISC VARIABLES
 @export var discs_held = 2
-@onready var right_disc = $Sprites/DiscManDISCS
-@onready var left_disc = $Sprites/DiscManDISCS2
 var rBool
 var lBool
+@onready var right_disc = $Sprites/DiscManDISCS
+@onready var left_disc = $Sprites/DiscManDISCS2
 @onready var throwTimer = $ThrowTimer
+@export var disc_object : PackedScene
+
+
  
 func _ready() -> void:
 	sprites.append_array($Sprites.get_children())
@@ -72,7 +72,7 @@ func process_base(delta):
 	if (Input.is_action_just_pressed("slide")) && is_on_floor():
 		call_deferred("change_state", State.SLIDE)
 		
-	if Input.is_action_just_released("attack"):
+	if Input.is_action_just_released("attack") && discs_held:
 		call_deferred("change_state", State.THROW)
 	#ANIMATIONS
 	animator.set("parameters/bodyState/transition_request", "move")
@@ -106,6 +106,7 @@ func process_throw(delta):
 			else:
 				animator.set("parameters/OneShot4/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		discs_held -= 1
+		
 	#GRAVITY
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -173,6 +174,11 @@ func showDiscsHeld():
 	elif discs_held == 0:
 		rBool = false
 		lBool = false
+
+func shoot():
+	var shot = disc_object.instantiate()
+	shot.direction = face_vector
+	add_child(shot)
 
 func flip():
 	var inputVec = get_input_vector()
