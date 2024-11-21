@@ -1238,9 +1238,9 @@ parameters/running2/current_index = 1
 wait_time = 0.5
 one_shot = true
 
-[node name="PlayerHitBox" type="Area2D" parent="."]
-collision_layer = 2
+[node name="PlayerHurtBox" type="Area2D" parent="."]
+collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 shape = SubResource("CapsuleShape2D_82tvt")

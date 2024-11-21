@@ -40,6 +40,7 @@ func _ready() -> void:
 	right_disc.visible = 1
 	rBool = right_disc.visible 
 	lBool = left_disc.visible
+	Engine.set_time_scale(1)
 	
 func _physics_process(delta):
 	match currentState:
@@ -105,7 +106,6 @@ func process_throw(delta):
 				animator.set("parameters/OneShot3/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			else:
 				animator.set("parameters/OneShot4/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		discs_held -= 1
 		
 	#GRAVITY
 	if not is_on_floor():
@@ -178,10 +178,11 @@ func showDiscsHeld():
 func shoot():
 	var shot = disc_object.instantiate()
 	shot.direction = face_vector
+	shot.position.x += face_vector.x * 14
+	discs_held -= 1
 	add_child(shot)
 
 func flip():
-	var inputVec = get_input_vector()
 	if velocity.x != 0:
 		for i in sprites.size():
 			#flips the sprites based on the velocity, sign turns current velocity into

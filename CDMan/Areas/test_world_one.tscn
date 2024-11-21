@@ -19,11 +19,11 @@ position = Vector2(-10.4656, -68.4974)
 color = Color(0.521569, 0.521569, 0.521569, 1)
 
 [node name="CDMan" parent="." instance=ExtResource("2_8ei6p")]
-position = Vector2(350, 96)
+position = Vector2(346, 159)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CDMan"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(350, 96)
+position = Vector2(346, 159)
 limit_smoothed = true
