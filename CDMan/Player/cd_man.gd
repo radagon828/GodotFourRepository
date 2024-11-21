@@ -188,13 +188,19 @@ func flip():
 			# a signal value, the plus 1 turns -1 into a false 0, the bool function turns 
 			#0 into false and a positive number into true
 			sprites[i].flip_h = !bool(sign(velocity.x) + 1)
-	
+		
 	if face_vector.x < 0:
+		#CHANGE POSITON TO CENTER SPRITES ON HURTBOX
+		for i in sprites.size():
+			sprites[i].position.x = 0
 		right_disc.visible = lBool
 		left_disc.visible = rBool  
 		animator.set("parameters/facingRight/transition_request", "false")
 		animator.set("parameters/facingRight2/transition_request", "false")
 	else: 
+		#CHANGE POSITON TO CENTER SPRITES ON HURTBOX
+		for i in sprites.size():
+			sprites[i].position.x = -1
 		animator.set("parameters/facingRight/transition_request", "true")
 		animator.set("parameters/facingRight2/transition_request", "true")
 		right_disc.visible = rBool
