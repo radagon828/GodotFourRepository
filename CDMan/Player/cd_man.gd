@@ -178,8 +178,8 @@ func showDiscsHeld():
 func shoot():
 	var shot = disc_object.instantiate()
 	shot.direction = face_vector
-	get_parent().add_child(shot)
 	shot.transform = global_transform
+	get_parent().add_child(shot)
 	shot.position += Vector2(face_vector.x * 14, -4)
 	discs_held -= 1
 	
