@@ -178,9 +178,11 @@ func showDiscsHeld():
 func shoot():
 	var shot = disc_object.instantiate()
 	shot.direction = face_vector
-	shot.position.x += face_vector.x * 14
+	get_parent().add_child(shot)
+	shot.transform = global_transform
+	shot.position += Vector2(face_vector.x * 14, -4)
 	discs_held -= 1
-	add_child(shot)
+	
 
 func flip():
 	if velocity.x != 0:
@@ -207,4 +209,9 @@ func flip():
 		right_disc.visible = rBool
 		left_disc.visible = lBool 
 
+func _on_player_hurt_box_area_entered(area: Area2D) -> void:
+	print(area.name)
+	if area.name == "DiscHitBox": 
+		discs_held += 1
+		area.get_parent().call_deferred("queue_free")
 

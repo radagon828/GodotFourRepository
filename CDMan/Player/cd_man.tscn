@@ -1033,7 +1033,6 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
-graph_offset = Vector2(-233.012, -548.488)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
@@ -1240,7 +1239,9 @@ one_shot = true
 
 [node name="PlayerHurtBox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 shape = SubResource("CapsuleShape2D_82tvt")
+
+[connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
