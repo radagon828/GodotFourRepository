@@ -4,7 +4,8 @@ enum State {OUTWARD, RETURN}
 
 @export var animator: AnimatedSprite2D
 @export var direction = Vector2.RIGHT
-@export var speed = 500
+var returnDir = Vector2.ZERO
+@export var speed = 400
 @onready var playerMarker = $"../CDMan/PlayerMarker"
 
 #STATE VARIABLES
@@ -36,16 +37,17 @@ func change_state(newstate):
 	isStateNew = true
 	
 func process_outward(delta):
-	linear_velocity.x += -direction.x * 25
+	returnDir = playerMarker.global_position - position
+	linear_velocity += returnDir * .2
 	
-	if abs(linear_velocity.x) < 10:
-		call_deferred("change_state", State.RETURN)
+#	if abs(linear_velocity.x) < 10:
+#		call_deferred("change_state", State.RETURN)
 		
 	if Input.is_action_pressed("move_up"):
 #		linear_velocity += Vector2.UP * 2
 		pass
 
 func process_return(delta):
-	direction = playerMarker.global_position - position
-	linear_velocity += direction * 1
+#	returnDir = playerMarker.global_position - position
+#	linear_velocity += direction * 1
 	print(position)
