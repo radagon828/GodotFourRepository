@@ -1244,4 +1244,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 shape = SubResource("CapsuleShape2D_82tvt")
 
+[node name="PlayerMarker" type="Marker2D" parent="."]
+position = Vector2(0, -5)
+
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

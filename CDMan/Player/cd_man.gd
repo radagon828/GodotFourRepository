@@ -176,11 +176,17 @@ func showDiscsHeld():
 		lBool = false
 
 func shoot():
+	#create object
 	var shot = disc_object.instantiate()
+	#set direction of object
 	shot.direction = face_vector
+	#make position of player the position of the disc
 	shot.transform = global_transform
-	get_parent().add_child(shot)
-	shot.position += Vector2(face_vector.x * 14, -4)
+	#move object in front of player
+	shot.position += Vector2(shot.direction.x * 14, -4)
+	#add object to scene
+	get_parent().call_deferred("add_child", shot)
+	
 	discs_held -= 1
 	
 
@@ -210,7 +216,7 @@ func flip():
 		left_disc.visible = lBool 
 
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
-	print(area.name)
+#	print(area.name)
 	if area.name == "DiscHitBox": 
 		discs_held += 1
 		area.get_parent().call_deferred("queue_free")
