@@ -38,7 +38,7 @@ func change_state(newstate):
 	
 func process_outward(delta):
 	linear_velocity.x += -direction.x * friction
-	
+
 	if abs(linear_velocity.x) < 10:
 		call_deferred("change_state", State.RETURN)
 		
@@ -49,4 +49,6 @@ func process_outward(delta):
 func process_return(delta):
 	direction = playerMarker.global_position - position
 	linear_velocity += direction
-	print(position)
+#	print(position)
+
+

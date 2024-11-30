@@ -700,7 +700,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "method"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -821,7 +821,7 @@ tracks/3/keys = {
 }
 tracks/4/type = "method"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
@@ -1233,6 +1233,10 @@ parameters/running2/current_state = "false"
 parameters/running2/transition_request = ""
 parameters/running2/current_index = 1
 
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
 [node name="ThrowTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -1247,4 +1251,5 @@ shape = SubResource("CapsuleShape2D_82tvt")
 [node name="PlayerMarker" type="Marker2D" parent="."]
 position = Vector2(0, -5)
 
+[connection signal="timeout" from="ShootTimer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

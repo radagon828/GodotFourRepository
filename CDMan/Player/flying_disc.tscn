@@ -43,7 +43,7 @@ animations = [{
 [node name="FlyingDisc" type="RigidBody2D" node_paths=PackedStringArray("animator")]
 position = Vector2(1, -4)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_a5fcq")
 animator = NodePath("AnimatedSprite2D")

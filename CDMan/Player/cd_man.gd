@@ -96,6 +96,7 @@ func process_throw(delta):
 		animator.set("parameters/isThrowing2/transition_request", "true")
 		animator.set("parameters/isThrowing/transition_request", "true")
 		throwTimer.start()
+		$ShootTimer.start()
 		if discs_held == 2:
 			if face_vector.x > 0:
 				animator.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
@@ -106,7 +107,12 @@ func process_throw(delta):
 				animator.set("parameters/OneShot3/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			else:
 				animator.set("parameters/OneShot4/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		
+	
+	if throwTimer.time_left < 0.2:
+		call_deferred("change_state", State.BASE)
+		animator.set("parameters/isThrowing2/transition_request", "false")
+		animator.set("parameters/isThrowing/transition_request", "false")
+	
 	#GRAVITY
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -119,10 +125,6 @@ func process_throw(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	if throwTimer.time_left < 0.1:
-		call_deferred("change_state", State.BASE)
-		animator.set("parameters/isThrowing2/transition_request", "false")
-		animator.set("parameters/isThrowing/transition_request", "false")
 	#animations
 	animate_legs()
 	handle_jump()
@@ -215,9 +217,12 @@ func flip():
 		right_disc.visible = rBool
 		left_disc.visible = lBool 
 
+#SIGNAL FUNCTIONS
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 #	print(area.name)
 	if area.name == "DiscHitBox": 
 		discs_held += 1
 		area.get_parent().call_deferred("queue_free")
 
+func _on_timer_timeout() -> void:
+	shoot()
