@@ -8,7 +8,7 @@ script = ExtResource("1_53tsp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-2, 2)
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(260, 172)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgd2bwvgcbmhc"]
+[gd_scene load_steps=10 format=3 uid="uid://dgd2bwvgcbmhc"]
 
 [ext_resource type="Script" path="res://Player/FlyingDisc.gd" id="1_a5fcq"]
 [ext_resource type="Texture2D" uid="uid://bbw6qwnjf07vb" path="res://Art/TheDiscItselfAura.png" id="2_livim"]
@@ -40,11 +40,14 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cojxn"]
+size = Vector2(9, 1)
+
 [node name="FlyingDisc" type="RigidBody2D" node_paths=PackedStringArray("animator")]
 position = Vector2(1, -4)
-collision_layer = 0
-collision_mask = 0
+collision_layer = 2
 gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_a5fcq")
 animator = NodePath("AnimatedSprite2D")
 
@@ -64,5 +67,9 @@ collision_mask = 21
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DiscHitBox"]
 polygon = PackedVector2Array(0, 1, 5, 1, 5, -2, -6, -2, -6, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_cojxn")
 
 [connection signal="body_entered" from="DiscHitBox" to="." method="_on_disc_hit_box_body_entered"]

@@ -40,7 +40,6 @@ func _ready() -> void:
 	right_disc.visible = 1
 	rBool = right_disc.visible 
 	lBool = left_disc.visible
-	Engine.set_time_scale(1)
 	
 func _physics_process(delta):
 	match currentState:

@@ -58,7 +58,7 @@ func process_return(delta):
 
 func process_hit_return(delta):
 	print("cahnged")
-	if isStateNew: linear_velocity.x = -direction.x
+	if isStateNew: linear_velocity = -direction * 2
 	
 	direction = playerMarker.global_position - position
 	linear_velocity += direction
