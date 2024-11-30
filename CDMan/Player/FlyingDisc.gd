@@ -48,7 +48,7 @@ func process_outward(delta):
 
 		
 	if Input.is_action_pressed("move_up"):
-#		linear_velocity += Vector2.UP * 2
+		linear_velocity += Vector2.UP * 10
 		pass
 
 func process_return(delta):
