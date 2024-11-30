@@ -50,6 +50,8 @@ func _physics_process(delta):
 			process_slide(delta)
 		State.THROW:
 			process_throw(delta)
+		State.HURT:
+			pass
 	isStateNew = false
 	showDiscsHeld()
 	move_and_slide()

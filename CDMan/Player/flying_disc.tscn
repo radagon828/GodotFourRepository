@@ -42,8 +42,8 @@ animations = [{
 
 [node name="FlyingDisc" type="RigidBody2D" node_paths=PackedStringArray("animator")]
 position = Vector2(1, -4)
-collision_layer = 2
-collision_mask = 5
+collision_layer = 0
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_a5fcq")
 animator = NodePath("AnimatedSprite2D")
@@ -60,7 +60,9 @@ frame_progress = 0.0602768
 
 [node name="DiscHitBox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 20
+collision_mask = 21
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DiscHitBox"]
 polygon = PackedVector2Array(0, 1, 5, 1, 5, -2, -6, -2, -6, 1)
+
+[connection signal="body_entered" from="DiscHitBox" to="." method="_on_disc_hit_box_body_entered"]

@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-enum State {OUTWARD, RETURN}
+enum State {OUTWARD, RETURN, HIT}
 
 @export var animator: AnimatedSprite2D
 @export var direction = Vector2.RIGHT
@@ -9,7 +9,7 @@ enum State {OUTWARD, RETURN}
 @onready var playerMarker = $"../CDMan/PlayerMarker"
 
 #STATE VARIABLES
-var currentState = State.OUTWARD
+var currentState
 #using this boolean allows functions in states to be called for one frame
 var isStateNew = true
 
@@ -17,6 +17,7 @@ var isStateNew = true
 func _ready() -> void:
 	animator.play("spin")
 	linear_velocity.x = direction.x * speed
+	currentState = State.OUTWARD
 	
 func _physics_process(delta: float) -> void:
 	match currentState:
@@ -24,6 +25,8 @@ func _physics_process(delta: float) -> void:
 			process_outward(delta)
 		State.RETURN:
 			process_return(delta)
+		State.HIT:
+			process_hit_return(delta)
 
 	isStateNew = false
 
@@ -35,12 +38,14 @@ func _physics_process(delta: float) -> void:
 func change_state(newstate):
 	currentState = newstate
 	isStateNew = true
+	print("changing state")
 	
 func process_outward(delta):
 	linear_velocity.x += -direction.x * friction
 
 	if abs(linear_velocity.x) < 10:
 		call_deferred("change_state", State.RETURN)
+
 		
 	if Input.is_action_pressed("move_up"):
 #		linear_velocity += Vector2.UP * 2
@@ -49,6 +54,16 @@ func process_outward(delta):
 func process_return(delta):
 	direction = playerMarker.global_position - position
 	linear_velocity += direction
-#	print(position)
+	print("returning")
+
+func process_hit_return(delta):
+	print("cahnged")
+	if isStateNew: linear_velocity.x = -direction.x
+	
+	direction = playerMarker.global_position - position
+	linear_velocity += direction
 
 
+func _on_disc_hit_box_body_entered(body: Node2D) -> void:
+	change_state(State.HIT)
+	print("entered")
