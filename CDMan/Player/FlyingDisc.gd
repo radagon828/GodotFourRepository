@@ -7,6 +7,7 @@ enum State {OUTWARD, RETURN, HIT}
 @export var speed = 500
 @export var friction = 25
 @onready var playerMarker = $"../CDMan/PlayerMarker"
+@onready var thePlayer = $"../CDMan"
 
 #STATE VARIABLES
 var currentState
@@ -42,14 +43,20 @@ func change_state(newstate):
 	
 func process_outward(delta):
 	linear_velocity.x += -direction.x * friction
-
+	#to have a gradual slowdown to discs moving up and down
+	linear_velocity.y = move_toward(linear_velocity.y , 0, 2)
 	if abs(linear_velocity.x) < 10:
-		call_deferred("change_state", State.RETURN)
+#		call_deferred("change_state", State.RETURN)
+		pass
 
 		
 	if Input.is_action_pressed("move_up"):
-		linear_velocity += Vector2.UP * 10
+		linear_velocity += Vector2.UP * 5
+	elif Input.is_action_pressed("move_down"):
+		linear_velocity += Vector2.DOWN * 5
+		
 		pass
+
 
 func process_return(delta):
 	direction = playerMarker.global_position - position
