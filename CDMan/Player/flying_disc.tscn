@@ -52,6 +52,7 @@ script = ExtResource("1_a5fcq")
 animator = NodePath("AnimatedSprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_livim")
 hframes = 4
 
@@ -72,4 +73,10 @@ polygon = PackedVector2Array(0, 1, 5, 1, 5, -2, -6, -2, -6, 1)
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_cojxn")
 
+[node name="DiscTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="DiscHitBox" to="." method="_on_disc_hit_box_body_entered"]
+[connection signal="timeout" from="DiscTimer" to="." method="_on_disc_timer_timeout"]

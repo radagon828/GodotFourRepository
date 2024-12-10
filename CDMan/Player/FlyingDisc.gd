@@ -28,9 +28,7 @@ func _physics_process(delta: float) -> void:
 			process_return(delta)
 		State.HIT:
 			process_hit_return(delta)
-
 	isStateNew = false
-
 	if linear_velocity.x > 0:
 		animator.flip_h = 0
 	else:
@@ -49,14 +47,12 @@ func process_outward(delta):
 #		call_deferred("change_state", State.RETURN)
 		pass
 
-		
 	if Input.is_action_pressed("move_up"):
 		linear_velocity += Vector2.UP * 5
 	elif Input.is_action_pressed("move_down"):
 		linear_velocity += Vector2.DOWN * 5
-		
 		pass
-
+		
 
 func process_return(delta):
 	direction = playerMarker.global_position - position
@@ -70,7 +66,12 @@ func process_hit_return(delta):
 	direction = playerMarker.global_position - position
 	linear_velocity += direction
 
-
+#disc returns to player upon hit, should change to upon enemy hit
 func _on_disc_hit_box_body_entered(body: Node2D) -> void:
-	change_state(State.HIT)
+#	change_state(State.HIT)
 	print("entered")
+
+#disc timer
+func _on_disc_timer_timeout() -> void:
+	thePlayer.discs_held += 1
+	call_deferred("queue_free")

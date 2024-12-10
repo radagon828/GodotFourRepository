@@ -15,6 +15,7 @@ var face_vector = Vector2.RIGHT
 #ANIMATION NODES
 var sprites: Array[Node] 
 @export var animator: AnimationTree
+@export var discAnimator: AnimationPlayer
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 @onready var aniTree = $Animations/AnimationTree
 
@@ -25,8 +26,10 @@ var isStateNew = true
 
 #DISC VARIABLES
 @export var discs_held = 2
+#represents the discs in their respective hands
 var rBool
 var lBool
+#to manipulate the visibility of sprites
 @onready var right_disc = $Sprites/DiscManDISCS
 @onready var left_disc = $Sprites/DiscManDISCS2
 @onready var throwTimer = $ThrowTimer
@@ -40,6 +43,8 @@ func _ready() -> void:
 	right_disc.visible = 1
 	rBool = right_disc.visible 
 	lBool = left_disc.visible
+	
+#	right_disc.modulate = Color(100,100,100,1)
 	
 func _physics_process(delta):
 	match currentState:
@@ -60,6 +65,8 @@ func change_state(newstate):
 	isStateNew = true
 
 func process_base(delta):
+#	right_disc.modulate -= Color(.1,.1,.1)
+	
 	#GRAVITY
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -192,7 +199,6 @@ func shoot():
 	
 	discs_held -= 1
 	
-
 func flip():
 	if velocity.x != 0:
 		for i in sprites.size():
@@ -227,3 +233,7 @@ func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	shoot()
+	
+func disc_teleport():
+	right_disc
+	pass

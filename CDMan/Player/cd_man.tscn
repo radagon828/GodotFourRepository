@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cdvsfhh22jq0f"]
+[gd_scene load_steps=70 format=3 uid="uid://cdvsfhh22jq0f"]
 
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Texture2D" uid="uid://c1ccptjiywqof" path="res://Art/disc man shading.png" id="2_001wq"]
@@ -9,6 +9,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik08u"]
 size = Vector2(12, 4)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0fe68"]
 
 [sub_resource type="Animation" id="Animation_pk5ye"]
 length = 0.001
@@ -1120,10 +1122,11 @@ node_connections = [&"output", 0, &"bodyState", &"Blend2", 0, &"isThrowing2", &"
 radius = 3.0
 height = 34.0
 
-[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
+[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator", "discAnimator")]
 collision_layer = 0
 script = ExtResource("1_nuam1")
 animator = NodePath("Animations/AnimationTree")
+discAnimator = NodePath("Animations/DiscColors")
 disc_object = ExtResource("2_ikkgr")
 
 [node name="FiniteStateMachine" type="Node" parent="."]
@@ -1164,6 +1167,7 @@ hframes = 10
 vframes = 12
 
 [node name="DiscManDISCS" type="Sprite2D" parent="Sprites"]
+material = SubResource("CanvasItemMaterial_0fe68")
 texture = ExtResource("3_2kkpn")
 hframes = 10
 vframes = 12
@@ -1232,6 +1236,8 @@ parameters/running/current_index = 1
 parameters/running2/current_state = "false"
 parameters/running2/transition_request = ""
 parameters/running2/current_index = 1
+
+[node name="DiscColors" type="AnimationPlayer" parent="Animations"]
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.15
