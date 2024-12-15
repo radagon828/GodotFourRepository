@@ -44,8 +44,6 @@ func _ready() -> void:
 	rBool = right_disc.visible 
 	lBool = left_disc.visible
 	
-#	right_disc.modulate = Color(100,100,100,1)
-	
 func _physics_process(delta):
 	match currentState:
 		State.BASE:
@@ -59,13 +57,14 @@ func _physics_process(delta):
 	isStateNew = false
 	showDiscsHeld()
 	move_and_slide()
-	
+	print(discAnimator.current_animation_position)
+
+
 func change_state(newstate):
 	currentState = newstate
 	isStateNew = true
 
 func process_base(delta):
-#	right_disc.modulate -= Color(.1,.1,.1)
 	
 	#GRAVITY
 	if not is_on_floor():
@@ -224,9 +223,14 @@ func flip():
 		right_disc.visible = rBool
 		left_disc.visible = lBool 
 
+func disc_teleport():
+	discAnimator.play("Disc1TeleportRecovery")
+#	discAnimator.seek(.25)
+	if discAnimator.is_playing():
+		print("playing")
+
 #SIGNAL FUNCTIONS
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
-#	print(area.name)
 	if area.name == "DiscHitBox": 
 		discs_held += 1
 		area.get_parent().call_deferred("queue_free")
@@ -234,6 +238,4 @@ func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 func _on_timer_timeout() -> void:
 	shoot()
 	
-func disc_teleport():
-	right_disc
-	pass
+

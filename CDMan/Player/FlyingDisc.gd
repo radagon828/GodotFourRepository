@@ -74,4 +74,5 @@ func _on_disc_hit_box_body_entered(body: Node2D) -> void:
 #disc timer
 func _on_disc_timer_timeout() -> void:
 	thePlayer.discs_held += 1
+	thePlayer.disc_teleport()
 	call_deferred("queue_free")
