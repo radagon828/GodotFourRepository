@@ -195,7 +195,7 @@ func shoot():
 	shot.position += Vector2(shot.direction.x * 14, -4)
 	#add object to scene
 	get_parent().call_deferred("add_child", shot)
-	
+	$DiscShootSounds.play()
 	discs_held -= 1
 	
 func flip():
