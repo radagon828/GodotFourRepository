@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://mgbjshh0jtvw"]
+[gd_scene load_steps=10 format=3 uid="uid://bv0gsbk4g8mov"]
 
-[ext_resource type="Script" path="res://Level/LandingPad.gd" id="1_ipa0q"]
-[ext_resource type="PackedScene" uid="uid://cnci7ff3yjklu" path="res://player.tscn" id="1_j5m8q"]
+[ext_resource type="Script" path="res://Level/LandingPad.gd" id="1_brypn"]
+[ext_resource type="PackedScene" uid="uid://cnci7ff3yjklu" path="res://player.tscn" id="2_54vu5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6l8m"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,6 +18,9 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glykf"]
 albedo_color = Color(0.4, 0.269333, 0.176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4n8mn"]
+albedo_color = Color(0.929412, 0.917647, 0.0823529, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gm7yx"]
 albedo_color = Color(0, 0.709804, 0.709804, 1)
@@ -41,6 +44,27 @@ collision_mask = 2
 size = Vector3(30, 8, 5)
 material = SubResource("StandardMaterial3D_glykf")
 
+[node name="Obstacle" type="CSGBox3D" parent="." groups=["Basic_Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(1, 4, 3)
+material = SubResource("StandardMaterial3D_4n8mn")
+
+[node name="Obstacle3" type="CSGBox3D" parent="." groups=["Basic_Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(1, 4, 3)
+material = SubResource("StandardMaterial3D_4n8mn")
+
+[node name="Obstacle2" type="CSGBox3D" parent="." groups=["Basic_Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1754, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(1, 11.18, 3)
+material = SubResource("StandardMaterial3D_4n8mn")
+
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.2, 0)
 use_collision = true
@@ -54,13 +78,13 @@ use_collision = true
 collision_mask = 2
 size = Vector3(2, 0.4, 2)
 material = SubResource("StandardMaterial3D_3wlad")
-script = ExtResource("1_ipa0q")
-file_path = "res://Level/level_2.tscn"
+script = ExtResource("1_brypn")
+file_path = "res://Level/level.tscn"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 3.747, 7.483)
 
-[node name="Player" parent="." instance=ExtResource("1_j5m8q")]
+[node name="Player" parent="." instance=ExtResource("2_54vu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.4, 0)
 collision_layer = 2
 max_contacts_reported = 10
