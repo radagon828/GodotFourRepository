@@ -16,6 +16,7 @@ var face_vector = Vector2.RIGHT
 var sprites: Array[Node] 
 @export var animator: AnimationTree
 @export var discAnimator: AnimationPlayer
+@export var discAnimator2: AnimationPlayer
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 @onready var aniTree = $Animations/AnimationTree
 
@@ -43,6 +44,8 @@ func _ready() -> void:
 	right_disc.visible = 1
 	rBool = right_disc.visible 
 	lBool = left_disc.visible
+	right_disc.modulate = Color(1,1,1,1)
+	left_disc.modulate = Color(1,1,1,1)
 	
 func _physics_process(delta):
 	match currentState:
@@ -57,7 +60,8 @@ func _physics_process(delta):
 	isStateNew = false
 	showDiscsHeld()
 	move_and_slide()
-	print(discAnimator.current_animation_position)
+#	print(discAnimator.current_animation_position)
+#	print(discAnimator.is_playing())
 
 
 func change_state(newstate):
@@ -65,7 +69,6 @@ func change_state(newstate):
 	isStateNew = true
 
 func process_base(delta):
-	
 	#GRAVITY
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -223,11 +226,20 @@ func flip():
 		right_disc.visible = rBool
 		left_disc.visible = lBool 
 
-func disc_teleport():
-	discAnimator.play("Disc1TeleportRecovery")
+func disc_teleport(rVisible, lVisible):
+#	print(right_disc.visible, left_disc.visible)
+#	discAnimator.play("Disc1TeleportRecovery")
+	discs_held += 1
+	if !rVisible: 
+		discAnimator2.play("Disc1TeleportRecovery")
+#		print("recovery")
+	if !lVisible:
+		discAnimator.play("Disc2TeleportRecovery")
+		print("recovery2")
+
 #	discAnimator.seek(.25)
-	if discAnimator.is_playing():
-		print("playing")
+#	if discAnimator.is_playing():
+#		print("playing")
 
 #SIGNAL FUNCTIONS
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
@@ -238,4 +250,7 @@ func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 func _on_timer_timeout() -> void:
 	shoot()
 	
+func debug():
+	print("playing animation")
+	pass
 

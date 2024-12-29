@@ -1049,6 +1049,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
+graph_offset = Vector2(-108.966, -257.36)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
@@ -1148,6 +1149,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(10, 10, 10, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"debug"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_3762u"]
 resource_name = "Disc2TeleportRecovery"
@@ -1176,11 +1191,12 @@ _data = {
 radius = 3.0
 height = 34.0
 
-[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator", "discAnimator")]
+[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator", "discAnimator", "discAnimator2")]
 collision_layer = 0
 script = ExtResource("1_nuam1")
 animator = NodePath("Animations/AnimationTree")
 discAnimator = NodePath("Animations/DiscColors")
+discAnimator2 = NodePath("Animations/DiscColors2")
 disc_object = ExtResource("2_ikkgr")
 
 [node name="FiniteStateMachine" type="Node" parent="."]
@@ -1202,23 +1218,26 @@ frame = 90
 texture = ExtResource("2_001wq")
 hframes = 10
 vframes = 11
+frame = 90
 
 [node name="DiscManTorso" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("3_3cl0r")
 hframes = 10
 vframes = 11
-frame = 10
+frame = 100
 
 [node name="DiscManTorso Shading" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_001wq")
 hframes = 10
 vframes = 11
-frame = 64
+frame = 100
 
 [node name="DiscManDISCS2" type="Sprite2D" parent="Sprites"]
+modulate = Color(10, 10, 10, 1)
 texture = ExtResource("3_2kkpn")
 hframes = 10
 vframes = 12
+frame = 100
 
 [node name="DiscManDISCS" type="Sprite2D" parent="Sprites"]
 modulate = Color(10, 10, 10, 1)
@@ -1226,7 +1245,7 @@ material = SubResource("CanvasItemMaterial_0fe68")
 texture = ExtResource("3_2kkpn")
 hframes = 10
 vframes = 12
-frame = 10
+frame = 110
 
 [node name="Animations" type="Node" parent="."]
 
@@ -1297,6 +1316,11 @@ libraries = {
 "": SubResource("AnimationLibrary_xshki")
 }
 
+[node name="DiscColors2" type="AnimationPlayer" parent="Animations"]
+libraries = {
+"": SubResource("AnimationLibrary_xshki")
+}
+
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
@@ -1315,14 +1339,14 @@ shape = SubResource("CapsuleShape2D_82tvt")
 [node name="PlayerMarker" type="Marker2D" parent="."]
 position = Vector2(0, -5)
 
-[node name="DiscShootSounds" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_nvung")
-pitch_scale = 1.24
-
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_jywwp")
 volume_db = -2.075
 pitch_scale = 0.58
+
+[node name="DiscShootSounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_nvung")
+pitch_scale = 1.24
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
