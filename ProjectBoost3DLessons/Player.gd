@@ -5,6 +5,9 @@ extends RigidBody3D
 @export_range(50.0, 300.0) var torque_thrust: float = 100 
 
 var isTransitioning: bool = false
+#nodes need to be readied before they can be used in a script
+@onready var explosionAudio: AudioStreamPlayer = $ExplosionAudio
+@onready var successAudio: AudioStreamPlayer = $SuccessAudio
 
 #basis y is whatever direction is up on the object, the direction the top of the object is
 func _process(delta: float) -> void:
@@ -30,17 +33,19 @@ func _on_body_entered(body: Node) -> void:
 			crash_sequence()
 		
 func crash_sequence() -> void:
+	explosionAudio.play()
 	var tween = create_tween()
 	isTransitioning = true
 	set_process(false)
-	tween.tween_interval(1.0)
+	tween.tween_interval(2.5)
 	tween.tween_callback(get_tree().reload_current_scene)
 #	get_tree().reload_current_scene()
 	
 func complete_level(next_level_file: String) -> void:
+	successAudio.play()
 	isTransitioning = true
 	set_process(false)
 	var tween = create_tween()
-	tween.tween_interval(1.0)
+	tween.tween_interval(1.5)
 	tween.tween_callback(get_tree().change_scene_to_file.bind(next_level_file))
 	
