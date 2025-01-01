@@ -8,12 +8,16 @@ var isTransitioning: bool = false
 #nodes need to be readied before they can be used in a script
 @onready var explosionAudio: AudioStreamPlayer = $ExplosionAudio
 @onready var successAudio: AudioStreamPlayer = $SuccessAudio
+@onready var rocketAudio: AudioStreamPlayer3D = $RocketThrustAudio
 
 #basis y is whatever direction is up on the object, the direction the top of the object is
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("boost"):
 		apply_central_force(basis.y * delta * thrust)
-	
+		if !rocketAudio.playing:
+			rocketAudio.play()
+	else:
+		rocketAudio.stop()
 	if Input.is_action_pressed("rotate_left"):
 		apply_torque(Vector3(0.0, 0.0, torque_thrust * delta))
 		
