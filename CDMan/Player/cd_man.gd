@@ -40,6 +40,9 @@ var lBool
  
 func _ready() -> void:
 	sprites.append_array($Sprites.get_children())
+	#these assignments make certain the animation player doesn't default 
+	#these values to the wrong ones
+	#may assign these values to the level manager in the way future
 	left_disc.visible = 1
 	right_disc.visible = 1
 	rBool = right_disc.visible 
@@ -149,7 +152,8 @@ func get_input_vector():
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		
+
+#REMAIN
 func animate_torso():
 	animator.set("parameters/in_air_state2/transition_request", bool(!is_on_floor()))
 	
@@ -162,7 +166,8 @@ func animate_torso():
 			animator.set("parameters/in_air2/transition_request", "falling")
 		if velocity.y < 0:
 			animator.set("parameters/in_air2/transition_request", "jumping")
-		
+
+#REMAIN
 func animate_legs():
 	animator.set("parameters/in_air_state/transition_request", bool(!is_on_floor()))
 	
@@ -176,6 +181,7 @@ func animate_legs():
 		if velocity.y < 0:
 			animator.set("parameters/in_air/transition_request", "jumping")
 
+#REMAIN
 func showDiscsHeld():
 	if discs_held == 2:
 		rBool = true
@@ -200,7 +206,8 @@ func shoot():
 	get_parent().call_deferred("add_child", shot)
 	$DiscShootSounds.play()
 	discs_held -= 1
-	
+
+#REMAIN
 func flip():
 	if velocity.x != 0:
 		for i in sprites.size():
@@ -226,9 +233,8 @@ func flip():
 		right_disc.visible = rBool
 		left_disc.visible = lBool 
 
+#REMAIN
 func disc_teleport(rVisible, lVisible):
-#	print(right_disc.visible, left_disc.visible)
-#	discAnimator.play("Disc1TeleportRecovery")
 	discs_held += 1
 	if !rVisible: 
 		discAnimator2.play("Disc1TeleportRecovery")
@@ -241,12 +247,13 @@ func disc_teleport(rVisible, lVisible):
 #	if discAnimator.is_playing():
 #		print("playing")
 
+#REMAIN
 #SIGNAL FUNCTIONS
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "DiscHitBox": 
 		discs_held += 1
 		area.get_parent().call_deferred("queue_free")
-
+		
 func _on_timer_timeout() -> void:
 	shoot()
 	

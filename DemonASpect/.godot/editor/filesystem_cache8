@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1731481760
+::res://::1735787259
 default_env.tres::Environment::3597556386965951437::1730163837::0::1::::<><>::
 enemy_hurtbox.tscn::PackedScene::2392803204913423843::1730163837::0::1::::<><>::
 icon.png::CompressedTexture2D::6524617036004661128::1689732641::1689732641::1::::<><>::
@@ -13,17 +13,17 @@ save.gd::GDScript::-1::1692658652::0::1::::<>Node<>::
 ::res://Audio/Sound Effects/Player/::1691628059
 ::res://Items/::1730163723
 DiamondRing.png::CompressedTexture2D::5787915965193210456::1689732641::1689732641::1::::<><>::
-DiamondRing.tres::Resource/Item::7850677492653929688::1691364827::0::1::::<><>::res://Items/item.gd<>uid://copyeowfqmmmq::::res://Items/DiamondRing.png
+DiamondRing.tres::Resource/Resource::7850677492653929688::1691364827::0::1::::<><>::res://Items/item.gd<>uid://copyeowfqmmmq
 EmptyInventorySlot.png::CompressedTexture2D::8956768860573631693::1689732641::1689732641::1::::<><>::
 item.gd::GDScript::-1::1689732641::0::1::::Item<>Resource<>::
-Key.tres::Resource/Item::5670292327732280683::1691364827::0::1::::<><>::res://Items/item.gd<>uid://bcppso8edjrb::::res://Items/KeySprite.png
+Key.tres::Resource/Resource::5670292327732280683::1691364827::0::1::::<><>::res://Items/item.gd<>uid://bcppso8edjrb
 KeySprite.png::CompressedTexture2D::75256109498629983::1690588295::1690588295::1::::<><>::
 Potion.png::CompressedTexture2D::3012230614859539133::1689732641::1689732641::1::::<><>::
 Potion.tres::Resource/Item::4670565430489663160::1730163723::0::1::::<><>::res://Items/item.gd<>uid://bi6e863w31bsf::::res://Items/Potion.png
 Sword.png::CompressedTexture2D::6214408283900589394::1689732641::1689732641::1::::<><>::
-Sword.tres::Resource/Item::1429604953011474030::1721091109::0::1::::<><>::res://Items/item.gd<>uid://cusknqmapx13k::::res://Items/Sword.png
+Sword.tres::Resource/Resource::1429604953011474030::1721091109::0::1::::<><>::res://Items/item.gd<>uid://cusknqmapx13k
 TallShield.png::CompressedTexture2D::1186833674379251236::1689732641::1689732641::1::::<><>::
-TallShield.tres::Resource/Item::1156561875881581442::1691364827::0::1::::<><>::res://Items/item.gd<>uid://q558hwug51oq::::res://Items/TallShield.png
+TallShield.tres::Resource/Resource::1156561875881581442::1691364827::0::1::::<><>::res://Items/item.gd<>uid://q558hwug51oq
 ::res://Overlap/::1730163837
 player_detection_zone.tscn::PackedScene::8711888440206028240::1730163837::0::1::::<><>::res://Scenes/Enemies/PlayerDetectionZone.gd
 remote_transform_2d.tscn::PackedScene::7217530739013657631::1730163837::0::1::::<><>::
@@ -45,16 +45,16 @@ TestLevelOne.json::JSON::-1::1721091148::0::1::::<><>::
 ::res://Scenes/Enemies/::1730163837
 AttackOne.gd::GDScript::-1::1689732641::0::1::::<>Area2D<>::
 Enemy.gd::GDScript::-1::1689732641::0::1::::<>CharacterBody2D<>::
-EnemyGeneric.tscn::PackedScene::3758978689624458607::1691632533::0::1::::<><>::res://Scenes/Enemies/Enemy.gd<>uid://du360hi8k8e03::::res://Sprites/character_0024.png<>uid://dlvprl0t4c8gj::::res://Sprites/character_0025.png<>uid://devkckj25s07d::::res://Sprites/character_0026.png<>uid://baddeb1ytda56::::res://enemy_hurtbox.tscn<>uid://bc8ifdp44oq5k::::res://Overlap/stats.tscn<>uid://dwedsao06ptsy::::res://Overlap/player_detection_zone.tscn
+EnemyGeneric.tscn::PackedScene::3758978689624458607::1691632533::0::1::::<><>::res://Scenes/Enemies/Enemy.gd<>uid://du360hi8k8e03
 PlayerDetectionZone.gd::GDScript::-1::1691651541::0::1::::<>Area2D<>::
 rat_man.gd::GDScript::-1::1695082289::0::1::::<>CharacterBody2D<>::
 rat_man.tscn::PackedScene::2960657915919218626::1730163837::0::1::::<><>::res://Scenes/Enemies/rat_man.gd<>uid://up4m31dq3msa::::res://Sprites/Ratfolk Warrior Sprite Sheet.png<>uid://dwedsao06ptsy::::res://Overlap/player_detection_zone.tscn<>uid://baddeb1ytda56::::res://enemy_hurtbox.tscn<>uid://bc8ifdp44oq5k::::res://Overlap/stats.tscn<>res://Scenes/Enemies/AttackOne.gd
 Stats.gd::GDScript::-1::1689732641::0::1::::<>Node<>::
 ::res://Scenes/Environment/::1698381070
 Door.gd::GDScript::-1::1698381070::0::1::::<>Node2D<>::
-door.tscn::PackedScene::1958576847596538960::1698379956::0::1::::<><>::res://Scenes/Environment/Door.gd<>uid://d0baqicql35h4::::res://Sprites/DoorSprite-Sheet.png
+door.tscn::PackedScene::1958576847596538960::1698379956::0::1::::<><>::res://Scenes/Environment/Door.gd<>uid://d0baqicql35h4
 item_holder.gd::GDScript::-1::1690510732::0::1::::<>RigidBody2D<>::
-item_holder.tscn::PackedScene::7566393597542587538::1690678099::0::1::::<><>::res://Scenes/Environment/item_holder.gd<>uid://q558hwug51oq::::res://Items/TallShield.png
+item_holder.tscn::PackedScene::7566393597542587538::1690678099::0::1::::<><>::res://Scenes/Environment/item_holder.gd<>uid://q558hwug51oq
 ::res://Scenes/Levels/::1730163837
 base_level.gd::GDScript::-1::1698381002::0::1::::<>Node<>::
 base_level.tscn::PackedScene::1982315177187068705::1730163837::0::1::::<><>::uid://cwuysqacimqb2::::res://Sprites/stone wall.png<>res://Scenes/Levels/base_level.gd<>uid://bbe055orfkex8::::res://Scenes/Player/Player.tscn<>uid://da3hxambvi68r::::res://Overlap/remote_transform_2d.tscn<>uid://bklhl2m47ofxx::::res://Scenes/UIElements/player_ui.tscn
@@ -79,9 +79,9 @@ dialog_box.tscn::PackedScene::3065148563761785480::1730163837::0::1::::<><>::uid
 Inventory.tres::Resource/OldInventory::7075232412859210435::1730163723::0::1::::<><>::res://Scenes/UIElements/Inventory/OldInventory.gd<>uid://umrncytoiljq::::res://Items/Sword.tres<>uid://b7spsa8ohraq7::::res://Items/Potion.tres<>uid://qqin1k3nmx8u::::res://Items/TallShield.tres
 inventory_container.tscn::PackedScene::3110539055373186677::1730163837::0::1::::<><>::uid://dh8tll378at0h::::res://Scenes/UIElements/Inventory/inventory_display.tscn
 inventory_display.gd::GDScript::-1::1730163723::0::1::::<>GridContainer<>::
-inventory_display.tscn::PackedScene::7719882311534449845::1689732641::0::1::::<><>::res://Scenes/UIElements/Inventory/inventory_display.gd<>uid://do70dy754fbi1::::res://Scenes/UIElements/Inventory/inventory_slot_display.tscn
+inventory_display.tscn::PackedScene::7719882311534449845::1689732641::0::1::::<><>::res://Scenes/UIElements/Inventory/inventory_display.gd<>uid://do70dy754fbi1
 inventory_slot_display.gd::GDScript::-1::1689732641::0::1::::<>CenterContainer<>::
-inventory_slot_display.tscn::PackedScene::8209490543738704870::1689732641::0::1::::<><>::res://Scenes/UIElements/Inventory/inventory_slot_display.gd<>uid://d0uyw604gkpab::::res://Items/EmptyInventorySlot.png
+inventory_slot_display.tscn::PackedScene::8209490543738704870::1689732641::0::1::::<><>::res://Scenes/UIElements/Inventory/inventory_slot_display.gd<>uid://d0uyw604gkpab
 OldInventory.gd::GDScript::-1::1689732641::0::1::::OldInventory<>Resource<>::
 PixelRPG.tres::FontVariation::1694885643526997340::1689732641::0::1::::<><>::
 SuperLegendBoy-4w8Y.ttf::FontFile::5076840964011447821::1689732641::1689732641::1::::<><>::
@@ -91,7 +91,7 @@ InventoryMenu.gd::GDScript::-1::1698384113::0::1::::<>ColorRect<>::
 InventoryMenu.tscn::PackedScene::3278986809536487831::1730163837::0::1::::<><>::res://Scenes/UIElements/InventoryMenu/InventoryMenu.gd<>uid://bue5wtpdxqrjk::::res://Scenes/UIElements/InventoryMenu/item_display.tscn
 ItemDisplay.gd::GDScript::-1::1698381556::0::1::::<>GridContainer<>::
 item_display.tscn::PackedScene::3800316886002299280::1730163837::0::1::::<><>::res://Scenes/UIElements/InventoryMenu/ItemDisplay.gd<>uid://q21wi5p2dkbf::::res://Scenes/UIElements/InventoryMenu/selectable_item_slot.tscn
-NewInventory.tres::Resource/Inventory::5237860048989261994::1691364827::0::1::::<><>::uid://dj36rncmgc5sm::::res://Items/DiamondRing.tres<>res://Scenes/UIElements/InventoryMenu/Inventory.gd<>uid://qqin1k3nmx8u::::res://Items/TallShield.tres<>uid://cm1y5epd4bx52::::res://Items/Key.tres
+NewInventory.tres::Resource/Resource::5237860048989261994::1691364827::0::1::::<><>::uid://dj36rncmgc5sm
 selectable_item_slot.gd::GDScript::-1::1698355230::0::1::::<>Button<>::
 selectable_item_slot.tscn::PackedScene::1180378094094643447::1730163837::0::1::::<><>::uid://chfppsj6sxdpr::::res://Sprites/ItemSlot.png<>res://Scenes/UIElements/InventoryMenu/selectable_item_slot.gd<>uid://celi3giynqb62::::res://Scenes/UIElements/Inventory/SuperLegendBoy-4w8Y.ttf
 ::res://Shaders/::1691364827
