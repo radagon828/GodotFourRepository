@@ -6,23 +6,36 @@ extends RigidBody3D
 
 var isTransitioning: bool = false
 #nodes need to be readied before they can be used in a script
-@onready var explosionAudio: AudioStreamPlayer = $ExplosionAudio
-@onready var successAudio: AudioStreamPlayer = $SuccessAudio
-@onready var rocketAudio: AudioStreamPlayer3D = $RocketThrustAudio
+@onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
+@onready var success_audio: AudioStreamPlayer = $SuccessAudio
+@onready var rocket_audio: AudioStreamPlayer3D = $RocketThrustAudio
+@onready var booster_particles: GPUParticles3D = $BoosterParticles
+@onready var booster_particles_left: GPUParticles3D = $BoosterParticlesLeft
+@onready var booster_particles_right: GPUParticles3D = $BoosterParticlesRight
 
 #basis y is whatever direction is up on the object, the direction the top of the object is
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("boost"):
 		apply_central_force(basis.y * delta * thrust)
-		if !rocketAudio.playing:
-			rocketAudio.play()
+		booster_particles.emitting = true
+		if !rocket_audio.playing:
+			rocket_audio.play()
 	else:
-		rocketAudio.stop()
+		booster_particles.emitting = false
+		rocket_audio.stop()
+	
+	#ROTATE ROCKET
 	if Input.is_action_pressed("rotate_left"):
 		apply_torque(Vector3(0.0, 0.0, torque_thrust * delta))
+		booster_particles_right.emitting = true
+	else:
+		booster_particles_right.emitting = false
 		
 	if Input.is_action_pressed("rotate_right"):
 		apply_torque(Vector3(0.0, 0.0, -torque_thrust * delta))
+		booster_particles_left.emitting = true
+	else:
+		booster_particles_left.emitting = false
 
 #the landing pad has the file inside of it. attaching scenes to 
 func _on_body_entered(body: Node) -> void:
@@ -37,7 +50,7 @@ func _on_body_entered(body: Node) -> void:
 			crash_sequence()
 		
 func crash_sequence() -> void:
-	explosionAudio.play()
+	explosion_audio.play()
 	var tween = create_tween()
 	isTransitioning = true
 	set_process(false)
@@ -46,7 +59,7 @@ func crash_sequence() -> void:
 #	get_tree().reload_current_scene()
 	
 func complete_level(next_level_file: String) -> void:
-	successAudio.play()
+	success_audio.play()
 	isTransitioning = true
 	set_process(false)
 	var tween = create_tween()
