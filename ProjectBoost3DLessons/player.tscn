@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://dpr5haoqw8hvr" path="res://Audio/SFX - Death Explosion.ogg" id="2_82111"]
 [ext_resource type="AudioStream" uid="uid://bbp32hfioml7o" path="res://Audio/SFX - Success.ogg" id="3_2xuc5"]
 [ext_resource type="AudioStream" uid="uid://s1f1e76ytchg" path="res://Audio/SFX - Main engine thrust.ogg" id="4_otaj3"]
-[ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://booster_particles.tscn" id="5_ea6cs"]
+[ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://Particles/booster_particles.tscn" id="5_ea6cs"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sqvl6"]
 
