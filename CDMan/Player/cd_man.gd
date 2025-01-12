@@ -3,8 +3,6 @@ extends CharacterBody2D
 #MOVEMENT VALUES
 const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
-@export var slide_speed = 500
-var minDashSpeed = 100
 var gravity = 500
 var direction = Vector2(0, 0)
 #face vector saves direction while direction always changes based on input
@@ -26,7 +24,6 @@ var lBool
 #to manipulate the visibility of sprites
 @onready var right_disc = $Sprites/DiscManDISCS
 @onready var left_disc = $Sprites/DiscManDISCS2
-@onready var throwTimer = $ThrowTimer
 @onready var disc_object: PackedScene = preload("res://Player/flying_disc.tscn")
 
 #STATE VARIABLES
@@ -55,7 +52,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	showDiscsHeld()
 	move_and_slide()
-	print(disc_object)
+	print(throw_state)
 #REMAIN?
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -100,22 +97,6 @@ func showDiscsHeld():
 	elif discs_held == 0:
 		rBool = false
 		lBool = false
-
-#TRANSFER
-func shoot():
-	#create object
-	var shot = disc_object.instantiate()
-	#set direction of object
-	shot.direction = face_vector
-	#make position of player the position of the disc
-	shot.transform = global_transform
-	#move object in front of player
-	shot.position += Vector2(shot.direction.x * 14, -4)
-	#add object to scene
-	get_parent().call_deferred("add_child", shot)
-	
-	$DiscShootSounds.play()
-	discs_held -= 1
 
 #REMAIN
 func flip():
@@ -163,9 +144,7 @@ func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "DiscHitBox": 
 		discs_held += 1
 		area.get_parent().call_deferred("queue_free")
-		
-func _on_timer_timeout() -> void:
-	shoot()
+
 	
 func debug():
 	print("playing animation")

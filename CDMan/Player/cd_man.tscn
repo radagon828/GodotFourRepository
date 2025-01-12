@@ -1209,10 +1209,12 @@ script = ExtResource("4_hka8p")
 actor = NodePath("../..")
 fsm = NodePath("..")
 
-[node name="Throw" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
+[node name="Throw" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm", "throw_timer", "shoot_timer")]
 script = ExtResource("5_m4adr")
 actor = NodePath("../..")
 fsm = NodePath("..")
+throw_timer = NodePath("../../ThrowTimer")
+shoot_timer = NodePath("../../ShootTimer")
 
 [node name="Slide" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
 script = ExtResource("6_3q7wm")
@@ -1343,7 +1345,7 @@ wait_time = 0.15
 one_shot = true
 
 [node name="ThrowTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 
 [node name="PlayerHurtBox" type="Area2D" parent="."]
@@ -1365,5 +1367,6 @@ pitch_scale = 0.58
 stream = ExtResource("7_nvung")
 pitch_scale = 1.24
 
-[connection signal="timeout" from="ShootTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="FiniteStateMachine/Throw" method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="ThrowTimer" to="FiniteStateMachine/Throw" method="_on_throw_timer_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
