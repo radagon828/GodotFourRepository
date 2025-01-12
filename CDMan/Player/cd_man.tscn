@@ -1,9 +1,8 @@
-[gd_scene load_steps=78 format=3 uid="uid://cdvsfhh22jq0f"]
+[gd_scene load_steps=77 format=3 uid="uid://cdvsfhh22jq0f"]
 
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Texture2D" uid="uid://c1ccptjiywqof" path="res://Art/disc man shading.png" id="2_001wq"]
 [ext_resource type="Script" path="res://Player/FiniteStateMachine.gd" id="2_alctq"]
-[ext_resource type="PackedScene" uid="uid://dgd2bwvgcbmhc" path="res://Player/flying_disc.tscn" id="2_ikkgr"]
 [ext_resource type="Texture2D" uid="uid://cu3mlx6u1s6d4" path="res://Art/disc man discs.png" id="3_2kkpn"]
 [ext_resource type="Texture2D" uid="uid://dlgn2chrvnm23" path="res://Art/disc man base.png" id="3_3cl0r"]
 [ext_resource type="Script" path="res://Player/Base.gd" id="4_hka8p"]
@@ -1052,7 +1051,6 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
-graph_offset = Vector2(-108.966, -257.36)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
@@ -1194,25 +1192,32 @@ _data = {
 radius = 3.0
 height = 34.0
 
-[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator", "discAnimator", "discAnimator2")]
+[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator", "discAnimator", "discAnimator2", "fsm")]
 collision_layer = 0
 script = ExtResource("1_nuam1")
 animator = NodePath("Animations/AnimationTree")
 discAnimator = NodePath("Animations/DiscColors")
 discAnimator2 = NodePath("Animations/DiscColors2")
-disc_object = ExtResource("2_ikkgr")
+fsm = NodePath("FiniteStateMachine")
 
-[node name="FiniteStateMachine" type="Node" parent="."]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("2_alctq")
+state = NodePath("Base")
 
-[node name="Base" type="Node" parent="FiniteStateMachine"]
+[node name="Base" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
 script = ExtResource("4_hka8p")
+actor = NodePath("../..")
+fsm = NodePath("..")
 
-[node name="Throw" type="Node" parent="FiniteStateMachine"]
+[node name="Throw" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
 script = ExtResource("5_m4adr")
+actor = NodePath("../..")
+fsm = NodePath("..")
 
-[node name="Slide" type="Node" parent="FiniteStateMachine"]
+[node name="Slide" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
 script = ExtResource("6_3q7wm")
+actor = NodePath("../..")
+fsm = NodePath("..")
 
 [node name="Hurt" type="Node" parent="FiniteStateMachine"]
 

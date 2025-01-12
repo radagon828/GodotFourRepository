@@ -1,11 +1,15 @@
+class_name BaseState
 extends State
-
+ 
 @export var actor: CharacterBody2D
-
+@export var fsm: FiniteStateMachine
+@onready var slide_state = $"../Slide" as SlideState
+@onready var throw_state = $"../Throw" as ThrowState
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_physics_process(false)
-
+	
+	
 func _enter_state() -> void:
 	set_physics_process(true)
 	
@@ -25,11 +29,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		actor.velocity.x = move_toward(actor.velocity.x, 0, actor.SPEED)
 		
-#	if (Input.is_action_just_pressed("slide")) && is_on_floor():
-#		call_deferred("change_state", State.SLIDE)
+	if (Input.is_action_just_pressed("slide")) && actor.is_on_floor():
+		fsm.call_deferred("change_state", slide_state)
 #
-#	if Input.is_action_just_released("attack") && discs_held:
-#		call_deferred("change_state", State.THROW)
+	if Input.is_action_just_released("attack") && actor.discs_held:
+		fsm.call_deferred("change_state", throw_state)
 	#ANIMATIONS
 	actor.animator.set("parameters/bodyState/transition_request", "move")
 	actor.animate_torso()

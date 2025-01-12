@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-enum State {BASE, SLIDE, THROW, HURT}
-
 #MOVEMENT VALUES
 const SPEED = 150.0
 const JUMP_VELOCITY = -200.0
@@ -20,11 +18,6 @@ var sprites: Array[Node]
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 @onready var aniTree = $Animations/AnimationTree
 
-#STATE VARIABLES
-var currentState = State.BASE
-#using this boolean allows functions in states to be called for one frame
-var isStateNew = true
-
 #DISC VARIABLES
 @export var discs_held = 2
 #represents the discs in their respective hands
@@ -34,9 +27,15 @@ var lBool
 @onready var right_disc = $Sprites/DiscManDISCS
 @onready var left_disc = $Sprites/DiscManDISCS2
 @onready var throwTimer = $ThrowTimer
-@export var disc_object : PackedScene
+@onready var disc_object: PackedScene = preload("res://Player/flying_disc.tscn")
 
-
+#STATE VARIABLES
+#var currentState = State.BASE
+#using this boolean allows functions in states to be called for one frame
+@export var fsm: FiniteStateMachine
+@onready var base_state = $FiniteStateMachine/Base as BaseState
+@onready var throw_state = $FiniteStateMachine/Throw as ThrowState
+@onready var slide_state = $FiniteStateMachine/Slide as SlideState
  
 func _ready() -> void:
 	sprites.append_array($Sprites.get_children())
@@ -50,105 +49,14 @@ func _ready() -> void:
 	right_disc.modulate = Color(1,1,1,1)
 	left_disc.modulate = Color(1,1,1,1)
 	
+	#SIGNAL CONNECTIONS
+	
+	
 func _physics_process(delta):
-	match currentState:
-		State.BASE:
-			process_base(delta)
-		State.SLIDE:
-			process_slide(delta)
-		State.THROW:
-			process_throw(delta)
-		State.HURT:
-			pass
-	isStateNew = false
 	showDiscsHeld()
 	move_and_slide()
-#	print(discAnimator.current_animation_position)
-#	print(discAnimator.is_playing())
-
-
-func change_state(newstate):
-	currentState = newstate
-	isStateNew = true
-
-func process_base(delta):
-	#GRAVITY
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	
-	direction = get_input_vector()
-	if direction.x:
-		velocity.x = direction.x * SPEED
-		face_vector.x = direction.x
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	if (Input.is_action_just_pressed("slide")) && is_on_floor():
-		call_deferred("change_state", State.SLIDE)
-		
-	if Input.is_action_just_released("attack") && discs_held:
-		call_deferred("change_state", State.THROW)
-	#ANIMATIONS
-	animator.set("parameters/bodyState/transition_request", "move")
-	animate_torso()
-	animate_legs()
-	handle_jump()
-	flip()
-	
-func process_slide(delta):
-	if (isStateNew):
-		animator.set("parameters/bodyState/transition_request", "slide")
-		velocity.x = slide_speed * face_vector.x 
-	velocity.x = lerp(0.0, velocity.x, pow(2, -8 * delta))
-	if (abs(velocity.x) < minDashSpeed):
-		call_deferred("change_state", State.BASE)
-
-func process_throw(delta):
-	if (isStateNew):
-		animator.set("parameters/discs_held/transition_request", discs_held)
-		animator.set("parameters/isThrowing2/transition_request", "true")
-		animator.set("parameters/isThrowing/transition_request", "true")
-		throwTimer.start()
-		$ShootTimer.start()
-		if discs_held == 2:
-			if face_vector.x > 0:
-				animator.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-			else:
-				animator.set("parameters/OneShot2/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		elif discs_held == 1:
-			if face_vector.x > 0:
-				animator.set("parameters/OneShot3/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-			else:
-				animator.set("parameters/OneShot4/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	
-	if throwTimer.time_left < 0.2:
-		call_deferred("change_state", State.BASE)
-		animator.set("parameters/isThrowing2/transition_request", "false")
-		animator.set("parameters/isThrowing/transition_request", "false")
-	
-	#GRAVITY
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	
-	#get direction held and set face_vector
-	direction = get_input_vector()
-	if direction.x:
-		velocity.x = direction.x * SPEED
-		face_vector.x = direction.x
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	#animations
-	animate_legs()
-	handle_jump()
-	flip()
-
-func get_input_vector():
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_vector.y = Input.get_action_strength("move_up") - Input.get_action_strength("move_down")
-	return input_vector
-	
+	print(disc_object)
+#REMAIN?
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -193,6 +101,7 @@ func showDiscsHeld():
 		rBool = false
 		lBool = false
 
+#TRANSFER
 func shoot():
 	#create object
 	var shot = disc_object.instantiate()
@@ -204,6 +113,7 @@ func shoot():
 	shot.position += Vector2(shot.direction.x * 14, -4)
 	#add object to scene
 	get_parent().call_deferred("add_child", shot)
+	
 	$DiscShootSounds.play()
 	discs_held -= 1
 
@@ -241,7 +151,7 @@ func disc_teleport(rVisible, lVisible):
 #		print("recovery")
 	if !lVisible:
 		discAnimator.play("Disc2TeleportRecovery")
-		print("recovery2")
+#		print("recovery2")
 
 #	discAnimator.seek(.25)
 #	if discAnimator.is_playing():
