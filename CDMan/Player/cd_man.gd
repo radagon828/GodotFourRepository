@@ -52,7 +52,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	showDiscsHeld()
 	move_and_slide()
-	print(throw_state)
+#	print(throw_state)
 #REMAIN?
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():

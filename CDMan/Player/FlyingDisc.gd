@@ -8,7 +8,7 @@ enum State {OUTWARD, RETURN, HIT}
 @export var friction = 25
 @onready var playerMarker = $"../CDMan/PlayerMarker"
 @onready var thePlayer = $"../CDMan"
-
+@onready var after_image = preload("res://disc_after_image.tscn")
 #STATE VARIABLES
 var currentState
 #using this boolean allows functions in states to be called for one frame
@@ -19,8 +19,8 @@ func _ready() -> void:
 	animator.play("spin")
 	linear_velocity.x = direction.x * speed
 	currentState = State.OUTWARD
-	
-	
+
+
 func _physics_process(delta: float) -> void:
 	match currentState:
 		State.OUTWARD:
@@ -34,6 +34,19 @@ func _physics_process(delta: float) -> void:
 		animator.flip_h = 0
 	else:
 		animator.flip_h = 1 
+	leave_image()
+	
+func _process(delta: float) -> void:
+	pass
+	
+
+func leave_image():
+	var image = after_image.instantiate()
+	#make position of player the position of the disc
+	image.transform = global_transform
+	#move object in front of player
+	#add object to scene
+	get_tree().current_scene.call_deferred("add_child", image)
 	
 func change_state(newstate):
 	currentState = newstate

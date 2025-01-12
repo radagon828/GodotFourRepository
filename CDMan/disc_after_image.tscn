@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b25i4q2c6rs6n"]
+
+[ext_resource type="Texture2D" uid="uid://ciwihxb2yamap" path="res://Art/Disc_afterimage.png" id="1_10wbs"]
+[ext_resource type="Script" path="res://disc_after_image.gd" id="2_s3jj8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5u47"]
+atlas = ExtResource("1_10wbs")
+region = Rect2(0, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odf6x"]
+atlas = ExtResource("1_10wbs")
+region = Rect2(19, 0, 19, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emh8v"]
+atlas = ExtResource("1_10wbs")
+region = Rect2(38, 0, 19, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwa5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5u47")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_odf6x")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_emh8v")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DiscAfterImage" type="AnimatedSprite2D"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_cwa5g")
+frame_progress = 0.747193
+script = ExtResource("2_s3jj8")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
