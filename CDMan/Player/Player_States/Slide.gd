@@ -8,6 +8,8 @@ var minDashSpeed = 100
 @export var fsm: FiniteStateMachine
 @onready var base_state = $"../Base" as BaseState
 
+signal slide_end
+
 func _ready() -> void:
 	set_physics_process(false)
 

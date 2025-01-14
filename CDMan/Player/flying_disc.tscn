@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player/FlyingDisc.gd" id="1_a5fcq"]
 [ext_resource type="Texture2D" uid="uid://bbw6qwnjf07vb" path="res://Art/TheDiscItselfAura.png" id="2_livim"]
 [ext_resource type="Texture2D" uid="uid://c3mal6p31f2kp" path="res://Art/TheDiscItself.png" id="2_pvh4o"]
-[ext_resource type="PackedScene" uid="uid://clr3s56yjfcil" path="res://trail.tscn" id="3_05xh1"]
+[ext_resource type="PackedScene" uid="uid://clr3s56yjfcil" path="res://Effects/Projectiles/trail.tscn" id="3_05xh1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4htwp"]
 atlas = ExtResource("2_pvh4o")

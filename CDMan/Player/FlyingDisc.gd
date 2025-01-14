@@ -34,19 +34,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		animator.flip_h = 1 
 	
-func _process(delta: float) -> void:
-	pass
-	
-
-func change_state(newstate):
-	currentState = newstate
-	isStateNew = true
-	print("changing state")
-	
 func process_outward(delta):
-#	if isStateNew:
-#		rVisible = thePlayer.right_disc.visible
-#		lVisible = thePlayer.left_disc.visible 
 	linear_velocity.x += -direction.x * friction
 	#to have a gradual slowdown to discs moving up and down
 	linear_velocity.y = move_toward(linear_velocity.y , 0, 2)
@@ -58,8 +46,19 @@ func process_outward(delta):
 		linear_velocity += Vector2.UP * 5
 	elif Input.is_action_pressed("move_down"):
 		linear_velocity += Vector2.DOWN * 5
-		pass
-		
+
+####################################################
+
+##################UNUSED FUNCTIONS#################
+
+####################################################
+
+func change_state(newstate):
+	currentState = newstate
+	isStateNew = true
+	print("changing state")
+	
+
 #Don't know what to do with THESE functions
 func process_return(delta):
 	direction = playerMarker.global_position - position
@@ -72,6 +71,12 @@ func process_hit_return(delta):
 	
 	direction = playerMarker.global_position - position
 	linear_velocity += direction
+
+#############################################################
+
+#############################################################
+
+##############################################################
 
 #disc returns to player upon hit, should change to upon enemy hit
 func _on_disc_hit_box_body_entered(body: Node2D) -> void:

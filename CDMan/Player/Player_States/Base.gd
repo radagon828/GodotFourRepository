@@ -5,6 +5,8 @@ extends State
 @export var fsm: FiniteStateMachine
 @onready var slide_state = $"../Slide" as SlideState
 @onready var throw_state = $"../Throw" as ThrowState
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_physics_process(false)

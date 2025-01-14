@@ -10,6 +10,8 @@ extends State
 
 @onready var base_state = $"../Base" as BaseState
 
+signal throw_end
+
 func _ready() -> void:
 	set_physics_process(false)
 
@@ -32,6 +34,8 @@ func _enter_state() -> void:
 			actor.animator.set("parameters/OneShot3/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		else:
 			actor.animator.set("parameters/OneShot4/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+			
+
 func _exit_state() -> void:
 	set_physics_process(false)
 	
