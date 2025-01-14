@@ -1,13 +1,13 @@
-[gd_scene load_steps=77 format=3 uid="uid://cdvsfhh22jq0f"]
+[gd_scene load_steps=77 format=3 uid="uid://cbolfv8agrmuc"]
 
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Texture2D" uid="uid://c1ccptjiywqof" path="res://Art/disc man shading.png" id="2_001wq"]
 [ext_resource type="Script" path="res://Player/FiniteStateMachine.gd" id="2_alctq"]
 [ext_resource type="Texture2D" uid="uid://cu3mlx6u1s6d4" path="res://Art/disc man discs.png" id="3_2kkpn"]
 [ext_resource type="Texture2D" uid="uid://dlgn2chrvnm23" path="res://Art/disc man base.png" id="3_3cl0r"]
-[ext_resource type="Script" path="res://Player/Base.gd" id="4_hka8p"]
-[ext_resource type="Script" path="res://Player/Throw.gd" id="5_m4adr"]
-[ext_resource type="Script" path="res://Player/Slide.gd" id="6_3q7wm"]
+[ext_resource type="Script" path="res://Player/Player_States/Base.gd" id="3_3ydhx"]
+[ext_resource type="Script" path="res://Player/Player_States/Throw.gd" id="4_ut33j"]
+[ext_resource type="Script" path="res://Player/Player_States/Slide.gd" id="5_tbcrl"]
 [ext_resource type="AudioStream" uid="uid://4m4miq17tgjw" path="res://Audio/swoosh-sound-effect-for-fight-scenes-or-transitions-4-149887.mp3" id="7_nvung"]
 [ext_resource type="AudioStream" uid="uid://c5pn6qa2in8qq" path="res://Audio/running-sounds-6003.mp3" id="8_jywwp"]
 
@@ -1205,19 +1205,19 @@ script = ExtResource("2_alctq")
 state = NodePath("Base")
 
 [node name="Base" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
-script = ExtResource("4_hka8p")
+script = ExtResource("3_3ydhx")
 actor = NodePath("../..")
 fsm = NodePath("..")
 
 [node name="Throw" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm", "throw_timer", "shoot_timer")]
-script = ExtResource("5_m4adr")
+script = ExtResource("4_ut33j")
 actor = NodePath("../..")
 fsm = NodePath("..")
 throw_timer = NodePath("../../ThrowTimer")
 shoot_timer = NodePath("../../ShootTimer")
 
 [node name="Slide" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
-script = ExtResource("6_3q7wm")
+script = ExtResource("5_tbcrl")
 actor = NodePath("../..")
 fsm = NodePath("..")
 

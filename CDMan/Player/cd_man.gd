@@ -33,7 +33,8 @@ var lBool
 @onready var base_state = $FiniteStateMachine/Base as BaseState
 @onready var throw_state = $FiniteStateMachine/Throw as ThrowState
 @onready var slide_state = $FiniteStateMachine/Slide as SlideState
- 
+
+
 func _ready() -> void:
 	sprites.append_array($Sprites.get_children())
 	#these assignments make certain the animation player doesn't default 
@@ -52,13 +53,12 @@ func _ready() -> void:
 func _physics_process(delta):
 	showDiscsHeld()
 	move_and_slide()
-#	print(throw_state)
-#REMAIN?
+
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-#REMAIN
+
 func animate_torso():
 	animator.set("parameters/in_air_state2/transition_request", bool(!is_on_floor()))
 	
@@ -72,7 +72,7 @@ func animate_torso():
 		if velocity.y < 0:
 			animator.set("parameters/in_air2/transition_request", "jumping")
 
-#REMAIN
+
 func animate_legs():
 	animator.set("parameters/in_air_state/transition_request", bool(!is_on_floor()))
 	
@@ -86,7 +86,7 @@ func animate_legs():
 		if velocity.y < 0:
 			animator.set("parameters/in_air/transition_request", "jumping")
 
-#REMAIN
+
 func showDiscsHeld():
 	if discs_held == 2:
 		rBool = true
@@ -98,7 +98,7 @@ func showDiscsHeld():
 		rBool = false
 		lBool = false
 
-#REMAIN
+
 func flip():
 	if velocity.x != 0:
 		for i in sprites.size():
@@ -124,7 +124,7 @@ func flip():
 		right_disc.visible = rBool
 		left_disc.visible = lBool 
 
-#REMAIN
+
 func disc_teleport(rVisible, lVisible):
 	discs_held += 1
 	if !rVisible: 
@@ -138,7 +138,6 @@ func disc_teleport(rVisible, lVisible):
 #	if discAnimator.is_playing():
 #		print("playing")
 
-#REMAIN
 #SIGNAL FUNCTIONS
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "DiscHitBox": 
