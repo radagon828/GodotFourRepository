@@ -5,8 +5,6 @@ extends State
 var minDashSpeed = 100
 
 @export var actor: CharacterBody2D
-@export var fsm: FiniteStateMachine
-@onready var base_state = $"../Base" as BaseState
 
 signal slide_end
 
@@ -27,6 +25,6 @@ func _physics_process(delta: float) -> void:
 
 	actor.velocity.x = lerp(0.0, actor.velocity.x, pow(2, -8 * delta))
 	if (abs(actor.velocity.x) < minDashSpeed):
-		fsm.call_deferred("change_state", base_state)
+		slide_end.emit()
 
 

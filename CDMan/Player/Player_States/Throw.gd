@@ -2,13 +2,10 @@ class_name ThrowState
 extends State
 
 @export var actor: CharacterBody2D
-@export var fsm: FiniteStateMachine
 
 @export var throw_timer: Timer
 @export var shoot_timer: Timer
 @onready var disc_object: PackedScene = preload("res://Player/flying_disc.tscn")
-
-@onready var base_state = $"../Base" as BaseState
 
 signal throw_end
 
@@ -84,6 +81,7 @@ func _on_shoot_timer_timeout() -> void:
 	shoot()
 
 func _on_throw_timer_timeout() -> void:
-	fsm.call_deferred("change_state", base_state)
+	throw_end.emit()
+#	fsm.call_deferred("change_state", base_state)
 	actor.animator.set("parameters/isThrowing2/transition_request", "false")
 	actor.animator.set("parameters/isThrowing/transition_request", "false")

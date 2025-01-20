@@ -48,7 +48,12 @@ func _ready() -> void:
 	left_disc.modulate = Color(1,1,1,1)
 	
 	#SIGNAL CONNECTIONS
-	
+	base_state.slide_input.connect(fsm.call_deferred.bind("change_state", slide_state))
+	base_state.throw_input.connect(fsm.call_deferred.bind("change_state", throw_state))
+	throw_state.throw_end.connect(fsm.call_deferred.bind("change_state", base_state))
+	slide_state.slide_end.connect(fsm.call_deferred.bind("change_state", base_state))
+#	throw_state
+#	slide_state
 	
 func _physics_process(delta):
 	showDiscsHeld()
@@ -138,7 +143,13 @@ func disc_teleport(rVisible, lVisible):
 #	if discAnimator.is_playing():
 #		print("playing")
 
-#SIGNAL FUNCTIONS
+#############################################
+
+#################SIGNAL FUNCTIONS############
+
+##############################################
+
+
 func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "DiscHitBox": 
 		discs_held += 1

@@ -1204,22 +1204,19 @@ fsm = NodePath("FiniteStateMachine")
 script = ExtResource("2_alctq")
 state = NodePath("Base")
 
-[node name="Base" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
+[node name="Base" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("3_3ydhx")
 actor = NodePath("../..")
-fsm = NodePath("..")
 
-[node name="Throw" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm", "throw_timer", "shoot_timer")]
+[node name="Throw" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "throw_timer", "shoot_timer")]
 script = ExtResource("4_ut33j")
 actor = NodePath("../..")
-fsm = NodePath("..")
 throw_timer = NodePath("../../ThrowTimer")
 shoot_timer = NodePath("../../ShootTimer")
 
-[node name="Slide" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "fsm")]
+[node name="Slide" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_tbcrl")
 actor = NodePath("../..")
-fsm = NodePath("..")
 
 [node name="Hurt" type="Node" parent="FiniteStateMachine"]
 
