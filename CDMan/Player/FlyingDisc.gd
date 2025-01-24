@@ -29,10 +29,12 @@ func _physics_process(delta: float) -> void:
 		State.HIT:
 			process_hit_return(delta)
 	isStateNew = false
+	
 	if linear_velocity.x > 0:
 		animator.flip_h = 0
 	else:
 		animator.flip_h = 1 
+		
 	
 func process_outward(delta):
 	linear_velocity.x += -direction.x * friction

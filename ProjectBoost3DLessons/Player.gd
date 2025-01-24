@@ -5,13 +5,19 @@ extends RigidBody3D
 @export_range(50.0, 300.0) var torque_thrust: float = 100 
 
 var isTransitioning: bool = false
+
+########AUDIO###########
 #nodes need to be readied before they can be used in a script
 @onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
 @onready var success_audio: AudioStreamPlayer = $SuccessAudio
 @onready var rocket_audio: AudioStreamPlayer3D = $RocketThrustAudio
+
+########PARTICLES#########
 @onready var booster_particles: GPUParticles3D = $BoosterParticles
 @onready var booster_particles_left: GPUParticles3D = $BoosterParticlesLeft
 @onready var booster_particles_right: GPUParticles3D = $BoosterParticlesRight
+@onready var explosion_particles: GPUParticles3D = $ExplosionParticles
+@onready var success_particles: GPUParticles3D = $SuccessParticles
 
 #basis y is whatever direction is up on the object, the direction the top of the object is
 func _process(delta: float) -> void:
@@ -51,6 +57,7 @@ func _on_body_entered(body: Node) -> void:
 		
 func crash_sequence() -> void:
 	explosion_audio.play()
+	explosion_particles.emitting = true
 	var tween = create_tween()
 	isTransitioning = true
 	set_process(false)
@@ -60,6 +67,7 @@ func crash_sequence() -> void:
 	
 func complete_level(next_level_file: String) -> void:
 	success_audio.play()
+	success_particles.emitting = true
 	isTransitioning = true
 	set_process(false)
 	var tween = create_tween()
