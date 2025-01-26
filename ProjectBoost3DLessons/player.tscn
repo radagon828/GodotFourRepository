@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnci7ff3yjklu"]
+[gd_scene load_steps=23 format=3 uid="uid://cnci7ff3yjklu"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_wxnx8"]
 [ext_resource type="AudioStream" uid="uid://dpr5haoqw8hvr" path="res://Audio/SFX - Death Explosion.ogg" id="2_82111"]
@@ -8,9 +8,61 @@
 [ext_resource type="PackedScene" uid="uid://dcecb8hw7dbrv" path="res://Particles/explosion_particles.tscn" id="6_tgyl2"]
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://Particles/success_particles.tscn" id="7_weeka"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_sqvl6"]
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_286ae"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cvq1r"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aji5y"]
+albedo_color = Color(1, 0.0588235, 0.0588235, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4rpsd"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yik60"]
+albedo_color = Color(0.309804, 0.0509804, 0.0509804, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5uuwj"]
+top_radius = 0.14
+bottom_radius = 0.14
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43m1t"]
+albedo_color = Color(0.309804, 0.0509804, 0.0509804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmtfx"]
+albedo_color = Color(0.309804, 0.0509804, 0.0509804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epowc"]
+albedo_color = Color(0.309804, 0.0509804, 0.0509804, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pk7xr"]
+top_radius = 0.2
+bottom_radius = 0.3
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o83x8"]
+top_radius = 0.3
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igm44"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_55al8"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3d48p"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aknai"]
+bottom_radius = 0.2
+height = 0.5
 
 [node name="Player" type="RigidBody3D"]
 axis_lock_linear_z = true
@@ -19,9 +71,6 @@ axis_lock_angular_y = true
 linear_damp = 1.0
 angular_damp = 3.0
 script = ExtResource("1_wxnx8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_sqvl6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_286ae")
@@ -39,12 +88,60 @@ stream = ExtResource("4_otaj3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="BoosterParticlesLeft" parent="." instance=ExtResource("5_ea6cs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -1, 0)
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0, 1, -0.35, -1, 0)
 
 [node name="BoosterParticlesRight" parent="." instance=ExtResource("5_ea6cs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -1, 0)
+transform = Transform3D(0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0, 0, 1, 0.35, -1, 0)
 
 [node name="ExplosionParticles" parent="." instance=ExtResource("6_tgyl2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0155555, 0)
 
 [node name="SuccessParticles" parent="." instance=ExtResource("7_weeka")]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("CylinderMesh_cvq1r")
+
+[node name="Cockpit" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_aji5y")
+mesh = SubResource("CylinderMesh_4rpsd")
+skeleton = NodePath("../..")
+
+[node name="RocketRight" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0, 0, 1, 0.335, -0.485, 0)
+material_override = SubResource("StandardMaterial3D_yik60")
+mesh = SubResource("CylinderMesh_5uuwj")
+
+[node name="RocketFront" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, -0.485, 0.335)
+material_override = SubResource("StandardMaterial3D_43m1t")
+mesh = SubResource("CylinderMesh_5uuwj")
+
+[node name="RocketBack" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, -0.485, -0.335)
+material_override = SubResource("StandardMaterial3D_pmtfx")
+mesh = SubResource("CylinderMesh_5uuwj")
+
+[node name="RocketLeft" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0, 1, -0.335, -0.485, 0)
+material_override = SubResource("StandardMaterial3D_epowc")
+mesh = SubResource("CylinderMesh_5uuwj")
+
+[node name="Ring2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_pk7xr")
+
+[node name="Ring4" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
+mesh = SubResource("CylinderMesh_o83x8")
+
+[node name="Ring3" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0)
+material_override = SubResource("StandardMaterial3D_igm44")
+mesh = SubResource("CylinderMesh_55al8")
+
+[node name="Bottom" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_3d48p")
+mesh = SubResource("CylinderMesh_aknai")
