@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cbolfv8agrmuc"]
+[gd_scene load_steps=80 format=3 uid="uid://cbolfv8agrmuc"]
 
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Texture2D" uid="uid://c1ccptjiywqof" path="res://Art/disc man shading.png" id="2_001wq"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" path="res://Player/Player_States/Slide.gd" id="5_tbcrl"]
 [ext_resource type="AudioStream" uid="uid://4m4miq17tgjw" path="res://Audio/swoosh-sound-effect-for-fight-scenes-or-transitions-4-149887.mp3" id="7_nvung"]
 [ext_resource type="AudioStream" uid="uid://c5pn6qa2in8qq" path="res://Audio/running-sounds-6003.mp3" id="8_jywwp"]
+[ext_resource type="Texture2D" uid="uid://ceavo2r4sevt3" path="res://Art/DISC_MAN_VERSION 2.png" id="9_po58r"]
+[ext_resource type="Texture2D" uid="uid://quk8blcb2qax" path="res://Art/DISC_MAN_VERSION 2 SHADING.png" id="10_yaden"]
+[ext_resource type="Texture2D" uid="uid://t4d2xs3jmns6" path="res://Art/DISC_MAN_VERSION 2 DISCS.png" id="11_lhwtj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik08u"]
 size = Vector2(12, 4)
@@ -20,8 +23,8 @@ size = Vector2(12, 4)
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs Shading:frame")
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManLegs Shading:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,8 +35,8 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/enabled = false
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,8 +47,8 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/enabled = false
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -56,8 +59,8 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/enabled = false
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -68,8 +71,8 @@ tracks/3/keys = {
 }
 tracks/4/type = "value"
 tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/4/enabled = false
+tracks/4/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -86,7 +89,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManLegs:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -98,7 +101,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManLegs Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManLegs Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -115,7 +118,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -127,7 +130,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -139,7 +142,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -151,7 +154,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -168,7 +171,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManLegs:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -180,7 +183,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManLegs Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManLegs Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -196,7 +199,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManLegs:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -208,7 +211,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManLegs Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManLegs Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -225,7 +228,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -237,7 +240,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -249,7 +252,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -261,7 +264,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -277,7 +280,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManLegs:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -289,7 +292,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManLegs Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManLegs Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -305,7 +308,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -317,7 +320,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -329,7 +332,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -341,7 +344,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -358,7 +361,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManLegs:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -370,7 +373,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManLegs Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManLegs Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -386,7 +389,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -398,7 +401,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -410,7 +413,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -422,7 +425,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -440,7 +443,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManLegs:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -452,7 +455,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManLegs Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManLegs Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -482,7 +485,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -494,7 +497,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -506,7 +509,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -518,7 +521,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -535,7 +538,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManLegs:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManLegs:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -547,7 +550,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManLegs Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManLegs Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -564,7 +567,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -576,7 +579,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -588,7 +591,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -600,7 +603,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -618,7 +621,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -630,7 +633,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -642,7 +645,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -654,7 +657,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -671,7 +674,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -683,7 +686,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -695,7 +698,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -707,7 +710,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -739,7 +742,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -751,7 +754,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -763,7 +766,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -775,7 +778,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -792,7 +795,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/DiscManTorso:frame")
+tracks/0/path = NodePath("Sprites/OldSprites/DiscManTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -804,7 +807,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprites/DiscManTorso Shading:frame")
+tracks/1/path = NodePath("Sprites/OldSprites/DiscManTorso Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -816,7 +819,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprites/DiscManDISCS:frame")
+tracks/2/path = NodePath("Sprites/OldSprites/DiscManDISCS:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -828,7 +831,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprites/DiscManDISCS2:frame")
+tracks/3/path = NodePath("Sprites/OldSprites/DiscManDISCS2:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1140,8 +1143,8 @@ length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprites/DiscManDISCS:modulate")
+tracks/0/enabled = false
+tracks/0/path = NodePath("../Sprites/OldSprites/DiscManDISCS:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1164,6 +1167,18 @@ tracks/1/keys = {
 "method": &"debug"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Version2Sprites/V2DiscManDISCS:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(10, 10, 10, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3762u"]
 resource_name = "Disc2TeleportRecovery"
@@ -1171,11 +1186,23 @@ length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprites/DiscManDISCS2:modulate")
+tracks/0/enabled = false
+tracks/0/path = NodePath("../Sprites/OldSprites/DiscManDISCS2:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(10, 10, 10, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/Version2Sprites/V2DiscManDISCS2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -1192,12 +1219,15 @@ _data = {
 radius = 3.0
 height = 34.0
 
-[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("animator", "discAnimator", "discAnimator2", "fsm")]
+[node name="CDMan" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animator", "discAnimator", "discAnimator2", "right_disc", "left_disc", "fsm")]
 collision_layer = 0
 script = ExtResource("1_nuam1")
+sprites = [NodePath("Sprites/OldSprites/DiscManLegs"), NodePath("Sprites/OldSprites/DiscManLegs Shading"), NodePath("Sprites/OldSprites/DiscManTorso"), NodePath("Sprites/OldSprites/DiscManTorso Shading"), NodePath("Sprites/OldSprites/DiscManDISCS2"), NodePath("Sprites/OldSprites/DiscManDISCS")]
 animator = NodePath("Animations/AnimationTree")
 discAnimator = NodePath("Animations/DiscColors")
 discAnimator2 = NodePath("Animations/DiscColors2")
+right_disc = NodePath("Sprites/OldSprites/DiscManDISCS")
+left_disc = NodePath("Sprites/OldSprites/DiscManDISCS2")
 fsm = NodePath("FiniteStateMachine")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
@@ -1226,42 +1256,79 @@ shape = SubResource("RectangleShape2D_ik08u")
 
 [node name="Sprites" type="Node2D" parent="."]
 
-[node name="DiscManLegs" type="Sprite2D" parent="Sprites"]
+[node name="OldSprites" type="Node2D" parent="Sprites"]
+
+[node name="DiscManLegs" type="Sprite2D" parent="Sprites/OldSprites"]
 texture = ExtResource("3_3cl0r")
 hframes = 10
 vframes = 11
 frame = 90
 
-[node name="DiscManLegs Shading" type="Sprite2D" parent="Sprites"]
+[node name="DiscManLegs Shading" type="Sprite2D" parent="Sprites/OldSprites"]
 texture = ExtResource("2_001wq")
 hframes = 10
 vframes = 11
+frame = 90
 
-[node name="DiscManTorso" type="Sprite2D" parent="Sprites"]
+[node name="DiscManTorso" type="Sprite2D" parent="Sprites/OldSprites"]
 texture = ExtResource("3_3cl0r")
 hframes = 10
 vframes = 11
-frame = 10
+frame = 100
 
-[node name="DiscManTorso Shading" type="Sprite2D" parent="Sprites"]
+[node name="DiscManTorso Shading" type="Sprite2D" parent="Sprites/OldSprites"]
 texture = ExtResource("2_001wq")
 hframes = 10
 vframes = 11
-frame = 64
+frame = 100
 
-[node name="DiscManDISCS2" type="Sprite2D" parent="Sprites"]
-modulate = Color(10, 10, 10, 1)
+[node name="DiscManDISCS2" type="Sprite2D" parent="Sprites/OldSprites"]
 texture = ExtResource("3_2kkpn")
 hframes = 10
 vframes = 12
+frame = 100
 
-[node name="DiscManDISCS" type="Sprite2D" parent="Sprites"]
-modulate = Color(10, 10, 10, 1)
+[node name="DiscManDISCS" type="Sprite2D" parent="Sprites/OldSprites"]
 material = SubResource("CanvasItemMaterial_0fe68")
 texture = ExtResource("3_2kkpn")
 hframes = 10
 vframes = 12
+frame = 110
+
+[node name="Version2Sprites" type="Node2D" parent="Sprites"]
+visible = false
+
+[node name="V2DiscManLEGS" type="Sprite2D" parent="Sprites/Version2Sprites"]
+texture = ExtResource("9_po58r")
+hframes = 10
+vframes = 11
+
+[node name="V2DiscManLEGS Shading" type="Sprite2D" parent="Sprites/Version2Sprites"]
+texture = ExtResource("10_yaden")
+hframes = 10
+vframes = 22
 frame = 10
+
+[node name="V2DiscManTORSO" type="Sprite2D" parent="Sprites/Version2Sprites"]
+texture = ExtResource("9_po58r")
+hframes = 10
+vframes = 11
+frame = 69
+
+[node name="V2DiscManTORSO Shading" type="Sprite2D" parent="Sprites/Version2Sprites"]
+texture = ExtResource("10_yaden")
+hframes = 10
+vframes = 22
+
+[node name="V2DiscManDISCS2" type="Sprite2D" parent="Sprites/Version2Sprites"]
+texture = ExtResource("11_lhwtj")
+hframes = 10
+vframes = 12
+
+[node name="V2DiscManDISCS" type="Sprite2D" parent="Sprites/Version2Sprites"]
+texture = ExtResource("11_lhwtj")
+hframes = 10
+vframes = 12
 
 [node name="Animations" type="Node" parent="."]
 

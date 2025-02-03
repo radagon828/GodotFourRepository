@@ -9,7 +9,7 @@ var direction = Vector2(0, 0)
 var face_vector = Vector2.RIGHT
 
 #ANIMATION NODES
-var sprites: Array[Node] 
+@export var sprites: Array[Node] 
 @export var animator: AnimationTree
 @export var discAnimator: AnimationPlayer
 @export var discAnimator2: AnimationPlayer
@@ -22,8 +22,8 @@ var sprites: Array[Node]
 var rBool
 var lBool
 #to manipulate the visibility of sprites
-@onready var right_disc = $Sprites/DiscManDISCS
-@onready var left_disc = $Sprites/DiscManDISCS2
+@export var right_disc: Sprite2D
+@export var left_disc: Sprite2D
 @onready var disc_object: PackedScene = preload("res://Player/flying_disc.tscn")
 
 #STATE VARIABLES
@@ -36,7 +36,6 @@ var lBool
 
 
 func _ready() -> void:
-	sprites.append_array($Sprites.get_children())
 	#these assignments make certain the animation player doesn't default 
 	#these values to the wrong ones
 	#may assign these values to the level manager in the way future
@@ -52,8 +51,7 @@ func _ready() -> void:
 	base_state.throw_input.connect(fsm.call_deferred.bind("change_state", throw_state))
 	throw_state.throw_end.connect(fsm.call_deferred.bind("change_state", base_state))
 	slide_state.slide_end.connect(fsm.call_deferred.bind("change_state", base_state))
-#	throw_state
-#	slide_state
+
 	
 func _physics_process(delta):
 	showDiscsHeld()
