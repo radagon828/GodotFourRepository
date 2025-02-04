@@ -51,7 +51,7 @@ func _ready() -> void:
 	base_state.throw_input.connect(fsm.call_deferred.bind("change_state", throw_state))
 	throw_state.throw_end.connect(fsm.call_deferred.bind("change_state", base_state))
 	slide_state.slide_end.connect(fsm.call_deferred.bind("change_state", base_state))
-
+	
 	
 func _physics_process(delta):
 	showDiscsHeld()
