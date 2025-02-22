@@ -83,6 +83,7 @@ func process_hit_return(delta):
 #disc returns to player upon hit, should change to upon enemy hit
 func _on_disc_hit_box_body_entered(body: Node2D) -> void:
 #	change_state(State.HIT)
+	linear_velocity.x = 0
 	print("entered")
 
 #disc timer
