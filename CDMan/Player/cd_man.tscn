@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cbolfv8agrmuc"]
+[gd_scene load_steps=78 format=3 uid="uid://cbolfv8agrmuc"]
 
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Script" path="res://Player/FiniteStateMachine.gd" id="2_alctq"]
@@ -13,6 +13,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik08u"]
 size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6w4y"]
+size = Vector2(5, 31)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0fe68"]
 
@@ -1253,6 +1256,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
+graph_offset = Vector2(-43.6948, -310.015)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
@@ -1430,8 +1434,8 @@ position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_ik08u")
 
 [node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2(0, 15)
-shape = SubResource("RectangleShape2D_ik08u")
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_h6w4y")
 disabled = true
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -1479,6 +1483,7 @@ vframes = 12
 frame = 100
 
 [node name="DiscManDISCS" type="Sprite2D" parent="Sprites"]
+modulate = Color(10, 10, 10, 1)
 material = SubResource("CanvasItemMaterial_0fe68")
 texture = ExtResource("11_lhwtj")
 hframes = 10
@@ -1568,6 +1573,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="PlayerHurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 metadata/_edit_lock_ = true
