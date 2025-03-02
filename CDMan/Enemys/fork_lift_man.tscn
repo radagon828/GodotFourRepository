@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://g742q5fqrlug"]
+[gd_scene load_steps=27 format=3 uid="uid://g742q5fqrlug"]
 
 [ext_resource type="Script" path="res://Enemys/fork_lift_man.gd" id="1_3uq8k"]
 [ext_resource type="Texture2D" uid="uid://3spc7ne4qgfx" path="res://Art/EnemySprites/ENEMY_003_Forklift_Bot_Main.png" id="1_teix4"]
@@ -9,9 +9,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d321"]
 size = Vector2(13, 4)
 
-[sub_resource type="Animation" id="Animation_i2hdx"]
-resource_name = "Walking"
-length = 0.2
+[sub_resource type="Animation" id="Animation_lwooy"]
+resource_name = "ForkLiftLifted"
+length = 0.1
 loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
@@ -21,10 +21,10 @@ tracks/0/path = NodePath("../Sprites/MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 0, 0, 0]
+"values": [23]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,10 +33,10 @@ tracks/1/path = NodePath("../Sprites/Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [35]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -45,49 +45,10 @@ tracks/2/path = NodePath("../Sprites/Shading2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 14, 15]
-}
-
-[sub_resource type="Animation" id="Animation_vn7yp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprites/Shading2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprites/Shading:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprites/MainSprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
+"values": [47]
 }
 
 [sub_resource type="Animation" id="Animation_f48lx"]
@@ -174,6 +135,46 @@ tracks/2/keys = {
 "values": [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
 }
 
+[sub_resource type="Animation" id="Animation_l0grd"]
+resource_name = "ForkRotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/MainSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/Shading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75, 76]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Shading2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [84, 85, 86, 87, 88]
+}
+
 [sub_resource type="Animation" id="Animation_8k0b5"]
 resource_name = "MainBodyRotate"
 length = 0.5
@@ -215,8 +216,89 @@ tracks/2/keys = {
 "values": [60, 61, 62, 63, 64]
 }
 
-[sub_resource type="Animation" id="Animation_lwooy"]
-resource_name = "ForkLiftLifted"
+[sub_resource type="Animation" id="Animation_vn7yp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/Shading2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/Shading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/MainSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_i2hdx"]
+resource_name = "Walking"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/MainSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/Shading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Shading2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_fk5ys"]
+resource_name = "Idle"
 length = 0.1
 loop_mode = 1
 step = 0.05
@@ -230,12 +312,124 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [23]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("../Sprites/Shading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Shading2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvqn8"]
+_data = {
+"ForkLiftLifted": SubResource("Animation_lwooy"),
+"ForkLiftLowered": SubResource("Animation_f48lx"),
+"ForkLiftMoveUp": SubResource("Animation_80yw2"),
+"ForkRotate": SubResource("Animation_l0grd"),
+"Idle": SubResource("Animation_fk5ys"),
+"MainBodyRotate": SubResource("Animation_8k0b5"),
+"RESET": SubResource("Animation_vn7yp"),
+"Walking": SubResource("Animation_i2hdx")
+}
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7g35v"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_mnore"]
+input_0/name = "Idle"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "Alert"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_stt7p"]
+graph_offset = Vector2(-370.367, -98.9661)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_7g35v")
+nodes/Blend2/position = Vector2(-120, -100)
+nodes/Transition/node = SubResource("AnimationNodeTransition_mnore")
+nodes/Transition/position = Vector2(120, 40)
+node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"Blend2"]
+
+[sub_resource type="Animation" id="Animation_s4cf6"]
+resource_name = "ForkLiftLowered"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/ForkSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/ForkShading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/ForkShading2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [36]
+}
+
+[sub_resource type="Animation" id="Animation_4avo4"]
+resource_name = "ForkLiftLifted"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/ForkSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [23]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/ForkShading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -247,7 +441,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprites/Shading2:frame")
+tracks/2/path = NodePath("../Sprites/ForkShading2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -257,13 +451,53 @@ tracks/2/keys = {
 "values": [47]
 }
 
-[sub_resource type="Animation" id="Animation_l0grd"]
-resource_name = "ForkRotate"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_rwunu"]
+resource_name = "ForkLiftMoveUp"
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprites/MainSprite:frame")
+tracks/0/path = NodePath("../Sprites/ForkSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/ForkShading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/ForkShading2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
+}
+
+[sub_resource type="Animation" id="Animation_smiuj"]
+resource_name = "ForkRotate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/ForkSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -275,7 +509,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprites/Shading:frame")
+tracks/1/path = NodePath("../Sprites/ForkShading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -287,7 +521,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprites/Shading2:frame")
+tracks/2/path = NodePath("../Sprites/ForkShading2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -297,23 +531,66 @@ tracks/2/keys = {
 "values": [84, 85, 86, 87, 88]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvqn8"]
-_data = {
-"ForkLiftLifted": SubResource("Animation_lwooy"),
-"ForkLiftLowered": SubResource("Animation_f48lx"),
-"ForkLiftMoveUp": SubResource("Animation_80yw2"),
-"ForkRotate": SubResource("Animation_l0grd"),
-"MainBodyRotate": SubResource("Animation_8k0b5"),
-"RESET": SubResource("Animation_vn7yp"),
-"Walking": SubResource("Animation_i2hdx")
+[sub_resource type="Animation" id="Animation_dja82"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/ForkSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [37]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/ForkShading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [73]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/ForkShading2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [85]
 }
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_stt7p"]
-graph_offset = Vector2(-227.48, 29.2413)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y1nu4"]
+_data = {
+"ForkLiftLifted": SubResource("Animation_4avo4"),
+"ForkLiftLowered": SubResource("Animation_s4cf6"),
+"ForkLiftMoveUp": SubResource("Animation_rwunu"),
+"ForkRotate": SubResource("Animation_smiuj"),
+"RESET": SubResource("Animation_dja82")
+}
 
-[node name="ForkLiftMan" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gga0l"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bfl6"]
+size = Vector2(22, 3)
+
+[node name="ForkLiftMan" type="CharacterBody2D" node_paths=PackedStringArray("bodyAni", "forkAni", "moveTimer")]
 collision_layer = 0
 script = ExtResource("1_3uq8k")
+bodyAni = NodePath("Animation/MainBody")
+forkAni = NodePath("Animation/ForkLift")
+moveTimer = NodePath("MoveTimer")
 
 [node name="Feet" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -2)
@@ -343,6 +620,27 @@ hframes = 12
 vframes = 10
 frame = 12
 
+[node name="ForkSprite" type="Sprite2D" parent="Sprites"]
+position = Vector2(-10, 1)
+texture = ExtResource("1_teix4")
+hframes = 12
+vframes = 5
+frame = 37
+
+[node name="ForkShading" type="Sprite2D" parent="Sprites"]
+position = Vector2(-10, 1)
+texture = ExtResource("2_eg6yc")
+hframes = 12
+vframes = 10
+frame = 73
+
+[node name="ForkShading2" type="Sprite2D" parent="Sprites"]
+position = Vector2(-10, 1)
+texture = ExtResource("2_eg6yc")
+hframes = 12
+vframes = 10
+frame = 85
+
 [node name="Animation" type="Node" parent="."]
 
 [node name="MainBody" type="AnimationPlayer" parent="Animation"]
@@ -350,22 +648,38 @@ libraries = {
 "": SubResource("AnimationLibrary_cvqn8")
 }
 
-[node name="Forkpart" type="AnimationPlayer" parent="Animation"]
-
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 tree_root = SubResource("AnimationNodeBlendTree_stt7p")
 anim_player = NodePath("../MainBody")
+parameters/Blend2/blend_amount = 0
+parameters/Transition/current_state = ""
+parameters/Transition/transition_request = ""
+parameters/Transition/current_index = -1
+
+[node name="ForkLift" type="AnimationPlayer" parent="Animation"]
+libraries = {
+"": SubResource("AnimationLibrary_y1nu4")
+}
 
 [node name="EnemyHurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("4_d7lhf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox"]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_gga0l")
 
 [node name="EnemyHitBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("5_7veik")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(-19, -6)
+shape = SubResource("RectangleShape2D_7bfl6")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 3.0

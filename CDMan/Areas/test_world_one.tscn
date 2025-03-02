@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bma6r3eb6bby6"]
+[gd_scene load_steps=7 format=3 uid="uid://bma6r3eb6bby6"]
 
 [ext_resource type="Script" path="res://Areas/TestWorldOne.gd" id="1_53tsp"]
 [ext_resource type="PackedScene" uid="uid://cbolfv8agrmuc" path="res://Player/cd_man.tscn" id="2_8ei6p"]
 [ext_resource type="Texture2D" uid="uid://clfoocdgbcdbh" path="res://Art/BasicTileSet_Disc_Man.png" id="3_oct44"]
+[ext_resource type="PackedScene" uid="uid://g742q5fqrlug" path="res://Enemys/fork_lift_man.tscn" id="4_5of64"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60hf6"]
 texture = ExtResource("3_oct44")
@@ -543,3 +544,6 @@ remote_path = NodePath("../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(346, 159)
 limit_smoothed = true
+
+[node name="ForkLiftMan" parent="." instance=ExtResource("4_5of64")]
+position = Vector2(470, 171)
