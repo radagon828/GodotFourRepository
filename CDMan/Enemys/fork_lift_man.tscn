@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://g742q5fqrlug"]
+[gd_scene load_steps=24 format=3 uid="uid://g742q5fqrlug"]
 
 [ext_resource type="Script" path="res://Enemys/fork_lift_man.gd" id="1_3uq8k"]
 [ext_resource type="Texture2D" uid="uid://3spc7ne4qgfx" path="res://Art/EnemySprites/ENEMY_003_Forklift_Bot_Main.png" id="1_teix4"]
@@ -175,6 +175,48 @@ tracks/2/keys = {
 "values": [84, 85, 86, 87, 88]
 }
 
+[sub_resource type="Animation" id="Animation_fk5ys"]
+resource_name = "Idle"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/MainSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/Shading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/Shading2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
 [sub_resource type="Animation" id="Animation_8k0b5"]
 resource_name = "MainBodyRotate"
 length = 0.5
@@ -297,48 +339,6 @@ tracks/2/keys = {
 "values": [12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_fk5ys"]
-resource_name = "Idle"
-length = 0.1
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprites/MainSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprites/Shading:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprites/Shading2:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cvqn8"]
 _data = {
 "ForkLiftLifted": SubResource("Animation_lwooy"),
@@ -349,65 +349,6 @@ _data = {
 "MainBodyRotate": SubResource("Animation_8k0b5"),
 "RESET": SubResource("Animation_vn7yp"),
 "Walking": SubResource("Animation_i2hdx")
-}
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7g35v"]
-
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_mnore"]
-input_0/name = "Idle"
-input_0/auto_advance = false
-input_0/reset = true
-input_1/name = "Alert"
-input_1/auto_advance = false
-input_1/reset = true
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_stt7p"]
-graph_offset = Vector2(-370.367, -98.9661)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_7g35v")
-nodes/Blend2/position = Vector2(-120, -100)
-nodes/Transition/node = SubResource("AnimationNodeTransition_mnore")
-nodes/Transition/position = Vector2(120, 40)
-node_connections = [&"output", 0, &"Transition", &"Transition", 0, &"Blend2"]
-
-[sub_resource type="Animation" id="Animation_s4cf6"]
-resource_name = "ForkLiftLowered"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprites/ForkSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprites/ForkShading:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [24]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprites/ForkShading2:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [36]
 }
 
 [sub_resource type="Animation" id="Animation_4avo4"]
@@ -449,6 +390,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [47]
+}
+
+[sub_resource type="Animation" id="Animation_s4cf6"]
+resource_name = "ForkLiftLowered"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/ForkSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/ForkShading:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/ForkShading2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [36]
 }
 
 [sub_resource type="Animation" id="Animation_rwunu"]
@@ -585,9 +567,10 @@ radius = 9.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bfl6"]
 size = Vector2(22, 3)
 
-[node name="ForkLiftMan" type="CharacterBody2D" node_paths=PackedStringArray("bodyAni", "forkAni", "moveTimer")]
+[node name="ForkLiftMan" type="CharacterBody2D" node_paths=PackedStringArray("endPoint", "bodyAni", "forkAni", "moveTimer")]
 collision_layer = 0
 script = ExtResource("1_3uq8k")
+endPoint = NodePath("")
 bodyAni = NodePath("Animation/MainBody")
 forkAni = NodePath("Animation/ForkLift")
 moveTimer = NodePath("MoveTimer")
@@ -647,14 +630,6 @@ frame = 85
 libraries = {
 "": SubResource("AnimationLibrary_cvqn8")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="Animation"]
-tree_root = SubResource("AnimationNodeBlendTree_stt7p")
-anim_player = NodePath("../MainBody")
-parameters/Blend2/blend_amount = 0
-parameters/Transition/current_state = ""
-parameters/Transition/transition_request = ""
-parameters/Transition/current_index = -1
 
 [node name="ForkLift" type="AnimationPlayer" parent="Animation"]
 libraries = {
