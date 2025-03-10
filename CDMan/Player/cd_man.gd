@@ -33,6 +33,7 @@ var lBool
 @onready var base_state = $FiniteStateMachine/Base as BaseState
 @onready var throw_state = $FiniteStateMachine/Throw as ThrowState
 @onready var slide_state = $FiniteStateMachine/Slide as SlideState
+@onready var hurt_state = $FiniteStateMachine/Hurt as HurtState
 
 
 func _ready() -> void:
@@ -56,6 +57,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	showDiscsHeld()
 	move_and_slide()
+	
 
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -152,6 +154,10 @@ func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "DiscHitBox": 
 		discs_held += 1
 		area.get_parent().call_deferred("queue_free")
+		print(area.collision_layer)
+#	if area.collision_mask
+#		fsm.call_deferred("change_state", hurt_state)
+		
 
 	
 func debug():

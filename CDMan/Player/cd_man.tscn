@@ -1,10 +1,11 @@
-[gd_scene load_steps=78 format=3 uid="uid://cbolfv8agrmuc"]
+[gd_scene load_steps=79 format=3 uid="uid://cbolfv8agrmuc"]
 
 [ext_resource type="Script" path="res://Player/cd_man.gd" id="1_nuam1"]
 [ext_resource type="Script" path="res://Player/FiniteStateMachine.gd" id="2_alctq"]
 [ext_resource type="Script" path="res://Player/Player_States/Base.gd" id="3_3ydhx"]
 [ext_resource type="Script" path="res://Player/Player_States/Throw.gd" id="4_ut33j"]
 [ext_resource type="Script" path="res://Player/Player_States/Slide.gd" id="5_tbcrl"]
+[ext_resource type="Script" path="res://Player/Hurt.gd" id="6_0y50h"]
 [ext_resource type="AudioStream" uid="uid://4m4miq17tgjw" path="res://Audio/swoosh-sound-effect-for-fight-scenes-or-transitions-4-149887.mp3" id="7_nvung"]
 [ext_resource type="AudioStream" uid="uid://c5pn6qa2in8qq" path="res://Audio/running-sounds-6003.mp3" id="8_jywwp"]
 [ext_resource type="Texture2D" uid="uid://ceavo2r4sevt3" path="res://Art/DISC_MAN_VERSION 2.png" id="9_po58r"]
@@ -1428,6 +1429,7 @@ script = ExtResource("5_tbcrl")
 actor = NodePath("../..")
 
 [node name="Hurt" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_0y50h")
 
 [node name="Feet" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
@@ -1575,7 +1577,7 @@ one_shot = true
 [node name="PlayerHurtBox" type="Area2D" parent="."]
 visible = false
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]

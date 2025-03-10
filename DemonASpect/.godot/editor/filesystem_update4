@@ -18,4 +18,5 @@ res://enemy_hurtbox.tscn
 res://Overlap/player_detection_zone.tscn
 res://Overlap/remote_transform_2d.tscn
 res://Scenes/UIElements/Inventory/inventory_container.tscn
-res://Overlap/States/roll_state.gd
+res://Scenes/Enemies/EnemyGeneric.tscn
+res://Saves/Level_000.json
