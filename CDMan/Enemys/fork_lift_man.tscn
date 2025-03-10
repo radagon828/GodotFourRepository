@@ -567,10 +567,9 @@ radius = 9.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bfl6"]
 size = Vector2(22, 3)
 
-[node name="ForkLiftMan" type="CharacterBody2D" node_paths=PackedStringArray("endPoint", "bodyAni", "forkAni", "moveTimer")]
+[node name="ForkLiftMan" type="CharacterBody2D" node_paths=PackedStringArray("bodyAni", "forkAni", "moveTimer")]
 collision_layer = 0
 script = ExtResource("1_3uq8k")
-endPoint = NodePath("")
 bodyAni = NodePath("Animation/MainBody")
 forkAni = NodePath("Animation/ForkLift")
 moveTimer = NodePath("MoveTimer")

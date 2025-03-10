@@ -64,6 +64,7 @@ func process_idle(delta):
 	velocity = SPEED * moveDirection.normalized() 
 	
 func changeDirection():
+	velocity.x = 0
 	var tempEnd = endPosition
 	endPosition = startPosition
 	startPosition = tempEnd
