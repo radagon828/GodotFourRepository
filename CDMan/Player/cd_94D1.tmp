@@ -1257,7 +1257,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o61ky"]
-graph_offset = Vector2(-175.656, -286.362)
+graph_offset = Vector2(-31.1945, -339)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jrsf3")
 nodes/Animation/position = Vector2(760, -700)
 "nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_oooms")
@@ -1428,10 +1428,9 @@ shoot_timer = NodePath("../../Timers/ShootTimer")
 script = ExtResource("5_tbcrl")
 actor = NodePath("../..")
 
-[node name="Hurt" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "hurt_timer")]
+[node name="Hurt" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("6_0y50h")
 actor = NodePath("../..")
-hurt_timer = NodePath("../../Timers/HurtTimer")
 
 [node name="Feet" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
@@ -1578,9 +1577,6 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
-[node name="HurtTimer" type="Timer" parent="Timers"]
-wait_time = 0.25
-
 [node name="PlayerHurtBox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 10
@@ -1603,5 +1599,4 @@ pitch_scale = 1.24
 
 [connection signal="timeout" from="Timers/ShootTimer" to="FiniteStateMachine/Throw" method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Timers/ThrowTimer" to="FiniteStateMachine/Throw" method="_on_throw_timer_timeout"]
-[connection signal="timeout" from="Timers/HurtTimer" to="FiniteStateMachine/Hurt" method="_on_hurt_timer_timeout"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]

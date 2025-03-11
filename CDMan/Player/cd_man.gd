@@ -52,6 +52,7 @@ func _ready() -> void:
 	base_state.throw_input.connect(fsm.call_deferred.bind("change_state", throw_state))
 	throw_state.throw_end.connect(fsm.call_deferred.bind("change_state", base_state))
 	slide_state.slide_end.connect(fsm.call_deferred.bind("change_state", base_state))
+	hurt_state.hurt_end.connect(fsm.call_deferred.bind("change_state", base_state))
 	
 	
 func _physics_process(delta):
@@ -154,10 +155,8 @@ func _on_player_hurt_box_area_entered(area: Area2D) -> void:
 	if area.name == "DiscHitBox": 
 		discs_held += 1
 		area.get_parent().call_deferred("queue_free")
-		print(area.collision_layer)
-#	if area.collision_mask
-#		fsm.call_deferred("change_state", hurt_state)
-		
+	if area.collision_layer == 8:
+		fsm.call_deferred("change_state", hurt_state)
 
 	
 func debug():
