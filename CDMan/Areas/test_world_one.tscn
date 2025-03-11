@@ -545,9 +545,8 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(346, 159)
 limit_smoothed = true
 
-[node name="ForkLiftMan" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("4_5of64")]
+[node name="ForkLiftMan" parent="." instance=ExtResource("4_5of64")]
 position = Vector2(470, 171)
-endPoint = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="ForkLiftMan"]
 position = Vector2(138, -69)

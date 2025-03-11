@@ -219,8 +219,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_8k0b5"]
 resource_name = "MainBodyRotate"
-length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -228,7 +226,7 @@ tracks/0/path = NodePath("../Sprites/MainSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [24, 25, 26, 27, 24]
@@ -240,10 +238,10 @@ tracks/1/path = NodePath("../Sprites/Shading:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [48, 49, 50, 51, 52]
+"values": [0, 49, 50, 51, 0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -252,10 +250,24 @@ tracks/2/path = NodePath("../Sprites/Shading2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [60, 61, 62, 63, 64]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"flip"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_vn7yp"]
@@ -418,7 +430,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [24]
+"values": [72]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -431,6 +443,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [36]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../EnemyHitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_rwunu"]
@@ -512,6 +536,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [84, 85, 86, 87, 88]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../EnemyHitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_dja82"]
 length = 0.001
@@ -567,12 +603,14 @@ radius = 9.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bfl6"]
 size = Vector2(22, 3)
 
-[node name="ForkLiftMan" type="CharacterBody2D" node_paths=PackedStringArray("bodyAni", "forkAni", "moveTimer")]
+[node name="ForkLiftMan" type="CharacterBody2D" node_paths=PackedStringArray("enemy_hit_box", "bodyAni", "forkAni", "moveTimer", "sprites")]
 collision_layer = 0
 script = ExtResource("1_3uq8k")
+enemy_hit_box = NodePath("EnemyHitBox")
 bodyAni = NodePath("Animation/MainBody")
 forkAni = NodePath("Animation/ForkLift")
 moveTimer = NodePath("MoveTimer")
+sprites = [NodePath("Sprites/MainSprite"), NodePath("Sprites/Shading"), NodePath("Sprites/Shading2"), NodePath("Sprites/ForkSprite"), NodePath("Sprites/ForkShading"), NodePath("Sprites/ForkShading2")]
 
 [node name="Feet" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -2)
@@ -636,7 +674,6 @@ libraries = {
 }
 
 [node name="EnemyHurtBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("4_d7lhf")
@@ -646,7 +683,6 @@ position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_gga0l")
 
 [node name="EnemyHitBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("5_7veik")
@@ -657,3 +693,6 @@ shape = SubResource("RectangleShape2D_7bfl6")
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
