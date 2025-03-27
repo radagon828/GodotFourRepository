@@ -693,6 +693,5 @@ shape = SubResource("RectangleShape2D_7bfl6")
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

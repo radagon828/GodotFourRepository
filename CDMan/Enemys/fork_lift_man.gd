@@ -52,7 +52,7 @@ func change_state(newstate):
 	isStateNew = true
 
 func process_idle(delta):
-	
+	moveTimer.start()
 	
 	
 	pass

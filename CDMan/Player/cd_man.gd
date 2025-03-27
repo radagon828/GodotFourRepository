@@ -140,7 +140,6 @@ func disc_teleport(rVisible, lVisible):
 		discAnimator.play("Disc2TeleportRecovery")
 #		print("recovery2")
 
-#	discAnimator.seek(.25)
 #	if discAnimator.is_playing():
 #		print("playing")
 
