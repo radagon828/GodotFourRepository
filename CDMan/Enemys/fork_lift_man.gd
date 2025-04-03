@@ -33,6 +33,7 @@ func _ready() -> void:
 #	endPosition.y = position.y
 	bodyAni.play("Idle")
 	forkAni.play("ForkLiftLowered")
+	#moveTimer.paused = true
 	
 
 func _physics_process(delta: float) -> void:
@@ -52,13 +53,13 @@ func change_state(newstate):
 	isStateNew = true
 
 func process_idle(delta):
-	moveTimer.start()
+	moveTimer.paused = false
 	
-	
+	print(moveTimer.time_left)
 	pass
 #	var moveDirection = endPosition - position
-	
-##	print(moveDirection.length()) 
+
+	#print(moveDirection.length()) 
 #	if moveDirection.length() < 9.1:
 #		position.x = endPosition.x
 #		moveDirection = Vector2(0,0)
@@ -66,7 +67,7 @@ func process_idle(delta):
 #	velocity = SPEED * moveDirection.normalized() 
 	
 func process_attack(delta):
-	moveTimer.stop()
+	moveTimer.paused = true
 	pass
 
 func changeDirection():
@@ -80,6 +81,7 @@ func changeDirection():
 
 func _on_move_timer_timeout() -> void:
 	random_action(round(rng.randf_range(1, 3)))
+	print("timer out")
 	
 	
 func random_action(act_number):

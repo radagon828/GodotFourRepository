@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3y5f2qo6hov6"]
+
+[ext_resource type="Script" uid="uid://ksvxbw64g42i" path="res://Effects/Projectiles/Trail.gd" id="1_ovwcu"]
+
+[sub_resource type="Curve" id="Curve_5wxbw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Line2D" type="Line2D"]
+z_index = -1
+width = 5.0
+width_curve = SubResource("Curve_5wxbw")
+default_color = Color(0.556863, 0.74902, 0.811765, 1)
+script = ExtResource("1_ovwcu")
+MAX_LENGTH = 20

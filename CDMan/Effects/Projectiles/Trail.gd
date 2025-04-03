@@ -13,12 +13,13 @@ func _process(_delta):
 		queue.pop_back()
  
 	clear_points()
- 
+	#print(global_position, get_parent().global_position)
  
 	for point in queue:
 		add_point(point)
  
 func _get_position():
 	return get_parent().position
-#	return get_global_mouse_position()
-
+	#return get_global_mouse_position()
+	
+	#top level visibility turned on prevents point from not being on the right position

@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://dgd2bwvgcbmhc"]
 
-[ext_resource type="Script" path="res://Player/FlyingDisc.gd" id="1_a5fcq"]
+[ext_resource type="Script" uid="uid://dyuvb4dhvkgfh" path="res://Player/FlyingDisc.gd" id="1_a5fcq"]
 [ext_resource type="Texture2D" uid="uid://bbw6qwnjf07vb" path="res://Art/TheDiscItselfAura.png" id="2_livim"]
 [ext_resource type="Texture2D" uid="uid://c3mal6p31f2kp" path="res://Art/TheDiscItself.png" id="2_pvh4o"]
-[ext_resource type="PackedScene" uid="uid://clr3s56yjfcil" path="res://Effects/Projectiles/trail.tscn" id="3_05xh1"]
+[ext_resource type="PackedScene" uid="uid://b3y5f2qo6hov6" path="res://Trail.tscn" id="4_5wxbw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4htwp"]
 atlas = ExtResource("2_pvh4o")
@@ -41,11 +41,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cojxn"]
-size = Vector2(9, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wxbw"]
+size = Vector2(6.80355, 0.7538)
 
 [node name="FlyingDisc" type="RigidBody2D" node_paths=PackedStringArray("animator")]
-position = Vector2(1, -4)
 collision_layer = 2
 gravity_scale = 0.0
 lock_rotation = true
@@ -63,6 +62,7 @@ autoplay = "spin"
 frame_progress = 0.0602768
 
 [node name="DiscHitBox" type="Area2D" parent="."]
+position = Vector2(1, 1)
 collision_layer = 2
 collision_mask = 21
 
@@ -70,16 +70,17 @@ collision_mask = 21
 polygon = PackedVector2Array(0, 1, 5, 1, 5, -2, -6, -2, -6, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_cojxn")
+scale = Vector2(1.40284, 1.97005)
+shape = SubResource("RectangleShape2D_5wxbw")
 
 [node name="DiscTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="Trail" parent="." instance=ExtResource("3_05xh1")]
-position = Vector2(0, -1)
+[node name="Trails" parent="." instance=ExtResource("4_5wxbw")]
+top_level = true
+position = Vector2(0, 1)
 
 [connection signal="body_entered" from="DiscHitBox" to="." method="_on_disc_hit_box_body_entered"]
 [connection signal="timeout" from="DiscTimer" to="." method="_on_disc_timer_timeout"]

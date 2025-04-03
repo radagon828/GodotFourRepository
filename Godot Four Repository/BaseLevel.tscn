@@ -32,6 +32,3 @@ transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_f53pc")
-data = {
-"cells": PackedInt32Array(65529, 65531, 0, 65529, 65529, 0, 65530, 65529, 0)
-}

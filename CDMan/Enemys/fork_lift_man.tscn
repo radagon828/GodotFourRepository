@@ -1,10 +1,10 @@
 [gd_scene load_steps=24 format=3 uid="uid://g742q5fqrlug"]
 
-[ext_resource type="Script" path="res://Enemys/fork_lift_man.gd" id="1_3uq8k"]
+[ext_resource type="Script" uid="uid://bjpvus5psyhk7" path="res://Enemys/fork_lift_man.gd" id="1_3uq8k"]
 [ext_resource type="Texture2D" uid="uid://3spc7ne4qgfx" path="res://Art/EnemySprites/ENEMY_003_Forklift_Bot_Main.png" id="1_teix4"]
 [ext_resource type="Texture2D" uid="uid://bi5py2b3pna0e" path="res://Art/EnemySprites/ENEMY_003_Forklift_Bot_Main_Shading.png" id="2_eg6yc"]
-[ext_resource type="Script" path="res://Enemys/EnemyHurtBox.gd" id="4_d7lhf"]
-[ext_resource type="Script" path="res://Enemys/EnemyHitBox.gd" id="5_7veik"]
+[ext_resource type="Script" uid="uid://cboxipo3d4r55" path="res://Enemys/EnemyHurtBox.gd" id="4_d7lhf"]
+[ext_resource type="Script" uid="uid://dmaekpc02cqhp" path="res://Enemys/EnemyHitBox.gd" id="5_7veik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d321"]
 size = Vector2(13, 4)
@@ -353,14 +353,14 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cvqn8"]
 _data = {
-"ForkLiftLifted": SubResource("Animation_lwooy"),
-"ForkLiftLowered": SubResource("Animation_f48lx"),
-"ForkLiftMoveUp": SubResource("Animation_80yw2"),
-"ForkRotate": SubResource("Animation_l0grd"),
-"Idle": SubResource("Animation_fk5ys"),
-"MainBodyRotate": SubResource("Animation_8k0b5"),
-"RESET": SubResource("Animation_vn7yp"),
-"Walking": SubResource("Animation_i2hdx")
+&"ForkLiftLifted": SubResource("Animation_lwooy"),
+&"ForkLiftLowered": SubResource("Animation_f48lx"),
+&"ForkLiftMoveUp": SubResource("Animation_80yw2"),
+&"ForkRotate": SubResource("Animation_l0grd"),
+&"Idle": SubResource("Animation_fk5ys"),
+&"MainBodyRotate": SubResource("Animation_8k0b5"),
+&"RESET": SubResource("Animation_vn7yp"),
+&"Walking": SubResource("Animation_i2hdx")
 }
 
 [sub_resource type="Animation" id="Animation_4avo4"]
@@ -590,11 +590,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y1nu4"]
 _data = {
-"ForkLiftLifted": SubResource("Animation_4avo4"),
-"ForkLiftLowered": SubResource("Animation_s4cf6"),
-"ForkLiftMoveUp": SubResource("Animation_rwunu"),
-"ForkRotate": SubResource("Animation_smiuj"),
-"RESET": SubResource("Animation_dja82")
+&"ForkLiftLifted": SubResource("Animation_4avo4"),
+&"ForkLiftLowered": SubResource("Animation_s4cf6"),
+&"ForkLiftMoveUp": SubResource("Animation_rwunu"),
+&"ForkRotate": SubResource("Animation_smiuj"),
+&"RESET": SubResource("Animation_dja82")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gga0l"]
@@ -665,12 +665,12 @@ frame = 85
 
 [node name="MainBody" type="AnimationPlayer" parent="Animation"]
 libraries = {
-"": SubResource("AnimationLibrary_cvqn8")
+&"": SubResource("AnimationLibrary_cvqn8")
 }
 
 [node name="ForkLift" type="AnimationPlayer" parent="Animation"]
 libraries = {
-"": SubResource("AnimationLibrary_y1nu4")
+&"": SubResource("AnimationLibrary_y1nu4")
 }
 
 [node name="EnemyHurtBox" type="Area2D" parent="."]
@@ -693,5 +693,6 @@ shape = SubResource("RectangleShape2D_7bfl6")
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 3.0
+autostart = true
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

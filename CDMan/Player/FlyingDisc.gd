@@ -58,17 +58,17 @@ func process_outward(delta):
 func change_state(newstate):
 	currentState = newstate
 	isStateNew = true
-	print("changing state")
+	#print("changing state")
 	
 
 #Don't know what to do with THESE functions
 func process_return(delta):
 	direction = playerMarker.global_position - position
 	linear_velocity += direction
-	print("returning")
+	#print("returning")
 
 func process_hit_return(delta):
-	print("cahnged")
+	#print("changed")
 	if isStateNew: linear_velocity = -direction * 2
 	
 	direction = playerMarker.global_position - position
@@ -83,7 +83,7 @@ func process_hit_return(delta):
 #disc returns to player upon hit, should change to upon enemy hit
 func _on_disc_hit_box_body_entered(body: Node2D) -> void:
 #	change_state(State.HIT)
-	linear_velocity.x = 0
+	linear_velocity.x = 1
 	print("entered")
 
 #disc timer
