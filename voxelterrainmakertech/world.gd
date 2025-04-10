@@ -6,16 +6,21 @@ extends Node3D
 
 
 func _ready() -> void:
-	var random_generator = RandomNumberGenerator.new()
-	#var random_generator = FastNoiseLite.new()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#var random_generator = RandomNumberGenerator.new()
+	var random_generator = FastNoiseLite.new()
 	
 	for x in range(world_size.x):
 		for z in range(world_size.z):
 			for y in range(world_size.y):
-				var random = random_generator.randf()
-				#var random = random_generator.get_noise_3d(x, y, z)
+				#var random = random_generator.randf()
+				var random = random_generator.get_noise_3d(x, y, z)
 				if random > cut_off:
 					var new_cube = default_cube.duplicate()
 					new_cube.position = Vector3(x, y, z)
 					add_child(new_cube)
 	remove_child(default_cube)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
