@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var head: Node3D = $Head
 @onready var eye_camera: Camera3D = $Head/EyeCamera
 
-var flying: bool = false
+var flying: bool = true
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
